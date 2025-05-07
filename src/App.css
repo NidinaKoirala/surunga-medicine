@@ -1,0 +1,47 @@
+/* Global styles to fix navbar spacing */
+
+/* Add padding to body to account for fixed navbar height */
+body {
+    padding-top: 70px; /* Match your navbar height */
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Adjust padding for smaller screens */
+  @media (max-width: 991px) {
+    body {
+      padding-top: 60px; /* Smaller navbar height on mobile */
+    }
+  }
+  
+  /* Make sure all sections have appropriate padding */
+  section {
+    padding: 40px 0;
+  }
+  
+  /* Set minimum heights for content areas to avoid short pages */
+  .App {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Make footer stay at bottom */
+  .App > div:last-child {
+    margin-top: auto;
+  }
+  
+  /* Force all images to be responsive */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Fix any z-index issues with components */
+  .header {
+    z-index: 1000; /* Higher than any other component */
+  }
