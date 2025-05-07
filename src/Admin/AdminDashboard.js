@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaEdit, FaTrashAlt, FaEye, FaPlus, FaSignOutAlt, FaSearch, FaImage, FaDatabase, FaBroom } from 'react-icons/fa';
+import { FaEdit, FaTrashAlt, FaEye, FaPlus, FaSignOutAlt, FaSearch, FaImage, FaDatabase, FaBroom, FaDownload, FaUpload, FaSave } from 'react-icons/fa';
 import BlogLocalStorage from '../Blog/BlogLocalStorage';
 import AuthService from '../Blog/AuthService';
 import CloudinaryImageService from '../Blog/CloudinaryImageService';
@@ -13,6 +13,8 @@ function AdminDashboard() {
     const [loading, setLoading] = useState(true);
     const [adminName, setAdminName] = useState('');
     const [cloudinaryImages, setCloudinaryImages] = useState([]);
+    const [importMessage, setImportMessage] = useState({ text: '', type: '' });
+    const fileInputRef = useRef(null);
     const navigate = useNavigate();
 
     // Check authentication and load blogs
@@ -30,6 +32,11 @@ function AdminDashboard() {
         setAdminName(AuthService.getAdminUsername());
 
         // Load blogs
+        loadBlogs();
+    }, [navigate]);
+
+    // Load blogs and images
+    const loadBlogs = () => {
         try {
             const allBlogs = BlogLocalStorage.getAllBlogs();
             setBlogs(allBlogs);
@@ -47,7 +54,7 @@ function AdminDashboard() {
         } finally {
             setLoading(false);
         }
-    }, [navigate]);
+    };
 
     // Filter blogs based on search term
     useEffect(() => {
@@ -81,6 +88,74 @@ function AdminDashboard() {
             } catch (error) {
                 console.error("Error deleting blog:", error);
                 alert('Failed to delete blog post. Please try again.');
+            }
+        }
+    };
+
+    // Export blogs to JSON file
+    const handleExportBlogs = () => {
+        try {
+            const count = BlogLocalStorage.exportBlogs();
+            setImportMessage({
+                text: `Successfully exported ${count} blog posts`,
+                type: 'success'
+            });
+            
+            // Clear message after 5 seconds
+            setTimeout(() => {
+                setImportMessage({ text: '', type: '' });
+            }, 5000);
+        } catch (error) {
+            console.error("Error exporting blogs:", error);
+            setImportMessage({
+                text: `Error exporting blogs: ${error.message}`,
+                type: 'error'
+            });
+        }
+    };
+
+    // Trigger file input for importing
+    const handleImportClick = () => {
+        if (fileInputRef.current) {
+            fileInputRef.current.click();
+        }
+    };
+
+    // Handle file selection for import
+    const handleFileChange = async (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+        
+        try {
+            setImportMessage({
+                text: 'Importing blog posts...',
+                type: 'info'
+            });
+            
+            const count = await BlogLocalStorage.importBlogs(file);
+            
+            // Reload blogs after import
+            loadBlogs();
+            
+            setImportMessage({
+                text: `Successfully imported ${count} blog posts`,
+                type: 'success'
+            });
+            
+            // Clear message after 5 seconds
+            setTimeout(() => {
+                setImportMessage({ text: '', type: '' });
+            }, 5000);
+        } catch (error) {
+            console.error("Error importing blogs:", error);
+            setImportMessage({
+                text: `Error importing blogs: ${error.message}`,
+                type: 'error'
+            });
+        } finally {
+            // Reset file input
+            if (fileInputRef.current) {
+                fileInputRef.current.value = '';
             }
         }
     };
@@ -138,7 +213,7 @@ function AdminDashboard() {
         };
     };
     
-    // Get storage usage - and actually use it to display the percentage in the UI
+    // Get storage usage
     const storageUsage = calculateStorageUsage();
 
     if (loading) {
@@ -184,7 +259,42 @@ function AdminDashboard() {
                     </Link>
                 </div>
 
-                {/* Storage/Image Usage widget - now using the storageUsage variable */}
+                {/* Data persistence controls */}
+                <div className="data-persistence-controls">
+                    <h3><FaSave /> Blog Data Management</h3>
+                    <p>Export your blog data to keep a backup or import previously exported data:</p>
+                    
+                    <div className="export-import-buttons">
+                        <button onClick={handleExportBlogs} className="export-btn">
+                            <FaDownload /> Export Blog Data
+                        </button>
+                        
+                        <button onClick={handleImportClick} className="import-btn">
+                            <FaUpload /> Import Blog Data
+                        </button>
+                        
+                        <input 
+                            type="file" 
+                            accept=".json" 
+                            ref={fileInputRef} 
+                            onChange={handleFileChange} 
+                            style={{ display: 'none' }} 
+                        />
+                    </div>
+                    
+                    {importMessage.text && (
+                        <div className={`import-message ${importMessage.type}`}>
+                            {importMessage.text}
+                        </div>
+                    )}
+                    
+                    <div className="persistence-note">
+                        <strong>Note:</strong> Since this is a client-side application, your blog data is stored in your browser's localStorage. 
+                        To ensure your data persists across sessions and devices, regularly export your data and import it when needed.
+                    </div>
+                </div>
+
+                {/* Storage/Image Usage widget */}
                 <div className="storage-usage-widget">
                     <h3>
                         <FaDatabase /> Cloudinary Image Management

@@ -651,3 +651,118 @@
 .cleanup-btn:hover {
     background-color: #e0e0e0;
 }
+/* Add these styles to your AdminDashboard.css */
+
+/* Data Persistence Controls */
+.data-persistence-controls {
+    background-color: #f5f9ff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid #e0e9ff;
+}
+
+.data-persistence-controls h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #2a76d2;
+    font-size: 18px;
+}
+
+.data-persistence-controls p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.export-import-buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.export-btn, .import-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.export-btn {
+    background-color: #e8f4ff;
+    color: #2a76d2;
+}
+
+.import-btn {
+    background-color: #e8fff0;
+    color: #26a96a;
+}
+
+.export-btn:hover, .import-btn:hover {
+    transform: translateY(-2px);
+}
+
+.export-btn:hover {
+    background-color: #d0e8ff;
+}
+
+.import-btn:hover {
+    background-color: #d0ffe0;
+}
+
+.export-btn:active, .import-btn:active {
+    transform: translateY(0);
+}
+
+.import-message {
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.import-message.success {
+    background-color: #e8fff0;
+    color: #26a96a;
+    border-left: 3px solid #26a96a;
+}
+
+.import-message.error {
+    background-color: #ffebee;
+    color: #d32f2f;
+    border-left: 3px solid #d32f2f;
+}
+
+.import-message.info {
+    background-color: #e8f4ff;
+    color: #2a76d2;
+    border-left: 3px solid #2a76d2;
+}
+
+.persistence-note {
+    background-color: #fffde7;
+    padding: 10px 15px;
+    border-radius: 4px;
+    border-left: 3px solid #fbc02d;
+    font-size: 14px;
+    color: #5d4037;
+}
+
+.persistence-note strong {
+    color: #33691e;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .export-import-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
