@@ -11,13 +11,7 @@ import About from './About/About.js';
 import AllDoctors from './AllDoctors/AllDoctors.js';
 import Contact from './Contact/Contact.js';
 
-// import Blog components
-import Blog from './Blog/Blog.js';
 
-// import Admin components
-import AdminLogin from './Admin/AdminLogin.js';
-import AdminDashboard from './Admin/AdminDashboard.js';
-import ProtectedRoute from './Blog/ProtectedRoute.js';
 
 // import AppContext
 import AppContextProvider from './Context/AppContext.js';
@@ -36,17 +30,7 @@ function App() {
             <Route path='/doctors' element={<AllDoctors />} />
             <Route path='/doctors/:speciality' element={<AllDoctors />} />
             <Route path='/Contact' element={<Contact />} />
-            
-            {/* Blog Routes */}
-            <Route path='/Blog/*' element={<Blog />} />
-            
-            {/* Admin Routes */}
-            <Route path='/admin/login' element={<AdminLogin />} />
-            <Route path='/admin/dashboard' element={
-              <ProtectedRoute>
-                <AdminDashboard />
-              </ProtectedRoute>
-            } />
+          
           </Routes>
         </AppContextProvider>
         <Footer />
