@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { FaHeading, FaBold, FaItalic, FaListUl, FaListOl, FaLink, FaQuoteLeft, FaTable, FaCode, FaEye, FaSave, FaTimes, FaImage } from 'react-icons/fa';
@@ -26,85 +26,6 @@ function BlogEditor() {
     const [previewMode, setPreviewMode] = useState(false);
     const [saving, setSaving] = useState(false);
     const [error, setError] = useState('');
-    
-    // Load blog data if in edit mode
-    useEffect(() => {
-        // Initialize CloudinaryImageService
-        CloudinaryImageService.initialize();
-        
-        // Check if user is authenticated
-        if (!AuthService.isAuthenticated()) {
-            navigate('/Admin/login');
-            return;
-        }
-        
-        if (isEditMode) {
-            try {
-                const blog = BlogLocalStorage.getBlogById(id);
-                if (blog) {
-                    // Convert tags array to string if needed
-                    const tagsString = Array.isArray(blog.tags) ? blog.tags.join(', ') : blog.tags || '';
-                    
-                    setFormData({
-                        title: blog.title || '',
-                        category: blog.category || '',
-                        tags: tagsString,
-                        image: blog.image || '',
-                        author: blog.author || 'Dr. Sarah Johnson',
-                        excerpt: blog.excerpt || '',
-                        content: blog.content || ''
-                    });
-                    
-                    console.log('Loaded blog for editing:', blog);
-                    console.log('Image ID/URL:', blog.image);
-                    
-                    // Debug all images in the blog content
-                    findImagesInContent(blog.content);
-                } else {
-                    setError('Blog post not found.');
-                    setTimeout(() => navigate('/Blog'), 2000);
-                }
-            } catch (error) {
-                console.error('Error loading blog for editing:', error);
-                setError('Failed to load blog post for editing.');
-            }
-        } else {
-            // For new blog, provide a template
-            setFormData(prev => ({
-                ...prev,
-                content: markdownTemplate
-            }));
-        }
-    }, [isEditMode, id, navigate]);
-    
-    // Helper function to find images in content
-    const findImagesInContent = (content) => {
-        if (!content) return;
-        
-        console.log('Searching for images in content...');
-        const imageRegex = /!\[([^\]]+)\]\(([^)]+)\)/g;
-        let match;
-        let foundImages = 0;
-        
-        while ((match = imageRegex.exec(content)) !== null) {
-            foundImages++;
-            const [fullMatch, alt, src] = match;
-            console.log(`Found image ${foundImages}:`, fullMatch);
-            console.log(`  Alt text: ${alt}`);
-            console.log(`  Source: ${src}`);
-            
-            if (src.startsWith('img_')) {
-                const url = CloudinaryImageService.getImageUrl(src);
-                console.log(`  Resolved URL: ${url || 'Not found'}`);
-            }
-        }
-        
-        if (foundImages === 0) {
-            console.log('No images found in content');
-        } else {
-            console.log(`Found ${foundImages} images in content`);
-        }
-    };
     
     // Predefined template to help users get started
     const markdownTemplate = `# Your Title Here
@@ -155,7 +76,86 @@ function example() {
 
 *This article is for informational purposes only.*
 `;
-
+    
+    // Load blog data if in edit mode
+    useEffect(() => {
+        // Initialize CloudinaryImageService
+        CloudinaryImageService.initialize();
+        
+        // Check if user is authenticated
+        if (!AuthService.isAuthenticated()) {
+            navigate('/Admin/login');
+            return;
+        }
+        
+        if (isEditMode) {
+            try {
+                const blog = BlogLocalStorage.getBlogById(id);
+                if (blog) {
+                    // Convert tags array to string if needed
+                    const tagsString = Array.isArray(blog.tags) ? blog.tags.join(', ') : blog.tags || '';
+                    
+                    setFormData({
+                        title: blog.title || '',
+                        category: blog.category || '',
+                        tags: tagsString,
+                        image: blog.image || '',
+                        author: blog.author || 'Dr. Sarah Johnson',
+                        excerpt: blog.excerpt || '',
+                        content: blog.content || ''
+                    });
+                    
+                    console.log('Loaded blog for editing:', blog);
+                    console.log('Image ID/URL:', blog.image);
+                    
+                    // Debug all images in the blog content
+                    findImagesInContent(blog.content);
+                } else {
+                    setError('Blog post not found.');
+                    setTimeout(() => navigate('/Blog'), 2000);
+                }
+            } catch (error) {
+                console.error('Error loading blog for editing:', error);
+                setError('Failed to load blog post for editing.');
+            }
+        } else {
+            // For new blog, provide a template
+            setFormData(prev => ({
+                ...prev,
+                content: markdownTemplate
+            }));
+        }
+    }, [isEditMode, id, navigate, markdownTemplate]);
+    
+    // Helper function to find images in content
+    const findImagesInContent = (content) => {
+        if (!content) return;
+        
+        console.log('Searching for images in content...');
+        const imageRegex = /!\[([^\]]+)\]\(([^)]+)\)/g;
+        let match;
+        let foundImages = 0;
+        
+        while ((match = imageRegex.exec(content)) !== null) {
+            foundImages++;
+            const [fullMatch, alt, src] = match;
+            console.log(`Found image ${foundImages}:`, fullMatch);
+            console.log(`  Alt text: ${alt}`);
+            console.log(`  Source: ${src}`);
+            
+            if (src.startsWith('img_')) {
+                const url = CloudinaryImageService.getImageUrl(src);
+                console.log(`  Resolved URL: ${url || 'Not found'}`);
+            }
+        }
+        
+        if (foundImages === 0) {
+            console.log('No images found in content');
+        } else {
+            console.log(`Found ${foundImages} images in content`);
+        }
+    };
+    
     // Handle input changes
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -371,7 +371,8 @@ function example() {
         return plainText.substring(0, 150).replace(/\s+\S*$/, '') + '...';
     };
     
-    // Process markdown content to replace image IDs with Cloudinary URLs
+    // This function is only used directly in the component, not in JSX/rendering
+    // eslint-disable-next-line no-unused-vars
     const processMarkdownContent = (markdown) => {
         if (!markdown) return '';
         
@@ -659,6 +660,7 @@ function example() {
                                                 <img 
                                                     {...props} 
                                                     src={src} 
+                                                    alt={props.alt || "Preview image"}
                                                     className="preview-image"
                                                     style={{
                                                         maxWidth: '100%',

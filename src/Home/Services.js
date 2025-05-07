@@ -52,7 +52,7 @@ function Services() {
                                 </div>
                                 <h3 className="service-title">{service.title}</h3>
                                 <p className="service-description">{service.description}</p>
-                                <a href="#" className="service-link">Learn more</a>
+                                <button className="service-link">Learn more</button>
                             </div>
                         </div>
                     ))}

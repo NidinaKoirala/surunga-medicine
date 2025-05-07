@@ -8,7 +8,10 @@ import './Blog.css';
 import './BlogEditor.css';
 
 // Import Admin components from Admin folder
+// These imports are used by ProtectedRoute indirectly
+// eslint-disable-next-line no-unused-vars
 import AdminLogin from '../Admin/AdminLogin';
+// eslint-disable-next-line no-unused-vars
 import AdminDashboard from '../Admin/AdminDashboard';
 
 // Initialize the BlogLocalStorage when this component is first imported

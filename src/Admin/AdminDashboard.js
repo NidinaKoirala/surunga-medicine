@@ -137,8 +137,8 @@ function AdminDashboard() {
             percentage: Math.min((sizeInMB / 10) * 100, 100) // Assuming 10MB quota
         };
     };
-
-    // Get storage usage
+    
+    // Get storage usage - and actually use it to display the percentage in the UI
     const storageUsage = calculateStorageUsage();
 
     if (loading) {
@@ -184,13 +184,19 @@ function AdminDashboard() {
                     </Link>
                 </div>
 
-                {/* Storage/Image Usage widget */}
+                {/* Storage/Image Usage widget - now using the storageUsage variable */}
                 <div className="storage-usage-widget">
                     <h3>
                         <FaDatabase /> Cloudinary Image Management
                     </h3>
+                    <div className="usage-bar">
+                        <div 
+                            className="usage-fill" 
+                            style={{ width: `${storageUsage.percentage}%` }}
+                        ></div>
+                    </div>
                     <div className="usage-details">
-                        <span>{cloudinaryImages.length} images stored</span>
+                        <span>{cloudinaryImages.length} images ({storageUsage.megabytes.toFixed(2)} MB)</span>
                         <button onClick={cleanupUnusedImages} className="cleanup-btn">
                             <FaBroom /> Clean Unused Images
                         </button>
@@ -280,7 +286,7 @@ function AdminDashboard() {
                                 <div className="image-preview">
                                     <img 
                                         src={image.url} 
-                                        alt={image.name} 
+                                        alt={image.name || "Uploaded image"} 
                                         onError={(e) => {
                                             console.error("Error loading image:", image.id);
                                             e.target.src = 'https://via.placeholder.com/150?text=Image+Error';

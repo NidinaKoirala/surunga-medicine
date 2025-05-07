@@ -11,6 +11,8 @@ function BlogDetail() {
     const [blog, setBlog] = useState(null);
     const [loading, setLoading] = useState(true);
     const [relatedPosts, setRelatedPosts] = useState([]);
+    // We don't need processedContent anymore since we're using the custom img component
+    // eslint-disable-next-line no-unused-vars
     const [processedContent, setProcessedContent] = useState('');
     
     // Load blog and related posts
@@ -258,6 +260,7 @@ function BlogDetail() {
                                             <img 
                                                 {...props} 
                                                 src={src} 
+                                                alt={props.alt || "Blog image"}
                                                 className="blog-content-image"
                                                 style={{
                                                     maxWidth: '100%', 
@@ -279,18 +282,18 @@ function BlogDetail() {
                             <div className="blog-share">
                                 <h4>Share This Article</h4>
                                 <div className="social-share-buttons">
-                                    <a href="#" className="social-button facebook">
+                                    <button className="social-button facebook">
                                         <FaFacebookF />
-                                    </a>
-                                    <a href="#" className="social-button twitter">
+                                    </button>
+                                    <button className="social-button twitter">
                                         <FaTwitter />
-                                    </a>
-                                    <a href="#" className="social-button linkedin">
+                                    </button>
+                                    <button className="social-button linkedin">
                                         <FaLinkedinIn />
-                                    </a>
-                                    <a href="#" className="social-button pinterest">
+                                    </button>
+                                    <button className="social-button pinterest">
                                         <FaPinterest />
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                             

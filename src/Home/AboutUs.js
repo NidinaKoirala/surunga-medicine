@@ -44,7 +44,7 @@ function AboutUs() {
                                 </div>
                             ))}
                         </div>
-                        <a href="#" className="learn-more-btn">Learn More About Us</a>
+                        <button className="learn-more-btn">Learn More About Us</button>
                     </div>
                 </div>
             </div>
