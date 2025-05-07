@@ -1,16 +1,33 @@
-// Service for managing blog posts in localStorage with Export/Import functionality
+// BlogLocalStorage.js with URL-based persistence
+// This solution stores and retrieves blog data from the URL hash
 
-// Storage key for blog posts
+// Storage key for blog posts in localStorage (for compatibility)
 const BLOGS_STORAGE_KEY = "surunga_medicine_blog_posts";
 
-// Initialize blog storage in localStorage
+// Initialize blog storage from URL hash or localStorage
 const initBlogStorage = () => {
-  if (!localStorage.getItem(BLOGS_STORAGE_KEY)) {
+  try {
+    // First, check the URL hash for compressed data
+    const hashData = getDataFromHash();
+    
+    if (hashData && hashData.length > 0) {
+      // We have data in the URL, use it and save to localStorage as backup
+      localStorage.setItem(BLOGS_STORAGE_KEY, JSON.stringify(hashData));
+      return;
+    }
+    
+    // No data in URL, check localStorage
+    if (!localStorage.getItem(BLOGS_STORAGE_KEY)) {
+      localStorage.setItem(BLOGS_STORAGE_KEY, JSON.stringify([]));
+    }
+  } catch (error) {
+    console.error('Error initializing blog storage:', error);
+    // Fallback to empty array
     localStorage.setItem(BLOGS_STORAGE_KEY, JSON.stringify([]));
   }
 };
 
-// Process tags consistently (handle both string and array cases)
+// Process tags consistently
 const processTagsConsistently = (tags) => {
   if (typeof tags === 'string') {
     return tags.split(',').map(tag => tag.trim()).filter(tag => tag);
@@ -55,8 +72,71 @@ const formatBlogPost = (blogData) => {
   };
 };
 
+// Compress data for URL storage
+const compressData = (data) => {
+  try {
+    // Convert to JSON string
+    const jsonString = JSON.stringify(data);
+    
+    // Use built-in compression
+    const compressed = btoa(unescape(encodeURIComponent(jsonString)));
+    
+    return compressed;
+  } catch (error) {
+    console.error('Error compressing data:', error);
+    return '';
+  }
+};
+
+// Decompress data from URL
+const decompressData = (compressed) => {
+  try {
+    // Decompress
+    const jsonString = decodeURIComponent(escape(atob(compressed)));
+    
+    // Parse JSON
+    return JSON.parse(jsonString);
+  } catch (error) {
+    console.error('Error decompressing data:', error);
+    return null;
+  }
+};
+
+// Save data to URL hash
+const saveDataToHash = (data) => {
+  // Compress the data
+  const compressed = compressData(data);
+  
+  // Update URL without reloading the page
+  if (compressed) {
+    // Only update if within reasonable size limits (browsers typically support ~2000 chars)
+    if (compressed.length < 2000) {
+      window.location.hash = `data=${compressed}`;
+      return true;
+    } else {
+      console.warn('Data too large for URL storage, saved to localStorage only');
+      return false;
+    }
+  }
+  return false;
+};
+
+// Get data from URL hash
+const getDataFromHash = () => {
+  try {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#data=')) {
+      const compressed = hash.substring(6); // Remove "#data="
+      return decompressData(compressed);
+    }
+  } catch (error) {
+    console.error('Error getting data from hash:', error);
+  }
+  return null;
+};
+
 const BlogLocalStorage = {
-  // Initialize the blog storage with sample data if needed
+  // Initialize the blog storage
   initialize(populateSampleData = false) {
     try {
       initBlogStorage();
@@ -68,9 +148,22 @@ const BlogLocalStorage = {
         if (blogs.length === 0) {
           console.log('Initializing blog storage with sample data');
           
-          // Add sample blog posts (omitted for brevity)
-          // ...
+          // Add sample blog posts
+          const sampleBlogs = [
+            {
+              title: "10 Tips for Better Heart Health",
+              category: "Preventive Care",
+              tags: ["Heart Health", "Prevention", "Lifestyle"],
+              image: "https://source.unsplash.com/random/800x600/?heart",
+              author: "Dr. Sarah Johnson",
+              excerpt: "Discover simple lifestyle changes that can significantly improve your heart health and reduce your risk of cardiovascular disease.",
+              content: "# 10 Tips for Better Heart Health\n\n## Introduction\nHeart disease is the leading cause of death worldwide, but many cases are preventable with lifestyle changes. Here are 10 evidence-based tips to keep your heart healthy and strong."
+            },
+            // Add more sample blogs if needed
+          ];
           
+          // Add each sample blog
+          sampleBlogs.forEach(blog => this.createBlog(blog));
           console.log('Sample blog data initialized successfully');
         }
       }
@@ -96,6 +189,9 @@ const BlogLocalStorage = {
       
       // Save back to localStorage
       localStorage.setItem(BLOGS_STORAGE_KEY, JSON.stringify(blogs));
+      
+      // Save to URL for persistence
+      saveDataToHash(blogs);
       
       console.log('Blog created successfully:', newBlog);
       return newBlog;
@@ -150,6 +246,9 @@ const BlogLocalStorage = {
       // Save back to localStorage
       localStorage.setItem(BLOGS_STORAGE_KEY, JSON.stringify(blogs));
       
+      // Save to URL for persistence
+      saveDataToHash(blogs);
+      
       console.log('Blog updated successfully:', updatedBlog);
       return updatedBlog;
     } catch (error) {
@@ -171,6 +270,9 @@ const BlogLocalStorage = {
       // Save back to localStorage
       localStorage.setItem(BLOGS_STORAGE_KEY, JSON.stringify(filteredBlogs));
       
+      // Save to URL for persistence
+      saveDataToHash(filteredBlogs);
+      
       console.log(`Blog with ID ${id} deleted successfully`);
       return true;
     } catch (error) {
@@ -179,7 +281,7 @@ const BlogLocalStorage = {
     }
   },
   
-  // Export blogs to a JSON file
+  // Export and import methods (still useful as backup)
   exportBlogs() {
     try {
       const blogs = this.getAllBlogs();
@@ -230,6 +332,9 @@ const BlogLocalStorage = {
       // Save to localStorage
       localStorage.setItem(BLOGS_STORAGE_KEY, JSON.stringify(formattedBlogs));
       
+      // Save to URL for persistence
+      saveDataToHash(formattedBlogs);
+      
       console.log(`Imported ${formattedBlogs.length} blogs successfully`);
       return formattedBlogs.length;
     } catch (error) {
@@ -238,10 +343,88 @@ const BlogLocalStorage = {
     }
   },
   
-  // Other methods remain the same...
+  // Get blog posts by category
+  getBlogsByCategory(category) {
+    try {
+      const blogs = this.getAllBlogs();
+      return blogs.filter(blog => blog.category === category);
+    } catch (error) {
+      console.error(`Error getting blogs with category ${category}:`, error);
+      return [];
+    }
+  },
   
-  // Get blogs by category, search blogs, etc.
-  // (omitted for brevity)
+  // Search blogs by term (title, content, tags)
+  searchBlogs(term) {
+    try {
+      if (!term) return this.getAllBlogs();
+      
+      const blogs = this.getAllBlogs();
+      const searchTerm = term.toLowerCase();
+      
+      return blogs.filter(blog => 
+        blog.title.toLowerCase().includes(searchTerm) ||
+        blog.content.toLowerCase().includes(searchTerm) ||
+        blog.excerpt.toLowerCase().includes(searchTerm) ||
+        blog.category.toLowerCase().includes(searchTerm) ||
+        blog.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+      );
+    } catch (error) {
+      console.error(`Error searching blogs with term "${term}":`, error);
+      return [];
+    }
+  },
+  
+  // Get all unique categories
+  getAllCategories() {
+    try {
+      const blogs = this.getAllBlogs();
+      return [...new Set(blogs.map(blog => blog.category))];
+    } catch (error) {
+      console.error('Error getting all categories:', error);
+      return [];
+    }
+  },
+  
+  // Get all unique tags
+  getAllTags() {
+    try {
+      const blogs = this.getAllBlogs();
+      return [...new Set(blogs.flatMap(blog => blog.tags))];
+    } catch (error) {
+      console.error('Error getting all tags:', error);
+      return [];
+    }
+  },
+  
+  // Get all used image IDs (for cleanup)
+  getAllUsedImageIds() {
+    try {
+      const blogs = this.getAllBlogs();
+      const imageIds = new Set();
+      
+      // Get featured images
+      blogs.forEach(blog => {
+        if (blog.image && blog.image.startsWith('img_')) {
+          imageIds.add(blog.image);
+        }
+      });
+      
+      // Get images from content
+      const imageRegex = /!\[.*?\]\((img_[^)]+)\)/g;
+      blogs.forEach(blog => {
+        let match;
+        while ((match = imageRegex.exec(blog.content)) !== null) {
+          imageIds.add(match[1]);
+        }
+      });
+      
+      return [...imageIds];
+    } catch (error) {
+      console.error('Error getting all used image IDs:', error);
+      return [];
+    }
+  }
 };
 
 // Initialize storage on load
@@ -250,6 +433,7 @@ initBlogStorage();
 // Add a debug method
 BlogLocalStorage.debugStorage = () => {
   console.log('Current blog posts in localStorage:', BlogLocalStorage.getAllBlogs());
+  console.log('URL hash data:', getDataFromHash());
 };
 
 export default BlogLocalStorage;
