@@ -280,7 +280,7 @@ const DoctorProfile = () => {
                         <button className="close-calendly" onClick={closeCalendly}>×</button>
                         <div 
                             className="calendly-inline-widget" 
-                            data-url={`https://calendly.com/janam-khatiwada-ambikatechnology?name=${encodeURIComponent(doctor.name)}`}
+                            data-url={`https://medicinegbnj.setmore.com/book?name=${encodeURIComponent(doctor.name)}`}
                             style={{ minWidth: '320px', height: '630px' }}
                         ></div>
                     </div>
