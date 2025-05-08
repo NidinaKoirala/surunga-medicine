@@ -7,7 +7,7 @@ function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation();
-
+    
     // Handle scroll event to change navbar appearance
     useEffect(() => {
         const handleScroll = () => {
@@ -17,7 +17,7 @@ function Navbar() {
                 setScrolled(false);
             }
         };
-
+        
         window.addEventListener('scroll', handleScroll);
         
         // Clean up event listener
@@ -25,17 +25,17 @@ function Navbar() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-
+    
     // Toggle mobile menu
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
-
+    
     // Close menu when clicking anywhere else
     const closeMenu = () => {
         if (isOpen) setIsOpen(false);
     };
-
+    
     // Check if a link is active
     const isActive = (path) => {
         if (path === '/' && location.pathname === '/') {
@@ -43,7 +43,26 @@ function Navbar() {
         }
         return location.pathname === path || location.pathname.startsWith(path + '/') ? 'active' : '';
     };
-
+    
+    // Special handler for Blog link to force page refresh
+    const handleBlogClick = (e) => {
+        // Close the menu first (for mobile)
+        closeMenu();
+        
+        // Check if we're already on a blog page
+        if (location.pathname === '/Blog' || location.pathname.startsWith('/Blog/')) {
+            // If we're already on blog, just refresh the page
+            window.location.reload();
+        } else {
+            // If we're not on blog, navigate to it with a full page load
+            // instead of using React Router's client-side navigation
+            window.location.href = '/Blog';
+            
+            // Prevent default Link behavior
+            e.preventDefault();
+        }
+    };
+    
     return (
         <header className={`header ${scrolled ? 'scrolled' : ''}`}>
             <div className='container'>
@@ -67,7 +86,16 @@ function Navbar() {
                             <li><Link to="/" className={isActive('/')} onClick={closeMenu}>Home</Link></li>
                             <li><Link to="/About" className={isActive('/About')} onClick={closeMenu}>About us</Link></li>
                             <li><Link to="/AllDoctors" className={isActive('/AllDoctors')} onClick={closeMenu}>All Doctors</Link></li>
-                            <li><Link to="/Blog" className={isActive('/Blog')} onClick={closeMenu}>Blog</Link></li>
+                            <li>
+                                {/* Special Blog link that forces refresh */}
+                                <a 
+                                    href="/Blog" 
+                                    className={isActive('/Blog')} 
+                                    onClick={handleBlogClick}
+                                >
+                                    Blog
+                                </a>
+                            </li>
                             <li><Link to="/Contact" className={isActive('/Contact')} onClick={closeMenu}>Contact</Link></li>
                         </ul>
                         

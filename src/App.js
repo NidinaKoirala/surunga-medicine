@@ -12,7 +12,8 @@ import AllDoctors from './AllDoctors/AllDoctors.js';
 import Contact from './Contact/Contact.js';
 
 
-
+import Blog from './Blog/Blog.js'
+import BlogPost from './Blog/BlogPost.js';
 // import AppContext
 import AppContextProvider from './Context/AppContext.js';
 
@@ -30,7 +31,9 @@ function App() {
             <Route path='/doctors' element={<AllDoctors />} />
             <Route path='/doctors/:speciality' element={<AllDoctors />} />
             <Route path='/Contact' element={<Contact />} />
-          
+            <Route path='/blog/' element={<Blog />} />
+            <Route path="/Blog/:id" element={<BlogPost />} />
+
           </Routes>
         </AppContextProvider>
         <Footer />
