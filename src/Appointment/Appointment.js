@@ -1,36 +1,368 @@
-import React, { useEffect } from 'react';
+// Appointment.js
+import React, { useState, useRef } from 'react';
 import './Appointment.css';
+import emailjs from '@emailjs/browser';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import { format } from 'date-fns';
 
 const Appointment = () => {
-  // Load Calendly script when component mounts
-  useEffect(() => {
-    // Create and append Calendly script
-    const script = document.createElement('script');
-    script.src = 'https://assets.calendly.com/assets/external/widget.js';
-    script.async = true;
-    document.head.appendChild(script);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    patientName: '',
+    reasonForVisit: '',
+    additionalNotes: ''
+  });
+  
+  const [date, setDate] = useState(new Date());
+  const [time, setTime] = useState('10:00');
+  const [showTimePicker, setShowTimePicker] = useState(false);
+  
+  const [formStatus, setFormStatus] = useState({
+    submitting: false,
+    success: false,
+    error: false,
+    message: '',
+    showModal: false
+  });
+  
+  // Create a reference to the modal for direct DOM manipulation
+  const modalRef = useRef(null);
+  
+  const form = useRef();
+  
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData(prevData => ({
+      ...prevData,
+      [id]: value
+    }));
+  };
+  
+  const handleCalendarChange = (newDate) => {
+    setDate(newDate);
+    setShowTimePicker(true);
+  };
+  
+  // Function to show modal
+  const showModal = (success, message) => {
+    setFormStatus({
+      submitting: false,
+      success: success,
+      error: !success,
+      message: message,
+      showModal: true
+    });
+    
+    if (modalRef.current) {
+      modalRef.current.style.display = 'flex';
+    }
+  };
+  
+  // Function to close modal
+  const closeModal = () => {
+    if (modalRef.current) {
+      modalRef.current.style.display = 'none';
+    }
+    
+    setFormStatus(prev => ({...prev, showModal: false}));
+  };
+  
+  const isWeekday = (date) => {
+    const day = date.getDay();
+    // Return true for Monday-Friday, false for Saturday-Sunday
+    return day !== 0 && day !== 6;
+  };
+  
+  const formatAppointmentDate = (date) => {
+    return format(date, 'MMMM d, yyyy');
+  };
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.phone || !formData.patientName || !formData.reasonForVisit) {
+      setFormStatus({
+        submitting: false,
+        success: false,
+        error: true,
+        message: 'Please fill out all required fields',
+        showModal: true
+      });
+      return;
+    }
+    
+    if (!date || !time) {
+      setFormStatus({
+        submitting: false,
+        success: false,
+        error: true,
+        message: 'Please select a date and time for your appointment',
+        showModal: true
+      });
+      return;
+    }
+    
+    // Set submitting state
+    setFormStatus({
+      submitting: true,
+      success: false,
+      error: false,
+      message: 'Submitting your appointment...'
+    });
+    
+    const formattedDate = formatAppointmentDate(date);
+    
+    // First, send confirmation email to the user
+    emailjs.send(
+      'service_76e3ram',
+      'template_kepcj1k',
+      {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        patient_name: formData.patientName,
+        reason_for_visit: formData.reasonForVisit,
+        appointment_date: formattedDate,
+        appointment_time: time,
+        provider_name: 'Available doctor',
+        additional_notes: formData.additionalNotes || 'None',
+        message: formData.additionalNotes || 'Thank you for booking with Surunga Medicine!',
+        survey_link: "https://surungamedicine.com/survey?rating=",
+        unsubscribe_link: "https://surungamedicine.com/unsubscribe?email=" + encodeURIComponent(formData.email),
+      },
+      'RJ_KXTtSv5JAOFv2a'
+    )
+    .then((result) => {
+      console.log('User confirmation email sent successfully:', result.text);
+      
+      // Then send notification email to the admin
+      return emailjs.send(
+        'service_76e3ram',
+        'template_3z6tnaf',  // Updated template ID for admin notification
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          patient_name: formData.patientName,
+          reason_for_visit: formData.reasonForVisit,
+          appointment_date: formattedDate,
+          appointment_time: time,
+          provider_name: 'Available doctor',
+          additional_notes: formData.additionalNotes || 'None',
+          admin_email: 'janam.khatiwada@ambikatechnology.com',
+          submission_date: new Date().toLocaleDateString(),
+          submission_time: new Date().toLocaleTimeString(),
+          _cc: 'janam.khatiwada@ambikatechnology.com', // CC the admin
+        },
+        'RJ_KXTtSv5JAOFv2a'
+      );
+    })
+    .then((result) => {
+      console.log('Admin notification email sent successfully:', result.text);
+      
+      // Reset form and show success message
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        patientName: '',
+        reasonForVisit: '',
+        additionalNotes: ''
+      });
+      setDate(new Date());
+      setTime('10:00');
+      setShowTimePicker(false);
+      
+      showModal(true, 'Your appointment has been scheduled successfully! You will receive a confirmation email shortly.');
+    })
+    .catch((error) => {
+      console.error('Error sending email:', error.text);
+      showModal(false, 'There was an error scheduling your appointment. Please try again later or contact us directly.');
+    });
+  };
 
-    // Clean up function to remove script when component unmounts
-    return () => {
-      if (document.head.contains(script)) {
-        document.head.removeChild(script);
-      }
-    };
-  }, []);
+  // Available time slots
+  const availableTimeSlots = [
+    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
+    '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00'
+  ];
 
   return (
     <div className="appointment-container">
-      <div className="appointment-header">
-        <h1>Schedule Your Appointment</h1>
-        <p>Select your preferred date and time for your medical consultation</p>
+      {/* Simple Modal Implementation */}
+      <div ref={modalRef} className="modal-overlay" style={{ display: 'none' }}>
+        <div className={`simple-modal ${formStatus.success ? 'success-modal' : 'error-modal'}`}>
+          <span className="modal-close" onClick={closeModal}>&times;</span>
+          <div className="modal-icon">
+            {formStatus.success ? '✅' : '❌'}
+          </div>
+          <h3>{formStatus.success ? 'Success' : 'Error'}</h3>
+          <p>{formStatus.message}</p>
+          <button onClick={closeModal}>
+            {formStatus.success ? 'OK' : 'Try Again'}
+          </button>
+        </div>
       </div>
       
-      <div className="calendly-container">
-        <div 
-          className="calendly-inline-widget"
-          data-url="https://medicinegbnj.setmore.com/book" 
-          style={{ minWidth: '320px', height: '700px' }}
-        ></div>
+      <div className="appointment-header">
+        <h1>Schedule Your Appointment</h1>
+        <p>Please fill out the form below to book your medical consultation</p>
+      </div>
+      
+      <div className="appointment-form-container">
+        <form ref={form} className="appointment-form" onSubmit={handleSubmit}>
+          
+          <div className="form-section">
+            <h2>Personal Information</h2>
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="name">Your Name*</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name"
+                  placeholder="Your full name" 
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email Address*</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email"
+                  placeholder="Your email address" 
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+            
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="phone">Phone Number*</label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  name="phone"
+                  placeholder="Your phone number" 
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="patientName">Patient Name*</label>
+                <input 
+                  type="text" 
+                  id="patientName" 
+                  name="patientName"
+                  placeholder="Name of the patient" 
+                  value={formData.patientName}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+            
+            <div className="form-group">
+              <label htmlFor="reasonForVisit">Reason for Visit*</label>
+              <select 
+                id="reasonForVisit" 
+                name="reasonForVisit"
+                value={formData.reasonForVisit}
+                onChange={handleChange}
+                required
+              >
+                <option value="">Select reason</option>
+                <option value="General Check-up">General Check-up</option>
+                <option value="Follow-up Visit">Follow-up Visit</option>
+                <option value="Consultation">Consultation</option>
+                <option value="Urgent Care">Urgent Care</option>
+                <option value="Vaccination">Vaccination</option>
+                <option value="Lab Results">Lab Results</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+          
+          <div className="form-section">
+            <h2>Appointment Details</h2>
+            <div className="calendar-container">
+              <label>Select Date*</label>
+              <Calendar 
+                onChange={handleCalendarChange} 
+                value={date}
+                minDate={new Date()}
+                className="react-calendar"
+                tileDisabled={({ date }) => !isWeekday(date)}
+              />
+            </div>
+            
+            {showTimePicker && (
+              <div className="time-picker-container">
+                <label>Select Time*</label>
+                <div className="time-slots">
+                  {availableTimeSlots.map((slot) => (
+                    <button
+                      key={slot}
+                      type="button"
+                      className={`time-slot ${time === slot ? 'selected' : ''}`}
+                      onClick={() => setTime(slot)}
+                    >
+                      {slot}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            {date && time && (
+              <div className="selected-datetime">
+                <h3>Your Selected Appointment:</h3>
+                <p><strong>Date:</strong> {formatAppointmentDate(date)}</p>
+                <p><strong>Time:</strong> {time}</p>
+              </div>
+            )}
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="additionalNotes">Additional Notes</label>
+            <textarea 
+              id="additionalNotes" 
+              name="additionalNotes"
+              rows="4" 
+              placeholder="Any additional information you'd like to share"
+              value={formData.additionalNotes}
+              onChange={handleChange}
+            ></textarea>
+          </div>
+          
+          <button 
+            type="submit" 
+            className="submit-btn"
+            disabled={formStatus.submitting || !date || !time}
+          >
+            {formStatus.submitting ? 'Scheduling...' : 'Schedule Appointment'}
+          </button>
+        </form>
+      </div>
+      
+      <div className="appointment-info">
+        <h2>What to Expect</h2>
+        <ul>
+          <li>Please arrive 15 minutes before your scheduled appointment time</li>
+          <li>Bring your ID and insurance information if applicable</li>
+          <li>If you need to cancel, please provide at least 24 hours notice</li>
+          <li>For urgent matters, please call our office directly at +977 9832322323</li>
+        </ul>
       </div>
     </div>
   );

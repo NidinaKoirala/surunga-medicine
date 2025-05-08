@@ -1,9 +1,97 @@
 // Contact.js
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import './Contact.css';
-import contactimg from '../assets/images/contact_image.png'; // Replace with your actual image path
+import contactimg from '../assets/images/contact_image.png';
+import emailjs from '@emailjs/browser';
 
 function Contact() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+    
+    const [formStatus, setFormStatus] = useState({
+        submitting: false,
+        success: false,
+        error: false,
+        message: ''
+    });
+    
+    const form = useRef();
+    
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        setFormData(prevData => ({
+            ...prevData,
+            [id]: value
+        }));
+    };
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        // Basic validation
+        if (!formData.name || !formData.email || !formData.message) {
+            setFormStatus({
+                submitting: false,
+                success: false,
+                error: true,
+                message: 'Please fill out all required fields'
+            });
+            return;
+        }
+        
+        // Set submitting state
+        setFormStatus({
+            submitting: true,
+            success: false,
+            error: false,
+            message: 'Sending message...'
+        });
+        
+        // You'll need to sign up for EmailJS and replace these with your actual service ID, template ID, and public key
+        emailjs.sendForm(
+            'service_76e3ram', // replace with your EmailJS service ID
+            'template_kepcj1k', // replace with your EmailJS template ID
+            form.current,
+            'RJ_KXTtSv5JAOFv2a' // replace with your EmailJS public key
+        )
+        .then((result) => {
+            console.log('Email sent successfully:', result.text);
+            // Reset form
+            setFormData({
+                name: '',
+                email: '',
+                subject: '',
+                message: ''
+            });
+            
+            // Update status
+            setFormStatus({
+                submitting: false,
+                success: true,
+                error: false,
+                message: 'Your message has been sent successfully!'
+            });
+            
+            // Clear success message after 5 seconds
+            setTimeout(() => {
+                setFormStatus(prev => ({...prev, success: false, message: ''}));
+            }, 5000);
+        })
+        .catch((error) => {
+            console.error('Error sending email:', error.text);
+            setFormStatus({
+                submitting: false,
+                success: false,
+                error: true,
+                message: 'There was an error sending your message. Please try again later.'
+            });
+        });
+    };
+
     return (
         <section className="contact-section" id="contact-section">
             <div className="contact-container">
@@ -76,27 +164,77 @@ function Contact() {
                             <img src={contactimg} alt="Surunga Medicine" className="contact-image" />
                         </div>
                         
-                        <form className="contact-form">
+                        <form ref={form} className="contact-form" onSubmit={handleSubmit}>
                             <h2>Send us a message</h2>
+                            
+                            {formStatus.success && (
+                                <div className="form-status success">
+                                    {formStatus.message}
+                                </div>
+                            )}
+                            
+                            {formStatus.error && (
+                                <div className="form-status error">
+                                    {formStatus.message}
+                                </div>
+                            )}
+                            
                             <div className="form-row">
                                 <div className="form-group">
                                     <label htmlFor="name">Name</label>
-                                    <input type="text" id="name" placeholder="Your name" />
+                                    <input 
+                                        type="text" 
+                                        id="name" 
+                                        name="name"
+                                        placeholder="Your name" 
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        required
+                                    />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="email">Email</label>
-                                    <input type="email" id="email" placeholder="Your email" />
+                                    <input 
+                                        type="email" 
+                                        id="email" 
+                                        name="email"
+                                        placeholder="Your email" 
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="subject">Subject</label>
-                                <input type="text" id="subject" placeholder="Subject" />
+                                <input 
+                                    type="text" 
+                                    id="subject" 
+                                    name="subject"
+                                    placeholder="Subject" 
+                                    value={formData.subject}
+                                    onChange={handleChange}
+                                />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="message">Message</label>
-                                <textarea id="message" rows="5" placeholder="Your message"></textarea>
+                                <textarea 
+                                    id="message" 
+                                    name="message"
+                                    rows="5" 
+                                    placeholder="Your message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                ></textarea>
                             </div>
-                            <button type="submit" className="submit-btn">Send Message</button>
+                            <button 
+                                type="submit" 
+                                className="submit-btn"
+                                disabled={formStatus.submitting}
+                            >
+                                {formStatus.submitting ? 'Sending...' : 'Send Message'}
+                            </button>
                         </form>
                     </div>
                 </div>
