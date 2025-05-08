@@ -28,7 +28,7 @@ const Appointment = () => {
       <div className="calendly-container">
         <div 
           className="calendly-inline-widget"
-          data-url="https://calendly.com/janam-khatiwada-ambikatechnology" 
+          data-url="https://medicinegbnj.setmore.com/book" 
           style={{ minWidth: '320px', height: '700px' }}
         ></div>
       </div>
