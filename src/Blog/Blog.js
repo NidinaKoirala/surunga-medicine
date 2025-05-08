@@ -13,7 +13,8 @@ function Blog() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const [activeTag, setActiveTag] = useState(null);
-  // Removed unused variable: const [imagesPreloaded, setImagesPreloaded] = useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [imagesPreloaded, setImagesPreloaded] = useState(false);
   const postsPerPage = 6;
 
   // Image component with loading state
