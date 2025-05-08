@@ -1,106 +1,131 @@
-#banner{
-    margin-top: 40px;
-    margin-bottom: 20px;
+/* Banner Section Styling */
+.banner-section {
+    padding: 40px 0;
+    background-color: #f8f9fa;
+    margin: 40px 0;
 }
-#banner-container{
-    background-color: var(--primary-background-color);
-    border-radius: 10px;
-    margin-top: 15px;
+
+#banner-container {
+    background: linear-gradient(135deg, var(--primary-color-light, #1e3f7f), var(--primary-color, #0a2463));
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(10, 36, 99, 0.15);
+    padding: 0;
 }
-.banner-title-div{
-    padding: 15px 10px;
+
+.banner-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
 }
-.banner-title{
+
+/* Banner Text */
+.banner-text {
+    padding: 40px;
+    flex: 1;
+    z-index: 2;
+}
+
+.banner-title {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 25px;
+}
+
+.appointment-btn {
+    background: linear-gradient(135deg, var(--secondary-color, #e02d3f), var(--secondary-color-light, #f14456));
     color: white;
-   padding: 5px 2px;
-    line-height: 20px;
-    font-weight: 800;
-    margin-bottom: 0px;
+    font-weight: 600;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(224, 45, 63, 0.3);
+    cursor: pointer;
 }
 
-.banner-title-div a {
-    /* width: 80%; */
-    background-color: white;
-    /* Button background color */
-    color: var(--primary-text-color);
-    /* Button text color */
-    padding: 5px 9px;
-    /* Button padding */
-    text-decoration: none;
-    /* Remove underline */
-    margin-left: 0px;
-    margin-right: 0px;
-    font-size: 8px;
-    transition: transform 0.3s ease-in-out;
-}
-.banner-img img{
-    margin-top: 10%;
-   
+.appointment-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(224, 45, 63, 0.4);
+    background: linear-gradient(135deg, var(--secondary-color-dark, #c01829), var(--secondary-color, #e02d3f));
 }
 
-@media (min-width: 768px) {
-    #banner{
-        margin-top: 50px;
-        margin-bottom: 30px;
-        padding: 30px 30px;
+/* Banner Image */
+.banner-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+.banner-image img {
+    max-height: 350px;
+    object-fit: contain;
+    position: relative;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 991px) {
+    .banner-title {
+        font-size: 28px;
     }
-
-    .banner-title{
-        padding: 20px 10px;
-         line-height: 45px;
-         font-weight: 800;
-         margin-bottom: 0px;
-         font-size: 40px;
-         margin-top: 10px;
-     }
-     .banner-img img{
-        margin-top: 5%;
-        /* height: 70%; */
+    
+    .banner-text {
+        padding: 30px;
     }
-    .banner-title-div{
-        padding: 15px 15px;
-        display: flex;
-        flex-direction: column;
+    
+    .banner-image img {
+        max-height: 300px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .banner-content {
+        flex-direction: column-reverse;
+    }
+    
+    .banner-text {
+        width: 100%;
+        text-align: center;
+        padding: 30px 20px 40px;
+    }
+    
+    .banner-image {
+        width: 100%;
         justify-content: center;
+        padding-top: 30px;
     }
-    .banner-title-div a {
-        padding: 10px 14px;
-        font-size: 13px;
-      
-        width: 40%;
+    
+    .banner-image img {
+        max-height: 250px;
     }
 }
 
-
-
-@media (min-width: 1024px) {
-    #banner{
-        margin-top: 50px;
-        margin-bottom: 30px;
-        padding: 50px 100px;
+@media screen and (max-width: 576px) {
+    .banner-section {
+        padding: 20px 15px;
     }
-
-    .banner-title{
-         line-height: 55px;
-         font-size: 50px;
-
-     }
-     .banner-img {
-
+    
+    .banner-title {
+        font-size: 24px;
     }
-     .banner-img img{
-        margin-top: 6%; 
+    
+    .appointment-btn {
+        padding: 10px 20px;
+        font-size: 14px;
     }
-    .banner-title-div{
-        padding: 15px 50px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .banner-title-div a {
-        padding: 12px 30px;
-        font-size: 16px;
-        width: 40%;
-        margin-left: 10px;
+    
+    .banner-image img {
+        max-height: 200px;
     }
 }

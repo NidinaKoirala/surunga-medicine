@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './Navbar.css'; // Make sure to update with our new CSS
-import logoimg from '../assets/images/logo-hospital.png'; // Adjust path as needed
+import './Navbar.css';
+import logoimg from '../assets/images/logo-hospital.png';
 import { Link, useLocation } from 'react-router-dom';
 
 function Navbar() {
@@ -99,9 +99,9 @@ function Navbar() {
                             <li><Link to="/Contact" className={isActive('/Contact')} onClick={closeMenu}>Contact</Link></li>
                         </ul>
                         
-                        {/* Create Account Button */}
+                        {/* Make Appointment Button - now links to dedicated page */}
                         <div className="create-account">
-                            <Link to="/Home" className="btn text-white">Make Appointment</Link>
+                            <Link to="/Appointment" className="btn text-white" onClick={closeMenu}>Make Appointment</Link>
                         </div>
                     </div>
                 </nav>

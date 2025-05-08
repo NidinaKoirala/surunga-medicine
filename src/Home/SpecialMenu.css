@@ -1,68 +1,140 @@
-#menu-special{
-    margin-top: 40px;
+/* SpecialityMenu Styling */
+.speciality-section {
+    padding: 80px 0;
+    background-color: #ffffff;
 }
-.specialitymenu-title{
-    text-align: center;
 
+/* Section Header */
+.speciality-header {
+    text-align: center;
+    margin-bottom: 50px;
 }
-.specialitymenu-title h1{
-   font-size: var( --primary-title-size);
-   font-weight: var( --primary-title-weight);
+
+.speciality-header h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary-color, #0a2463);
+    margin-bottom: 15px;
 }
-.specialitymenu-title p{
-   font-size: var( --primary-description-size);
-   font-weight: var(  --primary-description-weight);
-   padding-top: 10px;
- }
-#menu-img{
+
+.speciality-header p {
+    font-size: 16px;
+    color: #6c757d;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Speciality Grid */
+.speciality-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Speciality Card */
+.speciality-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 25px 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.speciality-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(180deg, #ffffff, #f0f8ff);
+}
+
+/* Speciality Icon */
+.speciality-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    padding-bottom: 20px;
-}
-#menu-img a{
-    width: 30%;
-    height: 30%;
-    text-decoration: none;
-    text-align: center;
-    margin-top: 10px;
-}
-#menu-img a p{
-   font-size: 10px;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
 }
 
-@media only screen and (min-width:768px) {
-    #menu-special{
-        margin-top: 20px;
-        padding: 40px 30px;
-    }
-    #menu-img a{
-        width: 13%;
-        height: 10%;
-        text-decoration: none;
-        text-align: center;
-        margin-top: 10px;
-    }
-    #menu-img a p{
-       font-size: 8px;
+.speciality-icon img {
+    width: 100%;
+    height: auto;
+    max-height: 60px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.speciality-card:hover .speciality-icon img {
+    transform: scale(1.15);
+}
+
+/* Speciality Name */
+.speciality-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-color, #0a2463);
+    margin: 0;
+    transition: color 0.3s ease;
+}
+
+.speciality-card:hover h3 {
+    color: var(--secondary-color, #e02d3f);
+}
+
+/* Speciality Count */
+.speciality-count {
+    font-size: 13px;
+    color: #6c757d;
+    display: block;
+    font-weight: 500;
+}
+
+/* Responsive Styles */
+@media screen and (min-width: 576px) {
+    .speciality-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
     }
 }
 
-@media only screen and (min-width:1024px) {
-    #menu-special{
-        margin-top: 20px;
-        padding: 60px 100px;
+@media screen and (min-width: 768px) {
+    .speciality-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
     }
-    #menu-img a{
-        width: 13%;
-        height: 10%;
-        text-decoration: none;
-        text-align: center;
-        margin-top: 20px;
+    
+    .speciality-icon {
+        width: 90px;
+        height: 90px;
     }
-    #menu-img a p{
-        padding-top: 10px;
-       font-size: 13px;
+    
+    .speciality-card h3 {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .speciality-grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+    .speciality-header {
+        margin-bottom: 60px;
+    }
+    
+    .speciality-header h2 {
+        font-size: 42px;
+    }
+    
+    .speciality-header p {
+        font-size: 18px;
     }
 }

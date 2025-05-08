@@ -1,0 +1,536 @@
+/* DoctorProfile.css */
+.doctor-profile-section {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+.back-link {
+    margin-bottom: 30px;
+}
+
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    color: #2a70e0;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.back-btn svg {
+    margin-right: 6px;
+}
+
+.back-btn:hover {
+    color: #1b5dbd;
+}
+
+/* Loading and Not Found States */
+.loading-container, .not-found-container {
+    text-align: center;
+    padding: 100px 0;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(42, 112, 224, 0.2);
+    border-top: 5px solid #2a70e0;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.not-found-container h2 {
+    color: #343a40;
+    margin-bottom: 15px;
+}
+
+.not-found-container p {
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+/* Profile Container */
+.profile-container {
+    background-color: transparent;
+    border-radius: 12px;
+}
+
+/* Doctor Info Card */
+.doctor-info-card {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    height: 100%;
+}
+
+.doctor-profile-image {
+    height: 250px;
+    overflow: hidden;
+}
+
+.doctor-profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.doctor-profile-info {
+    padding: 25px;
+}
+
+.doctor-profile-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #343a40;
+    margin-bottom: 5px;
+}
+
+.doctor-profile-specialty {
+    font-size: 16px;
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+.doctor-profile-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.star-icon {
+    color: #ffc107;
+    margin-right: 3px;
+}
+
+.rating-number {
+    margin-left: 5px;
+    font-weight: 600;
+    color: #343a40;
+}
+
+.doctor-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+}
+
+.stat-item svg {
+    color: #2a70e0;
+    font-size: 18px;
+    margin-right: 12px;
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.stat-value {
+    font-weight: 600;
+    color: #343a40;
+    font-size: 16px;
+}
+
+.qualification-info {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.qualification-info h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.qualification-info h3 svg {
+    margin-right: 8px;
+    color: #2a70e0;
+}
+
+.qualification-info p {
+    font-size: 15px;
+    color: #495057;
+}
+
+.address p {
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: #495057;
+}
+
+/* Services Tab */
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.service-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.service-item svg {
+    color: #28a745;
+    font-size: 18px;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.service-item h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 5px;
+}
+
+.service-item p {
+    margin: 0;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* Location Tab */
+.location-info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.address-block {
+    display: flex;
+    align-items: flex-start;
+}
+
+.location-icon {
+    color: #2a70e0;
+    font-size: 20px;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.address-block h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.address-block p {
+    margin: 0 0 5px 0;
+    font-size: 15px;
+    color: #495057;
+}
+
+.map-placeholder {
+    margin-top: 15px;
+}
+
+.map-image {
+    height: 200px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.map-image span {
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.map-note {
+    text-align: center;
+    font-size: 14px;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.book-appointment-btn {
+    width: 100%;
+    background-color: #2a70e0;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.book-appointment-btn:hover {
+    background-color: #1b5dbd;
+}
+
+/* Doctor Details Tabs */
+.doctor-details-tabs {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    height: 100%;
+}
+
+.tabs-header {
+    display: flex;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.tab-item {
+    padding: 20px;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    text-align: center;
+    flex: 1;
+}
+
+.tab-item:hover {
+    color: #2a70e0;
+}
+
+.tab-item.active {
+    color: #2a70e0;
+    border-bottom-color: #2a70e0;
+}
+
+.tabs-content {
+    padding: 30px;
+}
+
+.tab-content-about h3, 
+.tab-content-education h3, 
+.tab-content-languages h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.tab-content-about p {
+    line-height: 1.7;
+    color: #495057;
+    margin-bottom: 30px;
+    font-size: 15px;
+}
+
+.expertise-section h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 15px;
+}
+
+.expertise-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+}
+
+.expertise-list li {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    color: #495057;
+}
+
+.expertise-list li svg {
+    color: #28a745;
+    margin-right: 10px;
+}
+
+.education-list, .languages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.education-item, .language-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.education-item svg, .language-item svg {
+    color: #2a70e0;
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+.education-item p, .language-item p {
+    margin: 0;
+    font-size: 15px;
+    color: #495057;
+}
+
+/* Calendly Modal */
+.calendly-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendly-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+.calendly-modal-content {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 800px;
+    height: 680px;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+}
+
+.close-calendly {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 100;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #343a40;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.close-calendly:hover {
+    background-color: #fff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .doctor-info-card {
+        margin-bottom: 30px;
+    }
+    
+    .doctor-stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .doctor-profile-section {
+        padding: 60px 0;
+    }
+    
+    .tabs-header {
+        flex-direction: column;
+    }
+    
+    .tab-item {
+        padding: 15px;
+        border-bottom: 1px solid #e9ecef;
+        border-left: 3px solid transparent;
+    }
+    
+    .tab-item.active {
+        border-bottom-color: #e9ecef;
+        border-left-color: #2a70e0;
+    }
+    
+    .tabs-content {
+        padding: 20px;
+    }
+    
+    .expertise-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .calendly-modal-content {
+        width: 95%;
+        height: 600px;
+    }
+}
+
+@media (max-width: 576px) {
+    .doctor-profile-name {
+        font-size: 20px;
+    }
+    
+    .doctor-profile-image {
+        height: 200px;
+    }
+    
+    .tab-content-about h3, 
+    .tab-content-education h3, 
+    .tab-content-languages h3 {
+        font-size: 18px;
+    }
+    
+    .education-item, .language-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .education-item svg, .language-item svg {
+        margin-right: 0;
+        margin-bottom: 10px;
+        font-size: 24px;
+    }
+    
+    .calendly-modal-content {
+        height: 550px;
+    }
+}

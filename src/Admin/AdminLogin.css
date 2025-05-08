@@ -1,0 +1,124 @@
+.admin-login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 200px);
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.admin-login-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    padding: 40px;
+}
+
+.admin-login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.admin-login-header h1 {
+    color: #2a70e0;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.admin-login-header p {
+    color: #6c757d;
+    font-size: 16px;
+}
+
+.login-error {
+    background-color: #f8d7da;
+    color: #842029;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.admin-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #495057;
+    font-weight: 500;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-group label svg {
+    color: #2a70e0;
+}
+
+.form-group input {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 12px 15px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #2a70e0;
+    outline: none;
+}
+
+.login-btn {
+    background-color: #2a70e0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.login-btn:hover:not(:disabled) {
+    background-color: #1b5dbd;
+}
+
+.login-btn:disabled {
+    background-color: #a0c0f0;
+    cursor: not-allowed;
+}
+
+.login-help {
+    margin-top: 30px;
+    text-align: center;
+    color: #6c757d;
+    font-size: 14px;
+    font-style: italic;
+}
+
+@media (max-width: 576px) {
+    .admin-login-card {
+        padding: 25px;
+    }
+    
+    .admin-login-header h1 {
+        font-size: 24px;
+    }
+}

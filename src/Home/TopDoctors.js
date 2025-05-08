@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./TopDoctors.css"
 import { AppContext } from "../Context/AppContext";
-import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaStar, FaStarHalfAlt, FaUserMd, FaDollarSign, FaArrowRight } from "react-icons/fa";
 
 function TopDoctors() {
-    const { doctors } = useContext(AppContext)
+    const { doctors } = useContext(AppContext);
+    const navigate = useNavigate();
     
     // Function to render rating stars
     const renderRating = (rating) => {
@@ -24,44 +25,71 @@ function TopDoctors() {
         return stars;
     };
     
+    // Navigate to doctor profile
+    const handleDoctorClick = (doctorId) => {
+        navigate(`/doctor/${doctorId}`);
+    };
+    
+    // Get top 4 doctors (you could add some criteria here to select actual top doctors)
+    const topDoctors = doctors.slice(0, 4);
+    
     return (
-        <>
-            <section className="container-fluid" id='top-doctors'>
-                <div className='container'>
-                    <div className="Doctors-title">
-                        <h1>Top Doctors to Book</h1>
-                        <p>Connect with our highly qualified and experienced doctors for personalized care tailored to your needs</p>
-                    </div>
-                    <div className="row" id="doctor-card-container">
-                        {
-                            doctors.slice(0, 4).map((item, index) => {
-                                return (
-                                    <div key={index} className="col-12 col-sm-6 col-md-6 col-lg-3" id="doctor-card">
-                                        <img src={item.image} alt={`Dr. ${item.name}`} className="img-fluid" />
-                                        <div className="doctor-info">
-                                            <div className="available">
-                                                <p></p><p>Available</p>
-                                            </div>
-                                            <p className="doctor-name">Dr. {item.name}</p>
-                                            <p className="doctor-speciality">{item.speciality}</p>
-                                            <div className="doctor-rating">
-                                                {renderRating(4.5)}
-                                                <span className="rating-count">(120+)</span>
-                                            </div>
+        <section className="top-doctors-section" id="top-doctors">
+            <div className="container">
+                <div className="top-doctors-header">
+                    <h1>Top Doctors to Book</h1>
+                    <p>Connect with our highly qualified and experienced doctors for personalized care tailored to your needs</p>
+                </div>
+                
+                <div className="top-doctors-grid">
+                    {topDoctors.map((doctor, index) => (
+                        <div 
+                            key={index} 
+                            className="doctor-card"
+                            onClick={() => handleDoctorClick(doctor._id)}
+                        >
+                            <div className="doctor-image">
+                                <img src={doctor.image} alt={doctor.name} />
+                                <div className="doctor-badge">Available</div>
+                            </div>
+                            
+                            <div className="doctor-details">
+                                <h3 className="doctor-name">{doctor.name}</h3>
+                                <p className="doctor-speciality">{doctor.speciality}</p>
+                                
+                                <div className="doctor-meta">
+                                    <div className="doctor-rating">
+                                        {renderRating(4.5)}
+                                        <span className="rating-count">(120+)</span>
+                                    </div>
+                                    
+                                    <div className="doctor-info">
+                                        <div className="info-item">
+                                            <FaUserMd className="info-icon" />
+                                            <span>{doctor.experience}</span>
+                                        </div>
+                                        <div className="info-item">
+                                            <FaDollarSign className="info-icon" />
+                                            <span>${doctor.fees}</span>
                                         </div>
                                     </div>
-                                );
-                            })
-                        }
-                    </div>
-                    <div className="more-btn">
-                        <Link to="/AllDoctors" className="btn rounded-pill">
-                            <button className="btn rounded-pill">View All Doctors</button>
-                        </Link>
-                    </div>
+                                </div>
+                                
+                                <button className="view-profile-btn">
+                                    View Profile
+                                </button>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-            </section>
-        </>
+                
+                <div className="view-all-container">
+                    <Link to="/AllDoctors" className="view-all-btn">
+                        View All Doctors <FaArrowRight className="arrow-icon" />
+                    </Link>
+                </div>
+            </div>
+        </section>
     );
 }
 

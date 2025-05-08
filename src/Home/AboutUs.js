@@ -1,42 +1,66 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './AboutUs.css';
-import aboutImage from '../assets/images/home/about-img.png'; // You'll need to add this image
-import { FaCheckCircle } from "react-icons/fa";
+import aboutImage from '../assets/images/home/about-img.png';
+import { FaCheckCircle, FaUserMd, FaHospital, FaHeartbeat } from "react-icons/fa";
 
 function AboutUs() {
+    const achievements = [
+        {
+            icon: <FaHospital />,
+            count: "10+",
+            title: "Years Experience"
+        },
+        {
+            icon: <FaUserMd />,
+            count: "500+",
+            title: "Specialist Doctors"
+        },
+        {
+            icon: <FaHeartbeat />,
+            count: "100K+",
+            title: "Happy Patients"
+        }
+    ];
+    
     const highlights = [
-        "10+ years of excellence in healthcare services",
-        "500+ highly qualified doctors across specialties",
-        "100,000+ successful patient consultations",
         "State-of-the-art virtual consultation technology",
         "Highest standards of patient care and privacy",
-        "Affordable healthcare plans for individuals and families"
+        "Affordable healthcare plans for families",
+        "24/7 emergency medical support",
+        "Personalized healthcare solutions",
+        "Comprehensive health records management"
     ];
     
     return (
-        <section className="about-section" id="about">
+        <section className="aboutus-section">
             <div className="container">
-                <div className="row align-items-center">
-                    <div className="col-lg-6 about-image-container">
-                        <img src={aboutImage} alt="Medical professionals" className="img-fluid about-image" />
-                        <div className="experience-badge">
-                            <span className="years">10+</span>
-                            <span className="text">Years of Experience</span>
+                <div className="aboutus-content">
+                    <div className="aboutus-text">
+                        <div className="aboutus-header">
+                            <div className="section-subtitle">About Us</div>
+                            <h2 className="section-title">Delivering Excellence in Healthcare Since 2013</h2>
                         </div>
-                    </div>
-                    <div className="col-lg-6 about-content">
-                        <div className="section-tag">About Us</div>
-                        <h2 className="section-title">Delivering Excellence in Healthcare Since 2013</h2>
-                        <p className="about-description">
+                        
+                        <p className="aboutus-description">
                             At MedConnect, we're revolutionizing the way you access healthcare services. Our platform 
                             connects patients with the best healthcare professionals, making quality medical care accessible 
                             to everyone, everywhere.
                         </p>
-                        <p className="about-description">
-                            Our mission is to bridge the gap between patients and doctors, providing a seamless and 
-                            efficient healthcare experience through cutting-edge technology and a user-friendly interface.
-                        </p>
-                        <div className="highlights-list">
+                        
+                        <div className="achievements-row">
+                            {achievements.map((item, index) => (
+                                <div key={index} className="achievement-item">
+                                    <div className="achievement-icon">{item.icon}</div>
+                                    <div className="achievement-content">
+                                        <h3 className="achievement-count">{item.count}</h3>
+                                        <p className="achievement-title">{item.title}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                        
+                        <div className="highlights-grid">
                             {highlights.map((item, index) => (
                                 <div key={index} className="highlight-item">
                                     <FaCheckCircle className="highlight-icon" />
@@ -44,7 +68,22 @@ function AboutUs() {
                                 </div>
                             ))}
                         </div>
-                        <button className="learn-more-btn">Learn More About Us</button>
+                        
+                        <Link to="/About" className="aboutus-button">
+                            Learn More About Us
+                        </Link>
+                    </div>
+                    
+                    <div className="aboutus-image">
+                        <div className="image-wrapper">
+                            <img src={aboutImage} alt="Medical professionals" />
+                            <div className="experience-badge">
+                                <div className="badge-content">
+                                    <span className="years">10+</span>
+                                    <span className="text">Years of Excellence</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
