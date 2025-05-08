@@ -76,6 +76,57 @@ function parseFrontMatter(markdown) {
   const CACHE_VALIDITY_MS = 5 * 60 * 1000; // 5 minutes
   
   /**
+   * Helper function to fix image paths in markdown content
+   * @param {string} content - Markdown content with image references
+   * @returns {string} Content with fixed image paths
+   */
+  function fixImagePaths(content) {
+    if (!content) return content;
+    
+    // Fix markdown image syntax: ![alt text](path/to/image.jpg)
+    let fixedContent = content.replace(
+      /!\[(.*?)\]\((.*?)\)/g,
+      (match, alt, path) => {
+        const fixedPath = ensureAbsolutePath(path);
+        return `![${alt}](${fixedPath})`;
+      }
+    );
+    
+    // Fix HTML img tags: <img src="path/to/image.jpg" alt="alt text" />
+    fixedContent = fixedContent.replace(
+      /<img\s+src=['"](.*?)['"]([^>]*)>/g,
+      (match, path, rest) => {
+        const fixedPath = ensureAbsolutePath(path);
+        return `<img src="${fixedPath}"${rest}>`;
+      }
+    );
+    
+    return fixedContent;
+  }
+  
+  /**
+   * Helper function to ensure a path is absolute
+   * @param {string} path - The path to check and fix
+   * @returns {string} Absolute path
+   */
+  function ensureAbsolutePath(path) {
+    if (!path) return path;
+    
+    // If the path is already absolute, return it
+    if (path.startsWith('/')) {
+      return path;
+    }
+    
+    // If the path starts with 'post/images/', add leading slash
+    if (path.startsWith('post/images/')) {
+      return '/' + path;
+    }
+    
+    // For other relative paths, assume they're relative to the public directory
+    return '/' + path;
+  }
+  
+  /**
    * Get all blog posts by fetching markdown files from the /blog/post directory
    * @returns {Promise<Array>} Promise resolving to array of blog post objects
    */
@@ -113,13 +164,21 @@ function parseFrontMatter(markdown) {
           // Parse front matter and content
           const { data: frontmatter, content } = parseFrontMatter(markdown);
           
+          // Fix image paths in the content
+          const fixedContent = fixImagePaths(content);
+          
+          // Fix cover image path if it exists
+          if (frontmatter.coverImage) {
+            frontmatter.coverImage = ensureAbsolutePath(frontmatter.coverImage);
+          }
+          
           // Extract the ID from the filename (removing the .md)
           const id = postInfo.filename.replace(/\.md$/, '');
           
           return {
             id,
             ...frontmatter,
-            content
+            content: fixedContent
           };
         } catch (error) {
           console.error(`Error processing blog post ${postInfo.filename}:`, error);
@@ -172,10 +231,18 @@ function parseFrontMatter(markdown) {
       // Parse front matter and content
       const { data: frontmatter, content } = parseFrontMatter(markdown);
       
+      // Fix image paths in the content
+      const fixedContent = fixImagePaths(content);
+      
+      // Fix cover image path if it exists
+      if (frontmatter.coverImage) {
+        frontmatter.coverImage = ensureAbsolutePath(frontmatter.coverImage);
+      }
+      
       return {
         id,
         ...frontmatter,
-        content
+        content: fixedContent
       };
     } catch (error) {
       console.error(`Error loading blog post ${id}:`, error);
@@ -214,7 +281,7 @@ function parseFrontMatter(markdown) {
     imageUrls.forEach(url => {
       if (url && typeof url === 'string') {
         const img = new Image();
-        img.src = url;
+        img.src = ensureAbsolutePath(url); // Also fix paths for preloaded images
       }
     });
   }

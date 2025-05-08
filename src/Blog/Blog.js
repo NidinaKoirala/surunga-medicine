@@ -201,7 +201,7 @@ date: "YYYY-MM-DD"
 author: "Author Name"
 category: "Category Name"
 excerpt: "A brief summary of your post"
-coverImage: "/images/blog/your-image.jpg"
+coverImage: "/images/your-image.jpg"
 tags: ["tag1", "tag2", "tag3"]
 ---
 
