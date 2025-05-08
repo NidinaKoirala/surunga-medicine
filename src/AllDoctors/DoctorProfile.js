@@ -257,12 +257,33 @@ const DoctorProfile = () => {
                                                         <p>{doctor.address.line2}</p>
                                                     </div>
                                                 </div>
-                                                <div className="map-placeholder">
-                                                    <div className="map-image">
-                                                        <span>Map View</span>
+                                                {selectedTab === 'location' && (
+                                                <div className="tab-content-location">
+                                                    <h3>Practice Location</h3>
+                                                    <div className="location-info">
+                                                        <div className="address-block">
+                                                            <FontAwesomeIcon icon={faMapMarkerAlt} className="location-icon" />
+                                                            <div>
+                                                                <h4>Office Address</h4>
+                                                                <p>{doctor.address.line1}</p>
+                                                                <p>{doctor.address.line2}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div className="map-container">
+                                                            <iframe 
+                                                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3572.9019377351285!2d87.88773391503809!3d26.641108883262635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e5bdaf65d8032f%3A0x60111939f874a53c!2sSurunga%20medicine%20center%20%26%20chandrodaya%20clinic!5e0!3m2!1sen!2sus!4v1588442696675!5m2!1sen!2sus" 
+                                                                width="100%" 
+                                                                height="450" 
+                                                                style={{ border: 0 }} 
+                                                                allowFullScreen="" 
+                                                                loading="lazy"
+                                                                title="Doctor Location Map"
+                                                                className="location-map">
+                                                            </iframe>
+                                                        </div>
                                                     </div>
-                                                    <p className="map-note">Interactive map available during appointment</p>
                                                 </div>
+                                            )}
                                             </div>
                                         </div>
                                     )}
