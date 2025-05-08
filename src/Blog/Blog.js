@@ -1,4 +1,4 @@
-// src/pages/Blog.js - With image loading fix
+// src/pages/Blog.js - With image loading fix and ESLint fixes
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
@@ -13,7 +13,7 @@ function Blog() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const [activeTag, setActiveTag] = useState(null);
-  const [imagesPreloaded, setImagesPreloaded] = useState(false);
+  // Removed unused variable: const [imagesPreloaded, setImagesPreloaded] = useState(false);
   const postsPerPage = 6;
 
   // Image component with loading state

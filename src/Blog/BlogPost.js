@@ -136,15 +136,15 @@ function BlogPost() {
   // Function to render custom markdown with heading IDs
   const customMarkdownRenderer = {
     h1: ({ node, ...props }) => {
-      const id = props.children[0].toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-');
+      const id = props.children && props.children[0] ? props.children[0].toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-') : '';
       return <h1 id={id} {...props} />;
     },
     h2: ({ node, ...props }) => {
-      const id = props.children[0].toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-');
+      const id = props.children && props.children[0] ? props.children[0].toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-') : '';
       return <h2 id={id} {...props} />;
     },
     h3: ({ node, ...props }) => {
-      const id = props.children[0].toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-');
+      const id = props.children && props.children[0] ? props.children[0].toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-') : '';
       return <h3 id={id} {...props} />;
     }
   };
@@ -367,7 +367,7 @@ function BlogPost() {
                 <h3 className="author-name">{post.author}</h3>
                 <p className="author-bio">Medical specialist at MedConnect with expertise in {post.category || 'healthcare'}. Passionate about educating patients and improving healthcare accessibility.</p>
                 <div className="author-social">
-                  <a href="#" className="social-link" aria-label="Author's Profile">
+                  <a href="https://example.com/author-profile" className="social-link" aria-label="Author's Profile">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                       <circle cx="9" cy="7" r="4"></circle>
