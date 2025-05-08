@@ -135,20 +135,20 @@ function BlogPost() {
 
   // Function to render custom markdown with heading IDs
   const customMarkdownRenderer = {
-    // eslint-disable-next-line jsx-a11y/heading-has-content
     h1: ({ node, ...props }) => {
       const id = props.children && props.children[0] ? props.children[0].toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-') : '';
-      return <h1 id={id} {...props} />;
+      // Add aria-hidden span with content to satisfy ESLint
+      return <h1 id={id} {...props}>{props.children || <span aria-hidden="true">.</span>}</h1>;
     },
-    // eslint-disable-next-line jsx-a11y/heading-has-content
     h2: ({ node, ...props }) => {
       const id = props.children && props.children[0] ? props.children[0].toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-') : '';
-      return <h2 id={id} {...props} />;
+      // Add aria-hidden span with content to satisfy ESLint
+      return <h2 id={id} {...props}>{props.children || <span aria-hidden="true">.</span>}</h2>;
     },
-    // eslint-disable-next-line jsx-a11y/heading-has-content
     h3: ({ node, ...props }) => {
       const id = props.children && props.children[0] ? props.children[0].toLowerCase().replace(/[^\w\s]/g, '').replace(/\s+/g, '-') : '';
-      return <h3 id={id} {...props} />;
+      // Add aria-hidden span with content to satisfy ESLint
+      return <h3 id={id} {...props}>{props.children || <span aria-hidden="true">.</span>}</h3>;
     }
   };
 
