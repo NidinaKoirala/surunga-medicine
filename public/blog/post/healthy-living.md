@@ -4,7 +4,7 @@ date: "2023-06-15"
 author: "Dr. Sarah Johnson"
 category: "Cardiology"
 excerpt: "Discover practical ways to keep your heart healthy with these expert tips from our cardiology department."
-coverImage: "/post/images/heart-health.png"
+coverImage: "post/images/heart-health.png"
 tags: ["heart health", "cardiology", "prevention"]
 ---
 
