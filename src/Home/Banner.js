@@ -7,6 +7,9 @@ function Banner() {
 
     // Function to handle appointment button click
     const handleAppointmentClick = () => {
+        // Scroll to top before navigating
+        window.scrollTo(0, 0);
+        
         navigate('/Appointment');
     };
 

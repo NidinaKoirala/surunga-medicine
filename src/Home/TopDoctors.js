@@ -27,7 +27,13 @@ function TopDoctors() {
     
     // Navigate to doctor profile
     const handleDoctorClick = (doctorId) => {
+        window.scrollTo(0, 0);
         navigate(`/doctor/${doctorId}`);
+    };
+    
+    // Handle view all doctors click with scroll to top
+    const handleViewAllClick = () => {
+        window.scrollTo(0, 0);
     };
     
     // Get top 4 doctors (you could add some criteria here to select actual top doctors)
@@ -84,7 +90,7 @@ function TopDoctors() {
                 </div>
                 
                 <div className="view-all-container">
-                    <Link to="/AllDoctors" className="view-all-btn">
+                    <Link to="/AllDoctors" className="view-all-btn" onClick={handleViewAllClick}>
                         View All Doctors <FaArrowRight className="arrow-icon" />
                     </Link>
                 </div>

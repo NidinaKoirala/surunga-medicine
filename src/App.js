@@ -51,16 +51,16 @@ function App() {
             <Route path='/blog/' element={<Blog />} />
             <Route path="/Blog/:id" element={<BlogPost />} />
             <Route path="/Appointment" element={<Appointment />} />
-
+            
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />
-            <Route 
-              path="/admin/doctors" 
+            <Route
+              path="/admin/doctors"
               element={
                 <ProtectedRoute>
                   <AdminDashboard />
                 </ProtectedRoute>
-              } 
+              }
             />
           </Routes>
         </AppContextProvider>

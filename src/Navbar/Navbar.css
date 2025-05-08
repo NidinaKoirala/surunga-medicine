@@ -216,7 +216,8 @@ body {
         transition: all var(--transition-speed) ease;
         align-items: flex-start;
         padding: 20px 0;
-        z-index: 999;
+        z-index: 1001; 
+        overflow-y: auto;
     }
     
     .nav-links.active {
@@ -233,6 +234,11 @@ body {
         width: 100%;
         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         height: auto;
+        /* Make sure the entire anchor tag is clickable */
+        text-decoration: none;
+        color: var(--primary-text-color);
+        display: block;
+        cursor: pointer;
     }
     
     .nav-links a::after {

@@ -9,6 +9,9 @@ function SpecialityMenu() {
     
     // Function to handle specialty click
     const handleSpecialtyClick = (specialty) => {
+        // Scroll to top before navigating
+        window.scrollTo(0, 0);
+        
         navigate(`/doctors/${specialty}`);
     };
     
@@ -28,7 +31,7 @@ function SpecialityMenu() {
                 <div className="speciality-grid">
                     {specialityData.map((specialty, index) => (
                         <div 
-                            key={index} 
+                            key={index}
                             className="speciality-card"
                             onClick={() => handleSpecialtyClick(specialty.speciality)}
                         >
