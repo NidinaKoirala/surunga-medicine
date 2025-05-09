@@ -323,6 +323,9 @@ function BlogPost() {
               <ReactMarkdown components={customMarkdownRenderer}>
                 {post.content}
               </ReactMarkdown>
+              <a href="/Blog" className="back-to-blog" onClick={handleBackToBlog}>
+              &larr; Back to Blog
+            </a>
             </div>
             
             {/* Mobile Tags (visible only on mobile) */}
@@ -382,6 +385,7 @@ function BlogPost() {
               </div>
             </div>
           )}
+          
         </div>
       </div>
       
