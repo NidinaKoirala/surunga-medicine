@@ -127,7 +127,7 @@ const DoctorProfile = () => {
                                             <FontAwesomeIcon icon={faDollarSign} />
                                             <div className="stat-content">
                                                 <span className="stat-label">Fees</span>
-                                                <span className="stat-value">${doctor.fees}</span>
+                                                <span className="stat-value">NPR {doctor.fees}</span>
                                             </div>
                                         </div>
                                     </div>

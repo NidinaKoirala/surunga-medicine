@@ -164,7 +164,7 @@ function AllDoctors() {
                                                         </div>
                                                         <div className="info-item">
                                                             <FontAwesomeIcon icon={faCalendarCheck} />
-                                                            <span>${doctor.fees}/session</span>
+                                                            <span>NPR {doctor.fees}/session</span>
                                                         </div>
                                                     </div>
                                                     
