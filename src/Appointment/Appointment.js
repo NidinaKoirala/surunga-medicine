@@ -1,19 +1,36 @@
 // Appointment.js
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import './Appointment.css';
 import emailjs from '@emailjs/browser';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { format } from 'date-fns';
+import { AppContext } from '../Context/AppContext';
 
 const Appointment = () => {
+  // Access EmailJS configuration from environment variables
+  const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+  const EMAILJS_USER_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_USER_TEMPLATE_ID;
+  const EMAILJS_ADMIN_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_ADMIN_TEMPLATE_ID;
+  const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+  const ADMIN_EMAIL = process.env.REACT_APP_ADMIN_EMAIL;
+
+  // Get location to access state passed from doctor profile
+  const location = useLocation();
+  const selectedDoctor = location.state?.selectedDoctor || '';
+  
+  // Get doctors from context
+  const { doctors } = useContext(AppContext);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     patientName: '',
     reasonForVisit: '',
-    additionalNotes: ''
+    additionalNotes: '',
+    provider_name: ''
   });
   
   const [date, setDate] = useState(new Date());
@@ -32,6 +49,19 @@ const Appointment = () => {
   const modalRef = useRef(null);
   
   const form = useRef();
+
+  // Set the doctor's name when component mounts if passed from doctor profile
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+    
+    if (selectedDoctor) {
+      setFormData(prevData => ({
+        ...prevData,
+        provider_name: selectedDoctor
+      }));
+    }
+  }, [selectedDoctor]);
   
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -118,8 +148,8 @@ const Appointment = () => {
     
     // First, send confirmation email to the user
     emailjs.send(
-      'service_76e3ram',
-      'template_kepcj1k',
+      EMAILJS_SERVICE_ID,
+      EMAILJS_USER_TEMPLATE_ID,
       {
         name: formData.name,
         email: formData.email,
@@ -128,21 +158,21 @@ const Appointment = () => {
         reason_for_visit: formData.reasonForVisit,
         appointment_date: formattedDate,
         appointment_time: time,
-        provider_name: 'Available doctor',
+        provider_name: formData.provider_name || 'Available doctor',
         additional_notes: formData.additionalNotes || 'None',
         message: formData.additionalNotes || 'Thank you for booking with Surunga Medicine!',
         survey_link: "https://surungamedicine.com/survey?rating=",
         unsubscribe_link: "https://surungamedicine.com/unsubscribe?email=" + encodeURIComponent(formData.email),
       },
-      'RJ_KXTtSv5JAOFv2a'
+      EMAILJS_PUBLIC_KEY
     )
     .then((result) => {
       console.log('User confirmation email sent successfully:', result.text);
       
       // Then send notification email to the admin
       return emailjs.send(
-        'service_76e3ram',
-        'template_3z6tnaf',  // Updated template ID for admin notification
+        EMAILJS_SERVICE_ID,
+        EMAILJS_ADMIN_TEMPLATE_ID,  // Updated template ID for admin notification
         {
           name: formData.name,
           email: formData.email,
@@ -151,14 +181,14 @@ const Appointment = () => {
           reason_for_visit: formData.reasonForVisit,
           appointment_date: formattedDate,
           appointment_time: time,
-          provider_name: 'Available doctor',
+          provider_name: formData.provider_name || 'Available doctor',
           additional_notes: formData.additionalNotes || 'None',
-          admin_email: 'janam.khatiwada@ambikatechnology.com',
+          admin_email: ADMIN_EMAIL,
           submission_date: new Date().toLocaleDateString(),
           submission_time: new Date().toLocaleTimeString(),
-          _cc: 'janam.khatiwada@ambikatechnology.com', // CC the admin
+          _cc: ADMIN_EMAIL, // CC the admin
         },
-        'RJ_KXTtSv5JAOFv2a'
+        EMAILJS_PUBLIC_KEY
       );
     })
     .then((result) => {
@@ -272,24 +302,42 @@ const Appointment = () => {
               </div>
             </div>
             
-            <div className="form-group">
-              <label htmlFor="reasonForVisit">Reason for Visit*</label>
-              <select 
-                id="reasonForVisit" 
-                name="reasonForVisit"
-                value={formData.reasonForVisit}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select reason</option>
-                <option value="General Check-up">General Check-up</option>
-                <option value="Follow-up Visit">Follow-up Visit</option>
-                <option value="Consultation">Consultation</option>
-                <option value="Urgent Care">Urgent Care</option>
-                <option value="Vaccination">Vaccination</option>
-                <option value="Lab Results">Lab Results</option>
-                <option value="Other">Other</option>
-              </select>
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="reasonForVisit">Reason for Visit*</label>
+                <select 
+                  id="reasonForVisit" 
+                  name="reasonForVisit"
+                  value={formData.reasonForVisit}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value="">Select reason</option>
+                  <option value="General Check-up">General Check-up</option>
+                  <option value="Follow-up Visit">Follow-up Visit</option>
+                  <option value="Consultation">Consultation</option>
+                  <option value="Urgent Care">Urgent Care</option>
+                  <option value="Vaccination">Vaccination</option>
+                  <option value="Lab Results">Lab Results</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="provider_name">Preferred Doctor</label>
+                <select 
+                  id="provider_name" 
+                  name="provider_name"
+                  value={formData.provider_name || ''}
+                  onChange={handleChange}
+                >
+                  <option value="">Any Available Doctor</option>
+                  {doctors && doctors.map(doctor => (
+                    <option key={doctor._id} value={doctor.name}>
+                      {doctor.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
           </div>
           

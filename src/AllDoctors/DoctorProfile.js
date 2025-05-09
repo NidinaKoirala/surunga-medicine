@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
     faStar, 
@@ -19,7 +19,7 @@ const DoctorProfile = () => {
     const [doctor, setDoctor] = useState(null);
     const [loading, setLoading] = useState(true);
     const [selectedTab, setSelectedTab] = useState('about');
-    const [showCalendly, setShowCalendly] = useState(false);
+    const navigate = useNavigate();
     
     // Get doctors from context
     const { doctors } = useContext(AppContext);
@@ -35,23 +35,6 @@ const DoctorProfile = () => {
         // Scroll to top on page load
         window.scrollTo(0, 0);
     }, [id, doctors]);
-    
-    // Load Calendly script when component mounts
-    useEffect(() => {
-        if (showCalendly) {
-            const head = document.querySelector('head');
-            const script = document.createElement('script');
-            script.src = 'https://assets.calendly.com/assets/external/widget.js';
-            script.async = true;
-            head.appendChild(script);
-            
-            return () => {
-                if (head && script) {
-                    head.removeChild(script);
-                }
-            };
-        }
-    }, [showCalendly]);
     
     // Function to render rating stars
     const renderRatingStars = (rating) => {
@@ -72,12 +55,15 @@ const DoctorProfile = () => {
     
     // Function to handle booking appointment
     const handleBookAppointment = () => {
-        setShowCalendly(true);
-    };
-    
-    // Function to close Calendly
-    const closeCalendly = () => {
-        setShowCalendly(false);
+        // Navigate to appointment page with doctor info and scroll to top
+        navigate('/appointment', { 
+            state: { 
+                selectedDoctor: doctor.name,
+                doctorId: doctor._id
+            } 
+        });
+        // Scroll to top immediately
+        window.scrollTo(0, 0);
     };
     
     if (loading) {
@@ -257,33 +243,18 @@ const DoctorProfile = () => {
                                                         <p>{doctor.address.line2}</p>
                                                     </div>
                                                 </div>
-                                                {selectedTab === 'location' && (
-                                                <div className="tab-content-location">
-                                                    <h3>Practice Location</h3>
-                                                    <div className="location-info">
-                                                        <div className="address-block">
-                                                            <FontAwesomeIcon icon={faMapMarkerAlt} className="location-icon" />
-                                                            <div>
-                                                                <h4>Office Address</h4>
-                                                                <p>{doctor.address.line1}</p>
-                                                                <p>{doctor.address.line2}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div className="map-container">
-                                                            <iframe 
-                                                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3572.9019377351285!2d87.88773391503809!3d26.641108883262635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e5bdaf65d8032f%3A0x60111939f874a53c!2sSurunga%20medicine%20center%20%26%20chandrodaya%20clinic!5e0!3m2!1sen!2sus!4v1588442696675!5m2!1sen!2sus" 
-                                                                width="100%" 
-                                                                height="450" 
-                                                                style={{ border: 0 }} 
-                                                                allowFullScreen="" 
-                                                                loading="lazy"
-                                                                title="Doctor Location Map"
-                                                                className="location-map">
-                                                            </iframe>
-                                                        </div>
-                                                    </div>
+                                                <div className="map-container">
+                                                    <iframe 
+                                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3572.9019377351285!2d87.88773391503809!3d26.641108883262635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e5bdaf65d8032f%3A0x60111939f874a53c!2sSurunga%20medicine%20center%20%26%20chandrodaya%20clinic!5e0!3m2!1sen!2sus!4v1588442696675!5m2!1sen!2sus" 
+                                                        width="100%" 
+                                                        height="450" 
+                                                        style={{ border: 0 }} 
+                                                        allowFullScreen="" 
+                                                        loading="lazy"
+                                                        title="Doctor Location Map"
+                                                        className="location-map">
+                                                    </iframe>
                                                 </div>
-                                            )}
                                             </div>
                                         </div>
                                     )}
@@ -293,21 +264,6 @@ const DoctorProfile = () => {
                     </div>
                 </div>
             </div>
-            
-            {/* Calendly Modal */}
-            {showCalendly && (
-                <div className="calendly-modal">
-                    <div className="calendly-modal-content">
-                        <button className="close-calendly" onClick={closeCalendly}>×</button>
-                        <div 
-                            className="calendly-inline-widget" 
-                            data-url={`https://medicinegbnj.setmore.com/book?name=${encodeURIComponent(doctor.name)}`}
-                            style={{ minWidth: '320px', height: '630px' }}
-                        ></div>
-                    </div>
-                    <div className="calendly-modal-overlay" onClick={closeCalendly}></div>
-                </div>
-            )}
         </section>
     );
 };

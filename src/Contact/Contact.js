@@ -5,6 +5,13 @@ import contactimg from '../assets/images/contact_image.png';
 import emailjs from '@emailjs/browser';
 
 function Contact() {
+    // Access EmailJS configuration from environment variables
+    const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+    const EMAILJS_USER_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_USER_TEMPLATE_ID; // Reuse appointment template
+    const EMAILJS_ADMIN_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_ADMIN_TEMPLATE_ID; // Reuse appointment template
+    const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+    const ADMIN_EMAIL = process.env.REACT_APP_ADMIN_EMAIL;
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -51,15 +58,56 @@ function Contact() {
             message: 'Sending message...'
         });
         
-        // You'll need to sign up for EmailJS and replace these with your actual service ID, template ID, and public key
-        emailjs.sendForm(
-            'service_76e3ram', // replace with your EmailJS service ID
-            'template_kepcj1k', // replace with your EmailJS template ID
-            form.current,
-            'RJ_KXTtSv5JAOFv2a' // replace with your EmailJS public key
+        // First, send confirmation email to the user
+        // Adapt the appointment template to work with contact form
+        emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_USER_TEMPLATE_ID,
+            {
+                name: formData.name,
+                email: formData.email,
+                phone: "Not provided", // Required by template but not collected
+                patient_name: formData.name, // Reuse same field for contact
+                reason_for_visit: formData.subject || "Website Contact Form",
+                appointment_date: new Date().toLocaleDateString(), // Use current date
+                appointment_time: new Date().toLocaleTimeString(), // Use current time
+                provider_name: 'Surunga Medicine Team',
+                additional_notes: formData.message,
+                message: "Thank you for contacting Surunga Medicine! We will get back to you soon.",
+                survey_link: "https://surungamedicine.com/survey?rating=",
+                unsubscribe_link: "https://surungamedicine.com/unsubscribe?email=" + encodeURIComponent(formData.email),
+            },
+            EMAILJS_PUBLIC_KEY
         )
         .then((result) => {
-            console.log('Email sent successfully:', result.text);
+            console.log('User confirmation email sent successfully:', result.text);
+            
+            // Then send notification email to the admin
+            // Adapt the appointment admin template
+            return emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_ADMIN_TEMPLATE_ID,
+                {
+                    name: formData.name,
+                    email: formData.email,
+                    phone: "Not provided",
+                    patient_name: formData.name,
+                    reason_for_visit: "CONTACT FORM: " + (formData.subject || "Website Inquiry"),
+                    appointment_date: "N/A - Contact Form",
+                    appointment_time: "N/A - Contact Form",
+                    provider_name: 'N/A - Contact Form',
+                    additional_notes: formData.message,
+                    admin_email: ADMIN_EMAIL,
+                    submission_date: new Date().toLocaleDateString(),
+                    submission_time: new Date().toLocaleTimeString(),
+                    _cc: ADMIN_EMAIL
+                },
+                EMAILJS_PUBLIC_KEY
+            );
+        })
+        .then((result) => {
+            console.log('Admin notification email sent successfully:', result.text);
+            
             // Reset form
             setFormData({
                 name: '',
@@ -73,7 +121,7 @@ function Contact() {
                 submitting: false,
                 success: true,
                 error: false,
-                message: 'Your message has been sent successfully!'
+                message: 'Your message has been sent successfully! We will get back to you soon.'
             });
             
             // Clear success message after 5 seconds
@@ -87,7 +135,7 @@ function Contact() {
                 submitting: false,
                 success: false,
                 error: true,
-                message: 'There was an error sending your message. Please try again later.'
+                message: 'There was an error sending your message. Please try again later or contact us directly.'
             });
         });
     };
