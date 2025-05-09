@@ -86,18 +86,18 @@ function About() {
                 <div className="container">
                     <div className="about-content">
                         <div className="about-image">
-                            <img src={aboutImage} alt="About MedConnect" />
+                            <img src={aboutImage} alt="About Surunga Medicine & Clinic" />
                         </div>
                         <div className="about-text">
-                            <h2>Welcome to MedConnect</h2>
+                            <h2>Welcome to Surunga Medicine & Clinic</h2>
                             <p>
-                                Since 2012, MedConnect has been your trusted partner in managing healthcare needs conveniently and efficiently. We understand the challenges individuals face when it comes to scheduling doctor appointments and managing their health records.
+                                Since 2012, Surunga Medicine & Clinic has been your trusted partner in managing healthcare needs conveniently and efficiently. We understand the challenges individuals face when it comes to scheduling doctor appointments and managing their health records.
                             </p>
                             <p>
                                 Our state-of-the-art facilities, coupled with a team of highly qualified healthcare professionals, ensure that you receive the best possible care. We believe in a patient-first approach, making sure that every interaction you have with us is comfortable, dignified, and effective.
                             </p>
                             <p>
-                                MedConnect is committed to excellence in healthcare technology. We continuously strive to enhance our platform, integrating the latest advancements to improve user experience and deliver superior service. Whether you're booking your first appointment or managing ongoing care, MedConnect is here to support you every step of the way.
+                                Surunga Medicine & Clinic is committed to excellence in healthcare technology. We continuously strive to enhance our platform, integrating the latest advancements to improve user experience and deliver superior service. Whether you're booking your first appointment or managing ongoing care, Surunga Medicine & Clinic is here to support you every step of the way.
                             </p>
                         </div>
                     </div>
@@ -126,7 +126,7 @@ function About() {
                         <div className="vision-text">
                             <h2>Our Vision</h2>
                             <p>
-                                Our vision at MedConnect is to create a seamless healthcare experience for every patient. We aim to bridge the gap between patients and healthcare providers, making it easier for you to access the care you need, when you need it.
+                                Our vision at Surunga Medicine & Clinic is to create a seamless healthcare experience for every patient. We aim to bridge the gap between patients and healthcare providers, making it easier for you to access the care you need, when you need it.
                             </p>
                             <p>
                                 We envision a future where healthcare is accessible, affordable, and personalized for everyone. By leveraging technology and human expertise, we strive to revolutionize the healthcare experience and improve health outcomes globally.
@@ -189,7 +189,7 @@ function About() {
                         <div className="team-text">
                             <h2>Our Dedicated Team</h2>
                             <p>
-                                Behind MedConnect is a team of dedicated professionals committed to transforming healthcare delivery. Our diverse team includes experienced healthcare providers, technology experts, and patient advocates working together to create a seamless healthcare experience.
+                                Behind Surunga Medicine & Clinic is a team of dedicated professionals committed to transforming healthcare delivery. Our diverse team includes experienced healthcare providers, technology experts, and patient advocates working together to create a seamless healthcare experience.
                             </p>
                             <p>
                                 Our medical professionals undergo rigorous training and continuous education to stay updated with the latest advancements in medical science. We take pride in our team's expertise, compassion, and dedication to improving patient outcomes.

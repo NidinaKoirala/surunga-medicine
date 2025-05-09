@@ -43,7 +43,7 @@ function AboutUs() {
                         </div>
                         
                         <p className="aboutus-description">
-                            At MedConnect, we're revolutionizing the way you access healthcare services. Our platform 
+                            At Surunga Medicine & Clinic, we're revolutionizing the way you access healthcare services. Our platform 
                             connects patients with the best healthcare professionals, making quality medical care accessible 
                             to everyone, everywhere.
                         </p>

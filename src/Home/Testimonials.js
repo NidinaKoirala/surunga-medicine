@@ -9,7 +9,7 @@ function Testimonials() {
             name: "Sarah Johnson",
             position: "Patient",
             image: "https://randomuser.me/api/portraits/women/32.jpg",
-            review: "MedConnect has completely transformed my healthcare experience. The platform is incredibly user-friendly, and I was able to book an appointment with a specialist in just a few minutes. The doctor was excellent and spent adequate time addressing all my concerns.",
+            review: "Surunga Medicine & Clinic has completely transformed my healthcare experience. The platform is incredibly user-friendly, and I was able to book an appointment with a specialist in just a few minutes. The doctor was excellent and spent adequate time addressing all my concerns.",
             rating: 5
         },
         {
@@ -17,7 +17,7 @@ function Testimonials() {
             name: "Michael Chen",
             position: "Patient",
             image: "https://randomuser.me/api/portraits/men/15.jpg",
-            review: "I've been using MedConnect for the past 6 months for my regular check-ups. The convenience of booking appointments and accessing my medical records in one place has made managing my health so much easier. Highly recommended!",
+            review: "I've been using Surunga Medicine & Clinic for the past 6 months for my regular check-ups. The convenience of booking appointments and accessing my medical records in one place has made managing my health so much easier. Highly recommended!",
             rating: 5
         },
         {
@@ -25,7 +25,7 @@ function Testimonials() {
             name: "Amanda Rodriguez",
             position: "Parent",
             image: "https://randomuser.me/api/portraits/women/44.jpg",
-            review: "As a busy mom of three, finding time to take my kids to doctor appointments was always challenging. With MedConnect, I can book virtual consultations for my children without disrupting our schedule. The pediatricians are amazing!",
+            review: "As a busy mom of three, finding time to take my kids to doctor appointments was always challenging. With Surunga Medicine & Clinic, I can book virtual consultations for my children without disrupting our schedule. The pediatricians are amazing!",
             rating: 4
         },
         {
@@ -33,7 +33,7 @@ function Testimonials() {
             name: "David Wilson",
             position: "Patient",
             image: "https://randomuser.me/api/portraits/men/47.jpg",
-            review: "The quality of doctors on MedConnect is exceptional. I had a chronic issue that previous doctors couldn't diagnose properly. Through this platform, I found a specialist who identified my condition and developed an effective treatment plan.",
+            review: "The quality of doctors on Surunga Medicine & Clinic is exceptional. I had a chronic issue that previous doctors couldn't diagnose properly. Through this platform, I found a specialist who identified my condition and developed an effective treatment plan.",
             rating: 5
         }
     ];

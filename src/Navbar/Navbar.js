@@ -110,13 +110,13 @@ function Navbar() {
                             // Use direct navigation for mobile
                             <a href="/" className="logo" onClick={() => window.scrollTo(0, 0)}>
                                 <img src={logoimg} alt="Hospital Logo" />
-                                <span>MedConnect</span>
+                                <span>Surunga Medicine & Clinic</span>
                             </a>
                         ) : (
                             // Use React Router for desktop
                             <Link to="/" className="logo" onClick={handleRouterNavigation}>
                                 <img src={logoimg} alt="Hospital Logo" />
-                                <span>MedConnect</span>
+                                <span>Surunga Medicine & Clinic</span>
                             </Link>
                         )}
                         

@@ -368,7 +368,7 @@ function BlogPost() {
               </div>
               <div className="author-info">
                 <h3 className="author-name">{post.author}</h3>
-                <p className="author-bio">Medical specialist at MedConnect with expertise in {post.category || 'healthcare'}. Passionate about educating patients and improving healthcare accessibility.</p>
+                <p className="author-bio">Medical specialist at Surunga Medicine & Clinic with expertise in {post.category || 'healthcare'}. Passionate about educating patients and improving healthcare accessibility.</p>
                 <div className="author-social">
                   <a href="https://example.com/author-profile" className="social-link" aria-label="Author's Profile">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

@@ -59,5 +59,5 @@ Schedule regular check-ups with your doctor to monitor heart health markers and 
 
 Remember, small changes can make a big difference in heart health. Start with one or two of these tips and gradually incorporate more as they become part of your routine.
 
-For personalized advice, schedule an appointment with one of our cardiology specialists at MedConnect.
+For personalized advice, schedule an appointment with one of our cardiology specialists at Surunga Medicine & Clinic.
 */

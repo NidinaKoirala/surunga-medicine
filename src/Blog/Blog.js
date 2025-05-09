@@ -166,7 +166,7 @@ function Blog() {
     return (
       <div className="blog-page">
         <div className="container">
-          <h1 className="page-title">MedConnect Blog</h1>
+          <h1 className="page-title">Surunga Medicine & Clinic Blog</h1>
           <div className="error-message">
             <h2>Error Loading Blog</h2>
             <p>{error}</p>
@@ -187,7 +187,7 @@ function Blog() {
     return (
       <div className="blog-page">
         <div className="container">
-          <h1 className="page-title">MedConnect Blog</h1>
+          <h1 className="page-title">Surunga Medicine & Clinic Blog</h1>
           
           <div className="no-posts-message">
             <h2>No blog posts available yet</h2>
@@ -235,7 +235,7 @@ More content...`}
     <div className="blog-page">
       <div className="blog-header">
         <div className="container">
-          <h1 className="page-title">MedConnect Blog</h1>
+          <h1 className="page-title">Surunga Medicine & Clinic Blog</h1>
           <p className="page-description">
             Latest insights, medical advice, and health tips from our experts
           </p>
