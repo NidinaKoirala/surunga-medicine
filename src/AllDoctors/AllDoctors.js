@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './AllDoctors.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faStarHalfAlt, faCalendarCheck, faUserMd, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faStarHalfAlt, faCalendarCheck, faUserMd, faSearch, faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
 import { AppContext } from '../Context/AppContext';
 
 function AllDoctors() {
@@ -66,6 +66,18 @@ function AllDoctors() {
     // Function to navigate to doctor profile
     const navigateToProfile = (doctorId) => {
         navigate(`/doctor/${doctorId}`);
+    };
+    
+    // Function to handle booking appointment
+    const handleBookAppointment = (e, doctor) => {
+        e.stopPropagation(); // Prevent card click event from triggering
+        navigate('/appointment', { 
+            state: { 
+                selectedDoctor: doctor.name,
+                doctorId: doctor._id
+            } 
+        });
+        window.scrollTo(0, 0);
     };
     
     // Function to render rating stars
@@ -156,9 +168,19 @@ function AllDoctors() {
                                                         </div>
                                                     </div>
                                                     
-                                                    <button className="view-profile-btn">
-                                                        View Profile
-                                                    </button>
+                                                    <div className="doctor-actions">
+                                                        <button className="view-profile-btn">
+                                                            View Profile
+                                                        </button>
+                                                        <button 
+                                                            className="book-appointment-btn" 
+                                                            onClick={(e) => handleBookAppointment(e, doctor)}
+                                                            title="Book Appointment"
+                                                        >
+                                                            <FontAwesomeIcon icon={faCalendarPlus} />
+                                                            <span>Book</span>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
