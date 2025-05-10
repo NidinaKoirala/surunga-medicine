@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
-import doc1 from '../assets/images/Doctors/doc1.png';
-import doc2 from '../assets/images/Doctors/doc2.png';
+import doc1 from '../assets/images/Doctors/dr.dipayan.panday.png';
+import doc2 from '../assets/images/Doctors/dr.lata.png';
 import doc3 from '../assets/images/Doctors/doc3.png';
 import doc4 from '../assets/images/Doctors/doc4.png';
 import doc5 from '../assets/images/Doctors/doc5.png';
@@ -26,9 +26,9 @@ export const AppContext = createContext();
 
 // Default doctor image mapping for new doctors
 const defaultDoctorImages = {
-  'General physician': doc1,
-  'Gynecologist': doc2,
-  'Dermatologist': doc3,
+  'General physician': doc3,
+  'प्रसूति तथा प्रजनन': doc2,
+  'छाला यौन तथा सुन्दर्य विशेषज्ञ': doc1,
   'Pediatricians': doc4,
   'Neurologist': doc5,
   'Gastroenterologist': doc6
@@ -43,11 +43,11 @@ export const AppProvider = ({ children }) => {
             image: General_physician
         },
         {
-            speciality: 'Gynecologist',
+            speciality: 'प्रसूति तथा प्रजनन',
             image: Gynecologist
         },
         {
-            speciality: 'Dermatologist',
+            speciality: 'छाला यौन तथा सुन्दर्य विशेषज्ञ',
             image: Dermatologist
         },
         {
@@ -68,27 +68,27 @@ export const AppProvider = ({ children }) => {
     const initialDoctorsData = [
         {
             _id: 'doc1',
-            name: 'Dr. Richard James',
+            name: 'डा. दिपायन पाण्डे',
             image: doc1,
-            speciality: 'General physician',
-            degree: 'MBBS',
-            experience: '4 Years',
-            about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-            fees: 50,
+            speciality: 'छाला यौन तथा सुन्दर्य विशेषज्ञ',
+            degree: 'MBBS, MD (BPKHS Dharan)',
+            experience: '10 Years',
+            about: 'डा. दिपायन पाण्डे, MBBS, MD (BPKHS धरान) - आदरणीय बरिस्ट छाला, यौन तथा सुन्दर्य विशेषज्ञ हुनुहुन्छ जसले ४ वर्षको समर्पित अनुभवका साथ छालाका जटिल रोगहरू, यौन स्वास्थ्य समस्याहरू र उन्नत सौन्दर्य प्रक्रियाहरूमा विशेष ध्यान दिई उच्च गुणस्तरीय स्वास्थ्य सेवा प्रदान गर्नुहुन्छ।',
+            fees: 'Free',
             address: {
-                line1: '17th Cross, Richmond',
-                line2: 'Circle, Ring Road, London'
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
             }
         },
         {
             _id: 'doc2',
-            name: 'Dr. Emily Larson',
+            name: 'डा. लता श्रेष्ठ',
             image: doc2,
-            speciality: 'Gynecologist',
-            degree: 'MBBS',
-            experience: '3 Years',
-            about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-            fees: 60,
+            speciality: 'प्रसूति तथा प्रजनन',
+            degree: 'MBBS (NMCTCH), MD OBS/GYN (JRRMMC)',
+            experience: '10 Years',
+            about: 'डा. लता श्रेष्ठ, MBBS (NMCTCH), MD OBS/GYN (JRRMMC) - आदरणीय बरिस्ट प्रसूति तथा प्रजनन विशेषज्ञ हुनुहुन्छ जसले IVF विशेषज्ञताका साथ महिलाहरूको प्रजनन स्वास्थ्य, गर्भावस्था व्यवस्थापन र बाँझोपन उपचारमा उत्कृष्ट सेवा प्रदान गर्नुहुन्छ, प्रत्येक बिरामीलाई व्यक्तिगत हेरचाह र समर्थन दिनुहुन्छ।',
+            fees: 'Free',
             address: {
                 line1: '27th Cross, Richmond',
                 line2: 'Circle, Ring Road, London'
