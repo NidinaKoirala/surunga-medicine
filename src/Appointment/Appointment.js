@@ -100,12 +100,6 @@ const Appointment = () => {
     setFormStatus(prev => ({...prev, showModal: false}));
   };
   
-  const isWeekday = (date) => {
-    const day = date.getDay();
-    // Return true for Monday-Friday, false for Saturday-Sunday
-    return day !== 0 && day !== 6;
-  };
-  
   const formatAppointmentDate = (date) => {
     return format(date, 'MMMM d, yyyy');
   };
@@ -349,8 +343,7 @@ const Appointment = () => {
                 onChange={handleCalendarChange} 
                 value={date}
                 minDate={new Date()}
-                className="react-calendar"
-                tileDisabled={({ date }) => !isWeekday(date)}
+                className="react-calendar"                
               />
             </div>
             
