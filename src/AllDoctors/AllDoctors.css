@@ -1,4 +1,6 @@
 /* AllDoctors.css */
+/* Only the specialties-list has been modified to add scrolling */
+
 #alldoctor-section {
     padding: 80px 0;
     background-color: #f8f9fa;
@@ -78,11 +80,37 @@
     border-bottom: 1px solid #e9ecef;
 }
 
+/* UPDATED: Made specialties list scrollable */
 .specialties-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 100%; /* Ensure the list takes full width */
+    max-height: 400px; /* Set a max height for scrolling */
+    overflow-y: auto; /* Add vertical scrolling */
+    padding-right: 5px; /* Add some padding for the scrollbar */
+    /* Custom scrollbar styling */
+    scrollbar-width: thin;
+    scrollbar-color: #c1d3f0 #f0f4fa;
+}
+
+/* Custom scrollbar for webkit browsers */
+.specialties-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.specialties-list::-webkit-scrollbar-track {
+    background: #f0f4fa;
+    border-radius: 10px;
+}
+
+.specialties-list::-webkit-scrollbar-thumb {
+    background-color: #c1d3f0;
+    border-radius: 10px;
+}
+
+.specialties-list::-webkit-scrollbar-thumb:hover {
+    background-color: #2a70e0;
 }
 
 .specialty-item {
@@ -369,6 +397,10 @@
         flex-direction: row;
         flex-wrap: wrap;
         gap: 10px;
+        max-height: none; /* Remove max-height on mobile */
+        overflow-y: visible; /* Remove vertical scrolling on mobile */
+        overflow-x: auto; /* Add horizontal scrolling for mobile */
+        padding-bottom: 10px; /* Add padding for the scrollbar */
     }
     
     .specialty-item {

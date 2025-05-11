@@ -1,47 +1,49 @@
 import React, { createContext, useState } from 'react';
 import doc1 from '../assets/images/Doctors/dr.dipayan.panday.png';
 import doc2 from '../assets/images/Doctors/dr.lata.png';
-import doc3 from '../assets/images/Doctors/doc3.png';
+import doc3 from '../assets/images/Doctors/dr.gaurav.png';
 import doc4 from '../assets/images/Doctors/doc4.png';
-import doc5 from '../assets/images/Doctors/doc5.png';
-import doc6 from '../assets/images/Doctors/doc6.png';
-import doc7 from '../assets/images/Doctors/doc7.png';
-import doc8 from '../assets/images/Doctors/doc8.png';
-import doc9 from '../assets/images/Doctors/doc9.png';
+import doc5 from '../assets/images/Doctors/dr.pravakar.shah.png';
+import doc6 from '../assets/images/Doctors/dr.ram.giri.png';
+import doc7 from '../assets/images/Doctors/dr.rabindra.png';
+import doc8 from '../assets/images/Doctors/dr.sandeep.png';
+import doc9 from '../assets/images/Doctors/dr.sasank.raj.png';
 import doc10 from '../assets/images/Doctors/doc10.png';
-import doc11 from '../assets/images/Doctors/doc11.png';
-import doc12 from '../assets/images/Doctors/doc12.png';
-import doc13 from '../assets/images/Doctors/doc13.png';
-import doc14 from '../assets/images/Doctors/doc14.png';
-import doc15 from '../assets/images/Doctors/doc15.png';
+//import doc11 from '../assets/images/Doctors/doc11.png';
+//import doc12 from '../assets/images/Doctors/doc12.png';
+//import doc13 from '../assets/images/Doctors/doc13.png';
+//import doc14 from '../assets/images/Doctors/doc14.png';
+//import doc15 from '../assets/images/Doctors/doc15.png';
 import Dermatologist from '../assets/images/specialitymenu/Dermatologist.svg';
-import Gastroenterologist from '../assets/images/specialitymenu/Gastroenterologist.svg';
-import General_physician from '../assets/images/specialitymenu/General_physician.svg';
+import bonespecialist from '../assets/images/specialitymenu/bonespecialist.png';
 import Gynecologist from '../assets/images/specialitymenu/Gynecologist.svg';
-import Neurologist from '../assets/images/specialitymenu/Neurologist.svg';
-import Pediatricians from '../assets/images/specialitymenu/Pediatricians.svg';
+import KidneySpecialist from '../assets/images/specialitymenu/Kidney-Specialist.png';
+import GeneralLaparoscopicSurgeon from '../assets/images/specialitymenu/General-Laparoscopic-Surgeon.png';
+import HeartSpecialist from '../assets/images/specialitymenu/Heart-Specialist.png';
+import Immunologist from '../assets/images/specialitymenu/Immunologist.png';
+import Endocrinologist from '../assets/images/specialitymenu/Endocrinologist.png';
+import MentalHealthSpecialist from '../assets/images/specialitymenu/MentalHealthSpecialist.png';
 
 // Create context
 export const AppContext = createContext();
 
 // Default doctor image mapping for new doctors
 const defaultDoctorImages = {
-  'General physician': doc3,
+  'वाथ तथा प्रतिरक्षा रोग विशेषज्ञ': doc6,
   'प्रसूति तथा प्रजनन': doc2,
   'छाला यौन तथा सुन्दर्य विशेषज्ञ': doc1,
-  'Pediatricians': doc4,
-  'Neurologist': doc5,
-  'Gastroenterologist': doc6
+  'पेट छाती लिभर सुगर प्रेसर विशेषज्ञ': doc4,
+  'जनरल तथा त्याप्रोस्कोपिक सुर्जन र पायल्स रोग विशेषज्ञ': doc5,
+  'सुगर प्रेसर तथा किड्नी विशेषज्ञ': doc3,
+  'मुटृुरोग विशेषज्ञ': doc7,
+  'सुगर थाइराईड तथा हर्मोन विशेषज्ञ': doc8,
+  'हाडजोर्नी नशा तथा मेरुदण्ड विशेषज्ञ': doc10
 };
 
 // Create provider
 export const AppProvider = ({ children }) => {
     // Define speciality data
     const specialityData = [
-        {
-            speciality: 'General physician',
-            image: General_physician
-        },
         {
             speciality: 'प्रसूति तथा प्रजनन',
             image: Gynecologist
@@ -51,17 +53,33 @@ export const AppProvider = ({ children }) => {
             image: Dermatologist
         },
         {
-            speciality: 'Pediatricians',
-            image: Pediatricians
+            speciality: 'हाडजोर्नी नशा तथा मेरुदण्ड विशेषज्ञ',
+            image: bonespecialist
         },
         {
-            speciality: 'Neurologist',
-            image: Neurologist
+            speciality: 'जनरल तथा त्याप्रोस्कोपिक सुर्जन र पायल्स रोग विशेषज्ञ',
+            image: GeneralLaparoscopicSurgeon
         },
         {
-            speciality: 'Gastroenterologist',
-            image: Gastroenterologist
+            speciality: 'सुगर प्रेसर तथा किड्नी विशेषज्ञ',
+            image: KidneySpecialist
         },
+        {
+            speciality: 'मुटृुरोग विशेषज्ञ',
+            image: HeartSpecialist
+        },   
+        {
+            speciality: 'वाथ तथा प्रतिरक्षा रोग विशेषज्ञ',
+            image: Immunologist
+        },  
+        {
+            speciality: 'सुगर थाइराईड तथा हर्मोन विशेषज्ञ',
+            image: Endocrinologist
+        },
+        {
+            speciality: 'मानसिक, नशा तथा टाउको रोग विशेषज्ञ',
+            image: MentalHealthSpecialist
+        },          
     ];
 
     // Initial doctors data
@@ -72,7 +90,7 @@ export const AppProvider = ({ children }) => {
             image: doc1,
             speciality: 'छाला यौन तथा सुन्दर्य विशेषज्ञ',
             degree: 'MBBS, MD (BPKHS Dharan)',
-            experience: '10 Years',
+            experience: '10+ Years',
             about: 'डा. दिपायन पाण्डे, MBBS, MD (BPKHS धरान) - आदरणीय बरिस्ट छाला, यौन तथा सुन्दर्य विशेषज्ञ हुनुहुन्छ जसले ४ वर्षको समर्पित अनुभवका साथ छालाका जटिल रोगहरू, यौन स्वास्थ्य समस्याहरू र उन्नत सौन्दर्य प्रक्रियाहरूमा विशेष ध्यान दिई उच्च गुणस्तरीय स्वास्थ्य सेवा प्रदान गर्नुहुन्छ।',
             fees: 'Free',
             address: {
@@ -86,196 +104,196 @@ export const AppProvider = ({ children }) => {
             image: doc2,
             speciality: 'प्रसूति तथा प्रजनन',
             degree: 'MBBS (NMCTCH), MD OBS/GYN (JRRMMC)',
-            experience: '10 Years',
+            experience: '10+ Years',
             about: 'डा. लता श्रेष्ठ, MBBS (NMCTCH), MD OBS/GYN (JRRMMC) - आदरणीय बरिस्ट प्रसूति तथा प्रजनन विशेषज्ञ हुनुहुन्छ जसले IVF विशेषज्ञताका साथ महिलाहरूको प्रजनन स्वास्थ्य, गर्भावस्था व्यवस्थापन र बाँझोपन उपचारमा उत्कृष्ट सेवा प्रदान गर्नुहुन्छ, प्रत्येक बिरामीलाई व्यक्तिगत हेरचाह र समर्थन दिनुहुन्छ।',
             fees: 'Free',
             address: {
-                line1: '27th Cross, Richmond',
-                line2: 'Circle, Ring Road, London'
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
             }
         },
         {
             _id: 'doc3',
-            name: 'Dr. Sarah Patel',
+            name: 'डा.गौरव क्षेत्री',
             image: doc3,
-            speciality: 'Dermatologist',
-            degree: 'MBBS',
-            experience: '1 Years',
-            about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-            fees: 30,
+            speciality: 'सुगर प्रेसर तथा किड्नी विशेषज्ञ',
+            degree: 'DM(NAMS,Bir Hospital) , MD (KU) consultant , DM (Nephrologist)',
+            experience: '15+ Years',
+            about: 'डा. गौरव क्षेत्री, MD (KU), DM (NAMS, Bir Hospital), DM (Nephrologist) - आदरणीय वरिष्ठ सुगर, प्रेसर तथा किड्नी विशेषज्ञ हुनुहुन्छ जसले consultant को रूपमा मधुमेह, उच्च रक्तचाप र मिर्गौला सम्बन्धी जटिल रोगहरूको निदान र उपचारमा विशिष्ट योगदान पुर्‍याउँदै आउनुभएको छ, बिरामीहरूको स्वास्थ्य सुधारमा समर्पित हुनुहुन्छ।',
+            fees: 'Free',
             address: {
-                line1: '37th Cross, Richmond',
-                line2: 'Circle, Ring Road, London'
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
             }
         },
         {
             _id: 'doc4',
-            name: 'Dr. Christopher Lee',
+            name: 'डा. प्रमोद कुमार शाह',
             image: doc4,
-            speciality: 'Pediatricians',
-            degree: 'MBBS',
-            experience: '2 Years',
-            about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-            fees: 40,
+            speciality: 'पेट छाती लिभर सुगर प्रेसर विशेषज्ञ',
+            degree: 'MBBS , MD (INTERNAL MEDICINE) , Consultant physician',
+            experience: '15+ Years',
+            about: 'डा. प्रमोद कुमार शाह, MBBS, MD (INTERNAL MEDICINE) - आदरणीय वरिष्ठ पेट, छाती, लिभर, सुगर, प्रेसर विशेषज्ञ हुनुहुन्छ जसले Consultant Physician को रूपमा पाचन प्रणाली, श्वासप्रश्वास, कलेजो रोग, मधुमेह र उच्च रक्तचाप सम्बन्धी समस्याहरूको समग्र व्यवस्थापन र उपचारमा आफ्नो विशेष दक्षता प्रदान गर्दै बिरामीहरूको स्वास्थ्यमा उल्लेखनीय सुधार ल्याउनुहुन्छ।',
+            fees: 'Free',
             address: {
-                line1: '47th Cross, Richmond',
-                line2: 'Circle, Ring Road, London'
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
             }
         },
         {
             _id: 'doc5',
-            name: 'Dr. Jennifer Garcia',
+            name: 'डा. प्रभाकार शाह',
             image: doc5,
-            speciality: 'Neurologist',
-            degree: 'MBBS',
-            experience: '4 Years',
-            about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-            fees: 50,
+            speciality: 'जनरल तथा त्याप्रोस्कोपिक सुर्जन र पायल्स रोग विशेषज्ञ',
+            degree: 'MBBS (KUMS) , General & Laparoscopic Surgeon',
+            experience: '12+ Years',
+            about: 'डा. प्रभाकर शाह, MBBS (KUMS) - अत्याधुनिक ल्याप्रोस्कोपिक प्रविधि माफर्त जटिल शल्यक्रियाहरू गर्ने वरिष्ठ शल्यचिकित्सक हुनुहुन्छ, विशेषगरी पाइल्स, फिस्टुला र पेटका समस्याहरूको न्यूनतम चिरफार विधिद्वारा कुशल उपचार प्रदान गर्दै बिरामीहरूलाई छिटो स्वास्थ्य लाभ र कम दुखाइको सुनिश्चितता दिनुहुन्छ।',
+            fees: 'Free',
             address: {
-                line1: '57th Cross, Richmond',
-                line2: 'Circle, Ring Road, London'
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
             }
         },
         {
             _id: 'doc6',
-            name: 'Dr. Andrew Williams',
+            name: 'डा. रामकृष्ण गिरि',
             image: doc6,
-            speciality: 'Neurologist',
-            degree: 'MBBS',
-            experience: '4 Years',
-            about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-            fees: 50,
+            speciality: 'वाथ तथा प्रतिरक्षा रोग विशेषज्ञ',
+            degree: 'MBBS , MD , FCIR',
+            experience: '14+ Years',
+            about: 'डा. रामकृष्ण गिरि, MBBS, MD, FCIR - जोर्नी सुजन, गठिया, लुपस र अन्य प्रतिरक्षा प्रणाली सम्बन्धी रोगहरूको पहिचान र व्यवस्थापनमा अग्रणी वरिष्ठ विशेषज्ञ हुनुहुन्छ, जसले आधुनिक बायोलोजिकल थेरापी र इम्युनोमोड्युलेटर उपचार विधिहरू प्रयोग गरी दीर्घकालीन बाथ रोगका बिरामीहरूको जीवनस्तरमा उल्लेखनीय सुधार ल्याउनुभएको छ।',
+            fees: 'Free',
             address: {
-                line1: '57th Cross, Richmond',
-                line2: 'Circle, Ring Road, London'
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
             }
         },
         {
             _id: 'doc7',
-            name: 'Dr. Christopher Davis',
+            name: 'डा. रविन्द्र सिम्खडा',
             image: doc7,
-            speciality: 'General physician',
-            degree: 'MBBS',
-            experience: '4 Years',
-            about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-            fees: 50,
+            speciality: 'मुटृुरोग विशेषज्ञ',
+            degree: 'MD (Internal Medicine),DM (cardiology)',
+            experience: '20+ Years',
+            about: 'डा. रविन्द्र सिम्खडा, MD (Internal Medicine), DM (Cardiology) - मुटुको जटिल रोगहरूको निदान र उपचारमा विशिष्ट अनुभव राख्नुहुने हृदयरोग विशेषज्ञ हुनुहुन्छ, जसले ECG, इकोकार्डियोग्राफी र हृदय क्याथेटराइजेसन जस्ता उन्नत प्रविधिहरू प्रयोग गर्दै हृदय स्वास्थ्य सुधार र हृदयाघात रोकथाममा महत्त्वपूर्ण भूमिका निर्वाह गर्नुहुन्छ।',
+            fees: 'Free',
             address: {
-                line1: '17th Cross, Richmond',
-                line2: 'Circle, Ring Road, London'
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
             }
         },
         {
             _id: 'doc8',
-            name: 'Dr. Timothy White',
+            name: 'डा. संन्दिप चन्द्र श्रेष्ठ',
             image: doc8,
-            speciality: 'Gynecologist',
-            degree: 'MBBS',
-            experience: '3 Years',
-            about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-            fees: 60,
+            speciality: 'सुगर थाइराईड तथा हर्मोन विशेषज्ञ',
+            degree: 'MBBS , MD ,Fellowship in Endocrinology and metabolish',
+            experience: '20+ Years',
+            about: 'डा. सन्दिप चन्द्र श्रेष्ठ, MBBS, MD, Fellowship in Endocrinology and Metabolism - अन्तःस्रावी ग्रन्थि प्रणालीका विकारहरूमा विशिष्ट दक्षता राख्नुहुने विशेषज्ञ हुनुहुन्छ, जसले मधुमेह नियन्त्रण, थाइराइड असन्तुलन र हर्मोनल समस्याहरूको समग्र व्यवस्थापनका लागि अत्याधुनिक उपचार विधिहरू र वैयक्तिकृत औषधि प्रणालीको माध्यमबाट रोगीहरूको चयापचय स्वास्थ्य सुधारमा उत्कृष्ट योगदान पुर्‍याउनुहुन्छ।',
+            fees: 'Free',
             address: {
-                line1: '27th Cross, Richmond',
-                line2: 'Circle, Ring Road, London'
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
             }
         },
         {
             _id: 'doc9',
-            name: 'Dr. Ava Mitchell',
+            name: 'डा. सशांक राज पोखरेल',
             image: doc9,
-            speciality: 'Dermatologist',
-            degree: 'MBBS',
-            experience: '1 Years',
-            about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-            fees: 30,
+            speciality: 'मानसिक, नशा तथा टाउको रोग विशेषज्ञ',
+            degree: 'MD(Psychiatric)',
+            experience: '12+ Years',
+            about: 'डा. सशांक राज पोखरेल, MD (Psychiatric) - मनोचिकित्सामा विशिष्ट दक्षता भएका वरिष्ठ मानसिक स्वास्थ्य विशेषज्ञ हुनुहुन्छ, जसले चिन्ता, अवसाद, द्विध्रुवी विकार र नशा दुरुपयोग जस्ता जटिल मानसिक अवस्थाहरूको साथै माइग्रेन र टाउकोका अन्य न्यूरोलोजिकल समस्याहरूको समग्र उपचारमा संज्ञानात्मक व्यवहार थेरापी र आधुनिक औषधि प्रोटोकलहरू एकीकृत गर्दै बिरामीहरूको जीवनस्तर उकास्न महत्त्वपूर्ण भूमिका निर्वाह गर्नुहुन्छ।',
+            fees: 'Free',
             address: {
-                line1: '37th Cross, Richmond',
-                line2: 'Circle, Ring Road, London'
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
             }
         },
         {
             _id: 'doc10',
-            name: 'Dr. Jeffrey King',
+            name: 'डा. सन्तोष थापा',
             image: doc10,
-            speciality: 'Pediatricians',
-            degree: 'MBBS',
-            experience: '2 Years',
-            about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-            fees: 40,
+            speciality: 'हाडजोर्नी नशा तथा मेरुदण्ड विशेषज्ञ',
+            degree: 'MD(Orthopedic Surgeon Assistant Professor',
+            experience: '20+ Years',
+            about: 'डा. सन्तोष थापा, MD (Orthopedic Surgeon), Assistant Professor - हाडजोर्नी भाँचिएका, खेलकुद चोटपटक र मेरुदण्ड सम्बन्धी समस्याहरूको विशेषज्ञ चिकित्सक हुनुहुन्छ, जसले न्यूरोसर्जिकल प्रविधिहरू र मिनिमल इन्भेसिभ स्पाइनल प्रक्रियाहरू प्रयोग गरी डिस्क हर्निएशन, स्पाइनल स्टेनोसिस र जीर्ण दुखाइका बिरामीहरूलाई अत्याधुनिक उपचार प्रदान गर्दै शिक्षण र अनुसन्धान कार्यमा समेत सक्रिय रूपमा संलग्न हुनुहुन्छ।',
+            fees: 'Free',
             address: {
-                line1: '47th Cross, Richmond',
-                line2: 'Circle, Ring Road, London'
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
             }
         },
-        {
-            _id: 'doc11',
-            name: 'Dr. Zoe Kelly',
-            image: doc11,
-            speciality: 'Neurologist',
-            degree: 'MBBS',
-            experience: '4 Years',
-            about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-            fees: 50,
-            address: {
-                line1: '57th Cross, Richmond',
-                line2: 'Circle, Ring Road, London'
-            }
-        },
-        {
-            _id: 'doc12',
-            name: 'Dr. Patrick Harris',
-            image: doc12,
-            speciality: 'Neurologist',
-            degree: 'MBBS',
-            experience: '4 Years',
-            about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-            fees: 50,
-            address: {
-                line1: '57th Cross, Richmond',
-                line2: 'Circle, Ring Road, London'
-            }
-        },
-        {
-            _id: 'doc13',
-            name: 'Dr. Chloe Evans',
-            image: doc13,
-            speciality: 'General physician',
-            degree: 'MBBS',
-            experience: '4 Years',
-            about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-            fees: 50,
-            address: {
-                line1: '17th Cross, Richmond',
-                line2: 'Circle, Ring Road, London'
-            }
-        },
-        {
-            _id: 'doc14',
-            name: 'Dr. Ryan Martinez',
-            image: doc14,
-            speciality: 'Gynecologist',
-            degree: 'MBBS',
-            experience: '3 Years',
-            about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-            fees: 60,
-            address: {
-                line1: '27th Cross, Richmond',
-                line2: 'Circle, Ring Road, London'
-            }
-        },
-        {
-            _id: 'doc15',
-            name: 'Dr. Amelia Hill',
-            image: doc15,
-            speciality: 'Dermatologist',
-            degree: 'MBBS',
-            experience: '1 Years',
-            about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-            fees: 30,
-            address: {
-                line1: '37th Cross, Richmond',
-                line2: 'Circle, Ring Road, London'
-            }
-        },
+        //{
+        //    _id: 'doc11',
+        //    name: 'Dr. Zoe Kelly',
+        //    image: doc11,
+        //    speciality: 'Neurologist',
+        //    degree: 'MBBS',
+        //    experience: '4 Years',
+        //    about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
+        //    fees: 50,
+        //    address: {
+        //        line1: 'Surunga Medicine and Clinic',
+        //        line2: 'Kankai-03, Surunga, Jhapa'
+        //    }
+        //},
+        //{
+        //    _id: 'doc12',
+        //    name: 'Dr. Patrick Harris',
+        //    image: doc12,
+        //    speciality: 'Neurologist',
+        //    degree: 'MBBS',
+        //    experience: '4 Years',
+        //    about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
+        //    fees: 50,
+        //    address: {
+        //        line1: 'Surunga Medicine and Clinic',
+        //        line2: 'Kankai-03, Surunga, Jhapa'
+        //    }
+        //},
+        //{
+        //    _id: 'doc13',
+        //    name: 'Dr. Chloe Evans',
+        //    image: doc13,
+        //    speciality: 'General physician',
+        //    degree: 'MBBS',
+        //    experience: '4 Years',
+        //    about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
+        //    fees: 50,
+        //    address: {
+        //        line1: 'Surunga Medicine and Clinic',
+        //        line2: 'Kankai-03, Surunga, Jhapa'
+        //    }
+        //},
+        //{
+        //    _id: 'doc14',
+        //    name: 'Dr. Ryan Martinez',
+        //    image: doc14,
+        //    speciality: 'Gynecologist',
+        //    degree: 'MBBS',
+        //    experience: '3 Years',
+        //    about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
+        //    fees: 60,
+        //    address: {
+        //        line1: 'Surunga Medicine and Clinic',
+        //        line2: 'Kankai-03, Surunga, Jhapa'
+        //    }
+        //},
+        //{
+        //    _id: 'doc15',
+        //    name: 'Dr. Amelia Hill',
+        //    image: doc15,
+        //    speciality: 'Dermatologist',
+        //    degree: 'MBBS',
+        //    experience: '1 Years',
+        //    about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
+        //    fees: 30,
+        //    address: {
+        //        line1: 'Surunga Medicine and Clinic',
+        //        line2: 'Kankai-03, Surunga, Jhapa'
+        //    }
+        //},
     ];
 
     // State to store the current list of doctors
