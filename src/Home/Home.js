@@ -27,9 +27,9 @@ function Home() {
     
     // Additional hero section customization (optional)
     const heroFeatures = [
-        'Same-day appointments', 
-        'Verified specialists', 
-        'Online consultations'
+        'सोही दिन अपोइन्टमेन्ट',
+        'प्रमाणित विशेषज्ञ चिकित्सकहरू',
+        'अनलाइन परामर्श'
     ];
     
     const heroStats = [
@@ -37,7 +37,7 @@ function Home() {
         { number: '10k+', label: 'Patients' }
     ];
     
-    const heroTitle = "Your Health, Our <highlight>Priority</highlight>";
+    const heroTitle = "तपाईंको स्वास्थ्य, हाम्रो <highlight>प्राथमिकता</highlight>";
     
     return (
         <React.Fragment>
@@ -47,7 +47,7 @@ function Home() {
                 features={heroFeatures}
                 stats={heroStats}
                 title={heroTitle}
-                description="Book appointments with expert doctors and specialists for personalized care. Take control of your health journey with our trusted medical professionals."
+                description="सुरुङ्गा मेडिसिन एण्ड क्लिनिकमा - उत्कृष्ट डाक्टरहरूसँग सहज अपोइन्टमेन्ट, तपाईंको स्वास्थ्य हाम्रो प्रतिबद्धता। स्वस्थ जीवनको यात्रा अब तपाईंको हातमा! आजै भेट्नुहोस् र आफ्नो स्वास्थ्यमा नयाँ अध्याय सुरु गर्नुहोस्।"
                 badgeText="Healthcare Made Simple"
             />
             <SpecialityMenu />

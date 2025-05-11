@@ -14,32 +14,32 @@ function Services() {
         {
             icon: <FaUserMd />,
             title: "Expert Doctors",
-            description: "Get consultations from our highly qualified and experienced medical professionals."
+            description: "हाम्रा अत्यधिक योग्य र अनुभवी चिकित्सकहरूसँग विशेष परामर्श प्राप्त गर्नुहोस्।"
         },
         {
             icon: <FaCalendarCheck />,
             title: "Easy Scheduling",
-            description: "Book appointments online anytime and receive instant confirmations."
+            description: "जुनसुकै समयमा अनलाइन भेटघाट बुक गर्नुहोस् र तुरुन्तै पुष्टिकरण प्राप्त गर्नुहोस्।"
         },
         {
             icon: <FaHospital />,
             title: "Virtual Visits",
-            description: "Connect with doctors remotely through secure video consultations."
+            description: "सुरक्षित भिडियो परामर्श मार्फत टाढाबाट चिकित्सकहरूसँग जोडिनुहोस्।"
         },
         {
             icon: <FaHeartbeat />,
             title: "Health Monitoring",
-            description: "Keep track of your health metrics and receive personalized advice."
+            description: "आफ्नो स्वास्थ्य मापदण्डहरू ट्र्याक गर्नुहोस् र व्यक्तिगत सल्लाह प्राप्त गर्नुहोस्।"
         },
         {
             icon: <FaAmbulance />,
             title: "Emergency Care",
-            description: "24/7 emergency support and quick response for critical situations."
+            description: "२४/७ आकस्मिक सहयोग र जटिल अवस्थाहरूका लागि द्रुत प्रतिक्रिया।"
         },
         {
             icon: <FaPrescriptionBottleAlt />,
             title: "Prescription Refills",
-            description: "Easy renewal of prescriptions without unnecessary in-person visits."
+            description: "अनावश्यक व्यक्तिगत भेटघाट बिना औषधि पर्चाहरू सजिलै नवीकरण गर्नुहोस्।"
         }
     ];
     

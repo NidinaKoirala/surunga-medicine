@@ -6,34 +6,34 @@ function Testimonials() {
     const testimonials = [
         {
             id: 1,
-            name: "Sarah Johnson",
-            position: "Patient",
+            name: "सुनिता तामाङ",
+            position: "मुटु रोग विशेषज्ञ सेवाग्राही",
             image: "https://randomuser.me/api/portraits/women/32.jpg",
-            review: "Surunga Medicine & Clinic has completely transformed my healthcare experience. The platform is incredibly user-friendly, and I was able to book an appointment with a specialist in just a few minutes. The doctor was excellent and spent adequate time addressing all my concerns.",
+            review: "सुरुङ्गा मेडिसिन एण्ड क्लिनिकले मेरो स्वास्थ्य सेवा अनुभवलाई पूर्णरूपमा परिवर्तन गरेको छ। यो प्लेटफर्म अत्यन्तै प्रयोगकर्ता-मैत्री छ, र मैले केही मिनेटमै विशेषज्ञसँग भेटघाट बुक गर्न सकें। डाक्टर उत्कृष्ट थिए र मेरा सबै चिन्ताहरूलाई सम्बोधन गर्न पर्याप्त समय दिए।",
             rating: 5
         },
         {
             id: 2,
-            name: "Michael Chen",
-            position: "Patient",
+            name: "रामेश श्रेष्ठ",
+            position: "मिर्गौला उपचार सेवाग्राही",
             image: "https://randomuser.me/api/portraits/men/15.jpg",
-            review: "I've been using Surunga Medicine & Clinic for the past 6 months for my regular check-ups. The convenience of booking appointments and accessing my medical records in one place has made managing my health so much easier. Highly recommended!",
+            review: "मैले विगत ६ महिनादेखि मेरो नियमित जाँचका लागि सुरुङ्गा मेडिसिन एण्ड क्लिनिक प्रयोग गर्दै आएको छु। अपोइन्टमेन्ट बुक गर्ने र मेरो मेडिकल रेकर्डहरू एकै ठाउँमा पहुँच गर्ने सुविधाले मेरो स्वास्थ्य व्यवस्थापन गर्न धेरै सजिलो बनाएको छ। अत्यन्तै सिफारिस गर्दछु!",
             rating: 5
         },
         {
             id: 3,
-            name: "Amanda Rodriguez",
-            position: "Parent",
+            name: "प्रिया गुरुङ",
+            position: "महिला स्वास्थ्य सेवाग्राही",
             image: "https://randomuser.me/api/portraits/women/44.jpg",
-            review: "As a busy mom of three, finding time to take my kids to doctor appointments was always challenging. With Surunga Medicine & Clinic, I can book virtual consultations for my children without disrupting our schedule. The pediatricians are amazing!",
+            review: "तीन बच्चाकी व्यस्त आमाको रूपमा, मेरा बच्चाहरूलाई डाक्टरको अपोइन्टमेन्टमा लिएर जान समय निकाल्न सधैं चुनौतीपूर्ण थियो। सुरुङ्गा मेडिसिन एण्ड क्लिनिकको माध्यमबाट, म हाम्रो तालिकालाई अवरोध नगरी मेरा बच्चाहरूका लागि भर्चुअल परामर्श बुक गर्न सक्छु। बाल रोग विशेषज्ञहरू अद्भुत छन्!",
             rating: 4
         },
         {
             id: 4,
-            name: "David Wilson",
-            position: "Patient",
+            name: "विनोद खड्का",
+            position: "जनरल स्वास्थ्य परामर्श सेवाग्राही",
             image: "https://randomuser.me/api/portraits/men/47.jpg",
-            review: "The quality of doctors on Surunga Medicine & Clinic is exceptional. I had a chronic issue that previous doctors couldn't diagnose properly. Through this platform, I found a specialist who identified my condition and developed an effective treatment plan.",
+            review: "सुरुङ्गा मेडिसिन एण्ड क्लिनिकमा डाक्टरहरूको गुणस्तर असाधारण छ। मलाई एउटा जटिल समस्या थियो जसलाई अघिल्ला डाक्टरहरूले ठीकसँग निदान गर्न सकेनन्। यस प्लेटफर्म मार्फत, मैले एक विशेषज्ञ भेट्टाएँ जसले मेरो अवस्था पहिचान गरे र प्रभावकारी उपचार योजना विकास गरे।",
             rating: 5
         }
     ];
