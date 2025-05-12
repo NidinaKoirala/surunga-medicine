@@ -174,7 +174,7 @@ function Contact() {
                                 </div>
                                 <div className="contact-text">
                                     <h3> Phone</h3>
-                                    <p>+977 9832322323</p>
+                                    <p>023-553097 / 9804964107 </p>
                                 </div>
                             </div>
                             
@@ -184,7 +184,7 @@ function Contact() {
                                 </div>
                                 <div className="contact-text">
                                     <h3> Email</h3>
-                                    <p>surungamedicine@gmail.com</p>
+                                    <p>appointment@surungamedicine.com.np</p>
                                 </div>
                             </div>
                             
@@ -195,16 +195,16 @@ function Contact() {
                                 <div className="contact-text">
                                     <h3>Hours</h3>
                                     <p>Monday - Friday: 8:00 AM - 8:00 PM</p>
-                                    <p>Saturday - Sunday: 10:00 AM - 4:00 PM</p>
+                                    <p>Saturday - Sunday: 9:00 AM - 7:00 PM</p>
                                 </div>
                             </div>
                         </div>
                         
                         <div className="social-links">
-                            <a href="https://facebook.com" aria-label="Facebook" className="social-link"><FaFacebookF /></a>
-                            <a href="https://twitter.com" aria-label="Twitter" className="social-link"><FaTwitter /></a>
-                            <a href="https://instagram.com" aria-label="Instagram" className="social-link"><FaInstagram /></a>
-                            <a href="https://linkedin.com" aria-label="LinkedIn" className="social-link"><FaLinkedinIn /></a>
+                            <a href="https://facebook.com/surungamedicine" aria-label="Facebook" className="social-link"><FaFacebookF /></a>
+                            <a href="https://twitter.com/surungamedicine" aria-label="Twitter" className="social-link"><FaTwitter /></a>
+                            <a href="https://instagram.com/surungamedicine" aria-label="Instagram" className="social-link"><FaInstagram /></a>
+                            <a href="https://linkedin.com/surungamedicine" aria-label="LinkedIn" className="social-link"><FaLinkedinIn /></a>
                         </div>
                     </div>
                     

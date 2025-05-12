@@ -50,16 +50,16 @@ function Footer() {
                             <h3>Contact Us</h3>
                             <ul className="footer-list contact-list">
                                 <li>
-                                    <span>+977 9814597322</span>
+                                    <span>023-553097 / 9804964107 </span>
                                 </li>
                                 <li>
-                                    <span>surungamedicine@gmail.com</span>
+                                    <span>appointment@surungamedicine.com.np</span>
                                 </li>
                                 <li>
                                     <span>Surunga, Jhapa, Nepal</span>
                                 </li>
                                 <li>
-                                    <span>Mon-Sat: 9AM - 7PM</span>
+                                    <span>Sun-Sat: 8AM - 9PM</span>
                                 </li>
                             </ul>
                         </div>
