@@ -162,7 +162,7 @@ function Contact() {
                                     <FaMapMarkerAlt />
                                 </div>
                                 <div className="contact-text">
-                                    <h3><FaMapMarkerAlt className="inline-icon" /> Location</h3>
+                                    <h3> Location</h3>
                                     <p>Kankai-03, Jhapa</p>
                                     <p>Nepal</p>
                                 </div>
@@ -173,7 +173,7 @@ function Contact() {
                                     <FaPhoneAlt />
                                 </div>
                                 <div className="contact-text">
-                                    <h3><FaPhoneAlt className="inline-icon" /> Phone</h3>
+                                    <h3> Phone</h3>
                                     <p>+977 9832322323</p>
                                 </div>
                             </div>
@@ -183,7 +183,7 @@ function Contact() {
                                     <FaEnvelope />
                                 </div>
                                 <div className="contact-text">
-                                    <h3><FaEnvelope className="inline-icon" /> Email</h3>
+                                    <h3> Email</h3>
                                     <p>surungamedicine@gmail.com</p>
                                 </div>
                             </div>
@@ -193,7 +193,7 @@ function Contact() {
                                     <FaClock />
                                 </div>
                                 <div className="contact-text">
-                                    <h3><FaClock className="inline-icon" /> Hours</h3>
+                                    <h3>Hours</h3>
                                     <p>Monday - Friday: 8:00 AM - 8:00 PM</p>
                                     <p>Saturday - Sunday: 10:00 AM - 4:00 PM</p>
                                 </div>
