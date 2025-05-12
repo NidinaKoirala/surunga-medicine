@@ -8,17 +8,17 @@ function AboutUs() {
     const achievements = [
         {
             icon: <FaHospital />,
-            count: "10+",
+            count: "12+",
             title: "Years Experience"
         },
         {
             icon: <FaUserMd />,
-            count: "500+",
+            count: "50+",
             title: "Specialist Doctors"
         },
         {
             icon: <FaHeartbeat />,
-            count: "100K+",
+            count: "10K+",
             title: "Happy Patients"
         }
     ];
@@ -39,7 +39,7 @@ function AboutUs() {
                     <div className="aboutus-text">
                         <div className="aboutus-header">
                             <div className="section-subtitle">About Us</div>
-                            <h2 className="section-title">Delivering Excellence in Healthcare Since 2013</h2>
+                            <h2 className="section-title">Delivering Excellence in Healthcare Since 2016</h2>
                         </div>
                         
                         <p className="aboutus-description">

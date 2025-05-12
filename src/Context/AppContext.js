@@ -1,19 +1,17 @@
 import React, { createContext, useState } from 'react';
+
+import maledoctoravatar from '../assets/images/Doctors/doc-avatar-male.png';
+//import femaledoctoravatar from '../assets/images/Doctors/doc-avatar-female.png';
 import doc1 from '../assets/images/Doctors/dr.dipayan.panday.png';
 import doc2 from '../assets/images/Doctors/dr.lata.png';
 import doc3 from '../assets/images/Doctors/dr.gaurav.png';
-import doc4 from '../assets/images/Doctors/doc4.png';
 import doc5 from '../assets/images/Doctors/dr.pravakar.shah.png';
 import doc6 from '../assets/images/Doctors/dr.ram.giri.png';
 import doc7 from '../assets/images/Doctors/dr.rabindra.png';
 import doc8 from '../assets/images/Doctors/dr.sandeep.png';
 import doc9 from '../assets/images/Doctors/dr.sasank.raj.png';
-import doc10 from '../assets/images/Doctors/doc10.png';
-//import doc11 from '../assets/images/Doctors/doc11.png';
-//import doc12 from '../assets/images/Doctors/doc12.png';
-//import doc13 from '../assets/images/Doctors/doc13.png';
-//import doc14 from '../assets/images/Doctors/doc14.png';
-//import doc15 from '../assets/images/Doctors/doc15.png';
+
+
 import Dermatologist from '../assets/images/specialitymenu/Dermatologist.svg';
 import bonespecialist from '../assets/images/specialitymenu/bonespecialist.png';
 import Gynecologist from '../assets/images/specialitymenu/Gynecologist.svg';
@@ -32,12 +30,12 @@ const defaultDoctorImages = {
   'वाथ तथा प्रतिरक्षा रोग विशेषज्ञ': doc6,
   'प्रसूति तथा प्रजनन': doc2,
   'छाला यौन तथा सुन्दर्य विशेषज्ञ': doc1,
-  'पेट छाती लिभर सुगर प्रेसर विशेषज्ञ': doc4,
+  'पेट छाती लिभर सुगर प्रेसर विशेषज्ञ': doc9,
   'जनरल तथा त्याप्रोस्कोपिक सुर्जन र पायल्स रोग विशेषज्ञ': doc5,
   'सुगर प्रेसर तथा किड्नी विशेषज्ञ': doc3,
   'मुटृुरोग विशेषज्ञ': doc7,
   'सुगर थाइराईड तथा हर्मोन विशेषज्ञ': doc8,
-  'हाडजोर्नी नशा तथा मेरुदण्ड विशेषज्ञ': doc10
+  'हाडजोर्नी नशा तथा मेरुदण्ड विशेषज्ञ': doc3
 };
 
 // Create provider
@@ -129,7 +127,7 @@ export const AppProvider = ({ children }) => {
         {
             _id: 'doc4',
             name: 'डा. प्रमोद कुमार शाह',
-            image: doc4,
+            image: maledoctoravatar,
             speciality: 'पेट छाती लिभर सुगर प्रेसर विशेषज्ञ',
             degree: 'MBBS , MD (INTERNAL MEDICINE) , Consultant physician',
             experience: '15+ Years',
@@ -213,7 +211,7 @@ export const AppProvider = ({ children }) => {
         {
             _id: 'doc10',
             name: 'डा. सन्तोष थापा',
-            image: doc10,
+            image: maledoctoravatar,
             speciality: 'हाडजोर्नी नशा तथा मेरुदण्ड विशेषज्ञ',
             degree: 'MD(Orthopedic Surgeon Assistant Professor',
             experience: '20+ Years',

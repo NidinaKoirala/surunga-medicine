@@ -48,21 +48,21 @@ function About() {
         {
             title: "Next-Gen Doctor Consultation",
             date: "Every Weekend",
-            location: "Main Hospital Campus",
+            location: "Surunga Medicine & Clinic",
             image: nextDoctorImage,
             description: "Experience our innovative approach to doctor consultations with the latest telemedicine technology and personal care combined for better patient outcomes."
         },
         {
             title: "Additional Medical Services",
             date: "Daily, 9AM - 6PM",
-            location: "All Hospital Branches",
+            location: "Surunga Medicine & Clinic",
             image: moreSvcImage,
             description: "We provide a range of additional services including laboratory testing, diagnostic imaging, preventive health screenings, and specialized medical consultations."
         },
         {
             title: "Community Healthcare Initiative",
             date: "Monthly, First Week",
-            location: "Various Community Centers",
+            location: "Surunga Medicine & Clinic",
             image: ourSvcImage,
             description: "Our community healthcare initiative brings essential medical services to underserved areas, focusing on preventive care, health education, and basic treatments."
         }
@@ -91,13 +91,13 @@ function About() {
                         <div className="about-text">
                             <h2>Welcome to Surunga Medicine & Clinic</h2>
                             <p>
-                                Since 2012, Surunga Medicine & Clinic has been your trusted partner in managing healthcare needs conveniently and efficiently. We understand the challenges individuals face when it comes to scheduling doctor appointments and managing their health records.
+                                Established in 2016 (2073 B.S.), Surunga Medicine and Clinic has been dedicated to delivering reliable, accessible, and high-quality healthcare to the people of Jhapa District. Over the years, we have become a trusted name in the community because we always put our patients’ needs first and provide them with the best care possible.
                             </p>
                             <p>
-                                Our state-of-the-art facilities, coupled with a team of highly qualified healthcare professionals, ensure that you receive the best possible care. We believe in a patient-first approach, making sure that every interaction you have with us is comfortable, dignified, and effective.
+                            We combine compassionate, personalized care with the latest in medical technology to support you at every step of your health journey. From booking appointments to managing your health records, we ensure every part of your experience is smooth, simple, and convenient.
                             </p>
                             <p>
-                                Surunga Medicine & Clinic is committed to excellence in healthcare technology. We continuously strive to enhance our platform, integrating the latest advancements to improve user experience and deliver superior service. Whether you're booking your first appointment or managing ongoing care, Surunga Medicine & Clinic is here to support you every step of the way.
+                            Whether you're visiting us for a routine check-up, consultation, or ongoing treatment, our dedicated team is here to serve you with professionalism, respect, and empathy.
                             </p>
                         </div>
                     </div>
@@ -129,7 +129,7 @@ function About() {
                                 Our vision at Surunga Medicine & Clinic is to create a seamless healthcare experience for every patient. We aim to bridge the gap between patients and healthcare providers, making it easier for you to access the care you need, when you need it.
                             </p>
                             <p>
-                                We envision a future where healthcare is accessible, affordable, and personalized for everyone. By leveraging technology and human expertise, we strive to revolutionize the healthcare experience and improve health outcomes globally.
+                            Our team is always here to help you feel better and stay healthy. You can trust us to take good care of you every time you visit.
                             </p>
                             <div className="vision-points">
                                 <div className="vision-point">
@@ -195,7 +195,7 @@ function About() {
                                 Our medical professionals undergo rigorous training and continuous education to stay updated with the latest advancements in medical science. We take pride in our team's expertise, compassion, and dedication to improving patient outcomes.
                             </p>
                             <p>
-                                Together, we're building a healthcare system that's more responsive, more accessible, and more human.
+                            We believe healthcare should be simple, accessible, and centered around real human care and that’s exactly what we’re building every day.
                             </p>
                         </div>
                     </div>

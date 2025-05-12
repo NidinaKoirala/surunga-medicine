@@ -5,7 +5,7 @@ import heroimg from '../assets/images/home/front-3.jpg';
 import doctorImage1 from '../assets/images/home/front-1.jpg';
 import doctorImage2 from '../assets/images/home/front-2.jpg';
 import doctorImage3 from '../assets/images/about-us/children-doctor.jpg';
-
+import profileImage from '../assets/images/logo-hospital.png';
 // Import components
 import Herosection from './Herosection';
 import SpecialityMenu from './SpecialityMenu';
@@ -43,7 +43,7 @@ function Home() {
         <React.Fragment>
             <Herosection 
                 carouselImages={carouselImages}
-                profileImage={doctorImage2} 
+                profileImage={profileImage} 
                 features={heroFeatures}
                 stats={heroStats}
                 title={heroTitle}
