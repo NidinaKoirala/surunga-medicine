@@ -13,32 +13,32 @@ import nextDoctorImage from '../assets/images/about-us/nex-doctor.jpg';
 import ourSvcImage from '../assets/images/about-us/our-svc.jpg';
 
 // Import icons
-import { FaHospital, FaUserMd, FaAward, FaHandHoldingMedical, FaHeartbeat, FaCalendarCheck } from 'react-icons/fa';
+import { FaHospital, FaUserMd, FaFlask, FaHandHoldingMedical, FaHeartbeat, FaCalendarCheck } from 'react-icons/fa';
 
 function About() {
     // Stats data
     const stats = [
-        { icon: <FaHospital />, count: '12+', title: 'वर्षको अनुभव' },
-        { icon: <FaUserMd />, count: '150+', title: 'विशेषज्ञ चिकित्सकहरू' },
-        { icon: <FaHandHoldingMedical />, count: '15,000+', title: 'उपचारित बिरामीहरू' },
-        { icon: <FaAward />, count: '25+', title: 'प्राप्त पुरस्कारहरू' }
+        { icon: <FaHospital />, count: '12+', title: 'Years of Experience' },
+        { icon: <FaUserMd />, count: '150+', title: 'Expert Doctors' },
+        { icon: <FaHandHoldingMedical />, count: '15,000+', title: 'Patients Treated' },
+        { icon: <FaFlask />, count: '500+', title: 'Lab Tests' }
     ];
     
     // Specialized services data
     const specializedServices = [
         {
-            title: "बाल रोग विशेषज्ञ सेवा",
-            description: "हाम्रो विशेष बाल रोग विभागले शिशुदेखि किशोरावस्थासम्मका सबै उमेरका बच्चाहरूलाई अत्याधुनिक सुविधा र बाल-मैत्री वातावरणमा व्यापक स्याहार प्रदान गर्दछ।",
+            title: "Pediatric Care",
+            description: "Our specialized pediatric department provides comprehensive care for children of all ages, from infants to adolescents, with state-of-the-art facilities and child-friendly environments.",
             image: childrenDoctorImage
         },
         {
-            title: "मधुमेह र थाइरोइड व्यवस्थापन",
-            description: "हाम्रो एन्डोक्रिनोलोजी विभागले मधुमेह र थाइरोइड विकारहरूका लागि व्यक्तिगत उपचार योजना र उत्तम स्वास्थ्य परिणामका लागि निरन्तर अनुगमनका साथ विशेष स्याहार प्रदान गर्दछ।",
+            title: "Diabetes & Thyroid Management",
+            description: "Our endocrinology department offers specialized care for diabetes and thyroid disorders, with personalized treatment plans and continuous monitoring for optimal health outcomes.",
             image: diabitiesThyroidImage
         },
         {
-            title: "ग्यास्ट्रोएन्टेरोलोजी सेवाहरू",
-            description: "हाम्रा ग्यास्ट्रोएन्टेरोलोजी विशेषज्ञहरूले उन्नत निदान उपकरण र प्रमाणमा आधारित उपचार पद्धतिहरू प्रयोग गरेर पाचन प्रणालीका विभिन्न विकारहरूको निदान र उपचार गर्दछन्।",
+            title: "Gastroenterology Services",
+            description: "Our gastroenterology specialists diagnose and treat a wide range of digestive system disorders using advanced diagnostic tools and evidence-based treatment approaches.",
             image: stomachDocImage
         }
     ];
@@ -46,25 +46,25 @@ function About() {
     // Upcoming events data
     const upcomingEvents = [
         {
-            title: "नयाँ-युग चिकित्सक परामर्श",
-            date: "प्रत्येक सप्ताहान्त",
-            location: "सुरुङ्गा मेडिसिन एण्ड क्लिनिक",
+            title: "Next-Gen Doctor Consultation",
+            date: "Every Weekend",
+            location: "Main Hospital Campus",
             image: nextDoctorImage,
-            description: "बिरामीको उत्तम परिणामका लागि हाम्रो नवीनतम टेलिमेडिसिन प्रविधि र व्यक्तिगत स्याहार संयोजन गरिएको चिकित्सक परामर्शको अभिनव दृष्टिकोण अनुभव गर्नुहोस्।"
+            description: "Experience our innovative approach to doctor consultations with the latest telemedicine technology and personal care combined for better patient outcomes."
         },
         {
-            title: "अतिरिक्त चिकित्सकीय सेवाहरू",
-            date: "दैनिक, बिहान ९ बजेदेखि बेलुका ६ बजेसम्म",
-            location: "सुरुङ्गा मेडिसिन एण्ड क्लिनिक",
+            title: "Additional Medical Services",
+            date: "Daily, 9AM - 6PM",
+            location: "All Hospital Branches",
             image: moreSvcImage,
-            description: "हामी प्रयोगशाला परीक्षण, निदान इमेजिङ, रोकथाम स्वास्थ्य स्क्रिनिङ, र विशेष चिकित्सा परामर्श लगायत थप सेवाहरूको श्रृंखला प्रदान गर्दछौं।"
+            description: "We provide a range of additional services including laboratory testing, diagnostic imaging, preventive health screenings, and specialized medical consultations."
         },
         {
-            title: "समुदाय स्वास्थ्य सेवा पहल",
-            date: "मासिक, पहिलो हप्ता",
-            location: "सुरुङ्गा मेडिसिन एण्ड क्लिनिक",
+            title: "Community Healthcare Initiative",
+            date: "Monthly, First Week",
+            location: "Various Community Centers",
             image: ourSvcImage,
-            description: "हाम्रो समुदाय स्वास्थ्य सेवा पहलले सेवा नपुगेका क्षेत्रहरूमा आवश्यक चिकित्सकीय सेवाहरू पुर्याउँछ, जसमा रोकथाम स्याहार, स्वास्थ्य शिक्षा, र आधारभूत उपचारहरूमा ध्यान केन्द्रित गरिएको छ।"
+            description: "Our community healthcare initiative brings essential medical services to underserved areas, focusing on preventive care, health education, and basic treatments."
         }
     ];
     
@@ -74,8 +74,8 @@ function About() {
             <section className="about-hero">
                 <div className="container">
                     <div className="about-hero-content">
-                        <h1>हाम्रो बारेमा</h1>
-                        <p>स्वास्थ्य सेवामा उत्कृष्टताको प्रतिबद्धता</p>
+                        <h1>About Us</h1>
+                        <p>Committed to Excellence in Healthcare</p>
                     </div>
                 </div>
                 <div className="hero-overlay"></div>
@@ -86,18 +86,18 @@ function About() {
                 <div className="container">
                     <div className="about-content">
                         <div className="about-image">
-                            <img src={aboutImage} alt="सुरुङ्गा मेडिसिन एण्ड क्लिनिकको बारेमा" />
+                            <img src={aboutImage} alt="About Surunga Medicine & Clinic" />
                         </div>
                         <div className="about-text">
-                            <h2>सुरुङ्गा मेडिसिन एण्ड क्लिनिकमा स्वागत छ</h2>
+                            <h2>Welcome to Surunga Medicine & Clinic</h2>
                             <p>
-                                2073 देखि, सुरुङ्गा मेडिसिन एण्ड क्लिनिक कंकाई-०३, झापामा तपाईंको स्वास्थ्य सेवा आवश्यकताहरू सहज र कुशलतापूर्वक व्यवस्थापन गर्ने तपाईंको विश्वासिलो साझेदार रहँदै आएको छ। हामी व्यक्तिहरूले चिकित्सक अपोइन्टमेन्ट तय गर्दा र आफ्नो स्वास्थ्य रेकर्ड व्यवस्थापन गर्दा आइपर्ने चुनौतीहरू बुझ्दछौं।
+                                Since 2012, Surunga Medicine & Clinic has been your trusted partner in managing healthcare needs conveniently and efficiently. We understand the challenges individuals face when it comes to scheduling doctor appointments and managing their health records.
                             </p>
                             <p>
-                                हाम्रो अत्याधुनिक सुविधाहरू, उच्च योग्य स्वास्थ्य पेशेवरहरूको टिमका साथ, तपाईंले सम्भव भएसम्म उत्तम स्याहार प्राप्त गर्नुहुनेछ भनी सुनिश्चित गर्दछ। हामी बिरामी-प्रथम दृष्टिकोणमा विश्वास गर्दछौं, तपाईंले हामीसँग गर्ने हरेक अन्तरक्रिया आरामदायक, मर्यादित, र प्रभावकारी छ भनी सुनिश्चित गर्दछौं।
+                                Our state-of-the-art facilities, coupled with a team of highly qualified healthcare professionals, ensure that you receive the best possible care. We believe in a patient-first approach, making sure that every interaction you have with us is comfortable, dignified, and effective.
                             </p>
                             <p>
-                                सुरुङ्गा मेडिसिन एण्ड क्लिनिक स्वास्थ्य सेवा प्रविधिमा उत्कृष्टताको लागि प्रतिबद्ध छ। हामी प्रयोगकर्ता अनुभव सुधार र उत्कृष्ट सेवा प्रदान गर्न नवीनतम प्रगतिहरू एकीकृत गर्दै हाम्रो प्लेटफर्म बढाउन निरन्तर प्रयास गर्दछौं। तपाईं आफ्नो पहिलो अपोइन्टमेन्ट बुक गर्दै हुनुहुन्छ वा चलिरहेको स्याहार व्यवस्थापन गर्दै हुनुहुन्छ, सुरुङ्गा मेडिसिन एण्ड क्लिनिक हरेक कदममा तपाईंलाई समर्थन गर्न यहाँ छ।
+                                Surunga Medicine & Clinic is committed to excellence in healthcare technology. We continuously strive to enhance our platform, integrating the latest advancements to improve user experience and deliver superior service. Whether you're booking your first appointment or managing ongoing care, Surunga Medicine & Clinic is here to support you every step of the way.
                             </p>
                         </div>
                     </div>
@@ -124,32 +124,32 @@ function About() {
                 <div className="container">
                     <div className="vision-content">
                         <div className="vision-text">
-                            <h2>हाम्रो दृष्टिकोण</h2>
+                            <h2>Our Vision</h2>
                             <p>
-                                सुरुङ्गा मेडिसिन एण्ड क्लिनिकमा हाम्रो दृष्टिकोण प्रत्येक बिरामीका लागि निर्बाध स्वास्थ्य सेवा अनुभव सिर्जना गर्नु हो। हामी बिरामीहरू र स्वास्थ्य सेवा प्रदायकहरूबीचको अन्तर पूरा गर्न, तपाईंलाई आवश्यक परेको बेला आवश्यक स्याहार प्राप्त गर्न सहज बनाउँदै लक्षित छौं।
+                                Our vision at Surunga Medicine & Clinic is to create a seamless healthcare experience for every patient. We aim to bridge the gap between patients and healthcare providers, making it easier for you to access the care you need, when you need it.
                             </p>
                             <p>
-                                हामी एउटा भविष्य कल्पना गर्दछौं जहाँ स्वास्थ्य सेवा सबैका लागि पहुँचयोग्य, किफायती, र व्यक्तिगत हुन्छ। प्रविधि र मानव विशेषज्ञता उपयोग गरेर, हामी स्वास्थ्य सेवा अनुभवलाई क्रान्तिकारी बनाउन र विश्वव्यापी स्वास्थ्य परिणामहरू सुधार गर्न प्रयासरत छौं।
+                                We envision a future where healthcare is accessible, affordable, and personalized for everyone. By leveraging technology and human expertise, we strive to revolutionize the healthcare experience and improve health outcomes globally.
                             </p>
                             <div className="vision-points">
                                 <div className="vision-point">
                                     <FaHeartbeat className="point-icon" />
                                     <div>
-                                        <h4>बिरामी-केन्द्रित स्याहार</h4>
-                                        <p>हामीले गर्ने हरेक कुरामा बिरामीहरूलाई पहिलो स्थानमा राख्ने</p>
+                                        <h4>Patient-Centered Care</h4>
+                                        <p>Putting patients first in everything we do</p>
                                     </div>
                                 </div>
                                 <div className="vision-point">
                                     <FaCalendarCheck className="point-icon" />
                                     <div>
-                                        <h4>पहुँचयोग्य स्वास्थ्य सेवा</h4>
-                                        <p>गुणस्तरीय स्वास्थ्य सेवा सबैका लागि उपलब्ध बनाउने</p>
+                                        <h4>Accessible Healthcare</h4>
+                                        <p>Making quality healthcare available to all</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="vision-image">
-                            <img src={diabitiesThyroidImage} alt="हाम्रो दृष्टिकोण" />
+                            <img src={diabitiesThyroidImage} alt="Our Vision" />
                         </div>
                     </div>
                 </div>
@@ -159,8 +159,8 @@ function About() {
             <section className="about-services">
                 <div className="container">
                     <div className="services-header">
-                        <h2>हाम्रा विशेष सेवाहरू</h2>
-                        <p>हामी विशिष्ट स्वास्थ्य सेवा आवश्यकताहरू सम्बोधन गर्न विशेष सेवाहरूको श्रृंखला प्रदान गर्दछौं</p>
+                        <h2>Our Specialized Services</h2>
+                        <p>We offer a range of specialized services to address specific healthcare needs</p>
                     </div>
                     
                     <div className="services-grid">
@@ -184,18 +184,18 @@ function About() {
                 <div className="container">
                     <div className="team-content">
                         <div className="team-image">
-                            <img src={ourSvcImage} alt="हाम्रो टीम" />
+                            <img src={ourSvcImage} alt="Our Team" />
                         </div>
                         <div className="team-text">
-                            <h2>हाम्रो समर्पित टीम</h2>
+                            <h2>Our Dedicated Team</h2>
                             <p>
-                                सुरुङ्गा मेडिसिन एण्ड क्लिनिकको पछाडि स्वास्थ्य सेवा वितरण परिवर्तन गर्न प्रतिबद्ध समर्पित पेशेवरहरूको टोली छ। हाम्रो विविध टीममा निर्बाध स्वास्थ्य सेवा अनुभव सिर्जना गर्न एकसाथ काम गर्ने अनुभवी स्वास्थ्य सेवा प्रदायकहरू, प्रविधि विशेषज्ञहरू, र बिरामी वकिलहरू समावेश छन्।
+                                Behind Surunga Medicine & Clinic is a team of dedicated professionals committed to transforming healthcare delivery. Our diverse team includes experienced healthcare providers, technology experts, and patient advocates working together to create a seamless healthcare experience.
                             </p>
                             <p>
-                                हाम्रा चिकित्सा पेशेवरहरूले चिकित्सा विज्ञानमा नवीनतम प्रगतिहरूसँग अद्यावधिक रहन कठोर प्रशिक्षण र निरन्तर शिक्षा प्राप्त गर्दछन्। हामी हाम्रो टीमको विशेषज्ञता, करुणा, र बिरामी परिणामहरू सुधार गर्ने प्रतिबद्धतामा गर्व गर्दछौं।
+                                Our medical professionals undergo rigorous training and continuous education to stay updated with the latest advancements in medical science. We take pride in our team's expertise, compassion, and dedication to improving patient outcomes.
                             </p>
                             <p>
-                                एकसाथ, हामी स्वास्थ्य सेवा प्रणाली निर्माण गर्दैछौं जुन अधिक प्रतिक्रियाशील, अधिक पहुँचयोग्य, र अधिक मानवीय छ।
+                                Together, we're building a healthcare system that's more responsive, more accessible, and more human.
                             </p>
                         </div>
                     </div>
@@ -206,8 +206,8 @@ function About() {
             <section className="about-events">
                 <div className="container">
                     <div className="events-header">
-                        <h2>आगामी कार्यक्रम र सेवाहरू</h2>
-                        <p>हाम्रो समुदायलाई सेवा गर्न डिजाइन गरिएका यी विशेष स्वास्थ्य सेवा पहलहरूमा सहभागी हुनुहोस्</p>
+                        <h2>Upcoming Events & Services</h2>
+                        <p>Join us for these special healthcare initiatives designed to serve our community</p>
                     </div>
                     
                     <div className="events-grid">
@@ -219,8 +219,8 @@ function About() {
                                 <div className="event-details">
                                     <h3>{event.title}</h3>
                                     <div className="event-meta">
-                                        <p><strong>मिति:</strong> {event.date}</p>
-                                        <p><strong>स्थान:</strong> {event.location}</p>
+                                        <p><strong>Date:</strong> {event.date}</p>
+                                        <p><strong>Location:</strong> {event.location}</p>
                                     </div>
                                     <p className="event-description">{event.description}</p>
                                 </div>
