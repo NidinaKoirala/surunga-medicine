@@ -18,13 +18,13 @@ function UpcomingDoctors() {
         {
             id: 1,
             title: "बाल रोग विशेषज्ञ भ्रमण",
-            doctor: "डा. प्रमिला श्रेष्ठ",
+            doctor: "डा. आश्रय कडरिया",
             specialty: "बाल रोग विशेषज्ञ",
             date: "जेठ १५, २०८२",
             time: "बिहान ९:०० - साँझ ४:००",
-            location: "मुख्य अस्पताल, दोस्रो तल्ला",
+            location: "Surunga Medicine & Clinic",
             image: childrenDoctorImage,
-            description: "डा. प्रमिला श्रेष्ठ बाल रोग उपचारमा १५ वर्षको अनुभव भएकी एक प्रख्यात विशेषज्ञ हुनुहुन्छ। उहाँ बाल विकास र बाल रोग प्रतिरक्षामा विशेषज्ञता राख्नुहुन्छ। उहाँको भ्रमणको समयमा, बच्चाहरूको विकास सम्बन्धी चिन्ता, खोप सल्लाह र सामान्य बाल रोगहरूको उपचारका लागि परामर्शको लागि उपलब्ध हुनुहुनेछ।",
+            description: "डा. आश्रय कडरिया  बाल रोग उपचारमा १५ वर्षको अनुभव भएकी एक प्रख्यात विशेषज्ञ हुनुहुन्छ। उहाँ बाल विकास र बाल रोग प्रतिरक्षामा विशेषज्ञता राख्नुहुन्छ। उहाँको भ्रमणको समयमा, बच्चाहरूको विकास सम्बन्धी चिन्ता, खोप सल्लाह र सामान्य बाल रोगहरूको उपचारका लागि परामर्शको लागि उपलब्ध हुनुहुनेछ।",
             highlights: [
                 "शिशु र बच्चाहरूको लागि विशेष हेरचाह",
                 "विकास चरणको मूल्यांकन",
@@ -35,13 +35,13 @@ function UpcomingDoctors() {
         {
             id: 2,
             title: "मधुमेह र थाइरोइड शिविर",
-            doctor: "डा. राजेश भट्टराई",
+            doctor: "डा. सन्दीप चन्द श्रेष्ठ",
             specialty: "एन्डोक्रिनोलोजिस्ट",
             date: "असार ५-६, २०८२",
             time: "बिहान १०:०० - साँझ ५:००",
-            location: "स्वास्थ्य केन्द्र",
+            location: "Surunga Medicine & Clinic",
             image: diabitiesThyroidImage,
-            description: "डा. राजेश भट्टराई व्यापक मधुमेह र थाइरोइड स्क्रिनिंग र परामर्श शिविर संचालन गर्न आउनुहुनेछ। एन्डोक्राइन विकारमा उहाँको विशेषज्ञताले मधुमेह व्यवस्थापन र थाइरोइड अवस्थाहरूका लागि व्यक्तिगत उपचार योजनाहरू प्रदान गर्दछ। यो दुई दिने शिविरले बिरामीहरूलाई विशेष एन्डोक्रिनोलोजी परामर्श र फलो-अपको लागि उत्कृष्ट अवसर प्रदान गर्दछ।",
+            description: "डा. सन्दीप चन्द श्रेष्ठ व्यापक मधुमेह र थाइरोइड स्क्रिनिंग र परामर्श शिविर संचालन गर्न आउनुहुनेछ। एन्डोक्राइन विकारमा उहाँको विशेषज्ञताले मधुमेह व्यवस्थापन र थाइरोइड अवस्थाहरूका लागि व्यक्तिगत उपचार योजनाहरू प्रदान गर्दछ। यो दुई दिने शिविरले बिरामीहरूलाई विशेष एन्डोक्रिनोलोजी परामर्श र फलो-अपको लागि उत्कृष्ट अवसर प्रदान गर्दछ।",
             highlights: [
                 "निःशुल्क रक्त शर्करा र थाइरोइड स्क्रिनिंग",
                 "विशेषज्ञसँग व्यक्तिगत परामर्श",
@@ -52,13 +52,13 @@ function UpcomingDoctors() {
         {
             id: 3,
             title: "पाचन रोग परामर्श",
-            doctor: "डा. सुनिता गुरुङ",
+            doctor: "डा. प्रमोद कुमार शाह",
             specialty: "ग्यास्ट्रोएन्टेरोलोजिस्ट",
             date: "असार २८, २०८२",
             time: "बिहान ११:०० - साँझ ६:००",
-            location: "पूर्वी विङ, परामर्श कक्ष ४",
+            location: "Surunga Medicine & Clinic",
             image: stomachDocImage,
-            description: "डा. सुनिता गुरुङ पाचन विकार र कलेजो रोगहरूमा विशेषज्ञता भएकी एक अग्रणी ग्यास्ट्रोएन्टेरोलोजिस्ट हुनुहुन्छ। उहाँको भ्रमणको समयमा, उहाँले आईबीएस, जीईआरडी, अल्सरेटिभ कोलाइटिस, क्रोहन्स डिजिज र अन्य ग्यास्ट्रोइन्टेस्टाइनल विकारहरू भएका बिरामीहरूलाई परामर्श प्रदान गर्नुहुनेछ। निदानात्मक र थेरापेटिक एन्डोस्कोपी दुवैमा उहाँको विशेषज्ञताले उहाँलाई जटिल जिआई केसहरूको लागि अत्यधिक खोजी गरिएको बनाउँछ।",
+            description: "डा. प्रमोद कुमार शाह पाचन विकार र कलेजो रोगहरूमा विशेषज्ञता भएकी एक अग्रणी ग्यास्ट्रोएन्टेरोलोजिस्ट हुनुहुन्छ। उहाँको भ्रमणको समयमा, उहाँले आईबीएस, जीईआरडी, अल्सरेटिभ कोलाइटिस, क्रोहन्स डिजिज र अन्य ग्यास्ट्रोइन्टेस्टाइनल विकारहरू भएका बिरामीहरूलाई परामर्श प्रदान गर्नुहुनेछ। निदानात्मक र थेरापेटिक एन्डोस्कोपी दुवैमा उहाँको विशेषज्ञताले उहाँलाई जटिल जिआई केसहरूको लागि अत्यधिक खोजी गरिएको बनाउँछ।",
             highlights: [
                 "पाचन विकार मूल्यांकन",
                 "कलेजो कार्य मूल्यांकन",
@@ -68,19 +68,19 @@ function UpcomingDoctors() {
         },
         {
             id: 4,
-            title: "टेलिमेडिसिन प्रदर्शन",
-            doctor: "डा. बिनोद अधिकारी",
-            specialty: "टेलिमेडिसिन विशेषज्ञ",
+            title: "बरिष्ठ हाडजोर्नी तथा मेरुदण्ड विशेषज्ञ",
+            doctor: "डा. सन्तोष थापा",
+            specialty: "बरिष्ठ हाडजोर्नी तथा मेरुदण्ड विशेषज्ञ",
             date: "साउन १२, २०८२",
             time: "दिउँसो १:०० - साँझ ४:००",
-            location: "डिजिटल स्वास्थ्य केन्द्र",
+            location: "Surunga Medicine & Clinic",
             image: nextDoctorImage,
-            description: "डा. बिनोद अधिकारीले टेलिमेडिसिन प्रविधिको नवीनतम प्रगतिहरू प्रदर्शन गर्नुहुनेछ। यस सत्रले कसरी धेरै अवस्थाहरूको लागि टाढाको परामर्शहरू शारीरिक उपस्थितिमा गरिने भेटहरू जस्तै प्रभावकारी हुन सक्छन् भन्ने कुरा प्रदर्शन गर्नेछ। बिरामीहरूले हाम्रो नयाँ टेलिमेडिसिन प्लेटफर्म कसरी काम गर्छ र यसलाई नियमित जाँच, फलो-अप अपोइन्टमेन्ट र केही निदान मूल्यांकनहरूको लागि कसरी प्रयोग गर्न सकिन्छ भन्ने कुरा प्रत्यक्ष अनुभव गर्न सक्दछन्।",
+            description: "डा. सन्तोष थापाले टेलिमेडिसिन प्रविधिको नवीनतम प्रगतिहरू प्रदर्शन गर्नुहुनेछ। यस सत्रले कसरी धेरै अवस्थाहरूको लागि टाढाको परामर्शहरू शारीरिक उपस्थितिमा गरिने भेटहरू जस्तै प्रभावकारी हुन सक्छन् भन्ने कुरा प्रदर्शन गर्नेछ। बिरामीहरूले हाम्रो नयाँ टेलिमेडिसिन प्लेटफर्म कसरी काम गर्छ र यसलाई नियमित जाँच, फलो-अप अपोइन्टमेन्ट र केही निदान मूल्यांकनहरूको लागि कसरी प्रयोग गर्न सकिन्छ भन्ने कुरा प्रत्यक्ष अनुभव गर्न सक्दछन्।",
             highlights: [
-                "लाइभ टेलिमेडिसिन प्रदर्शन",
-                "टाढा निदान क्षमताहरू",
-                "भर्चुअल प्रिस्क्रिप्शन प्रक्रिया",
-                "घरेलु स्वास्थ्य निगरानी सेटअप"
+            "लाइभ टेलिमेडिसिन प्रदर्शन",
+            "टाढा निदान क्षमताहरू",
+            "भर्चुअल प्रिस्क्रिप्शन प्रक्रिया",
+            "घरेलु स्वास्थ्य निगरानी सेटअप"
             ]
         }
     ];
@@ -115,7 +115,7 @@ function UpcomingDoctors() {
                     {doctorEvents.map(event => (
                         <div key={event.id} className="doctor-event-card" onClick={() => openEventDetails(event)}>
                             <div className="event-image">
-                                <img src={event.image} alt={event.title} />
+                            <img src={event.image} alt={event.title} style={{width: '100%', height: '100%', objectFit: 'contain'}} />
                                 <div className="event-date-badge">
                                     <FaCalendarAlt />
                                     <span>{event.date}</span>
@@ -147,21 +147,28 @@ function UpcomingDoctors() {
             
             {/* Event Details Modal */}
             {selectedEvent && (
-                <div className="event-modal">
-                    <div className="modal-overlay" onClick={closeEventDetails}></div>
-                    <div className="modal-content">
-                        <button className="modal-close" onClick={closeEventDetails}>
-                            <FaTimes />
-                        </button>
-                        
-                        <div className="modal-header">
-                            <img src={selectedEvent.image} alt={selectedEvent.title} />
-                            <div className="modal-title-area">
-                                <h2>{selectedEvent.title}</h2>
-                                <p className="modal-doctor">
-                                    {selectedEvent.doctor} <span>({selectedEvent.specialty})</span>
-                                </p>
-                            </div>
+        <div className="event-modal">
+            <div className="modal-overlay" onClick={closeEventDetails}></div>
+            <div className="modal-content">
+                <button className="modal-close" onClick={closeEventDetails}>
+                    <FaTimes />
+                </button>
+                
+                <div className="modal-image-container">
+                    <img 
+                        src={selectedEvent.image} 
+                        alt={selectedEvent.title} 
+                        className="modal-image"
+                    />
+                </div>
+                
+                <div className="modal-body">
+                    <div className="modal-title-area">
+                        <h2>{selectedEvent.title}</h2>
+                        <p className="modal-doctor">
+                            {selectedEvent.doctor} <span>({selectedEvent.specialty})</span>
+                        </p>
+                    </div>
                         </div>
                         
                         <div className="modal-body">
@@ -208,7 +215,7 @@ function UpcomingDoctors() {
                                     className="book-appointment-btn" 
                                     onClick={handleBookAppointment}
                                 >
-                                    अपोइन्टमेन्ट बुक गर्नुहोस्
+                                    Book Appointment Now
                                 </button>
                             </div>
                         </div>
