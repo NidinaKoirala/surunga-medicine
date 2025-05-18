@@ -3,10 +3,10 @@ import './Services.css';
 import { 
     FaUserMd, 
     FaCalendarCheck, 
-    FaHospital, 
-    FaHeartbeat, 
+    FaFlask,
+    FaBed, 
     FaAmbulance, 
-    FaPrescriptionBottleAlt 
+    FaPills 
 } from "react-icons/fa";
 
 function Services() {
@@ -22,14 +22,9 @@ function Services() {
             description: "Book appointments online anytime and receive instant confirmations."
         },
         {
-            icon: <FaHospital />,
-            title: "Virtual Visits",
-            description: "Connect with doctors remotely through secure video consultations."
-        },
-        {
-            icon: <FaHeartbeat />,
-            title: "Health Monitoring",
-            description: "Keep track of your health metrics and receive personalized advice."
+            icon: <FaBed />,
+            title: "Inpatient Care",
+            description: "Comfortable accommodations and round-the-clock care for patients requiring hospitalization."
         },
         {
             icon: <FaAmbulance />,
@@ -37,9 +32,14 @@ function Services() {
             description: "24/7 emergency support and quick response for critical situations."
         },
         {
-            icon: <FaPrescriptionBottleAlt />,
-            title: "Prescription Refills",
-            description: "Easy renewal of prescriptions without unnecessary in-person visits."
+            icon: <FaFlask />,
+            title: "Lab Services",
+            description: "State-of-the-art laboratory testing with quick and accurate results."
+        },
+        {
+            icon: <FaPills />,
+            title: "Pharmacy",
+            description: "On-site pharmacy with a wide range of medications and expert pharmacist advice."
         }
     ];
     
