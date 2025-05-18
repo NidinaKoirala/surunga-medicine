@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 
-import maledoctoravatar from '../assets/images/Doctors/doc-avatar-male.png';
+//import maledoctoravatar from '../assets/images/Doctors/doc-avatar-male.png';
 //import femaledoctoravatar from '../assets/images/Doctors/doc-avatar-female.png';
 import doc1 from '../assets/images/Doctors/dr.dipayan.panday.png';
 import doc2 from '../assets/images/Doctors/dr.lata.png';
@@ -10,6 +10,9 @@ import doc6 from '../assets/images/Doctors/dr.ram.giri.png';
 import doc7 from '../assets/images/Doctors/dr.rabindra.png';
 import doc8 from '../assets/images/Doctors/dr.sandeep.png';
 import doc9 from '../assets/images/Doctors/dr.sasank.raj.png';
+import doc4 from '../assets/images/Doctors/dr.pramod.kumar.shah.png';
+import doc10 from '../assets/images/Doctors/dr.santosh.png';
+
 
 
 import Dermatologist from '../assets/images/specialitymenu/Dermatologist.svg';
@@ -127,7 +130,7 @@ export const AppProvider = ({ children }) => {
         {
             _id: 'doc4',
             name: 'डा. प्रमोद कुमार शाह',
-            image: maledoctoravatar,
+            image: doc4,
             speciality: 'पेट छाती लिभर सुगर प्रेसर विशेषज्ञ',
             degree: 'MBBS , MD (INTERNAL MEDICINE) , Consultant physician',
             experience: '15+ Years',
@@ -211,7 +214,7 @@ export const AppProvider = ({ children }) => {
         {
             _id: 'doc10',
             name: 'डा. सन्तोष थापा',
-            image: maledoctoravatar,
+            image: doc10,
             speciality: 'हाडजोर्नी नशा तथा मेरुदण्ड विशेषज्ञ',
             degree: 'MD(Orthopedic Surgeon Assistant Professor',
             experience: '20+ Years',
