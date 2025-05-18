@@ -402,7 +402,7 @@ const Appointment = () => {
           <li>Please arrive 15 minutes before your scheduled appointment time</li>
           <li>Bring your ID and insurance information if applicable</li>
           <li>If you need to cancel, please provide at least 24 hours notice</li>
-          <li>For urgent matters, please call our office directly at +977 9832322323</li>
+          <li>For urgent matters, please call our office directly at 023-553097 / 9804964107</li>
         </ul>
       </div>
     </div>
