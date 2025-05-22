@@ -24,6 +24,7 @@ import HeartSpecialist from '../assets/images/specialitymenu/Heart-Specialist.pn
 import Immunologist from '../assets/images/specialitymenu/Immunologist.png';
 import Endocrinologist from '../assets/images/specialitymenu/Endocrinologist.png';
 import MentalHealthSpecialist from '../assets/images/specialitymenu/MentalHealthSpecialist.png';
+import General_physician from '../assets/images/specialitymenu/General_physician.svg';
 
 // Create context
 export const AppContext = createContext();
@@ -33,7 +34,7 @@ const defaultDoctorImages = {
   'वाथ तथा प्रतिरक्षा रोग विशेषज्ञ': doc6,
   'प्रसूति तथा प्रजनन': doc2,
   'छाला यौन तथा सुन्दर्य विशेषज्ञ': doc1,
-  'पेट छाती लिभर सुगर प्रेसर विशेषज्ञ': doc9,
+  'वरिष्ठ कन्सल्टेन्ट फिजिसियन': doc9,
   'जनरल तथा त्याप्रोस्कोपिक सुर्जन र पायल्स रोग विशेषज्ञ': doc5,
   'सुगर प्रेसर तथा किड्नी विशेषज्ञ': doc3,
   'मुटृुरोग विशेषज्ञ': doc7,
@@ -80,7 +81,11 @@ export const AppProvider = ({ children }) => {
         {
             speciality: 'मानसिक, नशा तथा टाउको रोग विशेषज्ञ',
             image: MentalHealthSpecialist
-        },          
+        },      
+        {
+            speciality: 'वरिष्ठ कन्सल्टेन्ट फिजिसियन',
+            image: General_physician
+        },                  
     ];
 
     // Initial doctors data
@@ -128,10 +133,10 @@ export const AppProvider = ({ children }) => {
             _id: 'doc4',
             name: 'डा. प्रमोद कुमार शाह',
             image: doc4,
-            speciality: 'पेट छाती लिभर सुगर प्रेसर विशेषज्ञ',
+            speciality: 'वरिष्ठ कन्सल्टेन्ट फिजिसियन',
             degree: 'MBBS , MD (INTERNAL MEDICINE) , Consultant physician',
             experience: '15+ Years',
-            about: 'डा. प्रमोद कुमार शाह, MBBS, MD (INTERNAL MEDICINE) - आदरणीय वरिष्ठ पेट, छाती, लिभर, सुगर, प्रेसर विशेषज्ञ हुनुहुन्छ जसले Consultant Physician को रूपमा पाचन प्रणाली, श्वासप्रश्वास, कलेजो रोग, मधुमेह र उच्च रक्तचाप सम्बन्धी समस्याहरूको समग्र व्यवस्थापन र उपचारमा आफ्नो विशेष दक्षता प्रदान गर्दै बिरामीहरूको स्वास्थ्यमा उल्लेखनीय सुधार ल्याउनुहुन्छ।',            
+            about: 'डा. प्रमोद कुमार शाह, MBBS, MD (INTERNAL MEDICINE) एक आदरणीय वरिष्ठ सल्लाहकार चिकित्सक हुनुहुन्छ। लामो अनुभव र उत्कृष्ट शैक्षिक पृष्ठभूमि भएका डा. शाह आधुनिक चिकित्सा पद्धति र परम्परागत ज्ञानको समन्वय गरी बिरामीहरूको व्यापक उपचार गर्नुहुन्छ। उहाँले प्रत्येक बिरामीको व्यक्तिगत आवश्यकता अनुसार सेवा प्रदान गर्दै आफ्नो पेशागत दक्षता र मानवीय संवेदनशीलताको परिचय दिनुहुन्छ। उहाँको समर्पित सेवा र विशेष चिकित्सकीय कौशलले बिरामीहरूको स्वास्थ्यमा उल्लेखनीय सुधार ल्याउनुहुन्छ।',            
             address: {
                 line1: 'Surunga Medicine and Clinic',
                 line2: 'Kankai-03, Surunga, Jhapa'
