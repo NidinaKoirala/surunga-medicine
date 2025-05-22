@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './AllDoctors.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faStarHalfAlt, faCalendarCheck, faUserMd, faSearch, faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faStarHalfAlt, faUserMd, faSearch, faCalendarPlus } from '@fortawesome/free-solid-svg-icons';
 import { AppContext } from '../Context/AppContext';
 
 function AllDoctors() {
@@ -149,22 +149,18 @@ function AllDoctors() {
                                                 </div>
                                                 
                                                 <div className="doctor-details">
-                                                    <h3 className="doctor-name">{doctor.name}</h3>
-                                                    <p className="doctor-specialty">{doctor.speciality}</p>
+                                                    <h3 className="doctor-name text-center">{doctor.name}</h3>
+                                                    <p className="doctor-specialty text-center"><strong>{doctor.speciality}</strong></p>
                                                     
-                                                    <div className="doctor-rating">
+                                                    <div className="doctor-rating text-center">
                                                         {renderRatingStars(4.8)}
                                                         <span className="rating-number">4.8</span>
                                                     </div>
                                                     
                                                     <div className="doctor-info-row">
-                                                        <div className="info-item">
+                                                        <div className="info-item doctor-experience">
                                                             <FontAwesomeIcon icon={faUserMd} />
                                                             <span>{doctor.experience}</span>
-                                                        </div>
-                                                        <div className="info-item">
-                                                            <FontAwesomeIcon icon={faCalendarCheck} />
-                                                            <span>NPR {doctor.fees}/session</span>
                                                         </div>
                                                     </div>
                                                     

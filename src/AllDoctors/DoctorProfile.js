@@ -8,8 +8,7 @@ import {
     faGraduationCap, 
     faArrowLeft, 
     faMapMarkerAlt,
-    faCheck,
-    faDollarSign
+    faCheck
 } from '@fortawesome/free-solid-svg-icons';
 import { AppContext } from '../Context/AppContext';
 import './DoctorProfile.css';
@@ -106,43 +105,35 @@ const DoctorProfile = () => {
                                 </div>
                                 
                                 <div className="doctor-profile-info">
-                                    <h2 className="doctor-profile-name">{doctor.name}</h2>
-                                    <p className="doctor-profile-specialty">{doctor.speciality}</p>
+                                    <h2 className="doctor-profile-name text-center">{doctor.name}</h2>
+                                    <p className="doctor-profile-specialty text-center"><strong>{doctor.speciality}</strong></p>
                                     
-                                    <div className="doctor-profile-rating">
+                                    <div className="doctor-profile-rating text-center">
                                         {renderRatingStars(4.8)}
                                         <span className="rating-number">4.8</span>
                                     </div>
                                     
-                                    <div className="doctor-stats">
-                                        <div className="stat-item">
+                                    <div className="doctor-stats text-center">
+                                        <div className="stat-item justify-content-center">
                                             <FontAwesomeIcon icon={faUserMd} />
                                             <div className="stat-content">
                                                 <span className="stat-label">Experience</span>
                                                 <span className="stat-value">{doctor.experience}</span>
                                             </div>
                                         </div>
-                                        
-                                        <div className="stat-item">
-                                            <FontAwesomeIcon icon={faDollarSign} />
-                                            <div className="stat-content">
-                                                <span className="stat-label">Fees</span>
-                                                <span className="stat-value">NPR {doctor.fees}</span>
-                                            </div>
-                                        </div>
                                     </div>
                                     
-                                    <div className="availability-info">
-                                        <h3><FontAwesomeIcon icon={faMapMarkerAlt} /> Address</h3>
+                                    <div className="availability-info text-center">
+                                        <h3 className="text-center"><FontAwesomeIcon icon={faMapMarkerAlt} /> Address</h3>
                                         <div className="address">
                                             <p>{doctor.address.line1}</p>
                                             <p>{doctor.address.line2}</p>
                                         </div>
                                     </div>
                                     
-                                    <div className="qualification-info">
-                                        <h3><FontAwesomeIcon icon={faGraduationCap} /> Qualification</h3>
-                                        <p>{doctor.degree}</p>
+                                    <div className="qualification-info text-center">
+                                        <h3 className="text-center"><FontAwesomeIcon icon={faGraduationCap} /> Qualification</h3>
+                                        <p><strong>{doctor.degree}</strong></p>
                                     </div>
                                     
                                     <button className="book-appointment-btn" onClick={handleBookAppointment}>

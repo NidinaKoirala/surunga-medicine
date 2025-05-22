@@ -293,6 +293,49 @@
 }
 
 /* Doctor Details Tabs */
+
+
+.text-center {
+    text-align: center;
+}
+
+.doctor-profile-specialty strong {
+    font-weight: 700;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+/* Center rating stars properly */
+.doctor-profile-rating.text-center {
+    justify-content: center;
+}
+
+/* Center experience section properly */
+.doctor-stats.text-center {
+    justify-content: center;
+}
+
+.doctor-stats.text-center .stat-item {
+    justify-content: center;
+    width: 100%;
+}
+
+/* Center address and qualification headings with icons */
+.availability-info.text-center h3,
+.qualification-info.text-center h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Adjust icon spacing in centered headings */
+.availability-info.text-center h3 svg,
+.qualification-info.text-center h3 svg {
+    margin-right: 8px;
+}
+
 .doctor-details-tabs {
     background-color: #fff;
     border-radius: 12px;

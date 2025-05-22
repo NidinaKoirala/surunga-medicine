@@ -153,6 +153,44 @@
 }
 
 /* Doctors Grid */
+
+
+/* Add these CSS classes to your existing AllDoctors.css file */
+
+.text-center {
+    text-align: center;
+}
+
+.doctor-name.text-center {
+    width: 100%;
+    display: block;
+}
+
+.doctor-specialty.text-center {
+    width: 100%;
+    display: block;
+}
+
+.doctor-specialty strong {
+    font-weight: 700;
+}
+
+/* Center the rating stars */
+.doctor-rating.text-center {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Adjust doctor-info-row to center the experience when it's the only child */
+.doctor-info-row {
+    justify-content: center;
+}
+
+.doctor-experience {
+    margin: 0 auto;
+}
+
 .doctors-container {
     padding: 10px;
 }

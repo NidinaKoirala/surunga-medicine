@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./TopDoctors.css"
 import { AppContext } from "../Context/AppContext";
-import { FaStar, FaStarHalfAlt, FaUserMd, FaDollarSign, FaArrowRight } from "react-icons/fa";
+import { FaStar, FaStarHalfAlt, FaUserMd, FaArrowRight } from "react-icons/fa";
 
 function TopDoctors() {
     const { doctors } = useContext(AppContext);
@@ -60,23 +60,19 @@ function TopDoctors() {
                             </div>
                             
                             <div className="doctor-details">
-                                <h3 className="doctor-name">{doctor.name}</h3>
-                                <p className="doctor-speciality">{doctor.speciality}</p>
+                                <h3 className="doctor-name text-center">{doctor.name}</h3>
+                                <p className="doctor-speciality text-center"><strong>{doctor.speciality}</strong></p>
                                 
                                 <div className="doctor-meta">
-                                    <div className="doctor-rating">
+                                    <div className="doctor-rating text-center">
                                         {renderRating(4.5)}
                                         <span className="rating-count">(120+)</span>
                                     </div>
                                     
                                     <div className="doctor-info">
-                                        <div className="info-item">
+                                        <div className="info-item experience-item">
                                             <FaUserMd className="info-icon" />
                                             <span>{doctor.experience}</span>
-                                        </div>
-                                        <div className="info-item">
-                                            <FaDollarSign className="info-icon" />
-                                            <span>${doctor.fees}</span>
                                         </div>
                                     </div>
                                 </div>

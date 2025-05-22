@@ -1,4 +1,40 @@
 /* TopDoctors Section */
+
+.text-center {
+    text-align: center;
+}
+
+/* Center the doctor name */
+.doctor-name.text-center {
+    text-align: center;
+    width: 100%;
+}
+
+/* Center and bold the specialty */
+.doctor-speciality.text-center {
+    text-align: center;
+    width: 100%;
+}
+
+.doctor-speciality strong {
+    font-weight: 700;
+}
+
+/* Center the rating */
+.doctor-rating.text-center {
+    justify-content: center;
+    width: 100%;
+}
+
+/* Center the experience info */
+.doctor-info {
+    justify-content: center !important;
+}
+
+.experience-item {
+    margin: 0 auto;
+}
+
 .top-doctors-section {
     padding: 70px 0;
     background-color: #f8f9fa;
