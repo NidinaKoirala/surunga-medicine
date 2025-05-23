@@ -14,6 +14,7 @@ import DoctorProfile from './AllDoctors/DoctorProfile';
 import Blog from './Blog/Blog.js'
 import BlogPost from './Blog/BlogPost.js';
 import Appointment from './Appointment/Appointment';
+import ChatWidget from './Home/ChatWidget';
 
 // Admin components
 import AdminDashboard from './Admin/AdminDashboard';
@@ -54,8 +55,8 @@ function App() {
             
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />
-            <Route
-              path="/admin/doctors"
+            <Route 
+              path="/admin/doctors" 
               element={
                 <ProtectedRoute>
                   <AdminDashboard />
@@ -63,8 +64,9 @@ function App() {
               }
             />
           </Routes>
+          <Footer />
+          <ChatWidget /> {/* Add ChatWidget here - it will appear on all pages */}
         </AppContextProvider>
-        <Footer />
       </BrowserRouter>
     </div>
   );
