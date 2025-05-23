@@ -348,21 +348,21 @@
 }
 
 .doctor-details {
-    padding: 20px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
 .doctor-name {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
     color: #343a40;
     margin-bottom: 5px;
 }
 
 .doctor-specialty {
-    font-size: 14px;
+    font-size: 12px;
     color: #6c757d;
     margin-bottom: 15px;
 }

@@ -165,10 +165,14 @@
     margin-top: 40px;
 }
 
+.social-link svg {
+    color: rgb(231, 233, 225);
+}
+
 .social-link {
     width: 42px;
     height: 42px;
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: rgba(110, 194, 57, 0.15);
     border-radius: 50%;
     display: flex;
     align-items: center;

@@ -4,7 +4,6 @@ import {
     FaUserMd, 
     FaCalendarCheck, 
     FaFlask,
-    FaBed, 
     FaAmbulance, 
     FaPills 
 } from "react-icons/fa";
@@ -20,11 +19,6 @@ function Services() {
             icon: <FaCalendarCheck />,
             title: "Easy Scheduling",
             description: "Book appointments online anytime and receive instant confirmations."
-        },
-        {
-            icon: <FaBed />,
-            title: "Inpatient Care",
-            description: "Comfortable accommodations and round-the-clock care for patients requiring hospitalization."
         },
         {
             icon: <FaAmbulance />,
