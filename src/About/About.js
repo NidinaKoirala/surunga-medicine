@@ -8,12 +8,12 @@ import aboutImage from '../assets/images/about_image.png';
 import childrenDoctorImage from '../assets/images/about-us/children-doctor.jpg';
 import diabitiesThyroidImage from '../assets/images/about-us/diabities-thyrod-doc.jpg';
 import stomachDocImage from '../assets/images/about-us/great-lever-stomach-doc.jpg';
-import moreSvcImage from '../assets/images/about-us/more-svc.jpg';
-import nextDoctorImage from '../assets/images/about-us/nex-doctor.jpg';
-import ourSvcImage from '../assets/images/about-us/our-svc.jpg';
 
 // Import icons
 import { FaHospital, FaUserMd, FaFlask, FaHandHoldingMedical, FaHeartbeat, FaCalendarCheck } from 'react-icons/fa';
+
+// Import Team component
+import Team from '../Team/Team';
 
 function About() {
     // Stats data
@@ -43,30 +43,6 @@ function About() {
         }
     ];
     
-    // Upcoming events data
-    const upcomingEvents = [
-        {
-            title: "Next-Gen Doctor Consultation",
-            date: "Every Weekend",
-            location: "Surunga Medicine & Clinic",
-            image: nextDoctorImage,
-            description: "Experience our innovative approach to doctor consultations with the latest telemedicine technology and personal care combined for better patient outcomes."
-        },
-        {
-            title: "Additional Medical Services",
-            date: "Daily, 9AM - 6PM",
-            location: "Surunga Medicine & Clinic",
-            image: moreSvcImage,
-            description: "We provide a range of additional services including laboratory testing, diagnostic imaging, preventive health screenings, and specialized medical consultations."
-        },
-        {
-            title: "Community Healthcare Initiative",
-            date: "Monthly, First Week",
-            location: "Surunga Medicine & Clinic",
-            image: ourSvcImage,
-            description: "Our community healthcare initiative brings essential medical services to underserved areas, focusing on preventive care, health education, and basic treatments."
-        }
-    ];
     
     return (
         <div className="about-page">
@@ -91,7 +67,7 @@ function About() {
                         <div className="about-text">
                             <h2>Welcome to Surunga Medicine & Clinic</h2>
                             <p>
-                                Established in 2016 (2073 B.S.), Surunga Medicine and Clinic has been dedicated to delivering reliable, accessible, and high-quality healthcare to the people of Jhapa District. Over the years, we have become a trusted name in the community because we always put our patients’ needs first and provide them with the best care possible.
+                                Established in 2016 (2073 B.S.), Surunga Medicine and Clinic has been dedicated to delivering reliable, accessible, and high-quality healthcare to the people of Jhapa District. Over the years, we have become a trusted name in the community because we always put our patients' needs first and provide them with the best care possible.
                             </p>
                             <p>
                             We combine compassionate, personalized care with the latest in medical technology to support you at every step of your health journey. From booking appointments to managing your health records, we ensure every part of your experience is smooth, simple, and convenient.
@@ -177,58 +153,10 @@ function About() {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section>            
             
-            {/* Team Section */}
-            <section className="about-team">
-                <div className="container">
-                    <div className="team-content">
-                        <div className="team-image">
-                            <img src={ourSvcImage} alt="Our Team" />
-                        </div>
-                        <div className="team-text">
-                            <h2>Our Dedicated Team</h2>
-                            <p>
-                                Behind Surunga Medicine & Clinic is a team of dedicated professionals committed to transforming healthcare delivery. Our diverse team includes experienced healthcare providers, technology experts, and patient advocates working together to create a seamless healthcare experience.
-                            </p>
-                            <p>
-                                Our medical professionals undergo rigorous training and continuous education to stay updated with the latest advancements in medical science. We take pride in our team's expertise, compassion, and dedication to improving patient outcomes.
-                            </p>
-                            <p>
-                            We believe healthcare should be simple, accessible, and centered around real human care and that’s exactly what we’re building every day.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            {/* Events Section */}
-            <section className="about-events">
-                <div className="container">
-                    <div className="events-header">
-                        <h2>Upcoming Events & Services</h2>
-                        <p>Join us for these special healthcare initiatives designed to serve our community</p>
-                    </div>
-                    
-                    <div className="events-grid">
-                        {upcomingEvents.map((event, index) => (
-                            <div key={index} className="event-card">
-                                <div className="event-image">
-                                    <img src={event.image} alt={event.title} />
-                                </div>
-                                <div className="event-details">
-                                    <h3>{event.title}</h3>
-                                    <div className="event-meta">
-                                        <p><strong>Date:</strong> {event.date}</p>
-                                        <p><strong>Location:</strong> {event.location}</p>
-                                    </div>
-                                    <p className="event-description">{event.description}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            {/* Team Section - Using the separate Team component */}
+            <Team />
         </div>
     );
 }
