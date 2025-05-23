@@ -7,11 +7,11 @@ const ChatWidget = () => {
     const [showTooltip, setShowTooltip] = useState(false);
     
     // Configure your WhatsApp number here (without + or spaces)
-    const whatsappNumber = '1234567890'; // Replace with your actual number
+    const whatsappNumber = '9804964107'; 
     const whatsappMessage = 'Hello! I need help with...'; // Default message
     
     // Configure your Messenger username/page ID
-    const messengerUsername = 'yourpage'; // Replace with your Facebook page username
+    const messengerUsername = 'surungamedicine';
     
     // Show notification badge after 5 seconds
     useEffect(() => {
