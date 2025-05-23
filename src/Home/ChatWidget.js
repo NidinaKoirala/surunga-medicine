@@ -7,7 +7,7 @@ const ChatWidget = () => {
     const [showTooltip, setShowTooltip] = useState(false);
     
     // Configure your WhatsApp number here (without + or spaces)
-    const whatsappNumber = '9804964107'; 
+    const whatsappNumber = '+977 9804964107'; 
     const whatsappMessage = 'Hello! I need help with...'; // Default message
     
     // Configure your Messenger username/page ID
