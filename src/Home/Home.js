@@ -1,10 +1,12 @@
 import React from 'react';
 
 // Import hero images directly in Home component
-import heroimg from '../assets/images/home/front-3.jpg';
-import doctorImage1 from '../assets/images/home/front-1.jpg';
-import doctorImage2 from '../assets/images/home/front-2.jpg';
-import doctorImage3 from '../assets/images/about-us/children-doctor.jpg';
+import front3 from '../assets/images/home/front-3.jpg';
+import front1 from '../assets/images/home/front-1.jpg';
+import front2 from '../assets/images/home/front-2.jpg';
+import front4 from '../assets/images/home/front-4.jpeg';
+
+import front5 from '../assets/images/about-us/children-doctor.jpg';
 import profileImage from '../assets/images/logo-hospital.png';
 // Import components
 import Herosection from './Herosection';
@@ -19,10 +21,11 @@ import Testimonials from './Testimonials';
 function Home() {
     // Define carousel images directly in the component
     const carouselImages = [
-        { src: heroimg, alt: "Doctor consulting with patient" },
-        { src: doctorImage1, alt: "Medical professional with equipment" },
-        { src: doctorImage2, alt: "Doctor examining x-ray results" },
-        { src: doctorImage3, alt: "Healthcare team discussion" }
+        { src: front3, alt: "Barista Kidney Rog Bisesagya" },
+        { src: front1, alt: "Basrita Hydrocil Bisesagya" },
+        { src: front2, alt: "Basrita Stri Rog Bisesagya" },
+        { src: front5, alt: "Basrista Sisu Bisesagya" },
+        { src: front4, alt: "Barsta Mutu Rog Bisesagya" }
     ];
     
     // Additional hero section customization (optional)
