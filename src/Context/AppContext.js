@@ -32,7 +32,7 @@ export const AppContext = createContext();
 // Default doctor image mapping for new doctors
 const defaultDoctorImages = {
   'वाथ तथा प्रतिरक्षा रोग विशेषज्ञ': doc6,
-  'प्रसूति तथा प्रजनन': doc2,
+  'प्रसूति तथा प्रजनन्': doc2,
   'छाला यौन तथा सुन्दर्य विशेषज्ञ': doc1,
   'वरिष्ठ कन्सल्टेन्ट फिजिसियन': doc9,
   'जनरल तथा त्याप्रोस्कोपिक सुर्जन र पायल्स रोग विशेषज्ञ': doc5,
@@ -47,7 +47,7 @@ export const AppProvider = ({ children }) => {
     // Define speciality data
     const specialityData = [
         {
-            speciality: 'प्रसूति तथा प्रजनन',
+            speciality: 'प्रसूति तथा प्रजनन्',
             image: Gynecologist
         },
         {
@@ -107,10 +107,10 @@ export const AppProvider = ({ children }) => {
             _id: 'doc2',
             name: 'डा. लता श्रेष्ठ',
             image: doc2,
-            speciality: 'प्रसूति तथा प्रजनन',
+            speciality: 'प्रसूति तथा प्रजनन्',
             degree: 'MBBS (NMCTCH), MD OBS/GYN (JRRMMC)',
             experience: '10+ Years',
-            about: 'डा. लता श्रेष्ठ, MBBS (NMCTCH), MD OBS/GYN (JRRMMC) - आदरणीय बरिस्ट प्रसूति तथा प्रजनन विशेषज्ञ हुनुहुन्छ जसले IVF विशेषज्ञताका साथ महिलाहरूको प्रजनन स्वास्थ्य, गर्भावस्था व्यवस्थापन र बाँझोपन उपचारमा उत्कृष्ट सेवा प्रदान गर्नुहुन्छ, प्रत्येक बिरामीलाई व्यक्तिगत हेरचाह र समर्थन दिनुहुन्छ।',            
+            about: 'डा. लता श्रेष्ठ, MBBS (NMCTCH), MD OBS/GYN (JRRMMC) - आदरणीय बरिस्ट प्रसूति तथा प्रजनन् विशेषज्ञ हुनुहुन्छ जसले IVF विशेषज्ञताका साथ महिलाहरूको प्रजनन् स्वास्थ्य, गर्भावस्था व्यवस्थापन र बाँझोपन उपचारमा उत्कृष्ट सेवा प्रदान गर्नुहुन्छ, प्रत्येक बिरामीलाई व्यक्तिगत हेरचाह र समर्थन दिनुहुन्छ।',            
             address: {
                 line1: 'Surunga Medicine and Clinic',
                 line2: 'Kankai-03, Surunga, Jhapa'

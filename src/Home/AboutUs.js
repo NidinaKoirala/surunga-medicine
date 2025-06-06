@@ -8,17 +8,17 @@ function AboutUs() {
     const achievements = [
         {
             icon: <FaHospital />,
-            count: "12+",
+            count: "10+",
             title: "Years Experience"
         },
         {
             icon: <FaUserMd />,
-            count: "50+",
+            count: "20+",
             title: "Specialist Doctors"
         },
         {
             icon: <FaHeartbeat />,
-            count: "10K+",
+            count: "100K+",
             title: "Happy Patients"
         }
     ];

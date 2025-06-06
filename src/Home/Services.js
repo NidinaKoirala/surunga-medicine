@@ -1,34 +1,52 @@
 import React from 'react';
 import './Services.css';
 import { 
-    FaUserMd, 
-    FaCalendarCheck, 
-    FaFlask,
-    FaAmbulance, 
+    FaVideo, 
+    FaXRay, 
+    FaHospital,
+    FaHeartbeat, 
+    FaSyringe,
+    FaUsers,
     FaPills 
 } from "react-icons/fa";
+
 
 function Services() {
     const servicesData = [
         {
-            icon: <FaUserMd />,
-            title: "Expert Doctors",
-            description: "Get consultations from our highly qualified and experienced medical professionals."
+            icon: <FaVideo />,
+            title: "Video X-ray",
+            description: "Advanced digital X-ray services with real-time video guidance for accurate diagnostics."
         },
         {
-            icon: <FaCalendarCheck />,
-            title: "Easy Scheduling",
-            description: "Book appointments online anytime and receive instant confirmations."
+            icon: <FaXRay />,
+            title: "X-ray",
+            description: "Digital X-ray imaging services with high-quality results and quick processing."
         },
         {
-            icon: <FaAmbulance />,
-            title: "Emergency Care",
-            description: "24/7 emergency support and quick response for critical situations."
+            icon: <FaHospital />,
+            title: "OPD",
+            description: "Comprehensive Outpatient Department services with experienced doctors across specialties."
         },
         {
-            icon: <FaFlask />,
-            title: "Lab Services",
-            description: "State-of-the-art laboratory testing with quick and accurate results."
+            icon: <FaHeartbeat />,
+            title: "USG",
+            description: "Ultrasonography services with modern equipment for detailed internal body imaging."
+        },
+        {
+            icon: <FaHeartbeat />,
+            title: "ECG",
+            description: "Electrocardiogram testing for heart health monitoring and cardiac condition diagnosis."
+        },
+        {
+            icon: <FaSyringe />,
+            title: "Vaccination",
+            description: "Complete vaccination services for all age groups with safe and effective immunization."
+        },
+        {
+            icon: <FaUsers />,
+            title: "Family Planning Counselling",
+            description: "Professional counselling and guidance for family planning and reproductive health."
         },
         {
             icon: <FaPills />,

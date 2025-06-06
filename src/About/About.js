@@ -18,10 +18,10 @@ import Team from '../Team/Team';
 function About() {
     // Stats data
     const stats = [
-        { icon: <FaHospital />, count: '12+', title: 'Years of Experience' },
-        { icon: <FaUserMd />, count: '150+', title: 'Expert Doctors' },
-        { icon: <FaHandHoldingMedical />, count: '15,000+', title: 'Patients Treated' },
-        { icon: <FaFlask />, count: '500+', title: 'Lab Tests' }
+        { icon: <FaHospital />, count: '10+', title: 'Years of Experience' },
+        { icon: <FaUserMd />, count: '20+', title: 'Expert Doctors' },
+        { icon: <FaHandHoldingMedical />, count: '1,00,0000+', title: 'Patients Treated' },
+        { icon: <FaFlask />, count: '10000+', title: 'Lab Tests' }
     ];
     
     // Specialized services data

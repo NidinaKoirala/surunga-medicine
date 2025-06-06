@@ -36,8 +36,8 @@ function Home() {
     ];
     
     const heroStats = [
-        { number: '50+', label: 'Specialists' },
-        { number: '10k+', label: 'Patients' }
+        { number: '20+', label: 'Specialists' },
+        { number: '100k+', label: 'Patients' }
     ];
     
     const heroTitle = "Your Health, Our <highlight>Priority</highlight>";

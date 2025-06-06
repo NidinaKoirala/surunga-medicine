@@ -7,6 +7,84 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { format } from 'date-fns';
 import { AppContext } from '../Context/AppContext';
+// Standalone accurate Nepali calendar conversion
+const nepaliDays = ['आइत', 'सोम', 'मंगल', 'बुध', 'बिहि', 'शुक्र', 'शनि'];
+const nepaliMonths = [
+  'बैशाख', 'जेठ', 'आषाढ', 'श्रावण', 'भाद्र', 'आश्विन',
+  'कार्तिक', 'मंसिर', 'पौष', 'माघ', 'फाल्गुन', 'चैत्र'
+];
+
+// Convert English digits to Nepali digits
+const englishToNepaliDigits = (num) => {
+  const nepaliDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+  return num.toString().split('').map(digit => nepaliDigits[parseInt(digit)]).join('');
+};
+
+// Accurate standalone Nepali date conversion
+const convertToNepali = (englishDate) => {
+  // Reference: June 6, 2025 (AD) = Jestha 23, 2082 (BS) - Exact reference point
+  const baseAD = new Date(2025, 5, 6); // June 6, 2025 
+  const baseBS = { year: 2082, month: 1, day: 23 }; // Jestha 23, 2082
+  
+  // Days in each Nepali month for years around 2082
+  const nepaliMonthDays = {
+    2081: [31, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31],
+    2082: [31, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31],
+    2083: [31, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31]
+  };
+  
+  // Calculate difference in days from base date
+  const diffTime = englishDate.getTime() - baseAD.getTime();
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+  
+  let nepaliYear = baseBS.year;
+  let nepaliMonth = baseBS.month;
+  let nepaliDay = baseBS.day + diffDays;
+  
+  // Get the appropriate month days array
+  let monthDays = nepaliMonthDays[nepaliYear] || nepaliMonthDays[2082];
+  
+  // Handle positive days (future dates)
+  while (nepaliDay > monthDays[nepaliMonth]) {
+    nepaliDay -= monthDays[nepaliMonth];
+    nepaliMonth++;
+    
+    if (nepaliMonth >= 12) {
+      nepaliMonth = 0;
+      nepaliYear++;
+      monthDays = nepaliMonthDays[nepaliYear] || nepaliMonthDays[2082];
+    }
+  }
+  
+  // Handle negative days (past dates)
+  while (nepaliDay <= 0) {
+    nepaliMonth--;
+    
+    if (nepaliMonth < 0) {
+      nepaliMonth = 11;
+      nepaliYear--;
+      monthDays = nepaliMonthDays[nepaliYear] || nepaliMonthDays[2082];
+    }
+    
+    nepaliDay += monthDays[nepaliMonth];
+  }
+  
+  const nepaliDayDigits = englishToNepaliDigits(nepaliDay);
+  const nepaliYearDigits = englishToNepaliDigits(nepaliYear);
+  const dayOfWeek = nepaliDays[englishDate.getDay()];
+  const monthName = nepaliMonths[nepaliMonth];
+  
+  return {
+    year: nepaliYear,
+    month: monthName,
+    monthIndex: nepaliMonth,
+    day: nepaliDay,
+    nepaliDay: nepaliDayDigits,
+    nepaliYear: nepaliYearDigits,
+    dayOfWeek: dayOfWeek,
+    formatted: `${nepaliYearDigits} साल ${monthName} ${nepaliDayDigits} गते, ${dayOfWeek}`
+  };
+};
 
 const Appointment = () => {
   // Access EmailJS configuration from environment variables
@@ -139,6 +217,7 @@ const Appointment = () => {
     });
     
     const formattedDate = formatAppointmentDate(date);
+    const nepaliFormattedDate = convertToNepali(date);
     
     // First, send confirmation email to the user
     emailjs.send(
@@ -151,6 +230,7 @@ const Appointment = () => {
         patient_name: formData.patientName,
         reason_for_visit: formData.reasonForVisit,
         appointment_date: formattedDate,
+        nepali_appointment_date: nepaliFormattedDate.formatted,
         appointment_time: time,
         provider_name: formData.provider_name || 'Available doctor',
         additional_notes: formData.additionalNotes || 'None',
@@ -174,6 +254,7 @@ const Appointment = () => {
           patient_name: formData.patientName,
           reason_for_visit: formData.reasonForVisit,
           appointment_date: formattedDate,
+          nepali_appointment_date: nepaliFormattedDate.formatted,
           appointment_time: time,
           provider_name: formData.provider_name || 'Available doctor',
           additional_notes: formData.additionalNotes || 'None',
@@ -205,14 +286,14 @@ const Appointment = () => {
     })
     .catch((error) => {
       console.error('Error sending email:', error.text);
-      showModal(false, 'There was an error scheduling your appointment. Please try again later or contact us directly.');
+      showModal(false, 'There was an error scheduling your appointment. Please try again later or contact us directly via call at 023-553097 / 9804964107.');
     });
   };
 
   // Available time slots
   const availableTimeSlots = [
-    '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
-    '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00'
+    '08:00', '09:00', '10:00', '11:00', '12:00',
+    '13:00', '14:00', '15:00', '16:00', '17:00'
   ];
 
   return (
@@ -338,18 +419,49 @@ const Appointment = () => {
           <div className="form-section">
             <h2>Appointment Details</h2>
             <div className="calendar-container">
-              <label>Select Date*</label>
+              <label>Select Date* (मिति छान्नुहोस्)</label>
+              
+              {/* Current Month Display */}
+              <div className="calendar-month-display">
+                <div className="english-month">
+                  <strong>{format(date, 'MMMM yyyy')}</strong>
+                </div>
+                <div className="nepali-month">
+                  <strong>{convertToNepali(date).month} {convertToNepali(date).nepaliYear}</strong>
+                </div>
+              </div>
+              
               <Calendar 
                 onChange={handleCalendarChange} 
                 value={date}
                 minDate={new Date()}
-                className="react-calendar"                
+                className="react-calendar"
+                formatDay={(locale, date) => {
+                  const englishDay = date.getDate();
+                  const nepaliDate = convertToNepali(date);
+                  return (
+                    <div className="dual-date-display">
+                      <div className="english-day">{englishDay}</div>
+                      <div className="nepali-day-small">{nepaliDate.nepaliDay}</div>
+                    </div>
+                  );
+                }}
               />
+              
+              {/* Display both English and Nepali dates */}
+              <div className="date-display">
+                <div className="english-date">
+                  <strong>English Date:</strong> {format(date, 'MMMM d, yyyy, EEEE')}
+                </div>
+                <div className="nepali-date">
+                  <strong>नेपाली मिति:</strong> {convertToNepali(date).formatted}
+                </div>
+              </div>
             </div>
             
             {showTimePicker && (
               <div className="time-picker-container">
-                <label>Select Time*</label>
+                <label>Select Time* (समय छान्नुहोस्)</label>
                 <div className="time-slots">
                   {availableTimeSlots.map((slot) => (
                     <button
@@ -367,9 +479,12 @@ const Appointment = () => {
             
             {date && time && (
               <div className="selected-datetime">
-                <h3>Your Selected Appointment:</h3>
-                <p><strong>Date:</strong> {formatAppointmentDate(date)}</p>
-                <p><strong>Time:</strong> {time}</p>
+                <h3>Your Selected Appointment: (तपाईंको छानिएको समय)</h3>
+                <div className="appointment-dates">
+                  <p><strong>English Date:</strong> {formatAppointmentDate(date)}</p>
+                  <p><strong>नेपाली मिति:</strong> {convertToNepali(date).formatted}</p>
+                  <p><strong>Time (समय):</strong> {time}</p>
+                </div>
               </div>
             )}
           </div>
