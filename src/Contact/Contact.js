@@ -185,6 +185,7 @@ function Contact() {
                                 <div className="contact-text">
                                     <h3> Email</h3>
                                     <p>appointment@surungamedicine.com.np</p>
+                                    <p>info@surungamedicine.com.np</p>
                                 </div>
                             </div>
                             
@@ -194,8 +195,8 @@ function Contact() {
                                 </div>
                                 <div className="contact-text">
                                     <h3>Hours</h3>
-                                    <p>Monday - Friday: 8:00 AM - 8:00 PM</p>
-                                    <p>Saturday - Sunday: 9:00 AM - 7:00 PM</p>
+                                    <p>Monday - Friday: 6:00 AM - 9:00 PM</p>
+                                    <p>Saturday - Sunday: 7:00 AM - 8:00 PM</p>
                                 </div>
                             </div>
                         </div>

@@ -224,7 +224,7 @@ const DoctorProfile = () => {
                                     
                                     {selectedTab === 'location' && (
                                         <div className="tab-content-location">
-                                            <h3>Practice Location</h3>
+                                            <h3>Location</h3>
                                             <div className="location-info">
                                                 <div className="address-block">
                                                     <FontAwesomeIcon icon={faMapMarkerAlt} className="location-icon" />

@@ -3,88 +3,9 @@ import React, { useState, useRef, useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import './Appointment.css';
 import emailjs from '@emailjs/browser';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import { format } from 'date-fns';
 import { AppContext } from '../Context/AppContext';
-// Standalone accurate Nepali calendar conversion
-const nepaliDays = ['आइत', 'सोम', 'मंगल', 'बुध', 'बिहि', 'शुक्र', 'शनि'];
-const nepaliMonths = [
-  'बैशाख', 'जेठ', 'आषाढ', 'श्रावण', 'भाद्र', 'आश्विन',
-  'कार्तिक', 'मंसिर', 'पौष', 'माघ', 'फाल्गुन', 'चैत्र'
-];
-
-// Convert English digits to Nepali digits
-const englishToNepaliDigits = (num) => {
-  const nepaliDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
-  return num.toString().split('').map(digit => nepaliDigits[parseInt(digit)]).join('');
-};
-
-// Accurate standalone Nepali date conversion
-const convertToNepali = (englishDate) => {
-  // Reference: June 6, 2025 (AD) = Jestha 23, 2082 (BS) - Exact reference point
-  const baseAD = new Date(2025, 5, 6); // June 6, 2025 
-  const baseBS = { year: 2082, month: 1, day: 23 }; // Jestha 23, 2082
-  
-  // Days in each Nepali month for years around 2082
-  const nepaliMonthDays = {
-    2081: [31, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31],
-    2082: [31, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31],
-    2083: [31, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31]
-  };
-  
-  // Calculate difference in days from base date
-  const diffTime = englishDate.getTime() - baseAD.getTime();
-  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-  
-  let nepaliYear = baseBS.year;
-  let nepaliMonth = baseBS.month;
-  let nepaliDay = baseBS.day + diffDays;
-  
-  // Get the appropriate month days array
-  let monthDays = nepaliMonthDays[nepaliYear] || nepaliMonthDays[2082];
-  
-  // Handle positive days (future dates)
-  while (nepaliDay > monthDays[nepaliMonth]) {
-    nepaliDay -= monthDays[nepaliMonth];
-    nepaliMonth++;
-    
-    if (nepaliMonth >= 12) {
-      nepaliMonth = 0;
-      nepaliYear++;
-      monthDays = nepaliMonthDays[nepaliYear] || nepaliMonthDays[2082];
-    }
-  }
-  
-  // Handle negative days (past dates)
-  while (nepaliDay <= 0) {
-    nepaliMonth--;
-    
-    if (nepaliMonth < 0) {
-      nepaliMonth = 11;
-      nepaliYear--;
-      monthDays = nepaliMonthDays[nepaliYear] || nepaliMonthDays[2082];
-    }
-    
-    nepaliDay += monthDays[nepaliMonth];
-  }
-  
-  const nepaliDayDigits = englishToNepaliDigits(nepaliDay);
-  const nepaliYearDigits = englishToNepaliDigits(nepaliYear);
-  const dayOfWeek = nepaliDays[englishDate.getDay()];
-  const monthName = nepaliMonths[nepaliMonth];
-  
-  return {
-    year: nepaliYear,
-    month: monthName,
-    monthIndex: nepaliMonth,
-    day: nepaliDay,
-    nepaliDay: nepaliDayDigits,
-    nepaliYear: nepaliYearDigits,
-    dayOfWeek: dayOfWeek,
-    formatted: `${nepaliYearDigits} साल ${monthName} ${nepaliDayDigits} गते, ${dayOfWeek}`
-  };
-};
+import NepaliCalendar from '../NepaliCalendar/NepaliCalendar';
 
 const Appointment = () => {
   // Access EmailJS configuration from environment variables
@@ -112,6 +33,7 @@ const Appointment = () => {
   });
   
   const [date, setDate] = useState(new Date());
+  const [nepaliDate, setNepaliDate] = useState(null);
   const [time, setTime] = useState('10:00');
   const [showTimePicker, setShowTimePicker] = useState(false);
   
@@ -149,8 +71,9 @@ const Appointment = () => {
     }));
   };
   
-  const handleCalendarChange = (newDate) => {
+  const handleCalendarChange = (newDate, newNepaliDate) => {
     setDate(newDate);
+    setNepaliDate(newNepaliDate);
     setShowTimePicker(true);
   };
   
@@ -217,7 +140,7 @@ const Appointment = () => {
     });
     
     const formattedDate = formatAppointmentDate(date);
-    const nepaliFormattedDate = convertToNepali(date);
+    const nepaliFormattedDate = nepaliDate ? nepaliDate.formatted : '';
     
     // First, send confirmation email to the user
     emailjs.send(
@@ -230,7 +153,7 @@ const Appointment = () => {
         patient_name: formData.patientName,
         reason_for_visit: formData.reasonForVisit,
         appointment_date: formattedDate,
-        nepali_appointment_date: nepaliFormattedDate.formatted,
+        nepali_appointment_date: nepaliFormattedDate,
         appointment_time: time,
         provider_name: formData.provider_name || 'Available doctor',
         additional_notes: formData.additionalNotes || 'None',
@@ -254,7 +177,7 @@ const Appointment = () => {
           patient_name: formData.patientName,
           reason_for_visit: formData.reasonForVisit,
           appointment_date: formattedDate,
-          nepali_appointment_date: nepaliFormattedDate.formatted,
+          nepali_appointment_date: nepaliFormattedDate,
           appointment_time: time,
           provider_name: formData.provider_name || 'Available doctor',
           additional_notes: formData.additionalNotes || 'None',
@@ -279,6 +202,7 @@ const Appointment = () => {
         additionalNotes: ''
       });
       setDate(new Date());
+      setNepaliDate(null);
       setTime('10:00');
       setShowTimePicker(false);
       
@@ -421,41 +345,23 @@ const Appointment = () => {
             <div className="calendar-container">
               <label>Select Date* (मिति छान्नुहोस्)</label>
               
-              {/* Current Month Display */}
-              <div className="calendar-month-display">
-                <div className="english-month">
-                  <strong>{format(date, 'MMMM yyyy')}</strong>
-                </div>
-                <div className="nepali-month">
-                  <strong>{convertToNepali(date).month} {convertToNepali(date).nepaliYear}</strong>
-                </div>
+              <div className="nepali-calendar-section">
+                <NepaliCalendar 
+                  selectedDate={date}
+                  onDateSelect={handleCalendarChange}
+                />
               </div>
               
-              <Calendar 
-                onChange={handleCalendarChange} 
-                value={date}
-                minDate={new Date()}
-                className="react-calendar"
-                formatDay={(locale, date) => {
-                  const englishDay = date.getDate();
-                  const nepaliDate = convertToNepali(date);
-                  return (
-                    <div className="dual-date-display">
-                      <div className="english-day">{englishDay}</div>
-                      <div className="nepali-day-small">{nepaliDate.nepaliDay}</div>
-                    </div>
-                  );
-                }}
-              />
-              
-              {/* Display both English and Nepali dates */}
-              <div className="date-display">
+              {/* Display selected date */}
+              <div className="selected-date-display">
                 <div className="english-date">
-                  <strong>English Date:</strong> {format(date, 'MMMM d, yyyy, EEEE')}
+                  <strong>Selected Date:</strong> {format(date, 'MMMM d, yyyy, EEEE')}
                 </div>
-                <div className="nepali-date">
-                  <strong>नेपाली मिति:</strong> {convertToNepali(date).formatted}
-                </div>
+                {nepaliDate && (
+                  <div className="nepali-date">
+                    <strong>नेपाली मिति:</strong> {nepaliDate.formatted}
+                  </div>
+                )}
               </div>
             </div>
             
@@ -482,7 +388,9 @@ const Appointment = () => {
                 <h3>Your Selected Appointment: (तपाईंको छानिएको समय)</h3>
                 <div className="appointment-dates">
                   <p><strong>English Date:</strong> {formatAppointmentDate(date)}</p>
-                  <p><strong>नेपाली मिति:</strong> {convertToNepali(date).formatted}</p>
+                  {nepaliDate && (
+                    <p><strong>नेपाली मिति:</strong> {nepaliDate.formatted}</p>
+                  )}
                   <p><strong>Time (समय):</strong> {time}</p>
                 </div>
               </div>
@@ -506,7 +414,7 @@ const Appointment = () => {
             className="submit-btn"
             disabled={formStatus.submitting || !date || !time}
           >
-            {formStatus.submitting ? 'Scheduling...' : 'Schedule Appointment'}
+            {formStatus.submitting ? 'Scheduling Please Donot Refresh...' : 'Schedule Appointment'}
           </button>
         </form>
       </div>

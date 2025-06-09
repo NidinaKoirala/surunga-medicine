@@ -1,4 +1,4 @@
-/* Appointment.css - Redesigned with red and dark blue color scheme */
+/* Appointment.css - Clean version with red and dark blue color scheme */
 
 :root {
   --primary-blue: #0a2463;
@@ -17,13 +17,13 @@
 }
 
 .appointment-container {
-  max-width: 1200px;
-  margin: 0 auto;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
   padding: 40px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--gray-800);
   background-color: #f7f9fc;
-  border-radius: 12px;
 }
 
 .appointment-header {
@@ -53,8 +53,10 @@
   border-radius: 12px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   padding: 40px;
-  margin-bottom: 40px;
+  margin: 0 auto 40px auto;
   border-top: 4px solid var(--primary-red);
+  max-width: 1000px;
+  width: 100%;
 }
 
 .form-section {
@@ -122,108 +124,42 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 0 0 3px rgba(10, 36, 99, 0.1);
 }
 
-.form-status {
-  padding: 12px 15px;
-  margin-bottom: 20px;
-  border-radius: 6px;
-  font-weight: 500;
-}
-
-.form-status.success {
-  background-color: #dcf5e6;
-  color: #0b6e4f;
-  border: 1px solid #bae6c9;
-}
-
-.form-status.error {
-  background-color: var(--light-red);
-  color: var(--secondary-red);
-  border: 1px solid #fca5a5;
-}
-
-/* Calendar Styles */
+/* Calendar Container */
 .calendar-container {
   margin-bottom: 30px;
 }
 
-.react-calendar {
-  width: 100% !important;
-  max-width: 100%;
-  background: white;
-  border: 1px solid var(--gray-200) !important;
+.nepali-calendar-section {
+  margin: 20px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Selected Date Display */
+.selected-date-display {
+  margin-top: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, var(--light-blue), #f8fafc);
   border-radius: 10px;
-  font-family: inherit;
-  line-height: 1.125em;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  padding: 15px;
+  border: 1px solid var(--gray-200);
+  box-shadow: 0 2px 8px rgba(10, 36, 99, 0.05);
+  text-align: center;
 }
 
-.react-calendar__navigation {
-  display: flex;
-  height: 50px;
-  margin-bottom: 1em;
-}
-
-.react-calendar__navigation button {
-  min-width: 44px;
-  background: none;
+.english-date, .nepali-date {
+  margin: 12px 0;
   font-size: 16px;
-  margin-top: 8px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.english-date strong, .nepali-date strong {
   color: var(--primary-blue);
   font-weight: 600;
 }
 
-.react-calendar__navigation button:enabled:hover,
-.react-calendar__navigation button:enabled:focus {
-  background-color: var(--light-blue);
-  border-radius: 6px;
-}
-
-.react-calendar__month-view__weekdays {
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 0.8em;
-  padding: 8px 0;
-  color: var(--gray-700);
-}
-
-.react-calendar__month-view__days__day--weekend {
-  color: var(--primary-red);
-}
-
-.react-calendar__tile {
-  max-width: 100%;
-  padding: 14px;
-  background: none;
-  text-align: center;
-  line-height: 16px;
-  font-size: 15px;
-  border-radius: 8px;
-  font-weight: 500;
-}
-
-.react-calendar__tile:enabled:hover,
-.react-calendar__tile:enabled:focus {
-  background-color: var(--light-blue);
-  color: var(--primary-blue);
-}
-
-
-.react-calendar__tile--active {
-  background: var(--primary-blue);
-  color: white;
-}
-
-.react-calendar__tile--active:enabled:hover,
-.react-calendar__tile--active:enabled:focus {
-  background: var(--secondary-blue);
-}
-
-.react-calendar__tile--disabled {
-  background-color: var(--gray-100);
-  color: var(--gray-400);
-  cursor: not-allowed;
+.nepali-date {
+  font-family: 'Segoe UI', 'Noto Sans Devanagari', Arial, sans-serif;
 }
 
 /* Time Picker Styles */
@@ -279,6 +215,16 @@ input:focus, select:focus, textarea:focus {
   max-width: 600px;
   text-align: center;
 }
+
+.selected-datetime h3 {
+  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .selected-datetime p {
   margin: 8px 0;
   color: var(--gray-700);
@@ -289,6 +235,29 @@ input:focus, select:focus, textarea:focus {
   color: var(--primary-blue);
 }
 
+/* Appointment dates section styling */
+.appointment-dates {
+  background: linear-gradient(135deg, var(--light-red), #fef7f7);
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+  border: 1px solid #fca5a5;
+  box-shadow: 0 2px 6px rgba(217, 28, 28, 0.08);
+  text-align: center;
+}
+
+.appointment-dates p {
+  margin: 10px 0;
+  font-size: 16px;
+  text-align: center;
+}
+
+.appointment-dates strong {
+  color: var(--secondary-red);
+  font-weight: 600;
+}
+
+/* Submit Button */
 .submit-btn {
   background-color: var(--primary-red);
   color: white;
@@ -326,6 +295,9 @@ input:focus, select:focus, textarea:focus {
   padding: 30px;
   border-left: 4px solid var(--primary-blue);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .appointment-info h2 {
@@ -356,244 +328,6 @@ input:focus, select:focus, textarea:focus {
   color: var(--primary-red);
   font-weight: bold;
   font-size: 18px;
-}
-
-
-
-/* Calendar month display */
-.calendar-month-display {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-  padding: 12px 15px;
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-  border-radius: 8px;
-  color: white;
-  box-shadow: 0 3px 10px rgba(10, 36, 99, 0.2);
-}
-
-.english-month {
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.nepali-month {
-  font-size: 16px;
-  font-weight: 600;
-  font-family: 'Segoe UI', 'Noto Sans Devanagari', Arial, sans-serif;
-}
-
-/* Calendar dual date display */
-.dual-date-display {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  gap: 2px;
-}
-
-.english-day {
-  font-size: 14px;
-  font-weight: bold;
-  color: var(--gray-800);
-  line-height: 1;
-}
-
-.nepali-day-small {
-  font-size: 11px;
-  color: var(--primary-blue);
-  font-weight: 600;
-  line-height: 1;
-  background-color: rgba(222, 120, 237, 0.1);
-  padding: 1px 3px;
-  border-radius: 3px;
-}
-
-/* Enhanced calendar tile styles for dual dates */
-.react-calendar__tile {
-  min-height: 55px;
-  padding: 8px 4px;
-}
-
-/* Weekend styling (Saturday and Sunday) */
-.react-calendar__month-view__days__day--weekend .english-day {
-  color: var(--primary-red) !important;
-  font-weight: bold;
-}
-
-.react-calendar__month-view__days__day--weekend .nepali-day-small {
-  color: var(--secondary-red) !important;
-  background-color: rgba(217, 28, 28, 0.1);
-}
-
-/* Selected date styling (green) */
-.react-calendar__tile--active {
-  background: #16a34a !important;
-  color: white;
-}
-
-.react-calendar__tile--active .english-day,
-.react-calendar__tile--active .nepali-day-small {
-  color: white !important;
-  background-color: transparent;
-}
-
-/* Today's date styling */
-.react-calendar__tile--now .english-day {
-  color: var(--secondary-red);
-  font-weight: bold;
-}
-
-.react-calendar__tile--now .nepali-day-small {
-  color: var(--primary-red);
-  font-weight: 600;
-  background-color: rgba(217, 28, 28, 0.15);
-}
-
-/* Hover effects */
-.react-calendar__tile:enabled:hover .english-day {
-  color: var(--primary-blue);
-}
-
-.react-calendar__tile:enabled:hover .nepali-day-small {
-  color: var(--secondary-blue);
-  background-color: rgba(10, 36, 99, 0.15);
-}
-
-/* Centered date display section */
-.date-display {
-  margin-top: 15px;
-  padding: 20px;
-  background: linear-gradient(135deg, var(--light-blue), #f8fafc);
-  border-radius: 10px;
-  border: 1px solid var(--gray-200);
-  box-shadow: 0 2px 8px rgba(10, 36, 99, 0.05);
-  text-align: center;
-}
-
-.english-date, .nepali-date {
-  margin: 12px 0;
-  font-size: 16px;
-  line-height: 1.5;
-  text-align: center;
-}
-
-.english-date strong, .nepali-date strong {
-  color: var(--primary-blue);
-  font-weight: 600;
-}
-
-.nepali-date {
-  font-family: 'Segoe UI', 'Noto Sans Devanagari', Arial, sans-serif;
-}
-
-/* Appointment dates section styling */
-.appointment-dates {
-  background: linear-gradient(135deg, var(--light-red), #fef7f7);
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 15px;
-  border: 1px solid #fca5a5;
-  box-shadow: 0 2px 6px rgba(217, 28, 28, 0.08);
-  text-align: center;
-}
-
-.appointment-dates p {
-  margin: 10px 0;
-  font-size: 16px;
-  text-align: center;
-}
-
-.appointment-dates strong {
-  color: var(--secondary-red);
-  font-weight: 600;
-}
-
-/* Enhanced selected datetime for dual calendar */
-.selected-datetime {
-  text-align: center;
-}
-
-.selected-datetime h3 {
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Responsive enhancements for dual calendar */
-@media (max-width: 768px) {
-  .calendar-month-display {
-    flex-direction: column;
-    gap: 5px;
-    text-align: center;
-  }
-  
-  .english-month, .nepali-month {
-    font-size: 14px;
-  }
-  
-  .english-day {
-    font-size: 13px;
-  }
-  
-  .nepali-day-small {
-    font-size: 10px;
-    padding: 1px 2px;
-  }
-  
-  .react-calendar__tile {
-    min-height: 50px;
-  }
-  
-  .date-display {
-    padding: 15px;
-    margin-top: 12px;
-  }
-  
-  .english-date, .nepali-date {
-    font-size: 15px;
-    margin: 10px 0;
-  }
-  
-  .appointment-dates {
-    padding: 15px;
-    margin-top: 12px;
-  }
-  
-  .appointment-dates p {
-    font-size: 15px;
-  }
-}
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .form-row {
-    flex-direction: column;
-  }
-  
-  .form-group {
-    flex: 1 1 100%;
-  }
-  
-  .appointment-header h1 {
-    font-size: 2rem;
-  }
-  
-  .appointment-form-container {
-    padding: 25px;
-  }
-  
-  .time-slots {
-    justify-content: center;
-  }
-
-  .submit-btn {
-    padding: 12px 20px;
-  }
 }
 
 /* Simple Modal Styles */
@@ -635,7 +369,16 @@ input:focus, select:focus, textarea:focus {
 }
 
 .success-modal {
-  border-top: 5px solid var(--primary-blue);
+  border-top: 5px solid #16a34a;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+}
+
+.success-modal h3 {
+  color: #15803d;
+}
+
+.success-modal p {
+  color: #166534;
 }
 
 .error-modal {
@@ -693,11 +436,12 @@ input:focus, select:focus, textarea:focus {
 }
 
 .success-modal button {
-  background-color: var(--primary-blue);
+  background-color: #16a34a;
+  box-shadow: 0 4px 10px rgba(22, 163, 74, 0.2);
 }
 
 .success-modal button:hover {
-  background-color: var(--secondary-blue);
+  background-color: #15803d;
 }
 
 .error-modal button {
@@ -706,4 +450,212 @@ input:focus, select:focus, textarea:focus {
 
 .error-modal button:hover {
   background-color: var(--secondary-red);
+}
+
+/* Responsive Styles */
+@media (min-width: 1200px) {
+  .appointment-container {
+    padding: 60px 40px;
+  }
+  
+  .appointment-form-container {
+    padding: 50px;
+  }
+  
+  .form-row {
+    gap: 20px;
+  }
+  
+  .form-group {
+    padding: 0 15px;
+  }
+  
+  .appointment-info {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .appointment-container {
+    padding: 20px 15px;
+  }
+  
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .form-group {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+  
+  .appointment-header h1 {
+    font-size: 2rem;
+  }
+  
+  .appointment-form-container {
+    padding: 25px;
+  }
+  
+  .time-slots {
+    justify-content: center;
+  }
+
+  .submit-btn {
+    padding: 12px 20px;
+  }
+  
+  .calendar-container {
+    margin-bottom: 25px;
+  }
+  
+  .nepali-calendar-section {
+    margin: 15px 0;
+  }
+  
+  .selected-date-display {
+    padding: 15px;
+    margin-top: 15px;
+  }
+  
+  .english-date, .nepali-date {
+    font-size: 15px;
+    margin: 10px 0;
+  }
+  
+  .appointment-dates {
+    padding: 15px;
+    margin-top: 12px;
+  }
+  
+  .appointment-dates p {
+    font-size: 15px;
+  }
+  
+  .appointment-info {
+    padding: 20px;
+  }
+  
+  .selected-datetime {
+    padding: 15px;
+    margin: 15px auto;
+  }
+  
+  .time-picker-container {
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .appointment-container {
+    padding: 15px 10px;
+  }
+  
+  .appointment-form-container {
+    padding: 20px;
+  }
+  
+  .calendar-container {
+    margin-bottom: 20px;
+  }
+  
+  .nepali-calendar-section {
+    margin: 10px 0;
+  }
+  
+  .selected-date-display {
+    padding: 12px;
+    margin-top: 12px;
+  }
+  
+  .english-date, .nepali-date {
+    font-size: 14px;
+    margin: 8px 0;
+  }
+  
+  .appointment-dates {
+    padding: 12px;
+    margin-top: 10px;
+  }
+  
+  .appointment-dates p {
+    font-size: 14px;
+    margin: 8px 0;
+  }
+  
+  .selected-datetime {
+    padding: 12px;
+    margin: 12px auto;
+  }
+  
+  .selected-datetime h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  
+  .time-picker-container {
+    margin-bottom: 20px;
+  }
+  
+  .time-slots {
+    gap: 8px;
+  }
+  
+  .time-slot {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  .appointment-info {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .appointment-container {
+    padding: 12px 8px;
+  }
+  
+  .appointment-form-container {
+    padding: 15px;
+  }
+  
+  .calendar-container {
+    margin-bottom: 15px;
+  }
+  
+  .selected-date-display {
+    padding: 10px;
+    margin-top: 10px;
+  }
+  
+  .english-date, .nepali-date {
+    font-size: 13px;
+    margin: 6px 0;
+  }
+  
+  .appointment-dates {
+    padding: 10px;
+    margin-top: 8px;
+  }
+  
+  .appointment-dates p {
+    font-size: 13px;
+    margin: 6px 0;
+  }
+  
+  .selected-datetime {
+    padding: 10px;
+    margin: 10px auto;
+  }
+  
+  .selected-datetime h3 {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  
+  .time-slot {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
 }

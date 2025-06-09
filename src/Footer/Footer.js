@@ -56,10 +56,13 @@ function Footer() {
                                     <span>appointment@surungamedicine.com.np</span>
                                 </li>
                                 <li>
-                                    <span>Surunga, Jhapa, Nepal</span>
+                                <span>info@surungamedicine.com.np</span>
                                 </li>
                                 <li>
-                                    <span>Sun-Sat: 8AM - 9PM</span>
+                                    <span>Kankai-03, Surunga, Jhapa, Nepal</span>
+                                </li>
+                                <li>
+                                    <span>Sun-Sat: 6AM - 9PM</span>
                                 </li>
                             </ul>
                         </div>
