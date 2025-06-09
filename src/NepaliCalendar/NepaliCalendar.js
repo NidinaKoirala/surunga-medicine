@@ -155,7 +155,7 @@ const NepaliCalendar = ({ selectedDate, onDateSelect }) => {
     <div className="modern-nepali-calendar">
       <div className="calendar-header">
         <div className="month-navigation">
-          <button onClick={goToPreviousMonth} className="nav-btn prev-btn">
+          <button type="button" onClick={goToPreviousMonth} className="nav-btn prev-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <polyline points="15,18 9,12 15,6"></polyline>
             </svg>
@@ -170,7 +170,7 @@ const NepaliCalendar = ({ selectedDate, onDateSelect }) => {
             </div>
           </div>
           
-          <button onClick={goToNextMonth} className="nav-btn next-btn">
+          <button type="button" onClick={goToNextMonth} className="nav-btn next-btn">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <polyline points="9,18 15,12 9,6"></polyline>
             </svg>
