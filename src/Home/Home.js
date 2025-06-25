@@ -5,14 +5,15 @@ import front3 from '../assets/images/home/front-3.jpg';
 import front1 from '../assets/images/home/front-1.jpg';
 import front2 from '../assets/images/home/front-2.jpg';
 import front4 from '../assets/images/home/front-4.jpeg';
-
 import front5 from '../assets/images/about-us/children-doctor.jpg';
 import profileImage from '../assets/images/logo-hospital.png';
+
 // Import components
 import Herosection from './Herosection';
 import SpecialityMenu from './SpecialityMenu';
 import UpcomingDoctors from './UpcomingDoctors';
 import Services from './Services';
+import LabTests from './LabTests';
 import TopDoctors from './TopDoctors';
 import AboutUs from './AboutUs';
 import Banner from './Banner';
@@ -56,6 +57,7 @@ function Home() {
             <SpecialityMenu />
             <UpcomingDoctors />
             <Services />
+            <LabTests />
             <TopDoctors />
             <AboutUs />
             <Banner />

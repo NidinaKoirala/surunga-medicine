@@ -77,6 +77,40 @@
     text-align: center;
 }
 
+/* Clickable Lab Tests Card */
+.clickable-card {
+    cursor: pointer;
+}
+
+.clickable-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Click Indicator */
+.click-indicator {
+    margin-top: 15px;
+    padding: 8px 16px;
+    background: rgba(224, 45, 63, 0.1);
+    border-radius: 20px;
+    border: 1px dashed var(--secondary-color, #e02d3f);
+}
+
+.click-indicator span {
+    font-size: 12px;
+    color: var(--secondary-color, #e02d3f);
+    font-weight: 600;
+}
+
+.service-card:hover .click-indicator {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.9);
+}
+
+.service-card:hover .click-indicator span {
+    color: var(--primary-color, #0a2463);
+}
+
 .service-card::before {
     content: '';
     position: absolute;

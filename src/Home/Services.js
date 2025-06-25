@@ -1,15 +1,15 @@
 import React from 'react';
 import './Services.css';
-import { 
-    FaVideo, 
-    FaXRay, 
+import {
+    FaVideo,
+    FaXRay,
     FaHospital,
-    FaHeartbeat, 
+    FaHeartbeat,
     FaSyringe,
     FaUsers,
-    FaPills 
+    FaPills,
+    FaFlask
 } from "react-icons/fa";
-
 
 function Services() {
     const servicesData = [
@@ -52,9 +52,25 @@ function Services() {
             icon: <FaPills />,
             title: "Pharmacy",
             description: "On-site pharmacy with a wide range of medications and expert pharmacist advice."
+        },
+        {
+            icon: <FaFlask />,
+            title: "Lab Tests",
+            description: "Comprehensive laboratory testing services with state-of-the-art equipment and accurate results.",
+            isLabTests: true
         }
     ];
-    
+
+    const scrollToLabTests = () => {
+        const labTestsSection = document.getElementById('lab-tests-section');
+        if (labTestsSection) {
+            labTestsSection.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    };
+
     return (
         <section className="services-section" id="services">
             <div className="container">
@@ -65,12 +81,21 @@ function Services() {
                 
                 <div className="services-grid">
                     {servicesData.map((service, index) => (
-                        <div key={index} className="service-card">
+                        <div 
+                            key={index} 
+                            className={`service-card ${service.isLabTests ? 'clickable-card' : ''}`}
+                            onClick={service.isLabTests ? scrollToLabTests : undefined}
+                        >
                             <div className="service-icon">
                                 {service.icon}
                             </div>
                             <h3>{service.title}</h3>
                             <p>{service.description}</p>
+                            {service.isLabTests && (
+                                <div className="click-indicator">
+                                    <span>Click to view tests</span>
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>
