@@ -245,7 +245,7 @@ More content...`}
             <input
               type="text"
               className="search-input"
-              placeholder="Search articles..."
+              placeholder="     Search articles..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />

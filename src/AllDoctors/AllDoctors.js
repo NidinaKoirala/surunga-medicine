@@ -125,7 +125,7 @@ function AllDoctors() {
                             <FontAwesomeIcon icon={faSearch} className="search-icon" />
                             <input 
                                 type="text" 
-                                placeholder="Search doctors by name or specialty" 
+                                placeholder="     Search doctors by name or specialty" 
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
