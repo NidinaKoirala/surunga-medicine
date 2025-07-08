@@ -461,7 +461,7 @@
 .slide-image {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Changed from 'cover' to 'contain' to show full image */
+    object-fit: cover; 
     transition: transform 0.5s ease;
     background-color: #f8f9fa; /* Light background for images with transparency */
 }
