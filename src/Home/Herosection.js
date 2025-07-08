@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Herosection.css';
 
 // Import default image for fallback
-import defaultHeroImg from '../assets/images/home/header_img.png';
+import defaultHeroImg from '../assets/images/home/about-img.png';
 import defaultProfileImg from '../assets/images/about-us/our-svc.jpg';
 
 // Import icons

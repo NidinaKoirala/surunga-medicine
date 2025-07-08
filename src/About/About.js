@@ -7,6 +7,7 @@ import aboutImage from '../assets/images/about_image.png';
 // Import about-us folder images
 import childrenDoctorImage from '../assets/images/about-us/children-doctor.jpg';
 import diabitiesThyroidImage from '../assets/images/about-us/diabities-thyrod-doc.jpg';
+import ourvision from '../assets/images/about-us/ourvision.png';
 import stomachDocImage from '../assets/images/about-us/great-lever-stomach-doc.jpg';
 
 // Import icons
@@ -125,7 +126,7 @@ function About() {
                             </div>
                         </div>
                         <div className="vision-image">
-                            <img src={diabitiesThyroidImage} alt="Our Vision" />
+                            <img src={ourvision} alt="Our Vision" />
                         </div>
                     </div>
                 </div>
