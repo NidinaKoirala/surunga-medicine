@@ -17,19 +17,25 @@ function Banner() {
         <section className="banner-section" id="banner">
             <div className="container" id="banner-container">
                 <div className="banner-content">
+                    {/* Background image */}
+                    <div className="banner-background">
+                        <img src={Bannerimg} alt="Doctor appointment" className="background-img" />
+                    </div>
+                    
+                    {/* Overlay for better text readability */}
+                    <div className="banner-overlay"></div>
+                    
+                    {/* Text content over the image */}
                     <div className="banner-text">
                         <h2 className="banner-title">
                             Book Appointment With 100+ Trusted Doctors
                         </h2>
                         <button 
-                            className="appointment-btn" 
+                            className="appointment-btn"
                             onClick={handleAppointmentClick}
                         >
                             Book Appointment
                         </button>
-                    </div>
-                    <div className="banner-image">
-                        <img src={Bannerimg} alt="Doctor appointment" className="img-fluid" />
                     </div>
                 </div>
             </div>
