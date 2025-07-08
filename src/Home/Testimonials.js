@@ -2,38 +2,25 @@ import React, { useState, useEffect } from 'react';
 import './Testimonials.css';
 import { FaQuoteLeft, FaStar } from "react-icons/fa";
 
+// Option 1: Import the image directly (recommended for assets folder)
+import narayaniImage from '../assets/images/testomonials/narayani-oli.jpeg';
+import junupuriImage from '../assets/images/testomonials/junupuri.jpeg';
 function Testimonials() {
     const testimonials = [
         {
             id: 1,
-            name: "सुनिता तामाङ",
-            position: "मुटु रोग विशेषज्ञ सेवाग्राही",
-            image: "https://randomuser.me/api/portraits/women/32.jpg",
-            review: "सुरुङ्गा मेडिसिन एण्ड क्लिनिकले मेरो स्वास्थ्य सेवा अनुभवलाई पूर्णरूपमा परिवर्तन गरेको छ। यो प्लेटफर्म अत्यन्तै प्रयोगकर्ता-मैत्री छ, र मैले केही मिनेटमै विशेषज्ञसँग भेटघाट बुक गर्न सकें। डाक्टर उत्कृष्ट थिए र मेरा सबै चिन्ताहरूलाई सम्बोधन गर्न पर्याप्त समय दिए।",
+            name: "Narayani Oli",
+            position: "स्वास्थ्य परीक्षण, औषधि उपचार सेवाग्राही",
+            image: narayaniImage,
+            review: "म नारायणी ओली, झापा जिल्लाको कन्काई–३ निवासी ८२ वर्षीय नागरिक हुँ। जीवनको यो उत्तरार्धमा पनि स्वस्थ्य जीवन जिउन पाउनु, मेरो लागि वरदानजस्तै हो। यस वरदानमा ठूलो हात रहेको छ — हाम्रो नजिकै रहेको सुरुङ्गा मेडिसिन सेन्टरको। यस केन्द्रमा मैले गरेको स्वास्थ्य परीक्षण, औषधि उपचार, र समय–समयमा पाइरहेको चिकित्सकीय सल्लाह–सुझावले मलाई शारीरिक मात्र होइन, मानसिक सान्त्वना पनि दिएको छ। यहाँ कार्यरत डाक्टरहरू अत्यन्तै अनुभवि, दक्ष र मानवतावादी सोच बोकेका हुनुहुन्छ। सधैं मुस्कानका साथ सेवामा समर्पित कर्मचारीहरू पनि प्रशंसायोग्य छन्। उमेरका हिसाबले सानातिना स्वास्थ्य समस्याहरू आइरहन्छन्, तर यस्ता समस्याहरूलाई सहजै समाधान गरिदिनु भएको छ – सुरुङ्गा मेडिसिन सेन्टरका चिकित्सकहरूको लगनशीलता र सेवाभावले। आज म स्वास्थ्य छु दिनप्रतिदिनको जीवनमा आशा बोकेर अघि बढिरहेको छु। यसको श्रेय एक हदसम्म यस संस्थालाई दिन्छु। सुरुङ्गा मेडिसिन परिवारप्रति म सधैं कृतज्ञ छु।",
             rating: 5
         },
         {
             id: 2,
-            name: "रामेश श्रेष्ठ",
-            position: "मिर्गौला उपचार सेवाग्राही",
-            image: "https://randomuser.me/api/portraits/men/15.jpg",
-            review: "मैले विगत ६ महिनादेखि मेरो नियमित जाँचका लागि सुरुङ्गा मेडिसिन एण्ड क्लिनिक प्रयोग गर्दै आएको छु। अपोइन्टमेन्ट बुक गर्ने र मेरो मेडिकल रेकर्डहरू एकै ठाउँमा पहुँच गर्ने सुविधाले मेरो स्वास्थ्य व्यवस्थापन गर्न धेरै सजिलो बनाएको छ। अत्यन्तै सिफारिस गर्दछु!",
-            rating: 5
-        },
-        {
-            id: 3,
-            name: "प्रिया गुरुङ",
-            position: "महिला स्वास्थ्य सेवाग्राही",
-            image: "https://randomuser.me/api/portraits/women/44.jpg",
-            review: "तीन बच्चाकी व्यस्त आमाको रूपमा, मेरा बच्चाहरूलाई डाक्टरको अपोइन्टमेन्टमा लिएर जान समय निकाल्न सधैं चुनौतीपूर्ण थियो। सुरुङ्गा मेडिसिन एण्ड क्लिनिकको माध्यमबाट, म हाम्रो तालिकालाई अवरोध नगरी मेरा बच्चाहरूका लागि भर्चुअल परामर्श बुक गर्न सक्छु। बाल रोग विशेषज्ञहरू अद्भुत छन्!",
-            rating: 4
-        },
-        {
-            id: 4,
-            name: "विनोद खड्का",
-            position: "जनरल स्वास्थ्य परामर्श सेवाग्राही",
-            image: "https://randomuser.me/api/portraits/men/47.jpg",
-            review: "सुरुङ्गा मेडिसिन एण्ड क्लिनिकमा डाक्टरहरूको गुणस्तर असाधारण छ। मलाई एउटा जटिल समस्या थियो जसलाई अघिल्ला डाक्टरहरूले ठीकसँग निदान गर्न सकेनन्। यस प्लेटफर्म मार्फत, मैले एक विशेषज्ञ भेट्टाएँ जसले मेरो अवस्था पहिचान गरे र प्रभावकारी उपचार योजना विकास गरे।",
+            name: "Junu Puri",
+            position: "Skin Patient",
+            image: junupuriImage,
+            review: "म यस क्लिनिकमा धेरै वर्षदेखि नियमित रूपमा Dermatologist लाई भेट्छु र मेरो अनुभव अत्यन्तै सकारात्मक छ। यहाँका डाक्टर र करमचारी सबै अत्यन्तै राम्रो, दयालु र व्यवसायिक छन्। तिनीहरूले बिरामीहरूलाई धैर्यसाथ सुन्छन् र उचित सल्लाह दिन्छन्। सबैभन्दा राम्रो कुरा यो हो कि यहाँ सबै प्रकारका छालासम्बन्धी उपचार र औषधि उपलब्ध छन्। मलाई अन्य ठाउँमा धेरै कुदनु पर्दैन, सबै सेवा एकै ठाउँमा पाउन सकिन्छ। अपोइन्टमेन्ट बुक गर्न सजिलो छ र प्रतीक्षा समय पनि कम छ। समग्रमा, यो क्लिनिकले मेरो छालाको स्वास्थ्य राम्रो राख्न मद्दत गरेको छ।",
             rating: 5
         }
     ];
@@ -61,6 +48,11 @@ function Testimonials() {
         ));
     };
 
+    // Handle image loading errors
+    const handleImageError = (e) => {
+        e.target.src = 'https://via.placeholder.com/80x80/cccccc/666666?text=No+Image';
+    };
+
     return (
         <section className="testimonials-section" id="testimonials">
             <div className="container">
@@ -83,7 +75,12 @@ function Testimonials() {
                                     {testimonial.review}
                                 </p>
                                 <div className="testimonial-author">
-                                    <img src={testimonial.image} alt={testimonial.name} className="author-image" />
+                                    <img 
+                                        src={testimonial.image} 
+                                        alt={testimonial.name} 
+                                        className="author-image"
+                                        onError={handleImageError}
+                                    />
                                     <div className="author-info">
                                         <h4 className="author-name">{testimonial.name}</h4>
                                         <p className="author-position">{testimonial.position}</p>
