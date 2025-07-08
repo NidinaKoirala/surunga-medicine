@@ -4,8 +4,8 @@ import React from 'react';
 import front3 from '../assets/images/home/front-3.jpg';
 import front1 from '../assets/images/home/front-1.jpg';
 import front2 from '../assets/images/home/front-2.jpg';
-import front4 from '../assets/images/home/front-4.jpeg';
-import front5 from '../assets/images/about-us/children-doctor.jpg';
+import front4 from '../assets/images/home/front-4.jpg';
+import front5 from '../assets/images/home/front-5.jpg';
 import profileImage from '../assets/images/logo-hospital.png';
 
 // Import components
