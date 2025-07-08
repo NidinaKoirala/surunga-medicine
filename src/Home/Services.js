@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Services.css';
+import LabTests from './LabTests';
 import {
     FaVideo,
     FaXRay,
@@ -12,6 +13,8 @@ import {
 } from "react-icons/fa";
 
 function Services() {
+    const [showLabTests, setShowLabTests] = useState(false);
+
     const servicesData = [
         {
             icon: <FaVideo />,
@@ -61,14 +64,8 @@ function Services() {
         }
     ];
 
-    const scrollToLabTests = () => {
-        const labTestsSection = document.getElementById('lab-tests-section');
-        if (labTestsSection) {
-            labTestsSection.scrollIntoView({ 
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+    const handleLabTestsClick = () => {
+        setShowLabTests(!showLabTests);
     };
 
     return (
@@ -78,13 +75,13 @@ function Services() {
                     <h2>Our Services</h2>
                     <p>Comprehensive healthcare solutions designed for your convenience and well-being</p>
                 </div>
-                
+                                
                 <div className="services-grid">
                     {servicesData.map((service, index) => (
                         <div 
-                            key={index} 
+                            key={index}
                             className={`service-card ${service.isLabTests ? 'clickable-card' : ''}`}
-                            onClick={service.isLabTests ? scrollToLabTests : undefined}
+                            onClick={service.isLabTests ? handleLabTestsClick : undefined}
                         >
                             <div className="service-icon">
                                 {service.icon}
@@ -93,12 +90,19 @@ function Services() {
                             <p>{service.description}</p>
                             {service.isLabTests && (
                                 <div className="click-indicator">
-                                    <span>Click to view tests</span>
+                                    <span>{showLabTests ? 'Hide tests' : 'Click to view tests'}</span>
                                 </div>
                             )}
                         </div>
                     ))}
                 </div>
+
+                {/* Conditionally render LabTests component */}
+                {showLabTests && (
+                    <div className="lab-tests-container">
+                        <LabTests />
+                    </div>
+                )}
             </div>
         </section>
     );

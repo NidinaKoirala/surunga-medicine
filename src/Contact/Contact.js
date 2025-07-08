@@ -1,7 +1,6 @@
 // Contact.js
 import React, { useState, useRef } from 'react';
 import './Contact.css';
-import contactimg from '../assets/images/contact_image.png';
 import emailjs from '@emailjs/browser';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock , FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 
@@ -210,9 +209,6 @@ function Contact() {
                     </div>
                     
                     <div className="contact-form-container">
-                        <div className="contact-image-container">
-                            <img src={contactimg} alt="Surunga Medicine" className="contact-image" />
-                        </div>
                         
                         <form ref={form} className="contact-form" onSubmit={handleSubmit}>
                             <h2>Send us a message</h2>

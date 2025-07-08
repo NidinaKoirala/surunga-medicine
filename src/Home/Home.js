@@ -13,7 +13,6 @@ import Herosection from './Herosection';
 import SpecialityMenu from './SpecialityMenu';
 import UpcomingDoctors from './UpcomingDoctors';
 import Services from './Services';
-import LabTests from './LabTests';
 import TopDoctors from './TopDoctors';
 import AboutUs from './AboutUs';
 import Banner from './Banner';
@@ -57,7 +56,6 @@ function Home() {
             <SpecialityMenu />
             <UpcomingDoctors />
             <Services />
-            <LabTests />
             <TopDoctors />
             <AboutUs />
             <Banner />

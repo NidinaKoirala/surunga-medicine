@@ -31,7 +31,7 @@ p {
 /* Hero Section */
 .about-hero {
   background: linear-gradient(to right, rgba(10, 36, 99, 0.9), rgba(30, 63, 127, 0.85)), 
-              url('../assets/images/about-us/hero-bg.png') center/cover no-repeat;
+              /* url('../assets/images/about-us/hero-bg.png') */ center/cover no-repeat;
   padding: 100px 0;
   text-align: center;
   color: #fff;
