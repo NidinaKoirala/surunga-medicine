@@ -1,46 +1,44 @@
 import React from 'react';
 import './Team.css';
 
-import kamalImage from '../assets/images/team/kamal-subedi.jpeg';
+import alishaImage from '../assets/images/team/alisha-limbu.jpg';
+import dikshyaImage from '../assets/images/team/dikshya-poudel.jpg';
+import nishaImage from '../assets/images/team/nisha-karki.jpg';
+import rekhaImage from '../assets/images/team/rekha-poudel.jpg';
+import sushmaImage from '../assets/images/team/sushma-karki.jpg';
 
 const Team = () => {
     // Team members data - easy to add/modify
     const teamMembers = [
         {
             id: 1,
-            name: "Dr. Kamal Subedi",
-            position: "Chief Medical Officer",
-            image: kamalImage, 
+            name: "Alisha Hembya Limbu",
+            position: "Lab Assistant",
+            image: alishaImage, 
         },
         {
             id: 2,
-            name: "Dr. Nidina Koirala",
-            position: "Pediatric Specialist",
-            image: kamalImage,
+            name: "Dikshya Poudel",
+            position: "Lab Assistant",
+            image: dikshyaImage,
         },
         {
             id: 3,
-            name: "Dr. Rajesh Kumar",
-            position: "Endocrinologist",
-            image: kamalImage,
+            name: "Nisha Karki",
+            position: "Lab Assistant",
+            image: nishaImage,
         },
         {
             id: 4,
-            name: "Dr. Nidina Koirala",
-            position: "Gastroenterologist",
-            image: kamalImage,
+            name: "Rekha Poudel",
+            position: "Lab Assistant",
+            image: rekhaImage,
         },
         {
             id: 5,
-            name: "Dr. Kamal Subedi",
-            position: "Cardiologist",
-            image: kamalImage,
-        },
-        {
-            id: 6,
-            name: "Dr. Nidina Koirala",
-            position: "General Physician",
-            image: kamalImage,
+            name: "Sushma Karki",
+            position: "Lab Assistant",
+            image: sushmaImage,
         }
     ];
 
