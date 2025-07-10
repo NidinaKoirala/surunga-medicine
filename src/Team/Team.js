@@ -13,7 +13,7 @@ const Team = () => {
         {
             id: 1,
             name: "Alisha Hembya Limbu",
-            position: "Lab Assistant",
+            position: "Senior lab assistant",
             image: alishaImage, 
         },
         {
@@ -25,19 +25,19 @@ const Team = () => {
         {
             id: 3,
             name: "Nisha Karki",
-            position: "Lab Assistant",
+            position: "Senior Lab Technician (NHPC No.10750)",
             image: nishaImage,
         },
         {
             id: 4,
             name: "Rekha Poudel",
-            position: "Lab Assistant",
+            position: "Radiographer",
             image: rekhaImage,
         },
         {
             id: 5,
             name: "Sushma Karki",
-            position: "Lab Assistant",
+            position: "Assistant Pharmacist",
             image: sushmaImage,
         }
     ];
