@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './AllDoctors.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faStarHalfAlt, faUserMd, faSearch, faCalendarPlus, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faUserMd, faSearch, faCalendarPlus, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { AppContext } from '../Context/AppContext';
 
 function AllDoctors() {
@@ -82,23 +82,6 @@ function AllDoctors() {
             } 
         });
         window.scrollTo(0, 0);
-    };
-    
-    // Function to render rating stars
-    const renderRatingStars = (rating) => {
-        const stars = [];
-        const fullStars = Math.floor(rating || 4.5);
-        const hasHalfStar = (rating || 4.5) % 1 >= 0.5;
-        
-        for (let i = 0; i < fullStars; i++) {
-            stars.push(<FontAwesomeIcon key={`full-${i}`} icon={faStar} className="star-icon" />);
-        }
-        
-        if (hasHalfStar) {
-            stars.push(<FontAwesomeIcon key="half" icon={faStarHalfAlt} className="star-icon" />);
-        }
-        
-        return stars;
     };
     
     // Close dropdown when clicking outside
@@ -183,11 +166,6 @@ function AllDoctors() {
                                         <div className="doctor-details">
                                             <h3 className="doctor-name text-center">{doctor.name}</h3>
                                             <p className="doctor-specialty text-center"><strong>{doctor.speciality}</strong></p>
-                                            
-                                            <div className="doctor-rating text-center">
-                                                {renderRatingStars(4.8)}
-                                                <span className="rating-number">4.8</span>
-                                            </div>
                                             
                                             <div className="doctor-info-row">
                                                 <div className="info-item doctor-experience">

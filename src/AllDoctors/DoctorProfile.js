@@ -2,8 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
-    faStar, 
-    faStarHalfAlt, 
     faUserMd, 
     faGraduationCap, 
     faArrowLeft, 
@@ -34,23 +32,6 @@ const DoctorProfile = () => {
         // Scroll to top on page load
         window.scrollTo(0, 0);
     }, [id, doctors]);
-    
-    // Function to render rating stars
-    const renderRatingStars = (rating) => {
-        const stars = [];
-        const fullStars = Math.floor(rating);
-        const hasHalfStar = rating % 1 >= 0.5;
-        
-        for (let i = 0; i < fullStars; i++) {
-            stars.push(<FontAwesomeIcon key={`full-${i}`} icon={faStar} className="star-icon" />);
-        }
-        
-        if (hasHalfStar) {
-            stars.push(<FontAwesomeIcon key="half" icon={faStarHalfAlt} className="star-icon" />);
-        }
-        
-        return stars;
-    };
     
     // Function to handle booking appointment
     const handleBookAppointment = () => {
@@ -108,10 +89,6 @@ const DoctorProfile = () => {
                                     <h2 className="doctor-profile-name text-center">{doctor.name}</h2>
                                     <p className="doctor-profile-specialty text-center"><strong>{doctor.speciality}</strong></p>
                                     
-                                    <div className="doctor-profile-rating text-center">
-                                        {renderRatingStars(4.8)}
-                                        <span className="rating-number">4.8</span>
-                                    </div>
                                     
                                     <div className="doctor-stats text-center">
                                         <div className="stat-item justify-content-center">

@@ -2,28 +2,11 @@ import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./TopDoctors.css"
 import { AppContext } from "../Context/AppContext";
-import { FaStar, FaStarHalfAlt, FaUserMd, FaArrowRight } from "react-icons/fa";
+import { FaUserMd, FaArrowRight } from "react-icons/fa";
 
 function TopDoctors() {
     const { doctors } = useContext(AppContext);
     const navigate = useNavigate();
-    
-    // Function to render rating stars
-    const renderRating = (rating) => {
-        const stars = [];
-        const fullStars = Math.floor(rating);
-        const hasHalfStar = rating % 1 !== 0;
-        
-        for (let i = 0; i < fullStars; i++) {
-            stars.push(<FaStar key={`full-${i}`} className="star" />);
-        }
-        
-        if (hasHalfStar) {
-            stars.push(<FaStarHalfAlt key="half" className="star" />);
-        }
-        
-        return stars;
-    };
     
     // Navigate to doctor profile
     const handleDoctorClick = (doctorId) => {
@@ -63,12 +46,7 @@ function TopDoctors() {
                                 <h3 className="doctor-name text-center">{doctor.name}</h3>
                                 <p className="doctor-speciality text-center"><strong>{doctor.speciality}</strong></p>
                                 
-                                <div className="doctor-meta">
-                                    <div className="doctor-rating text-center">
-                                        {renderRating(4.5)}
-                                        <span className="rating-count">(120+)</span>
-                                    </div>
-                                    
+                                <div className="doctor-meta">                                    
                                     <div className="doctor-info">
                                         <div className="info-item experience-item">
                                             <FaUserMd className="info-icon" />

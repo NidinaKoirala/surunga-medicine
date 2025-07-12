@@ -100,22 +100,11 @@
     margin-bottom: 15px;
 }
 
-.doctor-profile-rating {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
 .star-icon {
     color: #ffc107;
     margin-right: 3px;
 }
 
-.rating-number {
-    margin-left: 5px;
-    font-weight: 600;
-    color: #343a40;
-}
 
 .doctor-stats {
     display: flex;
@@ -305,11 +294,6 @@
 }
 
 .justify-content-center {
-    justify-content: center;
-}
-
-/* Center rating stars properly */
-.doctor-profile-rating.text-center {
     justify-content: center;
 }
 

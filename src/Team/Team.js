@@ -1,6 +1,7 @@
 import React from 'react';
 import './Team.css';
 
+import yagyaImage from '../assets/images/team/yagya-raj.jpg';
 import alishaImage from '../assets/images/team/alisha-limbu.jpg';
 import dikshyaImage from '../assets/images/team/dikshya-poudel.jpg';
 import nishaImage from '../assets/images/team/nisha-karki.jpg';
@@ -10,6 +11,12 @@ import sushmaImage from '../assets/images/team/sushma-karki.jpg';
 const Team = () => {
     // Team members data - easy to add/modify
     const teamMembers = [
+        {
+            id: 0,
+            name: "Yagya Raj Karki",
+            position: "Senior Pharmacist (Master in Health) ",
+            image: yagyaImage, 
+        },        
         {
             id: 1,
             name: "Alisha Hembya Limbu",

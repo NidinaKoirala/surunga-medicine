@@ -20,12 +20,6 @@
     font-weight: 700;
 }
 
-/* Center the rating */
-.doctor-rating.text-center {
-    justify-content: center;
-    width: 100%;
-}
-
 /* Center the experience info */
 .doctor-info {
     justify-content: center !important;
@@ -142,21 +136,9 @@
     margin-bottom: 20px;
 }
 
-.doctor-rating {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
 .star {
     color: #ffc107;
     font-size: 14px;
-}
-
-.rating-count {
-    font-size: 12px;
-    color: #6c757d;
-    margin-left: 3px;
 }
 
 .doctor-info {

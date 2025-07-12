@@ -367,24 +367,6 @@
     margin-bottom: 15px;
 }
 
-.doctor-rating {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    justify-content: center;
-}
-
-.star-icon {
-    color: #ffc107;
-    margin-right: 2px;
-}
-
-.rating-number {
-    margin-left: 5px;
-    font-weight: 600;
-    color: #343a40;
-}
-
 .doctor-info-row {
     display: flex;
     justify-content: center;
@@ -412,7 +394,7 @@
     border-top: 1px solid #f0f0f0;
 }
 
-/* Smaller text for View Profile button */
+/* Equal sized buttons */
 .view-profile-btn {
     background-color: #2a70e0;
     color: white;
@@ -433,7 +415,7 @@
     box-shadow: 0 4px 8px rgba(42, 112, 224, 0.15);
 }
 
-/* Book appointment button */
+/* Book appointment button - same size as view profile */
 .book-appointment-btn {
     background-color: #ffffff;
     color: #2a70e0;
@@ -449,6 +431,7 @@
     justify-content: center;
     gap: 4px;
     white-space: nowrap;
+    flex: 1;
 }
 
 .book-appointment-btn:hover {
@@ -605,7 +588,6 @@
     }
     
     .book-appointment-btn {
-        width: auto;
         padding: 5px 8px;
     }
     
