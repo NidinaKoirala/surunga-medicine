@@ -193,18 +193,102 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Social media icons hover - keep white color */
-.social-link:hover {
-    background-color: rgba(255, 255, 255, 0.6);
+/* Brand-specific social media colors on hover */
+.social-link.facebook:hover {
+    background-color: #1877f2 !important;
+    border-color: #1877f2 !important;
     color: white !important;
-    transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    border: 2px solid rgba(255, 255, 255, 0.8);
 }
 
-.social-link:hover svg {
+.social-link.facebook:hover svg {
     color: white !important;
     fill: white !important;
+}
+
+.social-link.x:hover {
+    background-color: #000000 !important;
+    border-color: #000000 !important;
+    color: white !important;
+}
+
+.social-link.x:hover svg {
+    color: white !important;
+    fill: white !important;
+}
+
+.social-link.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+    border-color: #e6683c !important;
+    color: white !important;
+}
+
+.social-link.instagram:hover svg {
+    color: white !important;
+    fill: white !important;
+}
+
+.social-link.linkedin:hover {
+    background-color: #0077b5 !important;
+    border-color: #0077b5 !important;
+    color: white !important;
+}
+
+.social-link.linkedin:hover svg {
+    color: white !important;
+    fill: white !important;
+}
+
+.social-link.whatsapp:hover {
+    background-color: #25d366 !important;
+    border-color: #25d366 !important;
+    color: white !important;
+}
+
+.social-link.whatsapp:hover svg {
+    color: white !important;
+    fill: white !important;
+}
+
+.social-link.tiktok:hover {
+    background: linear-gradient(45deg, #000000 0%, #ff0050 100%) !important;
+    border-color: #ff0050 !important;
+    color: white !important;
+}
+
+.social-link.tiktok:hover svg {
+    color: white !important;
+    fill: white !important;
+}
+
+/* Active states (clicked) */
+.social-link.facebook:active {
+    background-color: #166fe5 !important;
+    transform: translateY(-3px);
+}
+
+.social-link.x:active {
+    background-color: #333333 !important;
+    transform: translateY(-3px);
+}
+
+.social-link.instagram:active {
+    background: linear-gradient(45deg, #e6683c 0%, #dc2743 50%, #bc1888 100%) !important;
+    transform: translateY(-3px);
+}
+
+.social-link.linkedin:active {
+    background-color: #005885 !important;
+    transform: translateY(-3px);
+}
+
+.social-link.whatsapp:active {
+    background-color: #20b954 !important;
+    transform: translateY(-3px);
+}
+
+.social-link.tiktok:active {
+    background: linear-gradient(45deg, #333333 0%, #cc0040 100%) !important;
+    transform: translateY(-3px);
 }
 
 .contact-form-container {
@@ -268,6 +352,18 @@
     margin-bottom: 20px;
 }
 
+.form-group.full-width {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.form-group.full-width input,
+.form-group.full-width textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .form-group label {
     display: block;
     font-size: 14px;
@@ -285,7 +381,8 @@
     font-size: 15px;
     transition: all 0.3s ease;
     background-color: #f7f9fc;
-    color: var(--dark-gray); /* Explicitly set input text color */
+    color: var(--dark-gray);
+    box-sizing: border-box;
 }
 
 .form-group input:focus,

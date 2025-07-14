@@ -5,6 +5,48 @@ import emailjs from '@emailjs/browser';
 import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp, FaTiktok } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
+// Social Media Configuration - Easy to add/edit social media handles
+const socialMediaLinks = [
+    {
+        platform: 'facebook',
+        url: 'https://facebook.com/surungamedicine',
+        icon: FaFacebookF,
+        className: 'social-link facebook'
+    },
+    {
+        platform: 'x',
+        url: 'https://x.com/surungamedicine',
+        icon: FaXTwitter,
+        className: 'social-link x'
+    },
+    {
+        platform: 'instagram',
+        url: 'https://instagram.com/surungamedicine',
+        icon: FaInstagram,
+        className: 'social-link instagram'
+    },
+    {
+        platform: 'linkedin',
+        url: 'https://linkedin.com/surungamedicine',
+        icon: FaLinkedinIn,
+        className: 'social-link linkedin'
+    },
+    {
+        platform: 'whatsapp',
+        url: 'https://wa.me/9779804964107',
+        icon: FaWhatsapp,
+        className: 'social-link whatsapp',
+        target: '_blank',
+        rel: 'noopener noreferrer'
+    },
+    {
+        platform: 'tiktok',
+        url: 'https://tiktok.com/@surungamedicine',
+        icon: FaTiktok,
+        className: 'social-link tiktok'
+    }
+];
+
 function Contact() {
     // Access EmailJS configuration from environment variables
     const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
@@ -200,12 +242,21 @@ function Contact() {
                         </div>
                         
                         <div className="social-links">
-                            <a href="https://facebook.com/surungamedicine" aria-label="Facebook" className="social-link facebook"><FaFacebookF /></a>
-                            <a href="https://x.com/surungamedicine" aria-label="X" className="social-link x"><FaXTwitter /></a>
-                            <a href="https://instagram.com/surungamedicine" aria-label="Instagram" className="social-link instagram"><FaInstagram /></a>
-                            <a href="https://linkedin.com/surungamedicine" aria-label="LinkedIn" className="social-link linkedin"><FaLinkedinIn /></a>
-                            <a href="https://wa.me/9779804964107" aria-label="WhatsApp" className="social-link whatsapp" target="_blank" rel="noopener noreferrer"><FaWhatsapp /></a>
-                            <a href="https://tiktok.com/@surungamedicine" aria-label="TikTok" className="social-link tiktok"><FaTiktok /></a>
+                            {socialMediaLinks.map((social, index) => {
+                                const IconComponent = social.icon;
+                                return (
+                                    <a
+                                        key={index}
+                                        href={social.url}
+                                        aria-label={social.platform.charAt(0).toUpperCase() + social.platform.slice(1)}
+                                        className={social.className}
+                                        target={social.target || undefined}
+                                        rel={social.rel || undefined}
+                                    >
+                                        <IconComponent />
+                                    </a>
+                                );
+                            })}
                         </div>
                     </div>
                     
@@ -252,28 +303,32 @@ function Contact() {
                                     />
                                 </div>
                             </div>
-                            <div className="form-group">
-                                <label htmlFor="subject">Subject</label>
-                                <input 
-                                    type="text" 
-                                    id="subject" 
-                                    name="subject"
-                                    placeholder="Subject" 
-                                    value={formData.subject}
-                                    onChange={handleChange}
-                                />
+                            <div className="form-row">
+                                <div className="form-group full-width">
+                                    <label htmlFor="subject">Subject</label>
+                                    <input 
+                                        type="text" 
+                                        id="subject" 
+                                        name="subject"
+                                        placeholder="Subject" 
+                                        value={formData.subject}
+                                        onChange={handleChange}
+                                    />
+                                </div>
                             </div>
-                            <div className="form-group">
-                                <label htmlFor="message">Message</label>
-                                <textarea 
-                                    id="message" 
-                                    name="message"
-                                    rows="5" 
-                                    placeholder="Your message"
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    required
-                                ></textarea>
+                            <div className="form-row">
+                                <div className="form-group full-width">
+                                    <label htmlFor="message">Message</label>
+                                    <textarea 
+                                        id="message" 
+                                        name="message"
+                                        rows="5" 
+                                        placeholder="Your message"
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        required
+                                    ></textarea>
+                                </div>
                             </div>
                             <button 
                                 type="submit" 

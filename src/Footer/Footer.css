@@ -133,6 +133,112 @@
     transform: translateX(3px);
 }
 
+/* Social Media Section */
+.social-media-section {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.social-media-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #000;
+    position: relative;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.social-media-section h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background-color: #e02d3f;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Individual platform styles */
+.social-icon.whatsapp {
+    color: #25D366;
+}
+
+.social-icon.whatsapp:hover {
+    background-color: #25D366;
+    color: white;
+    border-color: #25D366;
+}
+
+.social-icon.facebook {
+    color: #1877F2;
+}
+
+.social-icon.facebook:hover {
+    background-color: #1877F2;
+    color: white;
+    border-color: #1877F2;
+}
+
+.social-icon.instagram {
+    color: #E4405F;
+}
+
+.social-icon.instagram:hover {
+    background-color: #E4405F;
+    color: white;
+    border-color: #E4405F;
+}
+
+.social-icon.tiktok {
+    color: #000;
+}
+
+.social-icon.tiktok:hover {
+    background-color: #000;
+    color: white;
+    border-color: #000;
+}
+
+.social-icon.twitter {
+    color: #000;
+}
+
+.social-icon.twitter:hover {
+    background-color: #000;
+    color: white;
+    border-color: #000;
+}
+
 /* Copyright Section */
 .copyright-section {
     text-align: center;
@@ -181,6 +287,16 @@
     
     .footer-logo img {
         max-width: 170px;
+    }
+    
+    .social-icons {
+        gap: 12px;
+    }
+    
+    .social-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
     }
 }
 
@@ -242,6 +358,26 @@
     .footer-description p {
         font-size: 13px;
         line-height: 1.6;
+    }
+    
+    .social-media-section {
+        margin-top: 15px;
+        padding-top: 15px;
+    }
+    
+    .social-media-section h3 {
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+    
+    .social-icons {
+        gap: 10px;
+    }
+    
+    .social-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 15px;
     }
 }
 
@@ -329,5 +465,25 @@
     
     .footer-description {
         padding-top: 20px;
+    }
+    
+    .social-media-section {
+        margin-top: 10px;
+        padding-top: 10px;
+    }
+    
+    .social-media-section h3 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+    
+    .social-icons {
+        gap: 8px;
+    }
+    
+    .social-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
     }
 }
