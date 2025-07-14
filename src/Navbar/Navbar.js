@@ -78,8 +78,8 @@ function Navbar() {
         window.scrollTo(0, 0);
     };
     
-    // Special handler for Blog link 
-    const handleBlogClick = (e) => {
+    // FIXED: Simplified Blog handler - use React Router like other links
+    const handleBlogClick = () => {
         // Scroll to top
         window.scrollTo(0, 0);
         
@@ -87,17 +87,6 @@ function Navbar() {
         setTimeout(() => {
             setIsOpen(false);
         }, 100);
-        
-        // If we're already on blog, just refresh the page
-        if (location.pathname === '/Blog' || location.pathname.startsWith('/Blog/')) {
-            window.location.reload();
-        } else {
-            // Use direct navigation instead of React Router
-            window.location.href = '/Blog';
-        }
-        
-        // Prevent default
-        e.preventDefault();
     };
     
     return (
@@ -147,7 +136,7 @@ function Navbar() {
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="/Blog" className={isActive('/Blog')} onClick={handleBlogClick}>
+                                    <a href="/Blog" className={isActive('/Blog')} onClick={() => handleDirectNavigation('/Blog')}>
                                         Blog
                                     </a>
                                 </li>
@@ -176,9 +165,9 @@ function Navbar() {
                                     </Link>
                                 </li>
                                 <li>
-                                    <a href="/Blog" className={isActive('/Blog')} onClick={handleBlogClick}>
+                                    <Link to="/Blog" className={isActive('/Blog')} onClick={handleBlogClick}>
                                         Blog
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
                                     <Link to="/Contact" className={isActive('/Contact')} onClick={handleRouterNavigation}>
