@@ -1,4 +1,3 @@
-// src/pages/Blog.js - With image loading fix and ESLint fixes
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
@@ -78,21 +77,40 @@ function Blog() {
     });
   };
 
-  // Fetch blog posts when component mounts
+  // FIXED: Added timeout and better error handling
   useEffect(() => {
     async function fetchBlogPosts() {
       try {
         setLoading(true);
+        setError(null);
+        
+        console.log('Blog: Starting to fetch blog posts');
+        
+        // FIXED: Add timeout to prevent infinite loading
+        const timeoutId = setTimeout(() => {
+          setError('Request timed out. Please check your blog files are accessible.');
+          setLoading(false);
+        }, 8000); // 8 second timeout
+        
         const posts = await getAllBlogPosts();
+        
+        // FIXED: Clear timeout if successful
+        clearTimeout(timeoutId);
+        
+        console.log('Blog: Successfully fetched posts:', posts.length);
         
         // Start preloading images
         preloadImages(posts);
         
         setBlogPosts(posts);
         setError(null);
+        
       } catch (err) {
-        console.error('Error fetching blog posts:', err);
-        setError('Failed to load blog posts. Please try again later.');
+        console.error('Blog: Error fetching blog posts:', err);
+        
+        // FIXED: Better error message
+        setError(`Failed to load blog posts: ${err.message || 'Unknown error'}`);
+        setBlogPosts([]);
       } finally {
         setLoading(false);
       }
@@ -160,6 +178,18 @@ function Blog() {
       setCurrentPage(1); // Reset to first page
     }
   };
+
+  // FIXED: Better loading state
+  if (loading) {
+    return (
+      <div className="blog-page">
+        <div className="container">
+          <h1 className="page-title">Surunga Medicine & Clinic Blog</h1>
+          <div className="loading-spinner">Loading blog posts...</div>
+        </div>
+      </div>
+    );
+  }
 
   // Display a message if there's an error
   if (error) {
@@ -260,234 +290,230 @@ More content...`}
       </div>
       
       <div className="container blog-container">
-        {loading ? (
-          <div className="loading-spinner">Loading blog posts...</div>
-        ) : (
-          <>
-            {/* Main content area */}
-            <div className="blog-main-content">
-              {/* Category filter */}
-              {categories.length > 1 && (
-                <div className="blog-filter">
-                  {categories.map(category => (
+        <>
+          {/* Main content area */}
+          <div className="blog-main-content">
+            {/* Category filter */}
+            {categories.length > 1 && (
+              <div className="blog-filter">
+                {categories.map(category => (
+                  <button
+                    key={category}
+                    className={`filter-button ${activeCategory === category ? 'active' : ''}`}
+                    onClick={() => {
+                      setActiveCategory(category);
+                      setCurrentPage(1);
+                    }}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            )}
+            
+            {/* Blog posts grid */}
+            {currentPosts.length > 0 ? (
+              <div className="blog-grid">
+                {currentPosts.map((post, index) => (
+                  <div 
+                    className={`blog-card ${index === 0 && currentPage === 1 && activeCategory === 'All' && !searchTerm && !activeTag ? 'featured' : ''}`}
+                    key={post.id}
+                  >
+                    {post.coverImage && (
+                      <div className="blog-image">
+                        <LazyImage src={post.coverImage} alt={post.title} />
+                      </div>
+                    )}
+                    <div className="blog-content">
+                      <div className="blog-meta">
+                        <span className="blog-date">
+                          {format(new Date(post.date), 'MMMM dd, yyyy')}
+                        </span>
+                        {post.category && (
+                          <span className="blog-category">{post.category}</span>
+                        )}
+                      </div>
+                      <h2 className="blog-title">{post.title}</h2>
+                      <p className="blog-excerpt">{post.excerpt}</p>
+                      <div className="blog-footer">
+                        <Link to={`/Blog/${post.id}`} className="read-more">
+                          Read More
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                          </svg>
+                        </Link>
+                        {post.author && (
+                          <span className="blog-author">
+                            By {post.author}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="no-results">
+                <h3>No articles found</h3>
+                <p>Try adjusting your search or filter criteria.</p>
+                <button 
+                  className="clear-filters-btn" 
+                  onClick={() => {
+                    setSearchTerm('');
+                    setActiveCategory('All');
+                    setActiveTag(null);
+                  }}
+                >
+                  Clear all filters
+                </button>
+              </div>
+            )}
+            
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="pagination">
+                <button 
+                  className={`pagination-button ${currentPage === 1 ? 'disabled' : ''}`}
+                  onClick={() => currentPage > 1 && paginate(currentPage - 1)}
+                  disabled={currentPage === 1}
+                >
+                  &lt;
+                </button>
+                
+                {[...Array(totalPages)].map((_, index) => {
+                  const pageNumber = index + 1;
+                  
+                  // Show limited page numbers for better UX
+                  if (
+                    pageNumber === 1 ||
+                    pageNumber === totalPages ||
+                    (pageNumber >= currentPage - 1 && pageNumber <= currentPage + 1)
+                  ) {
+                    return (
+                      <button
+                        key={pageNumber}
+                        className={`pagination-button ${currentPage === pageNumber ? 'active' : ''}`}
+                        onClick={() => paginate(pageNumber)}
+                      >
+                        {pageNumber}
+                      </button>
+                    );
+                  }
+                  
+                  // Show ellipsis for skipped pages
+                  if (
+                    (pageNumber === currentPage - 2 && pageNumber > 2) ||
+                    (pageNumber === currentPage + 2 && pageNumber < totalPages - 1)
+                  ) {
+                    return <span key={pageNumber} className="pagination-ellipsis">...</span>;
+                  }
+                  
+                  return null;
+                })}
+                
+                <button 
+                  className={`pagination-button ${currentPage === totalPages ? 'disabled' : ''}`}
+                  onClick={() => currentPage < totalPages && paginate(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                >
+                  &gt;
+                </button>
+              </div>
+            )}
+          </div>
+          
+          {/* Sidebar */}
+          <div className="blog-sidebar">
+            {/* Recent Posts */}
+            <div className="sidebar-widget recent-posts">
+              <h3 className="widget-title">Recent Articles</h3>
+              <ul className="recent-posts-list">
+                {recentPosts.map(post => (
+                  <li key={post.id} className="recent-post-item">
+                    <Link to={`/Blog/${post.id}`} className="recent-post-link">
+                      <div className="recent-post-image">
+                        {post.coverImage ? (
+                          <LazyImage src={post.coverImage} alt={post.title} />
+                        ) : (
+                          <div className="placeholder-image">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                              <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                              <path d="M21 15l-5-5L5 21"></path>
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                      <div className="recent-post-info">
+                        <h4 className="recent-post-title">{post.title}</h4>
+                        <span className="recent-post-date">
+                          {format(new Date(post.date), 'MMM dd, yyyy')}
+                        </span>
+                      </div>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            {/* Tags */}
+            {sortedTags.length > 0 && (
+              <div className="sidebar-widget tags-widget">
+                <h3 className="widget-title">Popular Tags</h3>
+                <div className="tags-cloud">
+                  {sortedTags.map(tag => (
                     <button
-                      key={category}
-                      className={`filter-button ${activeCategory === category ? 'active' : ''}`}
-                      onClick={() => {
-                        setActiveCategory(category);
-                        setCurrentPage(1);
-                      }}
+                      key={tag}
+                      className={`tag-button ${activeTag === tag ? 'active' : ''}`}
+                      onClick={() => handleTagClick(tag)}
                     >
-                      {category}
+                      {tag} 
+                      <span className="tag-count">{tagCounts[tag]}</span>
                     </button>
                   ))}
                 </div>
-              )}
-              
-              {/* Blog posts grid */}
-              {currentPosts.length > 0 ? (
-                <div className="blog-grid">
-                  {currentPosts.map((post, index) => (
-                    <div 
-                      className={`blog-card ${index === 0 && currentPage === 1 && activeCategory === 'All' && !searchTerm && !activeTag ? 'featured' : ''}`}
-                      key={post.id}
-                    >
-                      {post.coverImage && (
-                        <div className="blog-image">
-                          <LazyImage src={post.coverImage} alt={post.title} />
-                        </div>
-                      )}
-                      <div className="blog-content">
-                        <div className="blog-meta">
-                          <span className="blog-date">
-                            {format(new Date(post.date), 'MMMM dd, yyyy')}
-                          </span>
-                          {post.category && (
-                            <span className="blog-category">{post.category}</span>
-                          )}
-                        </div>
-                        <h2 className="blog-title">{post.title}</h2>
-                        <p className="blog-excerpt">{post.excerpt}</p>
-                        <div className="blog-footer">
-                          <Link to={`/Blog/${post.id}`} className="read-more">
-                            Read More
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                          </Link>
-                          {post.author && (
-                            <span className="blog-author">
-                              By {post.author}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="no-results">
-                  <h3>No articles found</h3>
-                  <p>Try adjusting your search or filter criteria.</p>
-                  <button 
-                    className="clear-filters-btn" 
-                    onClick={() => {
-                      setSearchTerm('');
-                      setActiveCategory('All');
-                      setActiveTag(null);
-                    }}
-                  >
-                    Clear all filters
-                  </button>
-                </div>
-              )}
-              
-              {/* Pagination */}
-              {totalPages > 1 && (
-                <div className="pagination">
-                  <button 
-                    className={`pagination-button ${currentPage === 1 ? 'disabled' : ''}`}
-                    onClick={() => currentPage > 1 && paginate(currentPage - 1)}
-                    disabled={currentPage === 1}
-                  >
-                    &lt;
-                  </button>
-                  
-                  {[...Array(totalPages)].map((_, index) => {
-                    const pageNumber = index + 1;
-                    
-                    // Show limited page numbers for better UX
-                    if (
-                      pageNumber === 1 ||
-                      pageNumber === totalPages ||
-                      (pageNumber >= currentPage - 1 && pageNumber <= currentPage + 1)
-                    ) {
-                      return (
-                        <button
-                          key={pageNumber}
-                          className={`pagination-button ${currentPage === pageNumber ? 'active' : ''}`}
-                          onClick={() => paginate(pageNumber)}
-                        >
-                          {pageNumber}
-                        </button>
-                      );
-                    }
-                    
-                    // Show ellipsis for skipped pages
-                    if (
-                      (pageNumber === currentPage - 2 && pageNumber > 2) ||
-                      (pageNumber === currentPage + 2 && pageNumber < totalPages - 1)
-                    ) {
-                      return <span key={pageNumber} className="pagination-ellipsis">...</span>;
-                    }
-                    
-                    return null;
-                  })}
-                  
-                  <button 
-                    className={`pagination-button ${currentPage === totalPages ? 'disabled' : ''}`}
-                    onClick={() => currentPage < totalPages && paginate(currentPage + 1)}
-                    disabled={currentPage === totalPages}
-                  >
-                    &gt;
-                  </button>
-                </div>
-              )}
-            </div>
+              </div>
+            )}
             
-            {/* Sidebar */}
-            <div className="blog-sidebar">
-              {/* Recent Posts */}
-              <div className="sidebar-widget recent-posts">
-                <h3 className="widget-title">Recent Articles</h3>
-                <ul className="recent-posts-list">
-                  {recentPosts.map(post => (
-                    <li key={post.id} className="recent-post-item">
-                      <Link to={`/Blog/${post.id}`} className="recent-post-link">
-                        <div className="recent-post-image">
-                          {post.coverImage ? (
-                            <LazyImage src={post.coverImage} alt={post.title} />
-                          ) : (
-                            <div className="placeholder-image">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                                <path d="M21 15l-5-5L5 21"></path>
-                              </svg>
-                            </div>
-                          )}
-                        </div>
-                        <div className="recent-post-info">
-                          <h4 className="recent-post-title">{post.title}</h4>
-                          <span className="recent-post-date">
-                            {format(new Date(post.date), 'MMM dd, yyyy')}
-                          </span>
-                        </div>
-                      </Link>
+            {/* Categories widget */}
+            {categories.length > 2 && ( // More than just "All" and one category
+              <div className="sidebar-widget categories-widget">
+                <h3 className="widget-title">Categories</h3>
+                <ul className="categories-list">
+                  {categories.filter(cat => cat !== 'All').map(category => (
+                    <li key={category} className="category-item">
+                      <button
+                        className={`category-link ${activeCategory === category ? 'active' : ''}`}
+                        onClick={() => {
+                          setActiveCategory(category);
+                          setCurrentPage(1);
+                        }}
+                      >
+                        {category}
+                        <span className="category-count">
+                          {blogPosts.filter(post => post.category === category).length}
+                        </span>
+                      </button>
                     </li>
                   ))}
                 </ul>
               </div>
-              
-              {/* Tags */}
-              {sortedTags.length > 0 && (
-                <div className="sidebar-widget tags-widget">
-                  <h3 className="widget-title">Popular Tags</h3>
-                  <div className="tags-cloud">
-                    {sortedTags.map(tag => (
-                      <button
-                        key={tag}
-                        className={`tag-button ${activeTag === tag ? 'active' : ''}`}
-                        onClick={() => handleTagClick(tag)}
-                      >
-                        {tag} 
-                        <span className="tag-count">{tagCounts[tag]}</span>
-                      </button>
-                    ))}
-                  </div>
+            )}
+            
+            {/* Health Tip Widget */}
+            <div className="sidebar-widget health-tip-widget">
+              <h3 className="widget-title">Health Tip</h3>
+              <div className="health-tip">
+                <div className="health-tip-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                  </svg>
                 </div>
-              )}
-              
-              {/* Categories widget */}
-              {categories.length > 2 && ( // More than just "All" and one category
-                <div className="sidebar-widget categories-widget">
-                  <h3 className="widget-title">Categories</h3>
-                  <ul className="categories-list">
-                    {categories.filter(cat => cat !== 'All').map(category => (
-                      <li key={category} className="category-item">
-                        <button
-                          className={`category-link ${activeCategory === category ? 'active' : ''}`}
-                          onClick={() => {
-                            setActiveCategory(category);
-                            setCurrentPage(1);
-                          }}
-                        >
-                          {category}
-                          <span className="category-count">
-                            {blogPosts.filter(post => post.category === category).length}
-                          </span>
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              
-              {/* Health Tip Widget */}
-              <div className="sidebar-widget health-tip-widget">
-                <h3 className="widget-title">Health Tip</h3>
-                <div className="health-tip">
-                  <div className="health-tip-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                    </svg>
-                  </div>
-                  <p>Staying hydrated improves energy levels, brain function, and overall health. Aim to drink at least 8 glasses of water daily.</p>
-                </div>
+                <p>Staying hydrated improves energy levels, brain function, and overall health. Aim to drink at least 8 glasses of water daily.</p>
               </div>
             </div>
-          </>
-        )}
+          </div>
+        </>
       </div>
     </div>
   );
