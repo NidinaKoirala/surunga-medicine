@@ -53,16 +53,13 @@ function Footer() {
                                     <span>023-553097 / 9804964107 </span>
                                 </li>
                                 <li>
-                                    <span>appointment@surungamedicine.com.np</span>
-                                </li>
-                                <li>
                                 <span>info@surungamedicine.com.np</span>
                                 </li>
                                 <li>
                                     <span>Kankai-03, Surunga, Jhapa, Nepal</span>
                                 </li>
                                 <li>
-                                    <span>Sun-Sat: 6AM - 9PM</span>
+                                    <span>Always 6:00 AM - 10:00 PM</span>
                                 </li>
                             </ul>
                         </div>

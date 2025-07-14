@@ -2,7 +2,8 @@
 import React, { useState, useRef } from 'react';
 import './Contact.css';
 import emailjs from '@emailjs/browser';
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock , FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp, FaTiktok } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 
 function Contact() {
     // Access EmailJS configuration from environment variables
@@ -183,7 +184,6 @@ function Contact() {
                                 </div>
                                 <div className="contact-text">
                                     <h3> Email</h3>
-                                    <p>appointment@surungamedicine.com.np</p>
                                     <p>info@surungamedicine.com.np</p>
                                 </div>
                             </div>
@@ -194,17 +194,18 @@ function Contact() {
                                 </div>
                                 <div className="contact-text">
                                     <h3>Hours</h3>
-                                    <p>Monday - Friday: 6:00 AM - 9:00 PM</p>
-                                    <p>Saturday - Sunday: 7:00 AM - 8:00 PM</p>
+                                    <p>Always 6:00 AM - 10:00 PM</p>
                                 </div>
                             </div>
                         </div>
                         
                         <div className="social-links">
-                            <a href="https://facebook.com/surungamedicine" aria-label="Facebook" className="social-link"><FaFacebookF /></a>
-                            <a href="https://twitter.com/surungamedicine" aria-label="Twitter" className="social-link"><FaTwitter /></a>
-                            <a href="https://instagram.com/surungamedicine" aria-label="Instagram" className="social-link"><FaInstagram /></a>
-                            <a href="https://linkedin.com/surungamedicine" aria-label="LinkedIn" className="social-link"><FaLinkedinIn /></a>
+                            <a href="https://facebook.com/surungamedicine" aria-label="Facebook" className="social-link facebook"><FaFacebookF /></a>
+                            <a href="https://x.com/surungamedicine" aria-label="X" className="social-link x"><FaXTwitter /></a>
+                            <a href="https://instagram.com/surungamedicine" aria-label="Instagram" className="social-link instagram"><FaInstagram /></a>
+                            <a href="https://linkedin.com/surungamedicine" aria-label="LinkedIn" className="social-link linkedin"><FaLinkedinIn /></a>
+                            <a href="https://wa.me/9779804964107" aria-label="WhatsApp" className="social-link whatsapp" target="_blank" rel="noopener noreferrer"><FaWhatsapp /></a>
+                            <a href="https://tiktok.com/@surungamedicine" aria-label="TikTok" className="social-link tiktok"><FaTiktok /></a>
                         </div>
                     </div>
                     

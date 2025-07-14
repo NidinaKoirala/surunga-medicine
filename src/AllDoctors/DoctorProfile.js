@@ -46,6 +46,20 @@ const DoctorProfile = () => {
         window.scrollTo(0, 0);
     };
     
+    // Function to format about text with line breaks
+    const formatAboutText = (text) => {
+        if (!text) return '';
+        
+        // Split text by common patterns that should be new paragraphs
+        const paragraphs = text.split(/(?=Note:|नोट:|विशेष:|महत्वपूर्ण:|सूचना:)/);
+        
+        return paragraphs.map((paragraph, index) => (
+            <p key={index} className="about-paragraph">
+                {paragraph.trim()}
+            </p>
+        ));
+    };
+    
     if (loading) {
         return (
             <div className="loading-container">
@@ -89,7 +103,6 @@ const DoctorProfile = () => {
                                     <h2 className="doctor-profile-name text-center">{doctor.name}</h2>
                                     <p className="doctor-profile-specialty text-center"><strong>{doctor.speciality}</strong></p>
                                     
-                                    
                                     <div className="doctor-stats text-center">
                                         <div className="stat-item justify-content-center">
                                             <FontAwesomeIcon icon={faUserMd} />
@@ -101,7 +114,9 @@ const DoctorProfile = () => {
                                     </div>
                                     
                                     <div className="availability-info text-center">
-                                        <h3 className="text-center"><FontAwesomeIcon icon={faMapMarkerAlt} /> Address</h3>
+                                        <h3 className="info-heading">
+                                            <FontAwesomeIcon icon={faMapMarkerAlt} /> Address
+                                        </h3>
                                         <div className="address">
                                             <p>{doctor.address.line1}</p>
                                             <p>{doctor.address.line2}</p>
@@ -109,8 +124,10 @@ const DoctorProfile = () => {
                                     </div>
                                     
                                     <div className="qualification-info text-center">
-                                        <h3 className="text-center"><FontAwesomeIcon icon={faGraduationCap} /> Qualification</h3>
-                                        <p><strong>{doctor.degree}</strong></p>
+                                        <h3 className="info-heading">
+                                            <FontAwesomeIcon icon={faGraduationCap} /> Qualification
+                                        </h3>
+                                        <p className="qualification-text">{doctor.degree}</p>
                                     </div>
                                     
                                     <button className="book-appointment-btn" onClick={handleBookAppointment}>
@@ -147,17 +164,19 @@ const DoctorProfile = () => {
                                 <div className="tabs-content">
                                     {selectedTab === 'about' && (
                                         <div className="tab-content-about">
-                                            <h3>About Dr. {doctor.name.split(' ')[1]}</h3>
-                                            <p>{doctor.about}</p>
+                                            <h3 className="tab-title">About {doctor.name}</h3>
+                                            <div className="about-text">
+                                                {formatAboutText(doctor.about)}
+                                            </div>
                                             
                                             <div className="expertise-section">
-                                                <h4>Specialties</h4>
+                                                <h4 className="section-title">Specialties</h4>
                                                 <ul className="expertise-list">
-                                                    <li><FontAwesomeIcon icon={faCheck} /> General Consultation</li>
-                                                    <li><FontAwesomeIcon icon={faCheck} /> Medical Diagnosis</li>
-                                                    <li><FontAwesomeIcon icon={faCheck} /> Treatment Planning</li>
-                                                    <li><FontAwesomeIcon icon={faCheck} /> Preventive Care</li>
-                                                    <li><FontAwesomeIcon icon={faCheck} /> Health Education</li>
+                                                    {doctor.specialties && doctor.specialties.map((specialty, index) => (
+                                                        <li key={index}>
+                                                            <FontAwesomeIcon icon={faCheck} /> {specialty}
+                                                        </li>
+                                                    ))}
                                                 </ul>
                                             </div>
                                         </div>
@@ -165,34 +184,34 @@ const DoctorProfile = () => {
                                     
                                     {selectedTab === 'services' && (
                                         <div className="tab-content-services">
-                                            <h3>Services Offered</h3>
+                                            <h3 className="tab-title">Services Offered</h3>
                                             <div className="services-list">
                                                 <div className="service-item">
                                                     <FontAwesomeIcon icon={faCheck} />
                                                     <div>
                                                         <h4>Consultation</h4>
-                                                        <p>General health consultations and check-ups</p>
+                                                        <p>Comprehensive health consultations and medical evaluations</p>
                                                     </div>
                                                 </div>
                                                 <div className="service-item">
                                                     <FontAwesomeIcon icon={faCheck} />
                                                     <div>
                                                         <h4>Diagnostics</h4>
-                                                        <p>Comprehensive diagnostic evaluations</p>
+                                                        <p>Advanced diagnostic procedures and health assessments</p>
                                                     </div>
                                                 </div>
                                                 <div className="service-item">
                                                     <FontAwesomeIcon icon={faCheck} />
                                                     <div>
                                                         <h4>Treatment</h4>
-                                                        <p>Personalized treatment plans</p>
+                                                        <p>Specialized treatment plans tailored to individual needs</p>
                                                     </div>
                                                 </div>
                                                 <div className="service-item">
                                                     <FontAwesomeIcon icon={faCheck} />
                                                     <div>
                                                         <h4>Follow-up Care</h4>
-                                                        <p>Regular follow-up visits and monitoring</p>
+                                                        <p>Continuous monitoring and follow-up appointments</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -201,7 +220,7 @@ const DoctorProfile = () => {
                                     
                                     {selectedTab === 'location' && (
                                         <div className="tab-content-location">
-                                            <h3>Location</h3>
+                                            <h3 className="tab-title">Location</h3>
                                             <div className="location-info">
                                                 <div className="address-block">
                                                     <FontAwesomeIcon icon={faMapMarkerAlt} className="location-icon" />

@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './AllDoctors.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserMd, faSearch, faCalendarPlus, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faUserMd, faCalendarPlus, faChevronDown, faStethoscope, faUserCheck } from '@fortawesome/free-solid-svg-icons';
 import { AppContext } from '../Context/AppContext';
 
 function AllDoctors() {
@@ -100,15 +100,17 @@ function AllDoctors() {
         <section className="container-fluid" id="alldoctor-section">
             <div className="container">
                 <div className="doctors-header">
+                    <div className="header-icon">
+                        <FontAwesomeIcon icon={faStethoscope} />
+                    </div>
                     <h1>Our Medical Specialists</h1>
-                    <p>Find the right specialist for your health needs</p>
+                    <p>Find the right specialist for your health needs with our expert medical professionals</p>
                     
                     <div className="search-and-filter-container">
                         <div className="search-box">
-                            <FontAwesomeIcon icon={faSearch} className="search-icon" />
                             <input 
                                 type="text" 
-                                placeholder="     Search doctors by name or specialty" 
+                                placeholder="Search doctors by name or specialty..." 
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
@@ -133,6 +135,7 @@ function AllDoctors() {
                                             className={`specialty-dropdown-item ${!activeSpecialty ? 'active' : ''}`}
                                             onClick={() => handleSpecialtyChange('')}
                                         >
+                                            <FontAwesomeIcon icon={faUserCheck} className="all-specialties-icon" />
                                             <span>All Specialties</span>
                                         </div>
                                         {specialityData.map((specialty, index) => (
@@ -154,48 +157,77 @@ function AllDoctors() {
                 
                 <div className="doctors-container">
                     {filterDoc.length > 0 ? (
-                        <div className="row doctors-grid g-4">
-                            {filterDoc.map((doctor) => (
-                                <div key={doctor._id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div className="doctor-card" onClick={() => navigateToProfile(doctor._id)}>
-                                        <div className="doctor-image">
-                                            <img src={doctor.image} alt={doctor.name} className="img-fluid" />
-                                            <div className="available-badge">Available</div>
-                                        </div>
-                                        
-                                        <div className="doctor-details">
-                                            <h3 className="doctor-name text-center">{doctor.name}</h3>
-                                            <p className="doctor-specialty text-center"><strong>{doctor.speciality}</strong></p>
-                                            
-                                            <div className="doctor-info-row">
-                                                <div className="info-item doctor-experience">
-                                                    <FontAwesomeIcon icon={faUserMd} />
-                                                    <span>{doctor.experience}</span>
+                        <>
+                            <div className="results-count">
+                                <span>
+                                    {filterDoc.length} {filterDoc.length === 1 ? 'Doctor' : 'Doctors'} Found
+                                    {activeSpecialty && ` in ${activeSpecialty}`}
+                                </span>
+                            </div>
+                            <div className="row doctors-grid g-4">
+                                {filterDoc.map((doctor) => (
+                                    <div key={doctor._id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                                        <div className="doctor-card" onClick={() => navigateToProfile(doctor._id)}>
+                                            <div className="doctor-image">
+                                                <img src={doctor.image} alt={doctor.name} className="img-fluid" />
+                                                <div className="available-badge">
+                                                    <span className="status-dot"></span>
+                                                    Available
+                                                </div>
+                                                <div className="card-overlay">
+                                                    <div className="overlay-content">
+                                                        <FontAwesomeIcon icon={faUserMd} />
+                                                        <span>View Profile</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                             
-                                            <div className="doctor-actions">
-                                                <button className="view-profile-btn">
-                                                    View Profile
-                                                </button>
-                                                <button 
-                                                    className="book-appointment-btn" 
-                                                    onClick={(e) => handleBookAppointment(e, doctor)}
-                                                    title="Book Appointment"
-                                                >
-                                                    <FontAwesomeIcon icon={faCalendarPlus} />
-                                                    <span>Book</span>
-                                                </button>
+                                            <div className="doctor-details">
+                                                <h3 className="doctor-name text-center">{doctor.name}</h3>
+                                                <p className="doctor-specialty text-center">
+                                                    <strong>{doctor.speciality}</strong>
+                                                </p>
+                                                
+                                                <div className="doctor-info-row">
+                                                    <div className="info-item doctor-experience">
+                                                        <FontAwesomeIcon icon={faUserMd} />
+                                                        <span>{doctor.experience}</span>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div className="doctor-actions">
+                                                    <button 
+                                                        className="book-appointment-btn" 
+                                                        onClick={(e) => handleBookAppointment(e, doctor)}
+                                                        title="Book Appointment"
+                                                    >
+                                                        <FontAwesomeIcon icon={faCalendarPlus} />
+                                                        <span>Book Appointment</span>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
-                        </div>
+                                ))}
+                            </div>
+                        </>
                     ) : (
                         <div className="no-results">
+                            <div className="no-results-icon">
+                                <FontAwesomeIcon icon={faStethoscope} />
+                            </div>
                             <h3>No doctors found</h3>
-                            <p>Try adjusting your search or filter criteria</p>
+                            <p>Try adjusting your search criteria or browse all specialties</p>
+                            <button 
+                                className="reset-filters-btn"
+                                onClick={() => {
+                                    setSearchTerm('');
+                                    setActiveSpecialty('');
+                                    navigate('/doctors');
+                                }}
+                            >
+                                Reset Filters
+                            </button>
                         </div>
                     )}
                 </div>

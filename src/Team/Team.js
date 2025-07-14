@@ -12,40 +12,40 @@ const Team = () => {
     // Team members data - easy to add/modify
     const teamMembers = [
         {
-            id: 0,
+            id: 1,
             name: "Yagya Raj Karki",
             position: "Senior Pharmacist (Master in Health) ",
             image: yagyaImage, 
-        },        
+        },     
         {
-            id: 1,
+            id: 2,
+            name: "Nisha Karki",
+            position: "Senior Lab Technician (NHPC No.10750)",
+            image: nishaImage,
+        },  
+        {
+            id: 3,
+            name: "Sushma Karki",
+            position: "Assistant Pharmacist",
+            image: sushmaImage,
+        },                 
+        {
+            id: 4,
             name: "Alisha Hembya Limbu",
             position: "Senior lab assistant",
             image: alishaImage, 
         },
         {
-            id: 2,
-            name: "Dikshya Poudel",
-            position: "Lab Assistant",
-            image: dikshyaImage,
-        },
-        {
-            id: 3,
-            name: "Nisha Karki",
-            position: "Senior Lab Technician (NHPC No.10750)",
-            image: nishaImage,
-        },
-        {
-            id: 4,
+            id: 5,
             name: "Rekha Poudel",
             position: "Radiographer",
             image: rekhaImage,
-        },
+        },        
         {
-            id: 5,
-            name: "Sushma Karki",
-            position: "Assistant Pharmacist",
-            image: sushmaImage,
+            id: 6,
+            name: "Dikshya Poudel",
+            position: "Lab Assistant",
+            image: dikshyaImage,
         }
     ];
 

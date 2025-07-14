@@ -163,30 +163,48 @@
     display: flex;
     gap: 15px;
     margin-top: 40px;
+    flex-wrap: wrap;
 }
 
 .social-link svg {
-    color: rgb(231, 233, 225);
+    color: white !important;
+    fill: white !important;
 }
 
 .social-link {
     width: 42px;
     height: 42px;
-    background-color: rgba(110, 194, 57, 0.15);
+    background-color: rgba(255, 255, 255, 0.4);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: white !important;
     font-size: 18px;
     transition: all 0.3s ease;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .social-link:hover {
     background-color: white;
-    color: var(--primary-red);
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Social media icons hover - keep white color */
+.social-link:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    color: white !important;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.social-link:hover svg {
+    color: white !important;
+    fill: white !important;
 }
 
 .contact-form-container {
@@ -338,7 +356,6 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-
 /* Custom styling for the contact item icons */
 .contact-icon i.fas.fa-map-marker-alt {
     color: #ffeb3b;
@@ -393,6 +410,10 @@
     .contact-text h3 {
         font-size: 16px;
     }
+    
+    .social-links {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -416,5 +437,15 @@
         width: 40px;
         height: 40px;
         margin-right: 15px;
+    }
+    
+    .social-links {
+        gap: 10px;
+    }
+    
+    .social-link {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
     }
 }
