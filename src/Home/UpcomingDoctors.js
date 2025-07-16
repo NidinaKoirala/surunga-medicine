@@ -5,7 +5,7 @@ import { FaMapMarkerAlt, FaTimes } from 'react-icons/fa';
 
 // Import images from your about-us folder
 import childrenDoctorImage from '../assets/images/about-us/children-doctor.jpg';
-import diabitiesThyroidImage from '../assets/images/about-us/diabities-thyrod-doc.jpg';
+import ramkrishnagiriImage from '../assets/images/about-us/dr-ram-krishna.jpg';
 import stomachDocImage from '../assets/images/about-us/great-lever-stomach-doc.jpg';
 import nextDoctorImage from '../assets/images/about-us/nex-doctor.jpg';
 
@@ -32,17 +32,18 @@ function UpcomingDoctors() {
         },
         {
             id: 2,
-            title: "मधुमेह र थाइरोइड शिविर",
-            doctor: "डा. सन्दीप चन्द श्रेष्ठ",
-            specialty: "एन्डोक्रिनोलोजिस्ट",
+            title: "वाथ र प्रतिरक्षा रोग शिविर",
+            doctor: "डा. रामकृष्ण गिरी",
+            specialty: "वरिष्ठ वाथ तथा प्रतिरक्षा रोग विशेषज्ञ",
+            qualifications: "MBBS, MD, FCIR",
             location: "Surunga Medicine & Clinic",
-            image: diabitiesThyroidImage,
-            description: "डा. सन्दीप चन्द श्रेष्ठ व्यापक मधुमेह र थाइरोइड स्क्रिनिंग र परामर्श शिविर संचालन गर्न आउनुहुनेछ। एन्डोक्राइन विकारमा उहाँको विशेषज्ञताले मधुमेह व्यवस्थापन र थाइरोइड अवस्थाहरूका लागि व्यक्तिगत उपचार योजनाहरू प्रदान गर्दछ। यो दुई दिने शिविरले बिरामीहरूलाई विशेष एन्डोक्रिनोलोजी परामर्श र फलो-अपको लागि उत्कृष्ट अवसर प्रदान गर्दछ।",
+            image: ramkrishnagiriImage,
+            description: "डा. रामकृष्ण गिरी  वाथ र प्रतिरक्षा रोग स्क्रिनिंग र परामर्श शिविर संचालन गर्न आउनुहुनेछ। वाथ रोग र प्रतिरक्षा विकारमा उहाँको विशेषज्ञताले जोर्नी दुखाइ, गठिया र अटोइम्यून अवस्थाहरूका लागि व्यक्तिगत उपचार योजनाहरू प्रदान गर्दछ। यो दुई दिने शिविरले बिरामीहरूलाई विशेष वाथ र प्रतिरक्षा रोग परामर्श र फलो-अपको लागि उत्कृष्ट अवसर प्रदान गर्दछ।",
             highlights: [
-                "निःशुल्क रक्त शर्करा र थाइरोइड स्क्रिनिंग",
+                "निःशुल्क वाथ र प्रतिरक्षा रोग स्क्रिनिंग",
                 "विशेषज्ञसँग व्यक्तिगत परामर्श",
-                "आहार र जीवनशैली सिफारिसहरू",
-                "नवीनतम उपचार विकल्पहरू छलफल"
+                "जोर्नी दुखाइ र गठिया उपचार सिफारिसहरू",
+                "नवीनतम वाथ रोग उपचार विकल्पहरू छलफल"
             ]
         },
         {
