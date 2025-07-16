@@ -20,15 +20,15 @@ function Footer() {
             icon: FaFacebook
         },
         instagram: {
-            url: 'https://instagram.com/surungamedicine',
+            url: 'https://instagram.com/surunga_medicine_center',
             icon: FaInstagram
         },
         tiktok: {
-            url: 'https://tiktok.com/@surungamedicine',
+            url: 'https://tiktok.com/@surungamedicinecenter ',
             icon: FaTiktok
         },
         twitter: {
-            url: 'https://twitter.com/surungamedicine',
+            url: 'https://twitter.com/Surungamedicine',
             icon: FaXTwitter
         }
     };

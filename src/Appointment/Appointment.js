@@ -31,6 +31,14 @@ const Appointment = () => {
     additionalNotes: '',
     provider_name: ''
   });
+
+  // Validation errors state
+  const [validationErrors, setValidationErrors] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    patientName: ''
+  });
   
   const [date, setDate] = useState(new Date());
   const [nepaliDate, setNepaliDate] = useState(null);
@@ -50,6 +58,56 @@ const Appointment = () => {
   
   const form = useRef();
 
+  // Validation functions
+  const validateName = (name) => {
+    const nameRegex = /^[a-zA-Z\s]+$/;
+    if (!name.trim()) {
+      return 'Name is required';
+    }
+    if (name.trim().length < 2) {
+      return 'Name must be at least 2 characters long';
+    }
+    if (!nameRegex.test(name.trim())) {
+      return 'Name should only contain letters and spaces';
+    }
+    return '';
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.trim()) {
+      return 'Email is required';
+    }
+    if (!emailRegex.test(email.trim())) {
+      return 'Please enter a valid email address';
+    }
+    return '';
+  };
+
+  const validatePhone = (phone) => {
+    // Nepal phone number validation - supports both formats: +977-XXXXXXXXX or 98XXXXXXXX
+    const phoneRegex = /^(\+977[-\s]?)?[0-9]{10}$/;
+    const cleanPhone = phone.replace(/[-\s]/g, '');
+    
+    if (!phone.trim()) {
+      return 'Phone number is required';
+    }
+    
+    if (!phoneRegex.test(cleanPhone) && !cleanPhone.startsWith('+977')) {
+      return 'Please enter a valid phone number (10 digits)';
+    }
+    
+    if (cleanPhone.startsWith('+977') && cleanPhone.length !== 14) {
+      return 'Phone number with country code should be 14 digits';
+    }
+    
+    if (!cleanPhone.startsWith('+977') && cleanPhone.length !== 10) {
+      return 'Phone number should be 10 digits';
+    }
+    
+    return '';
+  };
+
   // Set the doctor's name when component mounts if passed from doctor profile
   useEffect(() => {
     // Scroll to top when component mounts
@@ -65,9 +123,36 @@ const Appointment = () => {
   
   const handleChange = (e) => {
     const { id, value } = e.target;
+    
+    // Update form data
     setFormData(prevData => ({
       ...prevData,
       [id]: value
+    }));
+
+    // Validate specific fields
+    let error = '';
+    switch (id) {
+      case 'name':
+        error = validateName(value);
+        break;
+      case 'email':
+        error = validateEmail(value);
+        break;
+      case 'phone':
+        error = validatePhone(value);
+        break;
+      case 'patientName':
+        error = validateName(value);
+        break;
+      default:
+        break;
+    }
+
+    // Update validation errors
+    setValidationErrors(prevErrors => ({
+      ...prevErrors,
+      [id]: error
     }));
   };
   
@@ -107,6 +192,32 @@ const Appointment = () => {
   
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Validate all fields before submission
+    const nameError = validateName(formData.name);
+    const emailError = validateEmail(formData.email);
+    const phoneError = validatePhone(formData.phone);
+    const patientNameError = validateName(formData.patientName);
+
+    // Update validation errors
+    setValidationErrors({
+      name: nameError,
+      email: emailError,
+      phone: phoneError,
+      patientName: patientNameError
+    });
+
+    // Check if there are any validation errors
+    if (nameError || emailError || phoneError || patientNameError) {
+      setFormStatus({
+        submitting: false,
+        success: false,
+        error: true,
+        message: 'Please fix the validation errors before submitting',
+        showModal: true
+      });
+      return;
+    }
     
     // Basic validation
     if (!formData.name || !formData.email || !formData.phone || !formData.patientName || !formData.reasonForVisit) {
@@ -199,7 +310,14 @@ const Appointment = () => {
         phone: '',
         patientName: '',
         reasonForVisit: '',
-        additionalNotes: ''
+        additionalNotes: '',
+        provider_name: ''
+      });
+      setValidationErrors({
+        name: '',
+        email: '',
+        phone: '',
+        patientName: ''
       });
       setDate(new Date());
       setNepaliDate(null);
@@ -257,8 +375,12 @@ const Appointment = () => {
                   placeholder="Your full name" 
                   value={formData.name}
                   onChange={handleChange}
+                  className={validationErrors.name ? 'error' : ''}
                   required
                 />
+                {validationErrors.name && (
+                  <span className="error-message">{validationErrors.name}</span>
+                )}
               </div>
               <div className="form-group">
                 <label htmlFor="email">Email Address*</label>
@@ -269,8 +391,12 @@ const Appointment = () => {
                   placeholder="Your email address" 
                   value={formData.email}
                   onChange={handleChange}
+                  className={validationErrors.email ? 'error' : ''}
                   required
                 />
+                {validationErrors.email && (
+                  <span className="error-message">{validationErrors.email}</span>
+                )}
               </div>
             </div>
             
@@ -284,8 +410,12 @@ const Appointment = () => {
                   placeholder="Your phone number" 
                   value={formData.phone}
                   onChange={handleChange}
+                  className={validationErrors.phone ? 'error' : ''}
                   required
                 />
+                {validationErrors.phone && (
+                  <span className="error-message">{validationErrors.phone}</span>
+                )}
               </div>
               <div className="form-group">
                 <label htmlFor="patientName">Patient Name*</label>
@@ -296,8 +426,12 @@ const Appointment = () => {
                   placeholder="Name of the patient" 
                   value={formData.patientName}
                   onChange={handleChange}
+                  className={validationErrors.patientName ? 'error' : ''}
                   required
                 />
+                {validationErrors.patientName && (
+                  <span className="error-message">{validationErrors.patientName}</span>
+                )}
               </div>
             </div>
             

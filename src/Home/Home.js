@@ -6,6 +6,17 @@ import front1 from '../assets/images/home/front-1.jpg';
 import front2 from '../assets/images/home/front-2.jpg';
 import front4 from '../assets/images/home/front-4.jpg';
 import front5 from '../assets/images/home/front-5.jpg';
+import front6 from '../assets/images/home/front-6.jpg';
+import front7 from '../assets/images/home/front-7.jpg';
+import front8 from '../assets/images/home/front-8.jpg';
+import front9 from '../assets/images/home/front-9.jpg';
+import front10 from '../assets/images/home/front-10.jpg';
+import front11 from '../assets/images/home/front-11.jpg';
+import front12 from '../assets/images/home/front-12.jpg';
+import front13 from '../assets/images/home/front-13.jpg';
+import front14 from '../assets/images/home/front-14.jpg';
+import front15 from '../assets/images/home/front-15.jpg';
+
 import profileImage from '../assets/images/logo-hospital.png';
 
 // Import components
@@ -21,11 +32,21 @@ import Testimonials from './Testimonials';
 function Home() {
     // Define carousel images directly in the component
     const carouselImages = [
-        { src: front3, alt: "Barista Kidney Rog Bisesagya" },
-        { src: front1, alt: "Basrita Hydrocil Bisesagya" },
-        { src: front2, alt: "Basrita Stri Rog Bisesagya" },
-        { src: front5, alt: "Basrista Sisu Bisesagya" },
-        { src: front4, alt: "Barsta Mutu Rog Bisesagya" }
+        { src: front3},
+        { src: front1},
+        { src: front2},
+        { src: front5},
+        { src: front4},
+        { src: front6},
+        { src: front7},
+        { src: front8},
+        { src: front9 },
+        { src: front10},
+        { src: front11},
+        { src: front12},
+        { src: front13},
+        { src: front15 },
+        { src: front14}        
     ];
     
     // Additional hero section customization (optional)

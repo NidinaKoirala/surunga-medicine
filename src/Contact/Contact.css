@@ -227,13 +227,13 @@
     fill: white !important;
 }
 
-.social-link.linkedin:hover {
-    background-color: #0077b5 !important;
-    border-color: #0077b5 !important;
+.social-link.youtube:hover {
+    background-color: #ea0d0d !important;
+    border-color: #e60835 !important;
     color: white !important;
 }
 
-.social-link.linkedin:hover svg {
+.social-link.youtube:hover svg {
     color: white !important;
     fill: white !important;
 }
@@ -276,8 +276,8 @@
     transform: translateY(-3px);
 }
 
-.social-link.linkedin:active {
-    background-color: #005885 !important;
+.social-link.youtube:active {
+    background-color: #e71114 !important;
     transform: translateY(-3px);
 }
 

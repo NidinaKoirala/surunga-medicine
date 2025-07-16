@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react';
 import './Contact.css';
 import emailjs from '@emailjs/browser';
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp, FaTiktok } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp, FaTiktok } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
 // Social Media Configuration - Easy to add/edit social media handles
@@ -15,21 +15,21 @@ const socialMediaLinks = [
     },
     {
         platform: 'x',
-        url: 'https://x.com/surungamedicine',
+        url: 'https://x.com/Surungamedicine',
         icon: FaXTwitter,
         className: 'social-link x'
     },
     {
         platform: 'instagram',
-        url: 'https://instagram.com/surungamedicine',
+        url: 'https://instagram.com/surunga_medicine_center',
         icon: FaInstagram,
         className: 'social-link instagram'
     },
     {
-        platform: 'linkedin',
-        url: 'https://linkedin.com/surungamedicine',
-        icon: FaLinkedinIn,
-        className: 'social-link linkedin'
+        platform: 'youtube',
+        url: 'https://youtube.com/@SurungaMedicineClinic ',
+        icon: FaYoutube,
+        className: 'social-link youtube'
     },
     {
         platform: 'whatsapp',
@@ -41,7 +41,7 @@ const socialMediaLinks = [
     },
     {
         platform: 'tiktok',
-        url: 'https://tiktok.com/@surungamedicine',
+        url: 'https://tiktok.com/@surungamedicinecenter',
         icon: FaTiktok,
         className: 'social-link tiktok'
     }

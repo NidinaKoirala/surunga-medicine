@@ -124,6 +124,73 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 0 0 3px rgba(10, 36, 99, 0.1);
 }
 
+/* Enhanced Validation Error Styles */
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+  border-color: var(--primary-red) !important;
+  background-color: rgba(217, 28, 28, 0.02);
+  box-shadow: 0 0 0 3px rgba(217, 28, 28, 0.1);
+  animation: shake 0.3s ease-in-out;
+}
+
+.form-group input.error:focus,
+.form-group select.error:focus,
+.form-group textarea.error:focus {
+  border-color: var(--primary-red);
+  box-shadow: 0 0 0 3px rgba(217, 28, 28, 0.15);
+  background-color: rgba(217, 28, 28, 0.02);
+}
+
+.error-message {
+  color: var(--primary-red);
+  font-size: 0.875rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+  display: block;
+  font-weight: 500;
+  line-height: 1.3;
+  animation: fadeInError 0.3s ease-in-out;
+  background: none;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.form-group.has-error {
+  margin-bottom: 30px;
+}
+
+.form-group.has-error label {
+  color: var(--primary-red);
+  font-weight: 600;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes fadeInError {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-group input.error:hover,
+.form-group select.error:hover,
+.form-group textarea.error:hover {
+  border-color: var(--secondary-red);
+  background-color: rgba(217, 28, 28, 0.04);
+}
+
 /* Calendar Container */
 .calendar-container {
   margin-bottom: 30px;
@@ -357,6 +424,8 @@ input:focus, select:focus, textarea:focus {
   animation: modalFadeIn 0.3s ease;
 }
 
+
+
 @keyframes modalFadeIn {
   from {
     opacity: 0;
@@ -544,6 +613,15 @@ input:focus, select:focus, textarea:focus {
   .time-picker-container {
     margin-bottom: 25px;
   }
+
+  .error-message {
+    font-size: 0.8rem;
+    margin-top: 0.35rem;
+  }
+  
+  .form-group.has-error {
+    margin-bottom: 25px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -608,6 +686,15 @@ input:focus, select:focus, textarea:focus {
   
   .appointment-info {
     padding: 15px;
+  }
+
+  .error-message {
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+  }
+  
+  .form-group.has-error {
+    margin-bottom: 20px;
   }
 }
 
