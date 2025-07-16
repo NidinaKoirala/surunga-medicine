@@ -14,8 +14,6 @@ import front10 from '../assets/images/home/front-10.jpg';
 import front11 from '../assets/images/home/front-11.jpg';
 import front12 from '../assets/images/home/front-12.jpg';
 import front13 from '../assets/images/home/front-13.jpg';
-import front14 from '../assets/images/home/front-14.jpg';
-import front15 from '../assets/images/home/front-15.jpg';
 
 import profileImage from '../assets/images/logo-hospital.png';
 
@@ -33,20 +31,18 @@ function Home() {
     // Define carousel images directly in the component
     const carouselImages = [
         { src: front3},
+        { src: front6},        
         { src: front1},
+        { src: front7},        
         { src: front2},
-        { src: front5},
-        { src: front4},
-        { src: front6},
-        { src: front7},
-        { src: front8},
-        { src: front9 },
+        { src: front8},  
+        { src: front4},              
         { src: front10},
+        { src: front5},        
         { src: front11},
-        { src: front12},
-        { src: front13},
-        { src: front15 },
-        { src: front14}        
+        { src: front12},              
+        { src: front9 },
+        { src: front13}      
     ];
     
     // Additional hero section customization (optional)
