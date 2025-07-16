@@ -86,7 +86,6 @@ const AdminLogin = () => {
                 </form>
                 
                 <div className="login-help">
-                    <p>For demo purposes: Username: admin, Password: admin123</p>
                 </div>
             </div>
         </div>
