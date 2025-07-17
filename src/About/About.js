@@ -2,7 +2,7 @@ import React from 'react';
 import './About.css';
 
 // Import main about image
-import aboutImage from '../assets/images/about_image.png';
+import aboutImage from '../assets/images/about-us/about_image.jpg';
 
 // Import about-us folder images
 import childrenDoctorImage from '../assets/images/about-us/children-doctor.jpg';

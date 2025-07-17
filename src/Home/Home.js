@@ -31,24 +31,23 @@ import Testimonials from './Testimonials';
 
 function Home() {
     // Define carousel images directly in the component
-    const carouselImages = [
+    const carouselImages = [        
         { src: front6},
-        { src: front8},        
-        { src: front1},
+        { src: front8},
         { src: front9},        
-        { src: front2},
-        { src: front10},  
-        { src: front4},              
-        { src: front11},
-        { src: front5},        
-        { src: front12},
-        { src: front6},          
-        { src: front13},              
-        { src: front7 },
+        { src: front10},
+        { src: front11},          
+        { src: front12},              
+        { src: front13},
         { src: front14}, 
-        { src: front3 }, 
-        { src: front15},              
-        { src: front16 }            
+        { src: front15 }, 
+        { src: front16} ,        
+        { src: front5},        
+        { src: front4},
+        { src: front3},        
+        { src: front2},
+        { src: front1},  
+        { src: front7}                    
     ];
     
     // Additional hero section customization (optional)
