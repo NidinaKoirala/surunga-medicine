@@ -6,7 +6,11 @@ import {
     faGraduationCap, 
     faArrowLeft, 
     faMapMarkerAlt,
-    faCheck
+    faCheck,
+    faClock,
+    faCalendarCheck,
+    faPhone,
+    faStethoscope
 } from '@fortawesome/free-solid-svg-icons';
 import { AppContext } from '../Context/AppContext';
 import './DoctorProfile.css';
@@ -19,7 +23,7 @@ const DoctorProfile = () => {
     const navigate = useNavigate();
     
     // Get doctors from context
-    const { doctors } = useContext(AppContext);
+    const { doctors, isDoctorAvailableOnDate, getDoctorAvailableSlots } = useContext(AppContext);
     
     useEffect(() => {
         // Find doctor by ID
@@ -30,12 +34,12 @@ const DoctorProfile = () => {
         setLoading(false);
         
         // Scroll to top on page load
-        window.scrollTo(0, 0);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [id, doctors]);
     
     // Function to handle booking appointment
     const handleBookAppointment = () => {
-        // Navigate to appointment page with doctor info and scroll to top
+        // Navigate to appointment page with doctor info
         navigate('/appointment', { 
             state: { 
                 selectedDoctor: doctor.name,
@@ -43,7 +47,7 @@ const DoctorProfile = () => {
             } 
         });
         // Scroll to top immediately
-        window.scrollTo(0, 0);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
     
     // Function to format about text with line breaks
@@ -58,6 +62,182 @@ const DoctorProfile = () => {
                 {paragraph.trim()}
             </p>
         ));
+    };
+
+    // Function to format availability for display
+    const formatAvailability = (availability) => {
+        if (!availability) {
+            return (
+                <div className="no-availability">
+                    <p>Availability schedule not configured. Please contact the clinic for appointment scheduling.</p>
+                    <div className="clinic-contact">
+                        <FontAwesomeIcon icon={faPhone} />
+                        <span>023-553097 / 9804964107</span>
+                    </div>
+                </div>
+            );
+        }
+
+        const dayDisplayNames = {
+            'monday': 'Monday',
+            'tuesday': 'Tuesday',
+            'wednesday': 'Wednesday',
+            'thursday': 'Thursday',
+            'friday': 'Friday',
+            'saturday': 'Saturday',
+            'sunday': 'Sunday'
+        };
+
+        const hasAvailableDates = availability.availableDates && availability.availableDates.length > 0;
+        const hasDaySchedule = availability.days && Object.keys(availability.days).some(
+            day => availability.days[day] && availability.days[day].length > 0
+        );
+
+        return (
+            <div className="availability-info">
+                {/* Show availability note if exists */}
+                {availability.note && (
+                    <div className="availability-note-banner">
+                        <FontAwesomeIcon icon={faCalendarCheck} />
+                        <span>{availability.note}</span>
+                    </div>
+                )}
+
+                {/* Show specific available dates if provided */}
+                {hasAvailableDates && (
+                    <div className="specific-dates-section">
+                        <h4 className="availability-section-title">
+                            <FontAwesomeIcon icon={faCalendarCheck} />
+                            Upcoming Available Dates
+                        </h4>
+                        <div className="available-dates-grid">
+                            {availability.availableDates
+                                .slice(0, 12) // Show first 12 dates
+                                .map(dateStr => {
+                                    const date = new Date(dateStr);
+                                    const dayName = dayDisplayNames[getDayName(date)];
+                                    const isToday = date.toDateString() === new Date().toDateString();
+                                    const isPast = date < new Date();
+                                    
+                                    if (isPast) return null;
+                                    
+                                    const formattedDate = date.toLocaleDateString('en-US', { 
+                                        month: 'short', 
+                                        day: 'numeric',
+                                        year: date.getFullYear() !== new Date().getFullYear() ? 'numeric' : undefined
+                                    });
+                                    
+                                    const timeSlots = availability.days && availability.days[getDayName(date)] 
+                                        ? availability.days[getDayName(date)] 
+                                        : [];
+                                    
+                                    return (
+                                        <div key={dateStr} className={`available-date-card ${isToday ? 'today' : ''}`}>
+                                            <div className="date-header">
+                                                <span className="date-display">{formattedDate}</span>
+                                                <span className="day-display">{dayName}</span>
+                                                {isToday && <span className="today-badge">Today</span>}
+                                            </div>
+                                            {timeSlots.length > 0 && (
+                                                <div className="time-slots-preview">
+                                                    {timeSlots.slice(0, 3).map(time => (
+                                                        <span key={time} className="time-slot-mini">{time}</span>
+                                                    ))}
+                                                    {timeSlots.length > 3 && (
+                                                        <span className="more-times">+{timeSlots.length - 3} more</span>
+                                                    )}
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                }).filter(Boolean)}
+                            {availability.availableDates.length > 12 && (
+                                <div className="more-dates-card">
+                                    <FontAwesomeIcon icon={faCalendarCheck} />
+                                    <span>+{availability.availableDates.length - 12} more dates</span>
+                                    <small>Book appointment to see all</small>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                )}
+                
+                {/* Show day-based schedule if no specific dates or as additional info */}
+                {hasDaySchedule && (
+                    <div className="day-based-schedule">
+                        <h4 className="availability-section-title">
+                            <FontAwesomeIcon icon={faClock} />
+                            {hasAvailableDates ? 'Time Schedule' : 'Weekly Schedule'}
+                        </h4>
+                        <div className="weekly-schedule-grid">
+                            {Object.keys(availability.days)
+                                .filter(day => availability.days[day] && availability.days[day].length > 0)
+                                .map(day => (
+                                    <div key={day} className="schedule-day-card">
+                                        <h5 className="day-name">{dayDisplayNames[day]}</h5>
+                                        <div className="time-slots-display">
+                                            {availability.days[day].map(time => (
+                                                <span key={time} className="time-slot-badge">
+                                                    {time}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                        </div>
+                    </div>
+                )}
+
+                {/* If neither exists */}
+                {!hasAvailableDates && !hasDaySchedule && (
+                    <div className="no-schedule">
+                        <FontAwesomeIcon icon={faCalendarCheck} />
+                        <p>Schedule will be available soon. Please contact clinic for appointments.</p>
+                        <div className="clinic-contact">
+                            <FontAwesomeIcon icon={faPhone} />
+                            <span>023-553097 / 9804964107</span>
+                        </div>
+                    </div>
+                )}
+            </div>
+        );
+    };
+
+    // Helper function to get day name from date
+    const getDayName = (date) => {
+        const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+        return days[date.getDay()];
+    };
+
+    // Function to get next few available dates for quick display
+    const getQuickAvailability = () => {
+        if (!doctor || !doctor.availability) return null;
+
+        const today = new Date();
+        const nextDays = [];
+        
+        // Check next 14 days for availability
+        for (let i = 0; i < 14; i++) {
+            const checkDate = new Date(today);
+            checkDate.setDate(today.getDate() + i);
+            
+            try {
+                if (isDoctorAvailableOnDate && isDoctorAvailableOnDate(doctor._id, checkDate)) {
+                    const slots = getDoctorAvailableSlots ? getDoctorAvailableSlots(doctor._id, checkDate) : [];
+                    if (slots.length > 0) {
+                        nextDays.push({
+                            date: checkDate,
+                            slots: slots.length
+                        });
+                        if (nextDays.length >= 3) break; // Show only next 3 available days
+                    }
+                }
+            } catch (error) {
+                console.error('Error checking availability:', error);
+            }
+        }
+
+        return nextDays;
     };
     
     if (loading) {
@@ -80,6 +260,8 @@ const DoctorProfile = () => {
             </div>
         );
     }
+
+    const quickAvailability = getQuickAvailability();
     
     return (
         <section className="doctor-profile-section">
@@ -101,7 +283,10 @@ const DoctorProfile = () => {
                                 
                                 <div className="doctor-profile-info">
                                     <h2 className="doctor-profile-name text-center">{doctor.name}</h2>
-                                    <p className="doctor-profile-specialty text-center"><strong>{doctor.speciality}</strong></p>
+                                    <p className="doctor-profile-specialty text-center">
+                                        <FontAwesomeIcon icon={faStethoscope} />
+                                        <strong>{doctor.speciality}</strong>
+                                    </p>
                                     
                                     <div className="doctor-stats text-center">
                                         <div className="stat-item justify-content-center">
@@ -113,24 +298,47 @@ const DoctorProfile = () => {
                                         </div>
                                     </div>
                                     
-                                    <div className="availability-info text-center">
+                                    <div className="info-section">
                                         <h3 className="info-heading">
-                                            <FontAwesomeIcon icon={faMapMarkerAlt} /> Address
+                                            <FontAwesomeIcon icon={faGraduationCap} /> Qualification
+                                        </h3>
+                                        <p className="qualification-text">{doctor.degree}</p>
+                                    </div>
+
+                                    <div className="info-section">
+                                        <h3 className="info-heading">
+                                            <FontAwesomeIcon icon={faMapMarkerAlt} /> Location
                                         </h3>
                                         <div className="address">
                                             <p>{doctor.address.line1}</p>
                                             <p>{doctor.address.line2}</p>
                                         </div>
                                     </div>
-                                    
-                                    <div className="qualification-info text-center">
-                                        <h3 className="info-heading">
-                                            <FontAwesomeIcon icon={faGraduationCap} /> Qualification
-                                        </h3>
-                                        <p className="qualification-text">{doctor.degree}</p>
-                                    </div>
+
+                                    {/* Quick Availability Summary */}
+                                    {quickAvailability && quickAvailability.length > 0 && (
+                                        <div className="quick-availability-summary">
+                                            <h3 className="info-heading">
+                                                <FontAwesomeIcon icon={faClock} /> Next Available
+                                            </h3>
+                                            <div className="next-available-dates">
+                                                {quickAvailability.map((avail, index) => (
+                                                    <div key={index} className="next-date-item">
+                                                        <span className="next-date">
+                                                            {avail.date.toLocaleDateString('en-US', { 
+                                                                month: 'short', 
+                                                                day: 'numeric' 
+                                                            })}
+                                                        </span>
+                                                        <span className="next-slots">{avail.slots} slots</span>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
                                     
                                     <button className="book-appointment-btn" onClick={handleBookAppointment}>
+                                        <FontAwesomeIcon icon={faCalendarCheck} />
                                         Book Appointment
                                     </button>
                                 </div>
@@ -146,6 +354,12 @@ const DoctorProfile = () => {
                                         onClick={() => setSelectedTab('about')}
                                     >
                                         About
+                                    </div>
+                                    <div 
+                                        className={`tab-item ${selectedTab === 'availability' ? 'active' : ''}`}
+                                        onClick={() => setSelectedTab('availability')}
+                                    >
+                                        Availability
                                     </div>
                                     <div 
                                         className={`tab-item ${selectedTab === 'services' ? 'active' : ''}`}
@@ -169,15 +383,39 @@ const DoctorProfile = () => {
                                                 {formatAboutText(doctor.about)}
                                             </div>
                                             
-                                            <div className="expertise-section">
-                                                <h4 className="section-title">Specialties</h4>
-                                                <ul className="expertise-list">
-                                                    {doctor.specialties && doctor.specialties.map((specialty, index) => (
-                                                        <li key={index}>
-                                                            <FontAwesomeIcon icon={faCheck} /> {specialty}
-                                                        </li>
-                                                    ))}
-                                                </ul>
+                                            {doctor.specialties && doctor.specialties.length > 0 && (
+                                                <div className="expertise-section">
+                                                    <h4 className="section-title">Areas of Expertise</h4>
+                                                    <ul className="expertise-list">
+                                                        {doctor.specialties.map((specialty, index) => (
+                                                            <li key={index}>
+                                                                <FontAwesomeIcon icon={faCheck} /> {specialty}
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
+
+                                    {selectedTab === 'availability' && (
+                                        <div className="tab-content-availability">
+                                            <h3 className="tab-title">Doctor's Availability Schedule</h3>
+                                            <div className="detailed-availability">
+                                                {formatAvailability(doctor.availability)}
+                                                <div className="booking-call-to-action">
+                                                    <div className="cta-box">
+                                                        <FontAwesomeIcon icon={faCalendarCheck} className="cta-icon" />
+                                                        <div className="cta-content">
+                                                            <h4>Ready to Schedule?</h4>
+                                                            <p>Click "Book Appointment" to see real-time availability and secure your preferred time slot.</p>
+                                                            <button className="inline-book-btn" onClick={handleBookAppointment}>
+                                                                <FontAwesomeIcon icon={faCalendarCheck} />
+                                                                Book Now
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     )}
@@ -189,29 +427,43 @@ const DoctorProfile = () => {
                                                 <div className="service-item">
                                                     <FontAwesomeIcon icon={faCheck} />
                                                     <div>
-                                                        <h4>Consultation</h4>
-                                                        <p>Comprehensive health consultations and medical evaluations</p>
+                                                        <h4>Medical Consultation</h4>
+                                                        <p>Comprehensive health consultations and medical evaluations tailored to your specific needs</p>
                                                     </div>
                                                 </div>
                                                 <div className="service-item">
                                                     <FontAwesomeIcon icon={faCheck} />
                                                     <div>
-                                                        <h4>Diagnostics</h4>
-                                                        <p>Advanced diagnostic procedures and health assessments</p>
+                                                        <h4>Diagnostic Services</h4>
+                                                        <p>Advanced diagnostic procedures and health assessments using modern medical equipment</p>
                                                     </div>
                                                 </div>
                                                 <div className="service-item">
                                                     <FontAwesomeIcon icon={faCheck} />
                                                     <div>
-                                                        <h4>Treatment</h4>
-                                                        <p>Specialized treatment plans tailored to individual needs</p>
+                                                        <h4>Treatment Planning</h4>
+                                                        <p>Personalized treatment plans designed for optimal health outcomes and patient comfort</p>
                                                     </div>
                                                 </div>
                                                 <div className="service-item">
                                                     <FontAwesomeIcon icon={faCheck} />
                                                     <div>
                                                         <h4>Follow-up Care</h4>
-                                                        <p>Continuous monitoring and follow-up appointments</p>
+                                                        <p>Continuous monitoring and follow-up appointments to ensure treatment effectiveness</p>
+                                                    </div>
+                                                </div>
+                                                <div className="service-item">
+                                                    <FontAwesomeIcon icon={faCheck} />
+                                                    <div>
+                                                        <h4>Preventive Care</h4>
+                                                        <p>Health screening and preventive measures to maintain optimal health and prevent diseases</p>
+                                                    </div>
+                                                </div>
+                                                <div className="service-item">
+                                                    <FontAwesomeIcon icon={faCheck} />
+                                                    <div>
+                                                        <h4>Patient Education</h4>
+                                                        <p>Educational guidance on health management, lifestyle modifications, and treatment compliance</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -220,7 +472,7 @@ const DoctorProfile = () => {
                                     
                                     {selectedTab === 'location' && (
                                         <div className="tab-content-location">
-                                            <h3 className="tab-title">Location</h3>
+                                            <h3 className="tab-title">Clinic Location</h3>
                                             <div className="location-info">
                                                 <div className="address-block">
                                                     <FontAwesomeIcon icon={faMapMarkerAlt} className="location-icon" />
@@ -228,6 +480,10 @@ const DoctorProfile = () => {
                                                         <h4>Office Address</h4>
                                                         <p>{doctor.address.line1}</p>
                                                         <p>{doctor.address.line2}</p>
+                                                        <div className="contact-info">
+                                                            <FontAwesomeIcon icon={faPhone} />
+                                                            <span>023-553097 / 9804964107</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div className="map-container">

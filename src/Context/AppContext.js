@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react';
 
-//import maledoctoravatar from '../assets/images/Doctors/doc-avatar-male.png';
-//import femaledoctoravatar from '../assets/images/Doctors/doc-avatar-female.png';
+import maledoctoravatar from '../assets/images/Doctors/doc-avatar-male.png';
+import femaledoctoravatar from '../assets/images/Doctors/doc-avatar-female.png';
 import doc1 from '../assets/images/Doctors/dr.dipayan.panday.png';
 import doc2 from '../assets/images/Doctors/dr.lata.png';
 import doc3 from '../assets/images/Doctors/dr.gaurav.png';
@@ -88,7 +88,7 @@ export const AppProvider = ({ children }) => {
         },                  
     ];
 
-    // Initial doctors data
+    // Initial doctors data with availability
     const initialDoctorsData = [
         {
             _id: 'doc1',
@@ -109,6 +109,13 @@ export const AppProvider = ({ children }) => {
             address: {
                 line1: 'Surunga Medicine and Clinic',
                 line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {
+                    'thursday': ['08:00']
+                },
+                monthlySchedule: null,
+                note: 'Available every Thursday at 8 AM'
             }
         },
         {
@@ -130,6 +137,19 @@ export const AppProvider = ({ children }) => {
             address: {
                 line1: 'Surunga Medicine and Clinic',
                 line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {
+                    'monday': ['12:00', '13:00'],
+                    'tuesday': ['12:00', '13:00'],
+                    'wednesday': ['12:00', '13:00'],
+                    'thursday': ['12:00', '13:00'],
+                    'friday': ['12:00', '13:00'],
+                    'saturday': ['12:00', '13:00'],
+                    'sunday': ['12:00', '13:00']
+                },
+                monthlySchedule: null,
+                note: 'Available everyday at 12 PM and 1 PM'
             }
         },
         {
@@ -151,6 +171,15 @@ export const AppProvider = ({ children }) => {
             address: {
                 line1: 'Surunga Medicine and Clinic',
                 line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {},
+                monthlySchedule: {
+                    weeks: [2, -1], // 2nd and last week
+                    day: 'saturday',
+                    times: ['11:00']
+                },
+                note: 'Available 2nd and last Saturday of every month at 11 AM'
             }
         },
         {
@@ -160,7 +189,7 @@ export const AppProvider = ({ children }) => {
             speciality: 'वरिष्ठ कन्सल्टेन्ट फिजिसियन',
             degree: 'MBBS , MD (INTERNAL MEDICINE) , Consultant physician',
             experience: '15+ Years',
-            about: 'डा. प्रमोद कुमार शाह, MBBS, MD (INTERNAL MEDICINE)वरिष्ठ फिजिसियन लामो अनुभव र उत्कृष्ट शैक्षिक पृष्ठभूमि भएका डा. शाह आधुनिक चिकित्सा पद्धति र परम्परागत ज्ञानको समन्वय गरी बिरामीहरूको व्यापक उपचार गर्नुहुन्छ। उहाँले प्रत्येक बिरामीको व्यक्तिगत आवश्यकता अनुसार सेवा प्रदान गर्दै आफ्नो पेशागत दक्षता र मानवीय संवेदनशीलताको परिचय दिनुहुन्छ। उहाँको समर्पित सेवा र विशेष चिकित्सकीय कौशलले बिरामीहरूको स्वास्थ्यमा उल्लेखनीय सुधार ल्याउनुभएको छ।12 वर्ष देखि विशेषज्ञ फिजिसियनको सेवामा समर्पित डा.शाह हाम्रो क्लिनिकमा शनिबार,आईतबार,मङ्गलबार रबिहिबार भेट्न सक्नुहुनेछ।',
+            about: 'डा. प्रमोद कुमार शाह, MBBS, MD (INTERNAL MEDICINE)वरिष्ठ फिजिसियन लामो अनुभव र उत्कृष्ट शैक्षिक पृष्ठभूमि भएका डा. शाह आधुनिक चिकित्सा पद्धति र परम्परागत ज्ञानको समन्वय गरी बिरामीहरूको व्यापक उपचार गर्नुहुन्छ। उहाँले प्रत्येक बिरामीको व्यक्तिगत आवश्यकता अनुसार सेवा प्रदान गर्दै आफ्नो पेशागत दक्षता र मानवीय संवेदनशीलताको परिचय दिनुहुन्छ। उहाँको समर्पित सेवा र विशेष चिकित्सकीय कौशलले बिरामीहरूको स्वास्थ्यमा उल्लेखनीय सुधार ल्याउनुभएको छ।',
             specialties: [
                 'सामान्य चिकित्सा परामर्श',
                 'रोग निदान र उपचार',
@@ -172,6 +201,19 @@ export const AppProvider = ({ children }) => {
             address: {
                 line1: 'Surunga Medicine and Clinic',
                 line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {
+                    'monday': ['15:00'],
+                    'tuesday': ['15:00'],
+                    'wednesday': ['15:00'],
+                    'thursday': ['15:00'],
+                    'friday': ['15:00'],
+                    'saturday': ['15:00'],
+                    'sunday': ['15:00']
+                },
+                monthlySchedule: null,
+                note: 'Available everyday at 3 PM'
             }
         },
         {
@@ -193,6 +235,15 @@ export const AppProvider = ({ children }) => {
             address: {
                 line1: 'Surunga Medicine and Clinic',
                 line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {},
+                monthlySchedule: {
+                    weeks: [2], // 2nd week
+                    day: 'sunday',
+                    times: ['07:00']
+                },
+                note: 'Available 2nd Sunday of every month at 7 AM'
             }
         },
         {
@@ -214,6 +265,15 @@ export const AppProvider = ({ children }) => {
             address: {
                 line1: 'Surunga Medicine and Clinic',
                 line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {},
+                monthlySchedule: {
+                    weeks: [3], // 3rd week
+                    day: 'sunday',
+                    times: ['07:00']
+                },
+                note: 'Available 3rd Sunday of every month at 7 AM'
             }
         },
         {
@@ -223,7 +283,7 @@ export const AppProvider = ({ children }) => {
             speciality: 'मुटृुरोग विशेषज्ञ',
             degree: 'MD (Internal Medicine),DM (cardiology)',
             experience: '20+ Years',
-            about: 'डा. रविन्द्र सिम्खडा, MD (Internal Medicine), DM (Cardiology) - मानव शरीरको सबै भन्दा जटिल अंग मुटुको जटिल रोगहरूको निदान र उपचारमा विशिष्ट अनुभव राख्नुहुने हृदयरोग विशेषज्ञ डाक्टर रवीन्द्र सिम्खडा सहिद गङ्गालाल राष्ट्रिय हृदय रोग केन्द्र काठमान्डौमा कार्यरत हुनुहुन्छ।मुटुरोग विभागमा 20 + yrs वडी अनुभव प्राप्त मुटु विशेषज्ञ जसले ECG, इकोकार्डियोग्राफी र हृदय क्याथेटराइजेसन जस्ता उन्नत प्रविधिहरू प्रयोग गर्दै हृदय स्वास्थ्य सुधार र हृदयाघात रोकथाममा महत्त्वपूर्ण भूमिका निर्वाह गर्नुहुन्छ। प्रत्येक महिनाको पहिलो शुक्रबार झापाको सुरूङ्गामा आउनुहुन्छ।',
+            about: 'डा. रविन्द्र सिम्खडा, MD (Internal Medicine), DM (Cardiology) - मानव शरीरको सबै भन्दा जटिल अंग मुटुको जटिल रोगहरूको निदान र उपचारमा विशिष्ट अनुभव राख्नुहुने हृदयरोग विशेषज्ञ डाक्टर रवीन्द्र सिम्खडा सहिद गङ्गालाल राष्ट्रिय हृदय रोग केन्द्र काठमान्डौमा कार्यरत हुनुहुन्छ।मुटुरोग विभागमा 20 + yrs वडी अनुभव प्राप्त मुटु विशेषज्ञ जसले ECG, इकोकार्डियोग्राफी र हृदय क्याथेटराइजेसन जस्ता उन्नत प्रविधिहरू प्रयोग गर्दै हृदय स्वास्थ्य सुधार र हृदयaघात रोकथाममा महत्त्वपूर्ण भूमिका निर्वाह गर्नुहुन्छ।',
             specialties: [
                 'हृदयरोग निदान र उपचार',
                 'ECG र इकोकार्डियोग्राफी',
@@ -235,6 +295,15 @@ export const AppProvider = ({ children }) => {
             address: {
                 line1: 'Surunga Medicine and Clinic',
                 line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {},
+                monthlySchedule: {
+                    weeks: [1], // 1st week
+                    day: 'friday',
+                    times: ['13:00']
+                },
+                note: 'Available first Friday of every month at 1 PM'
             }
         },
         {
@@ -256,6 +325,15 @@ export const AppProvider = ({ children }) => {
             address: {
                 line1: 'Surunga Medicine and Clinic',
                 line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {},
+                monthlySchedule: {
+                    weeks: [4], // 4th week
+                    day: 'wednesday',
+                    times: ['16:00']
+                },
+                note: 'Available 4th Wednesday of every month at 4 PM'
             }
         },
         {
@@ -277,6 +355,15 @@ export const AppProvider = ({ children }) => {
             address: {
                 line1: 'Surunga Medicine and Clinic',
                 line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {},
+                monthlySchedule: {
+                    weeks: [4], // 4th week
+                    day: 'saturday',
+                    times: ['10:00']
+                },
+                note: 'Available 4th Saturday of every month at 10 AM'
             }
         },
         {
@@ -298,78 +385,231 @@ export const AppProvider = ({ children }) => {
             address: {
                 line1: 'Surunga Medicine and Clinic',
                 line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {
+                    'saturday': ['13:00']
+                },
+                monthlySchedule: null,
+                note: 'Available every Saturday at 1 PM'
             }
         },
-        //{
-        //    _id: 'doc11',
-        //    name: 'Dr. Zoe Kelly',
-        //    image: doc11,
-        //    speciality: 'Neurologist',
-        //    degree: 'MBBS',
-        //    experience: '4 Years',
-        //    about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        //    fees: 50,
-        //    address: {
-        //        line1: 'Surunga Medicine and Clinic',
-        //        line2: 'Kankai-03, Surunga, Jhapa'
-        //    }
-        //},
-        //{
-        //    _id: 'doc12',
-        //    name: 'Dr. Patrick Harris',
-        //    image: doc12,
-        //    speciality: 'Neurologist',
-        //    degree: 'MBBS',
-        //    experience: '4 Years',
-        //    about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        //    fees: 50,
-        //    address: {
-        //        line1: 'Surunga Medicine and Clinic',
-        //        line2: 'Kankai-03, Surunga, Jhapa'
-        //    }
-        //},
-        //{
-        //    _id: 'doc13',
-        //    name: 'Dr. Chloe Evans',
-        //    image: doc13,
-        //    speciality: 'General physician',
-        //    degree: 'MBBS',
-        //    experience: '4 Years',
-        //    about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        //    fees: 50,
-        //    address: {
-        //        line1: 'Surunga Medicine and Clinic',
-        //        line2: 'Kankai-03, Surunga, Jhapa'
-        //    }
-        //},
-        //{
-        //    _id: 'doc14',
-        //    name: 'Dr. Ryan Martinez',
-        //    image: doc14,
-        //    speciality: 'Gynecologist',
-        //    degree: 'MBBS',
-        //    experience: '3 Years',
-        //    about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        //    fees: 60,
-        //    address: {
-        //        line1: 'Surunga Medicine and Clinic',
-        //        line2: 'Kankai-03, Surunga, Jhapa'
-        //    }
-        //},
-        //{
-        //    _id: 'doc15',
-        //    name: 'Dr. Amelia Hill',
-        //    image: doc15,
-        //    speciality: 'Dermatologist',
-        //    degree: 'MBBS',
-        //    experience: '1 Years',
-        //    about: 'Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.',
-        //    fees: 30,
-        //    address: {
-        //        line1: 'Surunga Medicine and Clinic',
-        //        line2: 'Kankai-03, Surunga, Jhapa'
-        //    }
-        //},
+        // New doctors added below
+        {
+            _id: 'doc11',
+            name: 'Dr. Sambhu Nawal',
+            image: maledoctoravatar,
+            speciality: 'जनरल तथा त्याप्रोस्कोपिक सर्जन र पायल्स रोग विशेषज्ञ',
+            degree: 'MBBS, MS (General Surgery)',
+            experience: '10+ Years',
+            about: 'डा. सम्भु नवल - अत्याधुनिक ल्याप्रोस्कोपिक प्रविधि माफर्त जटिल शल्यक्रियाहरू गर्ने वरिष्ठ शल्यचिकित्सक हुनुहुन्छ, विशेषगरी पाइल्स, फिस्टुला र पेटका समस्याहरूको न्यूनतम चिरफार विधिद्वारा कुशल उपचार प्रदान गर्नुहुन्छ।',
+            specialties: [
+                'ल्याप्रोस्कोपिक सर्जरी',
+                'पाइल्स उपचार',
+                'फिस्टुला सर्जरी',
+                'पेटका समस्या',
+                'न्यूनतम चिरफार सर्जरी',
+                'सामान्य शल्यक्रिया'
+            ],
+            address: {
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {
+                    'saturday': ['13:00']
+                },
+                monthlySchedule: null,
+                note: 'Available every Saturday at 1 PM'
+            }
+        },
+        {
+            _id: 'doc12',
+            name: 'Dr. Niraj Rauniyar',
+            image: maledoctoravatar,
+            speciality: 'ENT विशेषज्ञ',
+            degree: 'MBBS, MS (ENT)',
+            experience: '10+ Years',
+            about: 'डा. निरज राउनियार - कान, नाक र घाँटी रोग विशेषज्ञ जसले ENT सम्बन्धी विभिन्न समस्याहरूको निदान र उपचारमा विशेष दक्षता राख्नुहुन्छ।',
+            specialties: [
+                'कान रोग उपचार',
+                'नाक र साइनस समस्या',
+                'घाँटी रोग',
+                'श्रवण समस्या',
+                'ENT सर्जरी',
+                'एलर्जी उपचार'
+            ],
+            address: {
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {
+                    'saturday': ['01:00']
+                },
+                monthlySchedule: null,
+                note: 'Available every Saturday at 1 AM'
+            }
+        },
+        {
+            _id: 'doc13',
+            name: 'Dr. Sandhya Shah',
+            image: femaledoctoravatar,
+            speciality: 'प्रसूति तथा प्रजनन् विशेषज्ञ',
+            degree: 'MBBS, MD (OBS/GYN)',
+            experience: '12+ Years',
+            about: 'डा. सन्ध्या शाह - आदरणीय प्रसूति तथा प्रजनन् विशेषज्ञ हुनुहुन्छ जसले महिलाहरूको प्रजनन् स्वास्थ्य, गर्भावस्था व्यवस्थापन र स्त्री रोग उपचारमा उत्कृष्ट सेवा प्रदान गर्नुहुन्छ।',
+            specialties: [
+                'गर्भावस्था व्यवस्थापन',
+                'प्रसूति सेवा',
+                'स्त्री रोग परामर्श',
+                'महिला प्रजनन् स्वास्थ्य',
+                'गर्भावस्था जटिलता',
+                'फ्यामिली प्लानिङ'
+            ],
+            address: {
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {
+                    'saturday': ['18:00']
+                },
+                monthlySchedule: null,
+                note: 'Available every Saturday at 6 PM'
+            }
+        },
+        {
+            _id: 'doc14',
+            name: 'Dr. Ashreya Kadariya',
+            image: femaledoctoravatar,
+            speciality: 'बाल रोग विशेषज्ञ',
+            degree: 'MBBS, MD (Pediatrics)',
+            experience: '10+ Years',
+            about: 'डा. आश्रेया कडरिया - बाल रोग विशेषज्ञ जसले बालबालिकाको स्वास्थ्य र विकासमा विशेष ध्यान दिनुहुन्छ।',
+            specialties: [
+                'बाल रोग निदान',
+                'खोप र इम्युनाइजेसन',
+                'बाल विकास मूल्यांकन',
+                'नवजात शिशु हेरचाह',
+                'बाल पोषण परामर्श',
+                'बाल संक्रमण उपचार'
+            ],
+            address: {
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {
+                    'monday': ['17:00'],
+                    'tuesday': ['17:00'],
+                    'wednesday': ['17:00'],
+                    'thursday': ['17:00'],
+                    'friday': ['17:00'],
+                    'saturday': ['17:00'],
+                    'sunday': ['17:00']
+                },
+                monthlySchedule: null,
+                note: 'Available everyday at 5 PM'
+            }
+        },
+        {
+            _id: 'doc15',
+            name: 'Dr. Sanjeev K. Shah',
+            image: maledoctoravatar,
+            speciality: 'बाल रोग विशेषज्ञ',
+            degree: 'MBBS, MD (Pediatrics)',
+            experience: '12+ Years',
+            about: 'डा. संजीव के. शाह - बाल रोग विशेषज्ञ जसले बालबालिकाको स्वास्थ्य समस्याहरूको निदान र उपचारमा विशेष दक्षता राख्नुहुन्छ।',
+            specialties: [
+                'बाल रोग निदान',
+                'खोप र इम्युनाइजेसन',
+                'बाल विकास मूल्यांकन',
+                'नवजात शिशु हेरचाह',
+                'बाल पोषण परामर्श',
+                'बाल संक्रमण उपचार'
+            ],
+            address: {
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {
+                    'monday': ['17:00'],
+                    'tuesday': ['17:00'],
+                    'wednesday': ['17:00'],
+                    'thursday': ['17:00'],
+                    'friday': ['17:00'],
+                    'saturday': ['17:00'],
+                    'sunday': ['17:00']
+                },
+                monthlySchedule: null,
+                note: 'Available everyday at 5 PM'
+            }
+        },
+        {
+            _id: 'doc16',
+            name: 'Dr. Prabin Chaudhary',
+            image: maledoctoravatar,
+            speciality: 'हाडजोर्नी नशा तथा मेरुदण्ड विशेषज्ञ',
+            degree: 'MBBS, MS (Orthopedics)',
+            experience: '12+ Years',
+            about: 'डा. प्रविन चौधरी - हाडजोर्नी र मेरुदण्ड सम्बन्धी समस्याहरूको विशेषज्ञ चिकित्सक हुनुहुन्छ जसले हाड भाँचिएको, जोर्नी समस्या र खेलकुद चोटपटकको उपचार गर्नुहुन्छ।',
+            specialties: [
+                'हाडजोर्नी भाँचिएको उपचार',
+                'खेलकुद चोटपटक',
+                'जोर्नी प्रतिस्थापन',
+                'मेरुदण्ड समस्या',
+                'अर्थोपेडिक सर्जरी',
+                'हड्डी रोग उपचार'
+            ],
+            address: {
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {
+                    'monday': ['13:00'],
+                    'tuesday': ['13:00'],
+                    'wednesday': ['13:00'],
+                    'thursday': ['13:00'],
+                    'friday': ['13:00'],
+                    'saturday': ['13:00'],
+                    'sunday': ['13:00']
+                },
+                monthlySchedule: null,
+                note: 'Available everyday at 1 PM'
+            }
+        },
+        {
+            _id: 'doc17',
+            name: 'Dr. Sonu Bharati',
+            image: femaledoctoravatar,
+            speciality: 'प्रसूति तथा प्रजनन् विशेषज्ञ',
+            degree: 'MBBS, MD (OBS/GYN)',
+            experience: '10+ Years',
+            about: 'डा. सोनू भारती - प्रसूति तथा प्रजनन् विशेषज्ञ हुनुहुन्छ जसले महिलाहरूको प्रजनन् स्वास्थ्य र गर्भावस्था व्यवस्थापनमा विशेष दक्षता राख्नुहुन्छ।',
+            specialties: [
+                'गर्भावस्था व्यवस्थापन',
+                'प्रसूति सेवा',
+                'स्त्री रोग परामर्श',
+                'महिला प्रजनन् स्वास्थ्य',
+                'बाँझोपन उपचार',
+                'फ्यामिली प्लानिङ'
+            ],
+            address: {
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {
+                    'thursday': ['08:00'],
+                    'saturday': ['12:30']
+                },
+                monthlySchedule: null,
+                note: 'Available Thursday at 8 AM and Saturday at 12:30 PM'
+            }
+        }
     ];
 
     // State to store the current list of doctors
@@ -383,13 +623,24 @@ export const AppProvider = ({ children }) => {
         // If no image is provided, use a default based on speciality
         const doctorImage = newDoctorData.image || 
             defaultDoctorImages[newDoctorData.speciality] || 
-            doc1;
+            maledoctoravatar;
         
-        // Create the new doctor object
+        // Create the new doctor object with default availability if not provided
         const newDoctor = {
             _id: newId,
             ...newDoctorData,
-            image: doctorImage
+            image: doctorImage,
+            availability: newDoctorData.availability || {
+                days: {
+                    'monday': ['09:00', '10:00', '11:00', '14:00', '15:00'],
+                    'tuesday': ['09:00', '10:00', '11:00', '14:00', '15:00'],
+                    'wednesday': ['09:00', '10:00', '11:00', '14:00', '15:00'],
+                    'thursday': ['09:00', '10:00', '11:00', '14:00', '15:00'],
+                    'friday': ['09:00', '10:00', '11:00', '14:00', '15:00']
+                },
+                monthlySchedule: null,
+                note: 'Available Monday to Friday'
+            }
         };
         
         // Add the new doctor to the state
@@ -423,6 +674,55 @@ export const AppProvider = ({ children }) => {
         return true;
     };
     
+    // Function to update doctor availability with helper methods
+    const updateDoctorAvailability = (doctorId, newAvailability) => {
+        return updateDoctor(doctorId, { availability: newAvailability });
+    };
+
+    // Helper function to add available dates to a doctor
+    const addAvailableDates = (doctorId, newDates) => {
+        const doctor = getDoctorById(doctorId);
+        if (!doctor) return false;
+
+        const updatedAvailability = {
+            ...doctor.availability,
+            availableDates: doctor.availability.availableDates 
+                ? [...doctor.availability.availableDates, ...newDates]
+                : newDates
+        };
+        return updateDoctorAvailability(doctorId, updatedAvailability);
+    };
+
+    // Helper function to remove available dates from a doctor
+    const removeAvailableDates = (doctorId, datesToRemove) => {
+        const doctor = getDoctorById(doctorId);
+        if (!doctor || !doctor.availability.availableDates) return false;
+
+        const updatedAvailability = {
+            ...doctor.availability,
+            availableDates: doctor.availability.availableDates.filter(
+                date => !datesToRemove.includes(date)
+            )
+        };
+        return updateDoctorAvailability(doctorId, updatedAvailability);
+    };
+
+    // Helper function to set vacation period (remove dates in range)
+    const setVacationPeriod = (doctorId, startDate, endDate) => {
+        const doctor = getDoctorById(doctorId);
+        if (!doctor || !doctor.availability.availableDates) return false;
+
+        const filteredDates = doctor.availability.availableDates.filter(dateStr => {
+            return dateStr < startDate || dateStr > endDate;
+        });
+
+        const updatedAvailability = {
+            ...doctor.availability,
+            availableDates: filteredDates
+        };
+        return updateDoctorAvailability(doctorId, updatedAvailability);
+    };
+    
     // Function to delete a doctor
     const deleteDoctor = (doctorId) => {
         // Find the doctor to delete
@@ -446,14 +746,244 @@ export const AppProvider = ({ children }) => {
         return doctors.find(doc => doc._id === doctorId) || null;
     };
 
+    // Helper function to get day name from date
+    const getDayName = (date) => {
+        const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+        return days[date.getDay()];
+    };
+
+    // Helper function to normalize date to YYYY-MM-DD format (timezone safe)
+    const normalizeDate = (date) => {
+        if (typeof date === 'string') {
+            // If it's already a string, ensure it's in YYYY-MM-DD format
+            return date.split('T')[0];
+        }
+        if (date instanceof Date) {
+            // Use local timezone methods instead of UTC to avoid "+1 day" issue
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+        return null;
+    };
+
+    // Helper function to get which week of the month a date falls in
+    const getWeekOfMonth = (date) => {
+        const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+        const dayOfMonth = date.getDate();
+        return Math.ceil((dayOfMonth + firstDay.getDay()) / 7);
+    };
+
+    // Helper function to check if date is last week of month
+    const isLastWeekOfMonth = (date) => {
+        const lastDayOfMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        const lastWeek = getWeekOfMonth(lastDayOfMonth);
+        return getWeekOfMonth(date) === lastWeek;
+    };
+
+    // Check if doctor is available on a specific date and time
+    const isDoctorAvailable = (doctorId, date, time) => {
+        const doctor = getDoctorById(doctorId);
+        if (!doctor || !doctor.availability) return false;
+
+        const dayName = getDayName(date);
+        const dateString = normalizeDate(date);
+        
+        if (!dateString) return false;
+
+        // Check blocked dates first
+        const isBlocked = doctor.availability.blockedDates && 
+                         doctor.availability.blockedDates.includes(dateString);
+        if (isBlocked) return false;
+
+        // Check if there's a monthly schedule pattern
+        if (doctor.availability.monthlySchedule) {
+            const schedule = doctor.availability.monthlySchedule;
+            const weekOfMonth = getWeekOfMonth(date);
+            
+            // Check if the day matches
+            if (schedule.day !== dayName) return false;
+            
+            // Check if the week matches
+            let weekMatches = false;
+            for (const week of schedule.weeks) {
+                if (week === -1 && isLastWeekOfMonth(date)) {
+                    weekMatches = true;
+                    break;
+                } else if (week === weekOfMonth) {
+                    weekMatches = true;
+                    break;
+                }
+            }
+            
+            if (!weekMatches) return false;
+            
+            // Check if time is available
+            return schedule.times.includes(time);
+        }
+
+        // Check regular weekly schedule
+        const hasDaySchedule = doctor.availability.days && 
+                              doctor.availability.days[dayName] && 
+                              doctor.availability.days[dayName].length > 0;
+        
+        if (hasDaySchedule) {
+            return doctor.availability.days[dayName].includes(time);
+        }
+
+        return false;
+    };
+
+    // Get available time slots for a doctor on a specific date
+    const getDoctorAvailableSlots = (doctorId, date) => {
+        const doctor = getDoctorById(doctorId);
+        if (!doctor || !doctor.availability) {
+            console.log(` No doctor or availability for ID: ${doctorId}`);
+            return [];
+        }
+
+        const dayName = getDayName(date);
+        const dateString = normalizeDate(date);
+        
+        if (!dateString) {
+            console.log(` Invalid date string for: ${date}`);
+            return [];
+        }
+
+        // Check if date is blocked
+        const isBlocked = doctor.availability.blockedDates && 
+                         doctor.availability.blockedDates.includes(dateString);
+        if (isBlocked) {
+            console.log(` Date is blocked`);
+            return [];
+        }
+
+        // Check if there's a monthly schedule pattern
+        if (doctor.availability.monthlySchedule) {
+            const schedule = doctor.availability.monthlySchedule;
+            const weekOfMonth = getWeekOfMonth(date);
+            
+            // Check if the day matches
+            if (schedule.day !== dayName) return [];
+            
+            // Check if the week matches
+            let weekMatches = false;
+            for (const week of schedule.weeks) {
+                if (week === -1 && isLastWeekOfMonth(date)) {
+                    weekMatches = true;
+                    break;
+                } else if (week === weekOfMonth) {
+                    weekMatches = true;
+                    break;
+                }
+            }
+            
+            if (!weekMatches) return [];
+            
+            // Return the time slots for this schedule
+            return schedule.times;
+        }
+
+        // Check regular weekly schedule
+        const hasDaySchedule = doctor.availability.days && 
+                              doctor.availability.days[dayName] && 
+                              doctor.availability.days[dayName].length > 0;
+        
+        if (hasDaySchedule) {
+            return doctor.availability.days[dayName];
+        }
+
+        return [];
+    };
+
+    // Check if doctor is available on a specific date
+    const isDoctorAvailableOnDate = (doctorId, date) => {
+        const doctor = getDoctorById(doctorId);
+        if (!doctor || !doctor.availability) {
+            return false;
+        }
+
+        const dayName = getDayName(date);
+        const dateString = normalizeDate(date);
+        
+        if (!dateString) {
+            return false;
+        }
+
+        // Check if date is blocked
+        const isBlocked = doctor.availability.blockedDates && 
+                         doctor.availability.blockedDates.includes(dateString);
+        if (isBlocked) {
+            return false;
+        }
+
+        // Check if there's a monthly schedule pattern
+        if (doctor.availability.monthlySchedule) {
+            const schedule = doctor.availability.monthlySchedule;
+            const weekOfMonth = getWeekOfMonth(date);
+            
+            // Check if the day matches
+            if (schedule.day !== dayName) return false;
+            
+            // Check if the week matches
+            for (const week of schedule.weeks) {
+                if (week === -1 && isLastWeekOfMonth(date)) {
+                    return true;
+                } else if (week === weekOfMonth) {
+                    return true;
+                }
+            }
+            
+            return false;
+        }
+
+        // Check regular weekly schedule
+        const hasDaySchedule = doctor.availability.days && 
+                              doctor.availability.days[dayName] && 
+                              doctor.availability.days[dayName].length > 0;
+        
+        return hasDaySchedule;
+    };
+
+    // Function to get next available date for a doctor
+    const getNextAvailableDate = (doctorId) => {
+        const doctor = getDoctorById(doctorId);
+        if (!doctor || !doctor.availability) return null;
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        const maxDaysToCheck = 60; // Check up to 2 months ahead
+        
+        for (let i = 0; i < maxDaysToCheck; i++) {
+            const checkDate = new Date(today);
+            checkDate.setDate(today.getDate() + i);
+            
+            if (isDoctorAvailableOnDate(doctorId, checkDate)) {
+                return checkDate;
+            }
+        }
+        
+        return null; // No availability found
+    };
+
     return (
         <AppContext.Provider value={{ 
             doctors, 
             specialityData,
             addDoctor,
             updateDoctor,
+            updateDoctorAvailability,
+            addAvailableDates,
+            removeAvailableDates,
+            setVacationPeriod,
             deleteDoctor,
-            getDoctorById
+            getDoctorById,
+            isDoctorAvailable,
+            getDoctorAvailableSlots,
+            isDoctorAvailableOnDate,
+            getNextAvailableDate
         }}>
             {children}
         </AppContext.Provider>

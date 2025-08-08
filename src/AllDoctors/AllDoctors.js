@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './AllDoctors.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserMd, faCalendarPlus, faChevronDown, faStethoscope, faUserCheck } from '@fortawesome/free-solid-svg-icons';
+import { faUserMd, faCalendarPlus, faChevronDown, faStethoscope, faUserCheck , faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
 import { AppContext } from '../Context/AppContext';
 
 function AllDoctors() {
@@ -25,7 +25,54 @@ function AllDoctors() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     
     // Use context to get doctors and specialityData
-    const { doctors, specialityData } = useContext(AppContext);
+    const { doctors, specialityData, getNextAvailableDate } = useContext(AppContext);
+    
+    // Function to get a brief availability summary for display
+    const getAvailabilitySummary = (doctor) => {
+        if (!doctor.availability || !doctor.availability.days) {
+            return { text: 'Check availability', type: 'unavailable' };
+        }
+
+        // Get next available date
+        const nextDate = getNextAvailableDate(doctor._id);
+        if (!nextDate) {
+            return { text: 'No slots', type: 'unavailable' };
+        }
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        const tomorrow = new Date(today);
+        tomorrow.setDate(today.getDate() + 1);
+        
+        // Check if today
+        if (nextDate.toDateString() === today.toDateString()) {
+            return { text: 'Today', type: 'today' };
+        }
+        
+        // Check if tomorrow
+        if (nextDate.toDateString() === tomorrow.toDateString()) {
+            return { text: 'Tomorrow', type: 'tomorrow' };
+        }
+
+        // Calculate days from now
+        const diffTime = Math.abs(nextDate - today);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        
+        if (diffDays <= 7) {
+            // Within a week - show day name
+            const dayName = nextDate.toLocaleDateString('en-US', { weekday: 'short' });
+            return { text: dayName, type: 'week' };
+        }
+
+        // More than a week - show date
+        const dateStr = nextDate.toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric'
+        });
+        
+        return { text: dateStr, type: 'future' };
+    };
     
     // create function to filter doctors according to specialty and search term
     useEffect(() => {
@@ -165,50 +212,53 @@ function AllDoctors() {
                                 </span>
                             </div>
                             <div className="row doctors-grid g-4">
-                                {filterDoc.map((doctor) => (
-                                    <div key={doctor._id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                                        <div className="doctor-card" onClick={() => navigateToProfile(doctor._id)}>
-                                            <div className="doctor-image">
-                                                <img src={doctor.image} alt={doctor.name} className="img-fluid" />
-                                                <div className="available-badge">
-                                                    <span className="status-dot"></span>
-                                                    Available
-                                                </div>
-                                                <div className="card-overlay">
-                                                    <div className="overlay-content">
-                                                        <FontAwesomeIcon icon={faUserMd} />
-                                                        <span>View Profile</span>
+                                {filterDoc.map((doctor) => {
+                                    const availability = getAvailabilitySummary(doctor);
+                                    return (
+                                        <div key={doctor._id} className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                                            <div className="doctor-card" onClick={() => navigateToProfile(doctor._id)}>
+                                                <div className="doctor-image">
+                                                    <img src={doctor.image} alt={doctor.name} className="img-fluid" />
+                                                    <div className={`next-available-badge ${availability.type}`}>
+                                                        <FontAwesomeIcon icon={faCalendarCheck} />
+                                                        <span>{availability.text}</span>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div className="doctor-details">
-                                                <h3 className="doctor-name text-center">{doctor.name}</h3>
-                                                <p className="doctor-specialty text-center">
-                                                    <strong>{doctor.speciality}</strong>
-                                                </p>
-                                                
-                                                <div className="doctor-info-row">
-                                                    <div className="info-item doctor-experience">
-                                                        <FontAwesomeIcon icon={faUserMd} />
-                                                        <span>{doctor.experience}</span>
+                                                    <div className="card-overlay">
+                                                        <div className="overlay-content">
+                                                            <FontAwesomeIcon icon={faUserMd} />
+                                                            <span>View Profile</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 
-                                                <div className="doctor-actions">
-                                                    <button 
-                                                        className="book-appointment-btn" 
-                                                        onClick={(e) => handleBookAppointment(e, doctor)}
-                                                        title="Book Appointment"
-                                                    >
-                                                        <FontAwesomeIcon icon={faCalendarPlus} />
-                                                        <span>Book Appointment</span>
-                                                    </button>
+                                                <div className="doctor-details">
+                                                    <h3 className="doctor-name text-center">{doctor.name}</h3>
+                                                    <p className="doctor-specialty text-center">
+                                                        <strong>{doctor.speciality}</strong>
+                                                    </p>
+                                                    
+                                                    <div className="doctor-info-row">
+                                                        <div className="info-item doctor-experience">
+                                                            <FontAwesomeIcon icon={faUserMd} />
+                                                            <span>{doctor.experience}</span>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div className="doctor-actions">
+                                                        <button 
+                                                            className="book-appointment-btn" 
+                                                            onClick={(e) => handleBookAppointment(e, doctor)}
+                                                            title="Book Appointment"
+                                                        >
+                                                            <FontAwesomeIcon icon={faCalendarPlus} />
+                                                            <span>Book Appointment</span>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </>
                     ) : (
