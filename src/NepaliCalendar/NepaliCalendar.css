@@ -428,7 +428,7 @@
 }
 
 .selected-indicator {
-    background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
 }
 
 .unavailable-indicator {
@@ -510,7 +510,7 @@
 }
 
 .selected-dot {
-    background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
 }
 
 .available-dot {
