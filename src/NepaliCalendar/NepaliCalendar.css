@@ -1,4 +1,4 @@
-/* Enhanced NepaliCalendar.css - Complete Modern Red/Blue/Green Theme */
+/* Enhanced NepaliCalendar.css - SELECTED DATE VISIBILITY FIXED */
 :root {
     --primary-blue: #0a2463;
     --secondary-blue: #1e3a8a;
@@ -23,876 +23,694 @@
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
+/* Reset and base styles */
+.modern-nepali-calendar * {
+    box-sizing: border-box;
+}
+
 .modern-nepali-calendar {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 30px;
-  color: var(--gray-800);
-  font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
-  max-width: 100%;
-  width: 100%;
-  margin: 20px auto;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  position: relative;
-  overflow: hidden;
-  min-width: 320px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 16px;
+    color: var(--gray-800);
+    font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    width: 100%;
+    max-width: 600px;
+    margin: 16px auto;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    box-sizing: border-box;
 }
 
 .modern-nepali-calendar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: linear-gradient(90deg, var(--primary-blue) 0%, var(--success-green) 25%, var(--primary-red) 75%, var(--secondary-red) 100%);
-  border-radius: 20px 20px 0 0;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--success-green) 25%, var(--primary-red) 75%, var(--secondary-red) 100%);
+    border-radius: 16px 16px 0 0;
 }
 
+/* Header */
 .calendar-header {
-  margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .month-navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    gap: 12px;
 }
 
 .nav-btn {
-  background: linear-gradient(135deg, var(--gray-100), var(--gray-50));
-  border: 2px solid var(--gray-200);
-  color: var(--gray-700);
-  width: 50px;
-  height: 50px;
-  border-radius: 15px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--shadow-sm);
-  position: relative;
-  overflow: hidden;
+    background: linear-gradient(135deg, var(--gray-100), var(--gray-50));
+    border: 1px solid var(--gray-200);
+    color: var(--gray-700);
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
 }
 
-.nav-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  transition: left 0.5s;
-}
-
-.nav-btn:hover::before {
-  left: 100%;
+.nav-btn svg {
+    width: 16px;
+    height: 16px;
 }
 
 .nav-btn:hover {
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
-  border-color: var(--primary-blue);
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-.nav-btn:active {
-  transform: translateY(-1px);
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    border-color: var(--primary-blue);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
 }
 
 .month-display {
-  text-align: center;
-  flex: 1;
-  padding: 0 20px;
+    text-align: center;
+    flex: 1;
+    padding: 0 16px;
 }
 
 .nepali-month-name {
-  font-size: 32px;
-  font-weight: 800;
-  margin-bottom: 8px;
-  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--success-green) 50%, var(--primary-red) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.5px;
-  line-height: 1.2;
-  min-height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 4px;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--success-green) 50%, var(--primary-red) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
 }
 
 .english-month-name {
-  font-size: 16px;
-  color: var(--gray-600);
-  font-weight: 600;
-  margin-bottom: 5px;
-}
-
-.nepali-sub-text {
-  font-size: 14px;
-  color: var(--success-green);
-  font-weight: 600;
-  margin-bottom: 5px;
+    font-size: 14px;
+    color: var(--gray-600);
+    font-weight: 600;
+    margin-bottom: 8px;
 }
 
 .availability-summary {
-  font-size: 12px;
-  color: var(--success-green);
-  font-weight: 600;
-  background: var(--light-green);
-  padding: 4px 12px;
-  border-radius: 12px;
-  display: inline-block;
-  border: 1px solid rgba(22, 163, 74, 0.2);
+    font-size: 12px;
+    color: var(--success-green);
+    font-weight: 600;
+    background: var(--light-green);
+    padding: 4px 12px;
+    border-radius: 12px;
+    display: inline-block;
+    border: 1px solid rgba(22, 163, 74, 0.2);
 }
 
+/* Calendar Body - FIXED */
 .calendar-body {
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 18px;
-  padding: 25px;
-  border: 1px solid var(--gray-100);
-  box-shadow: var(--shadow-sm);
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid var(--gray-100);
+    box-shadow: var(--shadow-sm);
 }
 
+/* Weekdays Header - FIXED */
 .weekdays-header {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-  margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 12px;
 }
 
 .weekday-cell {
-  background: linear-gradient(135deg, var(--gray-100), var(--gray-50));
-  padding: 15px 8px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 14px;
-  border-radius: 12px;
-  color: var(--gray-700);
-  border: 2px solid var(--gray-200);
-  transition: all 0.3s ease;
+    background: linear-gradient(135deg, var(--gray-100), var(--gray-50));
+    padding: 10px 4px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 11px;
+    border-radius: 6px;
+    color: var(--gray-700);
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
 }
 
 .weekday-cell.saturday {
-  background: linear-gradient(135deg, var(--light-red), rgba(255, 255, 255, 0.9));
-  color: var(--primary-red);
-  border-color: rgba(217, 28, 28, 0.3);
-  font-weight: 800;
+    background: linear-gradient(135deg, var(--light-red), rgba(255, 255, 255, 0.9));
+    color: var(--primary-red);
+    border-color: rgba(217, 28, 28, 0.3);
+    font-weight: 800;
 }
 
+.weekday-cell:hover {
+    background: linear-gradient(135deg, var(--gray-200), var(--gray-100));
+    transform: translateY(-1px);
+}
+
+/* Calendar Dates Grid - COMPLETELY FIXED */
 .calendar-dates {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
 }
 
 .date-cell {
-  background: rgba(255, 255, 255, 0.9);
-  border: 2px solid var(--gray-100);
-  border-radius: 15px;
-  padding: 12px 8px;
-  min-height: 80px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-}
-
-.date-cell::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--success-green) 50%, var(--primary-red) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 0;
-}
-
-.date-cell:hover::before {
-  opacity: 0.05;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 55px;
+    height: 55px;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    padding: 4px;
 }
 
 .date-cell:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
 }
 
+/* Date Content - PERFECT CENTERING NO SHIFT */
+.date-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    text-align: center;
+    gap: 1px;
+    padding: 0;
+    margin: 0;
+}
+
+.english-date {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gray-800);
+    line-height: 1;
+    margin: 0;
+}
+
+.nepali-date {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray-600);
+    line-height: 1;
+    margin: 0;
+    opacity: 0.85;
+}
+
+/* State-specific styles */
 .date-cell.other-month {
-  opacity: 0.3;
-  background: var(--gray-50);
-  border-color: var(--gray-200);
-  cursor: not-allowed;
-}
-
-.date-cell.other-month:hover {
-  transform: none;
-  box-shadow: var(--shadow-sm);
+    opacity: 0.3;
+    background: var(--gray-50);
+    cursor: not-allowed;
 }
 
 .date-cell.today {
-  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
-  border-color: var(--primary-blue);
-  color: white;
-  font-weight: 800;
-  box-shadow: 0 8px 25px rgba(10, 36, 99, 0.3);
-  transform: scale(1.05);
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    border-color: var(--primary-blue);
+    color: white;
+    font-weight: 800;
+    box-shadow: 0 4px 15px rgba(10, 36, 99, 0.25);
 }
 
-.date-cell.today::before {
-  opacity: 0;
-}
-
-.date-cell.today .english-date {
-  color: white !important;
-  font-weight: 800;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
+.date-cell.today .english-date,
 .date-cell.today .nepali-date {
-  color: rgba(255, 255, 255, 0.9) !important;
-  font-weight: 700;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
+/* FIXED SELECTED DATE STYLES - FORCE WHITE TEXT */
 .date-cell.selected {
-  background: linear-gradient(135deg, var(--primary-red) 0%, var(--secondary-red) 100%) !important;
-  border-color: var(--primary-red) !important;
-  color: white !important;
-  font-weight: 700;
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(217, 28, 28, 0.3);
-}
-
-.date-cell.selected::before {
-  opacity: 0;
+    background: linear-gradient(135deg, var(--primary-red) 0%, var(--secondary-red) 100%) !important;
+    border-color: var(--primary-red) !important;
+    color: white !important;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(217, 28, 28, 0.25);
 }
 
 .date-cell.selected .english-date,
-.date-cell.selected .nepali-date {
-  color: white !important;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+.date-cell.selected:hover .english-date,
+.date-cell.selected:focus .english-date,
+.date-cell.selected:active .english-date {
+    color: white !important;
+    font-weight: 800 !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+    opacity: 1 !important;
+    fill: white !important;
+    stroke: white !important;
 }
 
-/* Available Date Styles - Green Theme */
+.date-cell.selected .nepali-date,
+.date-cell.selected:hover .nepali-date,
+.date-cell.selected:focus .nepali-date,
+.date-cell.selected:active .nepali-date {
+    color: white !important;
+    font-weight: 700 !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8) !important;
+    opacity: 1 !important;
+    fill: white !important;
+    stroke: white !important;
+}
+
+/* Available dates - Green theme */
 .date-cell.available-date {
-  background: linear-gradient(135deg, var(--light-green) 0%, rgba(255, 255, 255, 0.9) 100%);
-  border-color: var(--success-green);
-  color: var(--dark-green);
-  box-shadow: 0 4px 15px rgba(22, 163, 74, 0.15);
+    background: linear-gradient(135deg, var(--light-green) 0%, rgba(255, 255, 255, 0.9) 100%);
+    border-color: var(--success-green);
+    box-shadow: 0 2px 8px rgba(22, 163, 74, 0.15);
 }
 
-.date-cell.available-date::before {
-  background: linear-gradient(135deg, var(--success-green) 0%, var(--dark-green) 100%);
+.date-cell.available-date .english-date {
+    color: var(--dark-green) !important;
+    font-weight: 700;
+}
+
+.date-cell.available-date .nepali-date {
+    color: var(--success-green) !important;
+    font-weight: 600;
 }
 
 .date-cell.available-date:hover {
-  background: linear-gradient(135deg, var(--success-green) 0%, var(--dark-green) 100%);
-  border-color: var(--dark-green);
-  color: white;
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 12px 30px rgba(22, 163, 74, 0.3);
-}
-
-.date-cell.available-date:hover::before {
-  opacity: 0;
+    background: linear-gradient(135deg, var(--success-green) 0%, var(--dark-green) 100%);
+    border-color: var(--dark-green);
+    box-shadow: 0 4px 15px rgba(22, 163, 74, 0.25);
 }
 
 .date-cell.available-date:hover .english-date,
 .date-cell.available-date:hover .nepali-date {
-  color: white !important;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.date-cell.available-date .english-date {
-  color: var(--dark-green);
-  font-weight: 700;
-}
-
-.date-cell.available-date .nepali-date {
-  color: var(--success-green);
-  font-weight: 600;
-}
-
+/* Past dates */
 .date-cell.past-date {
-  opacity: 0.4;
-  cursor: not-allowed;
-  background: var(--gray-100);
-  border-color: var(--gray-300);
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: var(--gray-100);
+    border-color: var(--gray-300);
 }
 
 .date-cell.past-date:hover {
-  transform: none;
-  border-color: var(--gray-300);
-  box-shadow: var(--shadow-sm);
+    transform: none;
+    box-shadow: var(--shadow-sm);
 }
 
-.date-cell.past-date::before {
-  opacity: 0;
-}
-
-/* Disabled date styles for doctor unavailability */
+/* Disabled dates */
 .date-cell.disabled-date {
-  opacity: 0.3;
-  cursor: not-allowed;
-  background: var(--gray-50);
-  border-color: var(--gray-300);
-  color: var(--gray-400);
+    opacity: 0.3;
+    cursor: not-allowed;
+    background: var(--gray-50);
+    border-color: var(--gray-300);
+    color: var(--gray-400);
 }
 
 .date-cell.disabled-date:hover {
-  transform: none;
-  border-color: var(--gray-300);
-  box-shadow: var(--shadow-sm);
-}
-
-.date-cell.disabled-date::before {
-  opacity: 0;
+    transform: none;
+    box-shadow: var(--shadow-sm);
 }
 
 .date-cell.disabled-date .english-date,
 .date-cell.disabled-date .nepali-date {
-  color: var(--gray-400) !important;
+    color: var(--gray-400) !important;
 }
 
-/* Available indicator - Green checkmark */
-.available-indicator {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(135deg, var(--success-green), var(--dark-green));
-  color: white;
-  border-radius: 50%;
-  font-size: 12px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  line-height: 1;
-  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
-  animation: availablePulse 2s ease-in-out infinite;
-}
-
-@keyframes availablePulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
-/* Unavailable indicator */
-.unavailable-indicator {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 18px;
-  height: 18px;
-  background: rgba(239, 68, 68, 0.9);
-  color: white;
-  border-radius: 50%;
-  font-size: 10px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  line-height: 1;
-  box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
-}
-
+/* Saturday styles */
 .date-cell.saturday {
-  background: linear-gradient(135deg, var(--light-red), rgba(255, 255, 255, 0.9));
-  border-color: rgba(217, 28, 28, 0.3);
+    background: linear-gradient(135deg, var(--light-red), rgba(255, 255, 255, 0.9));
+    border-color: rgba(217, 28, 28, 0.3);
 }
 
 .date-cell.saturday .english-date {
-  color: var(--primary-red);
-  font-weight: 700;
+    color: var(--primary-red) !important;
+    font-weight: 700;
 }
 
 .date-cell.saturday .nepali-date {
-  color: var(--secondary-red);
-  font-weight: 600;
+    color: var(--secondary-red) !important;
+    font-weight: 600;
 }
 
 .date-cell.saturday:hover {
-  background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
-  border-color: var(--primary-red);
-  color: white;
-  box-shadow: 0 8px 25px rgba(217, 28, 28, 0.25);
+    background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+    border-color: var(--primary-red);
+    box-shadow: 0 6px 20px rgba(217, 28, 28, 0.25);
 }
 
 .date-cell.saturday:hover .english-date,
 .date-cell.saturday:hover .nepali-date {
-  color: white !important;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    color: white !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-/* Override Saturday styles for disabled dates */
-.date-cell.saturday.disabled-date {
-  background: var(--gray-50);
-  border-color: var(--gray-300);
-}
-
-.date-cell.saturday.disabled-date .english-date,
-.date-cell.saturday.disabled-date .nepali-date {
-  color: var(--gray-400) !important;
-}
-
-.date-cell.saturday.disabled-date:hover {
-  border-color: var(--gray-300);
-  box-shadow: var(--shadow-sm);
-  background: var(--gray-50);
-  color: var(--gray-400);
-}
-
-/* Override Saturday styles for available dates */
+/* Saturday available dates override */
 .date-cell.saturday.available-date {
-  background: linear-gradient(135deg, var(--light-green) 0%, rgba(255, 255, 255, 0.9) 100%);
-  border-color: var(--success-green);
+    background: linear-gradient(135deg, var(--light-green) 0%, rgba(255, 255, 255, 0.9) 100%);
+    border-color: var(--success-green);
 }
 
 .date-cell.saturday.available-date .english-date {
-  color: var(--dark-green);
+    color: var(--dark-green) !important;
 }
 
 .date-cell.saturday.available-date .nepali-date {
-  color: var(--success-green);
+    color: var(--success-green) !important;
 }
 
-.date-content {
-  text-align: center;
-  width: 100%;
-  position: relative;
-  z-index: 1;
+/* Indicators - FIXED POSITIONING NO INTERFERENCE */
+.today-indicator,
+.selected-indicator,
+.available-indicator {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, var(--success-green), var(--dark-green));
+    color: white;
+    border-radius: 50%;
+    font-size: 7px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    line-height: 1;
+    box-shadow: 0 1px 3px rgba(22, 163, 74, 0.4);
+    pointer-events: none;
 }
 
-.english-date {
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 3px;
-  color: var(--gray-800);
-  line-height: 1.2;
+.today-indicator {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    font-size: 6px;
 }
 
-.nepali-date {
-  font-size: 13px;
-  opacity: 0.85;
-  font-weight: 600;
-  color: var(--gray-600);
-  line-height: 1.2;
+.selected-indicator {
+    background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+}
+
+.unavailable-indicator {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 10px;
+    height: 10px;
+    background: rgba(239, 68, 68, 0.9);
+    color: white;
+    border-radius: 50%;
+    font-size: 6px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    line-height: 1;
+    box-shadow: 0 1px 2px rgba(239, 68, 68, 0.3);
+    pointer-events: none;
 }
 
 .special-day-dot {
-  position: absolute;
-  bottom: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 6px;
-  height: 6px;
-  background: var(--primary-red);
-  border-radius: 50%;
-  z-index: 2;
-  box-shadow: 0 1px 3px rgba(217, 28, 28, 0.5);
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 3px;
+    background: var(--primary-red);
+    border-radius: 50%;
+    z-index: 5;
 }
 
+/* Legend */
 .calendar-legend {
-  margin-top: 25px;
-  padding-top: 20px;
-  border-top: 2px solid var(--gray-100);
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 2px solid var(--gray-100);
 }
 
 .legend-items {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
 }
 
 .legend-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--gray-600);
-  font-weight: 600;
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 10px;
-  border: 1px solid var(--gray-200);
-  transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--gray-600);
+    font-weight: 600;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s ease;
 }
 
 .legend-item:hover {
-  background: rgba(255, 255, 255, 0.9);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
 }
 
 .legend-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
 }
 
 .today-dot {
-  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
 }
 
 .selected-dot {
-  background: linear-gradient(135deg, var(--primary-red) 0%, var(--secondary-red) 100%);
+    background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
 }
 
 .available-dot {
-  background: linear-gradient(135deg, var(--success-green) 0%, var(--dark-green) 100%);
-  animation: availableDotPulse 2s ease-in-out infinite;
-}
-
-@keyframes availableDotPulse {
-  0%, 100% { box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
-  50% { box-shadow: 0 2px 8px rgba(22, 163, 74, 0.4); }
+    background: linear-gradient(135deg, var(--success-green), var(--dark-green));
 }
 
 .unavailable-dot {
-  background: linear-gradient(135deg, var(--gray-400) 0%, var(--gray-500) 100%);
+    background: linear-gradient(135deg, var(--gray-400), var(--gray-500));
 }
 
 .weekend-dot {
-  background: linear-gradient(135deg, var(--light-red) 0%, var(--primary-red) 100%);
+    background: linear-gradient(135deg, var(--light-red), var(--primary-red));
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .modern-nepali-calendar {
-    padding: 25px;
-    margin: 15px auto;
-  }
-  
-  .nepali-month-name {
-    font-size: 26px;
-  }
-  
-  .english-month-name {
-    font-size: 11px;
-  }
-
-  .nepali-sub-text {
-    font-size: 10px;
-  }
-
-  .nepali-sub-text {
-    font-size: 10px;
-  }
-
-  .nepali-sub-text {
-    font-size: 11px;
-  }
-  
-  .date-cell {
-    min-height: 65px;
-  }
-
-  .available-indicator {
-    width: 18px;
-    height: 18px;
-    font-size: 11px;
-  }
-
-  .unavailable-indicator {
-    width: 16px;
-    height: 16px;
-    font-size: 9px;
-  }
+.calendar-instructions {
+    text-align: center;
 }
 
+.calendar-instructions small {
+    font-size: 10px;
+    color: var(--gray-500);
+    padding: 4px 8px;
+    background: var(--gray-50);
+    border-radius: 6px;
+    border: 1px solid var(--gray-200);
+}
+
+/* MOBILE RESPONSIVE - FIXED */
 @media (max-width: 768px) {
-  .modern-nepali-calendar {
-    padding: 15px;
-    margin: 10px auto;
-    border-radius: 16px;
-    max-width: 100%;
-    overflow-x: auto;
-  }
-  
-  .nepali-month-name {
-    font-size: 16px;
-  }
-  
-  .english-month-name {
-    font-size: 13px;
-  }
-  
-  .month-display {
-    padding: 0 10px;
-  }
-  
-  .calendar-body {
-    padding: 15px;
-    min-width: 320px;
-  }
-  
-  .weekdays-header {
-    gap: 6px;
-  }
-  
-  .calendar-dates {
-    gap: 6px;
-  }
-  
-  .date-cell {
-    min-height: 50px;
-    padding: 6px 4px;
-    border-radius: 10px;
-  }
-  
-  .english-date {
-    font-size: 15px;
-    margin-bottom: 2px;
-  }
-  
-  .nepali-date {
-    font-size: 11px;
-  }
-  
-  .weekday-cell {
-    padding: 10px 6px;
-    font-size: 12px;
-    border-radius: 8px;
-  }
-  
-  .nav-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-  }
-  
-  .legend-items {
-    gap: 15px;
-    flex-direction: row;
-    justify-content: center;
-  }
-  
-  .legend-item {
-    font-size: 11px;
-    padding: 6px 8px;
-  }
-
-  .available-indicator {
-    width: 16px;
-    height: 16px;
-    font-size: 10px;
-    top: 3px;
-    right: 3px;
-  }
-
-  .unavailable-indicator {
-    width: 14px;
-    height: 14px;
-    font-size: 8px;
-    top: 3px;
-    right: 3px;
-  }
-
-  .availability-summary {
-    font-size: 11px;
-    padding: 3px 8px;
-  }
+    .modern-nepali-calendar {
+        padding: 12px;
+        margin: 8px;
+        max-width: calc(100vw - 16px);
+    }
+    
+    .calendar-body {
+        padding: 12px;
+    }
+    
+    .weekdays-header,
+    .calendar-dates {
+        gap: 2px;
+    }
+    
+    .weekday-cell {
+        min-height: 30px;
+        padding: 6px 2px;
+        font-size: 9px;
+    }
+    
+    .date-cell {
+        min-height: 45px;
+        height: 45px;
+        padding: 2px;
+    }
+    
+    .english-date {
+        font-size: 12px;
+    }
+    
+    .nepali-date {
+        font-size: 9px;
+    }
+    
+    .nav-btn {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .nav-btn svg {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .nepali-month-name {
+        font-size: 18px;
+    }
+    
+    .english-month-name {
+        font-size: 12px;
+    }
+    
+    .available-indicator {
+        width: 10px;
+        height: 10px;
+        font-size: 6px;
+        top: 1px;
+        right: 1px;
+    }
+    
+    .unavailable-indicator {
+        width: 8px;
+        height: 8px;
+        font-size: 5px;
+        top: 1px;
+        right: 1px;
+    }
 }
 
 @media (max-width: 480px) {
-  .modern-nepali-calendar {
-    padding: 12px;
-    margin: 8px auto;
-  }
-  
-  .calendar-header {
-    margin-bottom: 20px;
-  }
-  
-  .month-navigation {
-    margin-bottom: 15px;
-    padding: 0 5px;
-  }
-  
-  .calendar-body {
-    padding: 12px;
-    min-width: 280px;
-  }
-  
-  .weekdays-header {
-    gap: 4px;
-    margin-bottom: 10px;
-  }
-  
-  .calendar-dates {
-    gap: 4px;
-  }
-  
-  .date-cell {
-    min-height: 40px;
-    padding: 4px 2px;
-    border-radius: 8px;
-    border-width: 1px;
-  }
-  
-  .weekday-cell {
-    padding: 8px 4px;
-    font-size: 11px;
-    border-radius: 6px;
-  }
-  
-  .english-date {
-    font-size: 13px;
-    font-weight: 700;
-  }
-  
-  .nepali-date {
-    font-size: 9px;
-  }
-  
-  .nav-btn {
-    width: 35px;
-    height: 35px;
-    border-radius: 8px;
-  }
-  
-  .nav-btn svg {
-    width: 16px;
-    height: 16px;
-  }
-  
-  .nepali-month-name {
-    font-size: 20px;
-  }
-  
-  .english-month-name {
-    font-size: 12px;
-  }
-  
-  .legend-item {
-    font-size: 10px;
-    padding: 5px 6px;
-  }
-  
-  .legend-dot {
-    width: 10px;
-    height: 10px;
-  }
-  
-  .calendar-legend {
-    margin-top: 15px;
-    padding-top: 12px;
-  }
-
-  .available-indicator {
-    width: 14px;
-    height: 14px;
-    font-size: 9px;
-    top: 2px;
-    right: 2px;
-  }
-
-  .unavailable-indicator {
-    width: 12px;
-    height: 12px;
-    font-size: 7px;
-    top: 2px;
-    right: 2px;
-  }
-
-  .availability-summary {
-    font-size: 10px;
-    padding: 2px 6px;
-  }
+    .modern-nepali-calendar {
+        padding: 8px;
+        margin: 4px;
+    }
+    
+    .calendar-body {
+        padding: 8px;
+    }
+    
+    .weekdays-header,
+    .calendar-dates {
+        gap: 1px;
+    }
+    
+    .weekday-cell {
+        min-height: 28px;
+        padding: 4px 1px;
+        font-size: 8px;
+    }
+    
+    .date-cell {
+        min-height: 38px;
+        height: 38px;
+        padding: 1px;
+    }
+    
+    .english-date {
+        font-size: 10px;
+    }
+    
+    .nepali-date {
+        font-size: 8px;
+    }
+    
+    .legend-items {
+        gap: 8px;
+    }
+    
+    .legend-item {
+        font-size: 9px;
+        padding: 4px 6px;
+    }
+    
+    .legend-dot {
+        width: 8px;
+        height: 8px;
+    }
 }
 
-@media (max-width: 360px) {
-  .modern-nepali-calendar {
-    padding: 10px;
-  }
-  
-  .calendar-body {
-    padding: 10px;
-    min-width: 260px;
-  }
-  
-  .date-cell {
-    min-height: 35px;
-    padding: 3px 1px;
-  }
-  
-  .english-date {
-    font-size: 12px;
-  }
-  
-  .nepali-date {
-    font-size: 8px;
-  }
-  
-  .weekday-cell {
-    padding: 6px 2px;
-    font-size: 10px;
-  }
-  
-  .nav-btn {
-    width: 32px;
-    height: 32px;
-  }
-  
-  .nav-btn svg {
-    width: 14px;
-    height: 14px;
-  }
-  
-  .nepali-month-name {
-    font-size: 14px;
-  }
-  
-  .english-month-name {
-    font-size: 11px;
-  }
+/* Large screens */
+@media (min-width: 1024px) {
+    .modern-nepali-calendar {
+        max-width: 700px;
+        padding: 20px;
+    }
+    
+    .date-cell {
+        min-height: 60px;
+        height: 60px;
+        padding: 6px;
+    }
+    
+    .english-date {
+        font-size: 16px;
+    }
+    
+    .nepali-date {
+        font-size: 12px;
+    }
+    
+    .weekday-cell {
+        min-height: 40px;
+        font-size: 12px;
+    }
+    
+    .available-indicator {
+        width: 14px;
+        height: 14px;
+        font-size: 8px;
+    }
+    
+    .unavailable-indicator {
+        width: 12px;
+        height: 12px;
+        font-size: 7px;
+    }
+}
 
-  .available-indicator {
-    width: 12px;
-    height: 12px;
-    font-size: 8px;
-    top: 1px;
-    right: 1px;
-  }
-
-  .unavailable-indicator {
-    width: 10px;
-    height: 10px;
-    font-size: 6px;
-    top: 1px;
-    right: 1px;
-  }
-
-  .legend-items {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .availability-summary {
-    font-size: 9px;
-    padding: 2px 4px;
-  }
+/* Print styles */
+@media print {
+    .modern-nepali-calendar {
+        box-shadow: none;
+        border: 1px solid var(--gray-300);
+    }
+    
+    .nav-btn {
+        display: none;
+    }
+    
+    .date-cell:hover {
+        transform: none;
+    }
 }
