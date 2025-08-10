@@ -159,7 +159,7 @@ export const AppProvider = ({ children }) => {
             speciality: 'सुगर प्रेसर तथा किड्नी विशेषज्ञ',
             degree: 'DM(NAMS,Bir Hospital) , MD (KU) consultant , DM (Nephrologist)',
             experience: '15+ Years',
-            about: 'डा. गौरव क्षेत्री, MD (KU), DM (NAMS, Bir Hospital), DM (Nephrologist) - वरिष्ठ सुगर, प्रेसर तथा किड्नी विशेषज्ञ जसले consultant Nephrologist को रूपमा रहेर मधुमेह, उच्च रक्तचाप र मिर्गौला सम्बन्धी जटिल रोगहरूको निदान र उपचारमा विशिष्ट योगदान पुर्‍याउँदै आउनुभएको छ।किड्निमा समस्या भएका बिरामीहरूको स्वास्थ्य सुधारमा समर्पित रहेर विगत लामो समय देखि सेवा दिदै आईरहनु भएको झापा सुरूङ्गामा प्रत्येक महिनाको दोस्रो र चौथो शनिबार सेवा रहनेछ',
+            about: 'डा. गौरव क्षेत्री, MD (KU), DM (NAMS, Bir Hospital), DM (Nephrologist) - वरिष्ठ सुगर, प्रेसर तथा किड्नी विशेषज्ञ जसले consultant Nephrologist को रूपमा रहेर मधुमेह, उच्च रक्तचाप र मिर्गौला सम्बन्धी जटिल रोगहरूको निदान र उपचारमा विशिष्ट योगदान पुर्‍याउँदै आउनुभएको छ।किड्निमा समस्या भएका बिरामीहरूको स्वास्थ्य सुधारमा समर्पित रहेर विगत लामो समय देखि सेवा दिदै आईरहनु भएको झापा सुरूङ्गामा प्रत्येक महिनाको दोस्रो शनिबार सेवा रहनेछ',
             specialties: [
                 'मधुमेह निदान र उपचार',
                 'उच्च रक्तचाप व्यवस्थापन',
@@ -175,11 +175,11 @@ export const AppProvider = ({ children }) => {
             availability: {
                 days: {},
                 monthlySchedule: {
-                    weeks: [2, -1], // 2nd and last week
+                    weeks: [2], // 2nd week only
                     day: 'saturday',
                     times: ['11:00']
                 },
-                note: 'Available 2nd and last Saturday of every month at 11 AM'
+                note: 'Available 2nd Saturday of every month at 11 AM'
             }
         },
         {
@@ -204,16 +204,13 @@ export const AppProvider = ({ children }) => {
             },
             availability: {
                 days: {
-                    'monday': ['15:00'],
+                    'sunday': ['15:00'],
                     'tuesday': ['15:00'],
-                    'wednesday': ['15:00'],
                     'thursday': ['15:00'],
-                    'friday': ['15:00'],
-                    'saturday': ['15:00'],
-                    'sunday': ['15:00']
+                    'saturday': ['15:00']
                 },
                 monthlySchedule: null,
-                note: 'Available everyday at 3 PM'
+                note: 'Available Sunday, Tuesday, Thursday, Saturday at 3 PM'
             }
         },
         {
@@ -239,11 +236,11 @@ export const AppProvider = ({ children }) => {
             availability: {
                 days: {},
                 monthlySchedule: {
-                    weeks: [2], // 2nd week
-                    day: 'sunday',
+                    weeks: [3], // 3rd week
+                    day: 'wednesday',
                     times: ['07:00']
                 },
-                note: 'Available 2nd Sunday of every month at 7 AM'
+                note: 'Available 3rd Wednesday of every month at 7 AM'
             }
         },
         {
@@ -329,11 +326,11 @@ export const AppProvider = ({ children }) => {
             availability: {
                 days: {},
                 monthlySchedule: {
-                    weeks: [4], // 4th week
+                    weeks: [1], // 1st week
                     day: 'wednesday',
                     times: ['16:00']
                 },
-                note: 'Available 4th Wednesday of every month at 4 PM'
+                note: 'Available 1st Wednesday of every month at 4 PM'
             }
         },
         {
@@ -482,7 +479,7 @@ export const AppProvider = ({ children }) => {
         {
             _id: 'doc14',
             name: 'Dr. Ashreya Kadariya',
-            image: femaledoctoravatar,
+            image: maledoctoravatar,
             speciality: 'बाल रोग विशेषज्ञ',
             degree: 'MBBS, MD (Pediatrics)',
             experience: '10+ Years',
@@ -603,11 +600,115 @@ export const AppProvider = ({ children }) => {
             },
             availability: {
                 days: {
+                    'sunday': ['12:30'],
+                    'tuesday': ['12:30'],
                     'thursday': ['08:00'],
                     'saturday': ['12:30']
                 },
                 monthlySchedule: null,
-                note: 'Available Thursday at 8 AM and Saturday at 12:30 PM'
+                note: 'Available Sunday, Tuesday, Thursday, Saturday'
+            }
+        },
+        {
+            _id: 'doc18',
+            name: 'Dr. Dristy Bhattarai',
+            image: femaledoctoravatar,
+            speciality: 'प्रसूति तथा प्रजनन् विशेषज्ञ',
+            degree: 'MBBS, MD (OBS/GYN)',
+            experience: '10+ Years',
+            about: 'डा. दृष्टि भट्टराई - प्रसूति तथा प्रजनन् विशेषज्ञ हुनुहुन्छ जसले महिलाहरूको प्रजनन् स्वास्थ्य र गर्भावस्था व्यवस्थापनमा विशेष दक्षता राख्नुहुन्छ।',
+            specialties: [
+                'गर्भावस्था व्यवस्थापन',
+                'प्रसूति सेवा',
+                'स्त्री रोग परामर्श',
+                'महिला प्रजनन् स्वास्थ्य',
+                'बाँझोपन उपचार',
+                'फ्यामिली प्लानिङ'
+            ],
+            address: {
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {
+                    'monday': ['18:00'],
+                    'tuesday': ['18:00'],
+                    'wednesday': ['18:00'],
+                    'thursday': ['18:00'],
+                    'friday': ['18:00'],
+                    'saturday': ['18:00'],
+                    'sunday': ['18:00']
+                },
+                monthlySchedule: null,
+                note: 'Available every evening'
+            }
+        },
+        {
+            _id: 'doc19',
+            name: 'Dr. Suraj Thapaliya',
+            image: maledoctoravatar,
+            speciality: 'रेडियोलोजिस्ट',
+            degree: 'MBBS, MD (Radiology)',
+            experience: '10+ Years',
+            about: 'डा. सुरज थापालिया - रेडियोलोजी विशेषज्ञ हुनुहुन्छ जसले विभिन्न इमेजिङ प्रविधिहरू माफर्त रोग निदानमा महत्वपूर्ण भूमिका निर्वाह गर्नुहुन्छ।',
+            specialties: [
+                'X-Ray इमेजिङ',
+                'अल्ट्रासाउन्ड',
+                'CT स्क्यान',
+                'MRI इमेजिङ',
+                'रेडियोलोजी रिपोर्टिङ',
+                'इमेज गाइडेड प्रक्रिया'
+            ],
+            address: {
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {
+                    'monday': ['08:00', '18:00'],
+                    'tuesday': ['08:00', '18:00'],
+                    'wednesday': ['08:00', '18:00'],
+                    'thursday': ['08:00', '18:00'],
+                    'friday': ['08:00', '18:00'],
+                    'saturday': ['08:00', '18:00'],
+                    'sunday': ['08:00', '18:00']
+                },
+                monthlySchedule: null,
+                note: 'Available everyday morning and evening'
+            }
+        },
+        {
+            _id: 'doc20',
+            name: 'Dr. Aktar Ali',
+            image: maledoctoravatar,
+            speciality: 'रेडियोलोजिस्ट',
+            degree: 'MBBS, MD (Radiology)',
+            experience: '10+ Years',
+            about: 'डा. अक्तर अली - रेडियोलोजी विशेषज्ञ हुनुहुन्छ जसले विभिन्न इमेजिङ प्रविधिहरू माफर्त रोग निदानमा दक्षता राख्नुहुन्छ।',
+            specialties: [
+                'X-Ray इमेजिङ',
+                'अल्ट्रासाउन्ड',
+                'CT स्क्यान',
+                'MRI इमेजिङ',
+                'रेडियोलोजी रिपोर्टिङ',
+                'इमेज गाइडेड प्रक्रिया'
+            ],
+            address: {
+                line1: 'Surunga Medicine and Clinic',
+                line2: 'Kankai-03, Surunga, Jhapa'
+            },
+            availability: {
+                days: {
+                    'monday': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'],
+                    'tuesday': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'],
+                    'wednesday': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'],
+                    'thursday': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'],
+                    'friday': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'],
+                    'saturday': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'],
+                    'sunday': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00']
+                },
+                monthlySchedule: null,
+                note: 'Available everyday'
             }
         }
     ];
