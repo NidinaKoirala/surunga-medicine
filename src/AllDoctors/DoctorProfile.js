@@ -40,7 +40,9 @@ const DoctorProfile = () => {
     // Function to handle booking appointment
     const handleBookAppointment = () => {
         // Navigate to appointment page with doctor info
-        navigate('/appointment', { 
+        // Convert to lowercase and replace all non-alphanumeric characters with hyphens
+        const urlFriendlyName = doctor.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        navigate(`/Appointment/${urlFriendlyName}`, { 
             state: { 
                 selectedDoctor: doctor.name,
                 doctorId: doctor._id

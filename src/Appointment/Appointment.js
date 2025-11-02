@@ -1,10 +1,29 @@
 import React, { useState, useRef, useEffect, useContext, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams, useNavigate as useRouterNavigate } from 'react-router-dom';
 import './Appointment.css';
 import emailjs from '@emailjs/browser';
 import { format } from 'date-fns';
 import { AppContext } from '../Context/AppContext';
 import NepaliCalendar from '../NepaliCalendar/NepaliCalendar';
+
+// Helper function to convert URL-friendly name back to proper doctor name
+const urlToProperName = (urlName, doctors) => {
+  if (!urlName || !doctors) return '';
+  
+  // Try to find doctor by matching URL pattern
+  const foundDoctor = doctors.find(doc => {
+    const docUrlName = doc.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    return docUrlName === urlName.toLowerCase();
+  });
+  
+  return foundDoctor ? foundDoctor.name : '';
+};
+
+// Helper function to convert proper name to URL-friendly format
+const properNameToUrl = (properName) => {
+  if (!properName) return '';
+  return properName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+};
 
 const Appointment = () => {
   // Access EmailJS configuration from environment variables
@@ -14,9 +33,10 @@ const Appointment = () => {
   const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
   const ADMIN_EMAIL = process.env.REACT_APP_ADMIN_EMAIL;
 
-  // Get location to access state passed from doctor profile
+  // Get location and params to access state passed from doctor profile
   const location = useLocation();
-  const selectedDoctorName = location.state?.selectedDoctor || '';
+  const { doctorName } = useParams();
+  const navigateRouter = useRouterNavigate();
   
   // Get functions from context
   const { 
@@ -24,6 +44,11 @@ const Appointment = () => {
     isDoctorAvailableOnDate, 
     getDoctorAvailableSlots 
   } = useContext(AppContext);
+  
+  // Convert URL-friendly name back to proper doctor name
+  const selectedDoctorName = doctorName 
+    ? urlToProperName(doctorName, doctors) 
+    : location.state?.selectedDoctor || '';
 
   // Helper function to get day name from date
   const getDayName = (date) => {
@@ -213,7 +238,11 @@ const Appointment = () => {
       setTime(''); // Reset time when doctor changes
       setShowTimePicker(false);
       
+      // Update URL with selected doctor
       if (doctor) {
+        const urlFriendlyName = properNameToUrl(doctor.name);
+        navigateRouter(`/Appointment/${urlFriendlyName}`, { replace: true });
+        
         console.log('🏥 DOCTOR SELECTION CHANGED');
         console.log('   Selected:', doctor.name);
         console.log('   ID:', doctor._id);
@@ -231,11 +260,12 @@ const Appointment = () => {
           setShowTimePicker(false);
         }
       } else {
+        // If no doctor selected, go back to base appointment URL
+        navigateRouter('/Appointment', { replace: true });
         setAvailableTimeSlots([]);
         setShowTimePicker(false);
       }
     }
-
     // Real-time validation with debouncing
     let error = '';
     switch (id) {

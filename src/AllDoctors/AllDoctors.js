@@ -122,7 +122,9 @@ function AllDoctors() {
     // Function to handle booking appointment
     const handleBookAppointment = (e, doctor) => {
         e.stopPropagation(); // Prevent card click event from triggering
-        navigate('/appointment', { 
+        // Convert to lowercase and replace all non-alphanumeric characters with hyphens
+        const urlFriendlyName = doctor.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        navigate(`/Appointment/${urlFriendlyName}`, { 
             state: { 
                 selectedDoctor: doctor.name,
                 doctorId: doctor._id
@@ -130,7 +132,6 @@ function AllDoctors() {
         });
         window.scrollTo(0, 0);
     };
-    
     // Close dropdown when clicking outside
     useEffect(() => {
         const handleClickOutside = (event) => {

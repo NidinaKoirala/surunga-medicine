@@ -91,7 +91,7 @@ export const AppProvider = ({ children }) => {
     // Initial doctors data with availability
     const initialDoctorsData = [
         {
-            _id: 'doc1',
+            _id: 'dr.dipayan-pandey',
             name: 'Dr. Dipayan Pandey',
             image: doc1,
             speciality: 'छाला यौन तथा सौन्दर्य विशेषज्ञ',
@@ -119,7 +119,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc2',
+            _id: 'dr.lata-shrestha',
             name: 'Dr. Lata Shrestha',
             image: doc2,
             speciality: 'प्रसूति तथा प्रजनन् विशेषज्ञ',
@@ -153,7 +153,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc3',
+            _id: 'dr.gaurav-chhetri',
             name: 'Dr. Gaurav Chhetri',
             image: doc3,
             speciality: 'सुगर प्रेसर तथा किड्नी विशेषज्ञ',
@@ -183,7 +183,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc4',
+            _id: 'dr.pramod-kumar-shah',
             name: 'Dr. Pramod Kumar Shah',
             image: doc4,
             speciality: 'वरिष्ठ कन्सल्टेन्ट फिजिसियन',
@@ -214,7 +214,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc5',
+            _id: 'dr.pravakar-shah',
             name: 'Dr. Pravakar Shah',
             image: doc5,
             speciality: 'जनरल तथा त्याप्रोस्कोपिक सर्जन र पायल्स रोग विशेषज्ञ',
@@ -244,7 +244,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc6',
+            _id: 'dr.ram-krishna-giri',
             name: 'Dr. Ram Krishna Giri',
             image: doc6,
             speciality: 'वाथ तथा प्रतिरक्षा रोग विशेषज्ञ',
@@ -274,7 +274,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc7',
+            _id: 'dr.rabindra-simkhada',
             name: 'Dr. Rabindra Simkhada',
             image: doc7,
             speciality: 'मुटृुरोग विशेषज्ञ',
@@ -304,7 +304,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc8',
+            _id: 'dr.sandeep-chand-shrestha',
             name: 'Dr. Sandeep Chand Shrestha',
             image: doc8,
             speciality: 'सुगर थाइराईड तथा हर्मोन विशेषज्ञ',
@@ -334,7 +334,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc9',
+            _id: 'dr.sashank-raj-pokhrel',
             name: 'Dr. Sashank Raj Pokhrel',
             image: doc9,
             speciality: 'मानसिक, नशा तथा टाउको रोग विशेषज्ञ',
@@ -364,7 +364,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc10',
+            _id: 'dr.santosh-thapa',
             name: 'Dr. Santosh Thapa',
             image: doc10,
             speciality: 'हाडजोर्नी नशा तथा मेरुदण्ड विशेषज्ञ',
@@ -393,7 +393,7 @@ export const AppProvider = ({ children }) => {
         },
         // New doctors added below
         {
-            _id: 'doc11',
+            _id: 'dr.shambhu-nawal',
             name: 'Dr. Sambhu Nawal',
             image: maledoctoravatar,
             speciality: 'जनरल तथा त्याप्रोस्कोपिक सर्जन र पायल्स रोग विशेषज्ञ',
@@ -421,7 +421,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc12',
+            _id: 'dr.niraj-rauniyar',
             name: 'Dr. Niraj Rauniyar',
             image: maledoctoravatar,
             speciality: 'ENT विशेषज्ञ',
@@ -449,7 +449,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc13',
+            _id: 'dr.sandhya-shah',
             name: 'Dr. Sandhya Shah',
             image: femaledoctoravatar,
             speciality: 'प्रसूति तथा प्रजनन् विशेषज्ञ',
@@ -477,7 +477,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc14',
+            _id: 'dr.ashreya-kadariya',
             name: 'Dr. Ashreya Kadariya',
             image: maledoctoravatar,
             speciality: 'बाल रोग विशेषज्ञ',
@@ -511,7 +511,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc15',
+            _id: 'dr.sanjeev-k-shah',
             name: 'Dr. Sanjeev K. Shah',
             image: maledoctoravatar,
             speciality: 'बाल रोग विशेषज्ञ',
@@ -545,7 +545,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc16',
+            _id: 'dr.prabin-chaudhary',
             name: 'Dr. Prabin Chaudhary',
             image: maledoctoravatar,
             speciality: 'हाडजोर्नी नशा तथा मेरुदण्ड विशेषज्ञ',
@@ -579,7 +579,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc17',
+            _id: 'dr.sonu-bharati',
             name: 'Dr. Sonu Bharati',
             image: femaledoctoravatar,
             speciality: 'प्रसूति तथा प्रजनन् विशेषज्ञ',
@@ -610,7 +610,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc18',
+            _id: 'dr.dristy-bhattrai',
             name: 'Dr. Dristy Bhattarai',
             image: femaledoctoravatar,
             speciality: 'प्रसूति तथा प्रजनन् विशेषज्ञ',
@@ -644,7 +644,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc19',
+            _id: 'dr.suraj-thapaliya',
             name: 'Dr. Suraj Thapaliya',
             image: maledoctoravatar,
             speciality: 'रेडियोलोजिस्ट',
@@ -678,7 +678,7 @@ export const AppProvider = ({ children }) => {
             }
         },
         {
-            _id: 'doc20',
+            _id: 'dr.aktar-ali',
             name: 'Dr. Aktar Ali',
             image: maledoctoravatar,
             speciality: 'रेडियोलोजिस्ट',

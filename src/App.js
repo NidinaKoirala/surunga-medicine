@@ -52,6 +52,7 @@ function App() {
             <Route path='/blog/' element={<Blog />} />
             <Route path="/Blog/:id" element={<BlogPost />} />
             <Route path="/Appointment" element={<Appointment />} />
+            <Route path="/Appointment/:doctorName" element={<Appointment />} />
             
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />
